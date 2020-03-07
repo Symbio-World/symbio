@@ -1,41 +1,25 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow
- */
-
 import React, { Component } from 'react';
 import {
-  SafeAreaView,
+  AppRegistry,
+  AppState,
   StyleSheet,
-  ScrollView,
-  View,
   Text,
-  StatusBar,
+  findNodeHandle,
+  View,
+  Platform,
+  PermissionsAndroid,
+  BackHandler
 } from 'react-native';
-
-import {
-  Header,
-  LearnMoreLinks,
-  Colors,
-  DebugInstructions,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
-
 import {
   BarcodePicker,
   ScanditModule,
+  ScanSession,
   Barcode,
+  SymbologySettings,
   ScanSettings
 } from 'scandit-react-native';
-// Set your license key.
-ScanditModule.setAppKey('AclefSTFOqv/Dx8+gDAdWhARENDRBdFqFnoHiBd4lm2zBe1c21YpjPdRwDzvWzQdMkzrLSFDkmH7euWa2DB3frAMW9HkYcMwMRde5Nt3rsxUeW4eo1HaoiFjdJdTaQmpoy6ketg0ie7dWxAOBUu8UflKPVyJfNzw4GQoCPZehWJ2XSVwemVZA0dhVTYIboovuHP/KKp/5dq6aHud9ll6WOMOnuK5TG3U1EkTN8hOqhLIc2TbJ09D36R6xMT+Q3st20GV1iZ4o+/JXbWJml6Y0p5SOVtPWiC0DEazqhtcjNCRVNs3yEV1+7JzPE2MT0w5uH26PuFF87c8f0CRX16irY4SmD4DWbilFXcNmixre5r5IBk9JC0Kk+h46Wm/aIS68H3qvcRaGCy4dcV7J1BjkpBq9/fBWBhYMElWzpND4NoxQPS2KFPCTNVSwaUpaSQhnGYKPmZ9vetoNNFFJFbCxZ99I/GwYh2R2Gacw1svQaDrUzaJrC8o/PJkwtBlS2DVFTSlUzhFyIb5Fnjllp6hZQDC5qVq9p+Qpg5S3t8C0ZwQCGGTD677j9LZrrzDNTUT2hcm5cnXsgUgmIHWQ9Rznw0Dbe1w2OHUgdp+VY9EIAp61aP8Yg6QNbhEgOvBRNOr74q74BoEq1CJc/nseXq0kPDEw8Bi1IyeSE/Qv8AFpByV6Kve5lGtLO7cMI5w/qL81VgXkFgZVrXKs1DqCKw9zmzJsGTTTWpoZ+rTqlMBOHFwkRq42ET4y5x56jxjC0X5oU5kJZ0IUFU9x8iO3L4iT8xGjgU7DXCsc72Bti3Ylev1+KO7YV1/1/eNyp/TSVtUov3l/22cuRFJonN3E7w97ax5pLCMdlPeXhs6oJ1p3zEkHRvpMhrSf7978Keh5TYw4qzDWkcju+PNI5Mab8SCyv3HDTMml9JOXbMIeUSnT2p3jnaSdZqs7YprVUlIdfSYaxodWjJhn+3Np/d658GVeJvZO5/rxDwEEVaA5/Z/sWsXAJ16ffGLUaO5NJ2o3yaNt8YqtPNVeF6usTwMPu4lUUSN55SSvrDhu9JsJyjT8vZAlhhGcnlDv2OTqT4eAdDc8Gkf/Ky610tbORE4IurtL8MdhJfcOPT3JtAFzk5wArgJIX69OO1dtzUnWdAwVich/CAcviQikAASD9Z28N15kmFmmi3pEJjBA4rPYUoAH8fi279v/3+6MryqMqM=');
-this.settings = new ScanSettings();
-this.settings.setSymbologyEnabled(Barcode.Symbology.EAN13, true);
-this.settings.setSymbologyEnabled(Barcode.Symbology.EAN8, true);
-this.settings.setSymbologyEnabled(Barcode.Symbology.UPCA, true);
+
+ScanditModule.setAppKey('-- ENTER YOUR SCANDIT LICENSE KEY HERE --');
 
 export default class SimpleSample extends Component {
 
