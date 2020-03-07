@@ -19,6 +19,23 @@
 		2D02E4BF1E0B4AB3006451C7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		2DCD954D1E0B4F2C00145EB5 /* ProductScannerAppTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* ProductScannerAppTests.m */; };
 		33C47CD0284EFE0CE8674FEF /* libPods-ProductScannerApp-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BA5F4FD991C183FA69D9C41 /* libPods-ProductScannerApp-tvOSTests.a */; };
+		C63DF164241432DD00FB7E74 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = C63DF163241432DD00FB7E74 /* libc++.tbd */; };
+		C63DF166241432E300FB7E74 /* libiconv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = C63DF165241432E300FB7E74 /* libiconv.tbd */; };
+		C63DF168241432EB00FB7E74 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = C63DF167241432EB00FB7E74 /* libz.tbd */; };
+		C63DF16A241432F200FB7E74 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C63DF169241432F200FB7E74 /* CoreText.framework */; };
+		C63DF16C241432F900FB7E74 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C63DF16B241432F800FB7E74 /* OpenGLES.framework */; };
+		C63DF16E241432FF00FB7E74 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C63DF16D241432FF00FB7E74 /* MessageUI.framework */; };
+		C63DF1702414330600FB7E74 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C63DF16F2414330600FB7E74 /* CoreVideo.framework */; };
+		C63DF1722414330D00FB7E74 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C63DF1712414330D00FB7E74 /* UIKit.framework */; };
+		C63DF1742414331500FB7E74 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C63DF1732414331500FB7E74 /* Foundation.framework */; };
+		C63DF1762414331B00FB7E74 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C63DF1752414331B00FB7E74 /* CoreGraphics.framework */; };
+		C63DF1782414332200FB7E74 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C63DF1772414332200FB7E74 /* AudioToolbox.framework */; };
+		C63DF17A2414332800FB7E74 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C63DF1792414332800FB7E74 /* AVFoundation.framework */; };
+		C63DF17C2414332F00FB7E74 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C63DF17B2414332E00FB7E74 /* CoreMedia.framework */; };
+		C63DF17E2414333500FB7E74 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C63DF17D2414333500FB7E74 /* QuartzCore.framework */; };
+		C63DF1802414333B00FB7E74 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C63DF17F2414333B00FB7E74 /* SystemConfiguration.framework */; };
+		C63DF1822414334300FB7E74 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C63DF1812414334300FB7E74 /* MediaPlayer.framework */; };
+		C63DF1842414343000FB7E74 /* ScanditBarcodeScanner.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C63DF1832414343000FB7E74 /* ScanditBarcodeScanner.bundle */; };
 		DF90851223AF070A396B9782 /* libPods-ProductScannerApp-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BC90F4B180B184E721C3B9C /* libPods-ProductScannerApp-tvOS.a */; };
 /* End PBXBuildFile section */
 
@@ -63,6 +80,23 @@
 		61A47443D6ECC7C6E95A8B0A /* Pods-ProductScannerApp-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProductScannerApp-tvOS.release.xcconfig"; path = "Target Support Files/Pods-ProductScannerApp-tvOS/Pods-ProductScannerApp-tvOS.release.xcconfig"; sourceTree = "<group>"; };
 		6BC90F4B180B184E721C3B9C /* libPods-ProductScannerApp-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ProductScannerApp-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A32F5567FA9D65A5B5753130 /* Pods-ProductScannerApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProductScannerApp.release.xcconfig"; path = "Target Support Files/Pods-ProductScannerApp/Pods-ProductScannerApp.release.xcconfig"; sourceTree = "<group>"; };
+		C63DF163241432DD00FB7E74 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
+		C63DF165241432E300FB7E74 /* libiconv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libiconv.tbd; path = usr/lib/libiconv.tbd; sourceTree = SDKROOT; };
+		C63DF167241432EB00FB7E74 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		C63DF169241432F200FB7E74 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
+		C63DF16B241432F800FB7E74 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
+		C63DF16D241432FF00FB7E74 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		C63DF16F2414330600FB7E74 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
+		C63DF1712414330D00FB7E74 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		C63DF1732414331500FB7E74 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		C63DF1752414331B00FB7E74 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		C63DF1772414332200FB7E74 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		C63DF1792414332800FB7E74 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		C63DF17B2414332E00FB7E74 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		C63DF17D2414333500FB7E74 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		C63DF17F2414333B00FB7E74 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		C63DF1812414334300FB7E74 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
+		C63DF1832414343000FB7E74 /* ScanditBarcodeScanner.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = ScanditBarcodeScanner.bundle; path = "../node_modules/scandit-react-native/ios/ScanditBarcodeScanner/Frameworks/ScanditBarcodeScanner.framework/Resources/ScanditBarcodeScanner.bundle"; sourceTree = "<group>"; };
 		E70A51873F50B36A4B4C0DD3 /* Pods-ProductScannerAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProductScannerAppTests.debug.xcconfig"; path = "Target Support Files/Pods-ProductScannerAppTests/Pods-ProductScannerAppTests.debug.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		ED2971642150620600B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
@@ -82,6 +116,22 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C63DF1822414334300FB7E74 /* MediaPlayer.framework in Frameworks */,
+				C63DF1802414333B00FB7E74 /* SystemConfiguration.framework in Frameworks */,
+				C63DF17E2414333500FB7E74 /* QuartzCore.framework in Frameworks */,
+				C63DF17C2414332F00FB7E74 /* CoreMedia.framework in Frameworks */,
+				C63DF17A2414332800FB7E74 /* AVFoundation.framework in Frameworks */,
+				C63DF1782414332200FB7E74 /* AudioToolbox.framework in Frameworks */,
+				C63DF1762414331B00FB7E74 /* CoreGraphics.framework in Frameworks */,
+				C63DF1742414331500FB7E74 /* Foundation.framework in Frameworks */,
+				C63DF1722414330D00FB7E74 /* UIKit.framework in Frameworks */,
+				C63DF1702414330600FB7E74 /* CoreVideo.framework in Frameworks */,
+				C63DF16E241432FF00FB7E74 /* MessageUI.framework in Frameworks */,
+				C63DF16C241432F900FB7E74 /* OpenGLES.framework in Frameworks */,
+				C63DF16A241432F200FB7E74 /* CoreText.framework in Frameworks */,
+				C63DF168241432EB00FB7E74 /* libz.tbd in Frameworks */,
+				C63DF166241432E300FB7E74 /* libiconv.tbd in Frameworks */,
+				C63DF164241432DD00FB7E74 /* libc++.tbd in Frameworks */,
 				186E07DCE48A7B4E2F166512 /* libPods-ProductScannerApp.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -139,6 +189,23 @@
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C63DF1812414334300FB7E74 /* MediaPlayer.framework */,
+				C63DF17F2414333B00FB7E74 /* SystemConfiguration.framework */,
+				C63DF17D2414333500FB7E74 /* QuartzCore.framework */,
+				C63DF17B2414332E00FB7E74 /* CoreMedia.framework */,
+				C63DF1792414332800FB7E74 /* AVFoundation.framework */,
+				C63DF1772414332200FB7E74 /* AudioToolbox.framework */,
+				C63DF1752414331B00FB7E74 /* CoreGraphics.framework */,
+				C63DF1732414331500FB7E74 /* Foundation.framework */,
+				C63DF1712414330D00FB7E74 /* UIKit.framework */,
+				C63DF16F2414330600FB7E74 /* CoreVideo.framework */,
+				C63DF16D241432FF00FB7E74 /* MessageUI.framework */,
+				C63DF16B241432F800FB7E74 /* OpenGLES.framework */,
+				C63DF169241432F200FB7E74 /* CoreText.framework */,
+				C63DF167241432EB00FB7E74 /* libz.tbd */,
+				C63DF1832414343000FB7E74 /* ScanditBarcodeScanner.bundle */,
+				C63DF165241432E300FB7E74 /* libiconv.tbd */,
+				C63DF163241432DD00FB7E74 /* libc++.tbd */,
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
 				ED2971642150620600B7C4FE /* JavaScriptCore.framework */,
 				0BAD6CCBA7929D3933D4E5B8 /* libPods-ProductScannerApp.a */,
@@ -194,7 +261,6 @@
 				E70A51873F50B36A4B4C0DD3 /* Pods-ProductScannerAppTests.debug.xcconfig */,
 				601E6C94AF51899F427751A9 /* Pods-ProductScannerAppTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -308,6 +374,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -338,6 +405,7 @@
 			files = (
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
+				C63DF1842414343000FB7E74 /* ScanditBarcodeScanner.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
