@@ -15,10 +15,11 @@ import {
 } from 'scandit-react-native';
 
 import { Overlay } from './overlay'
+import { ProductCardContainer } from './product-card-container'
 
 export class Scanner extends React.Component {
   state = {
-    barcodes: []
+    overlays: []
   }
 
   componentWillMount() {
@@ -103,7 +104,6 @@ export class Scanner extends React.Component {
   }
 
   render() {
-    console.log(this.state.barcodes);
     return (
       <View
         style={{
@@ -111,7 +111,11 @@ export class Scanner extends React.Component {
           flexDirection: 'column'
         }}
       >
-        {this.state.barcodes.map(barcode => <Overlay key={barcode.data} {...barcode} />)}
+        {this.state.overlays.map(({ top, left, barcode }) => (
+          <Overlay key={barcode} top={top} left={left} >
+            <ProductCardContainer barcode={barcode} />
+          </Overlay>
+        ))}
         <BarcodePicker
           onRecognizeNewCodes={(session) => { this.onRecognizeNewCodes(session) }}
           scanSettings={this.settings}
@@ -123,11 +127,9 @@ export class Scanner extends React.Component {
   }
 
   onRecognizeNewCodes(session) {
-    // If you want to visually reject a code you should use ScanSession's rejectCode.
-    // For example, the following code will reject all EAN8 codes.
     this.setState({
-      barcodes: session.allTrackedCodes.map(barcode => ({
-        data: barcode.data,
+      overlays: session.allTrackedCodes.map(barcode => ({
+        barcode: barcode.data,
         left: barcode.convertedLocation.topLeft[0],
         top: barcode.convertedLocation.topLeft[1]
       }))

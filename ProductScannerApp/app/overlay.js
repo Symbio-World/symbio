@@ -4,20 +4,15 @@ import {
   View,
 } from 'react-native';
 
-export const Overlay = (barcode) => (
+export const Overlay = ({ top, left, children }) => (
   <View
-    key={barcode.data}
     style={{
       position: 'absolute',
       zIndex: 1,
-      top: barcode.top,
-      left: barcode.left,
-      borderRadius: 5,
-      backgroundColor: '#00ff00'
+      top,
+      left,
     }}
   >
-    <Text>
-      {barcode.data}
-    </Text>
+    {children}
   </View>
 )

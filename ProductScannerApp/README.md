@@ -23,3 +23,11 @@ In the other run
 ```
 npm run ios/android
 ```
+
+
+* Test
+
+Run a specific test with
+```
+npm test -- -t "fetches product successfully"
+```
