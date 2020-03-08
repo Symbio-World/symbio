@@ -24,6 +24,10 @@ ScanditModule.setAppKey('AUqOHwnFFxJTGIN5mAKlgV8h39u5OGnoUH9B25RatWMBGa/f/Upv+cp
 
 export default class MatrixScanSample extends Component {
 
+  state = {
+    barcodes: []
+  }
+
   componentWillMount() {
     this.settings = new ScanSettings();
     this.settings.setSymbologyEnabled(Barcode.Symbology.EAN13, true);
@@ -106,15 +110,36 @@ export default class MatrixScanSample extends Component {
   }
 
   render() {
+    console.log(this.state.barcodes);
     return (
-      <View style={{
-            flex: 1,
-            flexDirection: 'column'}}>
-            <BarcodePicker
-                onRecognizeNewCodes={(session) => { this.onRecognizeNewCodes(session) }}
-                scanSettings= { this.settings }
-        ref={(scan) => { this.scanner = scan }}
-                style={{ flex: 1 }}/>
+      <View 
+        style={{
+          flex: 1,
+          flexDirection: 'column'
+        }}
+      >
+        {this.state.barcodes.map(barcode => (
+          <View 
+            style={{
+              position: 'absolute',
+              zIndex: 1,
+              top: barcode.top,
+              left: barcode.left,
+              borderRadius: 5,
+              backgroundColor: '#00ff00'
+            }}
+          >
+            <Text>
+              {barcode.data}
+            </Text>                    
+          </View>
+        ))}
+        <BarcodePicker
+          onRecognizeNewCodes={(session) => { this.onRecognizeNewCodes(session) }}
+          scanSettings= { this.settings }
+          ref={(scan) => { this.scanner = scan }}
+          style={{ flex: 1, opacity: 1 }}
+        />
     </View>
     );
   }
@@ -122,10 +147,12 @@ export default class MatrixScanSample extends Component {
   onRecognizeNewCodes(session) {
     // If you want to visually reject a code you should use ScanSession's rejectCode.
     // For example, the following code will reject all EAN8 codes.
-    session.newlyTrackedCodes.forEach(function(barcode) {
-      if (barcode.symbology == Barcode.Symbology.EAN8) {
-        session.rejectTrackedCode(barcode);
-      }
-    });
+    this.setState({
+      barcodes: session.allTrackedCodes.map(barcode => ({
+          data: barcode.data,
+          left: barcode.convertedLocation.topLeft[0],
+          top: barcode.convertedLocation.topLeft[1]
+        }))
+    })
   }
 }
