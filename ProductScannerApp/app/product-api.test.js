@@ -33,7 +33,7 @@ it('translates product', async () => {
   expect(product).toEqual(testTranslatedProduct)
 })
 
-it('errors  with api error when translations fails', async () => {
+it('errors with api error when translations fails', async () => {
   translator.translate.mockImplementationOnce(() => Promise.reject(new Error()))
   await expect(fetchProduct(testBarcode)).rejects.toThrow(ApiError);
 })

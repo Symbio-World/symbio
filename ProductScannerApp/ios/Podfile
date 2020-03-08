@@ -34,7 +34,7 @@ target 'ProductScannerApp' do
   pod 'glog', :podspec => '../node_modules/react-native/third-party-podspecs/glog.podspec'
   pod 'Folly', :podspec => '../node_modules/react-native/third-party-podspecs/Folly.podspec'
 
-  pod 'scandit-react-native', :path => '../node_modules/scandit-react-native'
+
 
   target 'ProductScannerAppTests' do
     inherit! :search_paths

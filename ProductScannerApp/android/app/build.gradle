@@ -179,7 +179,6 @@ android {
 }
 
 dependencies {
-    implementation project(':scandit-react-native')
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation "com.facebook.react:react-native:+"  // From node_modules
 

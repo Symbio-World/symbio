@@ -13,7 +13,7 @@ it('renders correctly', () => {
 
 it('triggers retry function on button click', () => {
   const testRetryFunction = jest.fn()
-  testRenderer = renderer.create(<ErrorCard retryFunction={testRetryFunction} />);
+  const testRenderer = renderer.create(<ErrorCard retryFunction={testRetryFunction} />);
   const testInstance = testRenderer.root
   const button = testInstance.findByType(Button)
   button.props.onPress();

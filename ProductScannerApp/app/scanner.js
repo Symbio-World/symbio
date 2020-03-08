@@ -112,7 +112,7 @@ export class Scanner extends React.Component {
         }}
       >
         {this.state.overlays.map(({ top, left, barcode }) => (
-          <Overlay key={barcode} top={top} left={left} >
+          <Overlay key={barcode} top={top} left={left} onClose={() => this.closeOverlay(barcode)}>
             <ProductCardContainer barcode={barcode} />
           </Overlay>
         ))}
@@ -126,6 +126,12 @@ export class Scanner extends React.Component {
         />
       </View>
     );
+  }
+
+  closeOverlay(barcode) {
+    this.setState({
+      overlays: this.state.overlays.filter(overlay => barcode !== overlay.barcode)
+    })
   }
 
   onRecognizeNewCodes(session) {
