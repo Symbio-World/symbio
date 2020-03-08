@@ -221,17 +221,3 @@ export const testSuccessHttpResponse = {
     }
   ]
 }
-export const testFailedHttpResponse = {
-  "error": {
-    "code": 400,
-    "message": "Request contains an invalid argument.",
-    "errors": [
-      {
-        "message": "Request contains an invalid argument.",
-        "domain": "global",
-        "reason": "badRequest"
-      }
-    ],
-    "status": "INVALID_ARGUMENT"
-  }
-}

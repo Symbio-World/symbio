@@ -13,12 +13,13 @@ export class ProductCardContainer extends React.Component {
   }
 
   async fetchProduct() {
-    const { product, error } = await fetchProduct(this.props.barcode)
-    console.log('product', product)
-    this.setState({
-      product,
-      error
-    })
+    const product = await fetchProduct(this.props.barcode)
+      .catch(error => {
+        this.setState({
+          error
+        })
+      })
+    this.setState({ product })
   }
 
   render() {

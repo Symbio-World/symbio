@@ -1,3 +1,6 @@
+*-service-account*
+.env
+
 # OSX
 #
 .DS_Store

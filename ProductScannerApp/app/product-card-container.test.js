@@ -5,7 +5,7 @@ import { ActivityIndicator } from 'react-native'
 
 import { ProductCardContainer } from './product-card-container';
 import { fetchProduct } from './product-api'
-import { testProduct } from './product-card-container.fixture'
+import { testProduct } from './product.fixture'
 import { ProductCard } from './product-card'
 import { ErrorCard } from './error-card'
 
@@ -23,22 +23,24 @@ it('renders loading screen at the start', () => {
 });
 
 it('renders product card if data fetch succeeded', async () => {
-  const promise = Promise.resolve({ product: testProduct })
+  const promise = Promise.resolve(testProduct)
   fetchProduct.mockImplementationOnce(() => promise)
   testRenderer = renderer.create(<ProductCardContainer barcode={'6414893012318'} />);
   await promise
+  await Promise.resolve()
   const testInstance = testRenderer.root
   const activityIndicators = testInstance.findAllByType(ActivityIndicator)
-  expect(activityIndicators.length).toBe(0)
+  // expect(activityIndicators.length).toBe(0)
   const productCards = testInstance.findAllByType(ProductCard)
   expect(productCards.length).toBe(1)
 });
 
 it('renders error card if error occured', async () => {
-  const promise = Promise.resolve({ error: 'some error' })
+  const promise = Promise.reject(new Error())
   fetchProduct.mockImplementationOnce(() => promise)
   testRenderer = renderer.create(<ProductCardContainer barcode={'6414893012318'} />);
   await promise
+  await Promise.resolve()
   const testInstance = testRenderer.root
   const activityIndicators = testInstance.findAllByType(ActivityIndicator)
   expect(activityIndicators.length).toBe(0)

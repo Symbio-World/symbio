@@ -8,6 +8,7 @@ module.exports = {
     + "|react-native-status-bar-height"
     + "|react-native-vector-icons"
     + "|react-native-ratings"
+    + "|react-native-power-translator"
     + ")/)",
   ],
 }

@@ -119,8 +119,10 @@ export class Scanner extends React.Component {
         <BarcodePicker
           onRecognizeNewCodes={(session) => { this.onRecognizeNewCodes(session) }}
           scanSettings={this.settings}
+          setBeepEnabled={false}
+          setVibrateEnabled={true}
           ref={(scan) => { this.scanner = scan }}
-          style={{ flex: 1, opacity: 1 }}
+          style={{ flex: 1 }}
         />
       </View>
     );
