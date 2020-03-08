@@ -6,8 +6,8 @@ import 'react-native';
 import React from 'react';
 import renderer from 'react-test-renderer';
 
-import { Home } from './home';
+import { Overlay } from './overlay';
 
 it('renders correctly', () => {
-  renderer.create(<Home />);
+  renderer.create(<Overlay />);
 });
