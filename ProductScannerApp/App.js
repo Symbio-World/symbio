@@ -16,12 +16,13 @@ import {
   ScanSession,
   Barcode,
   SymbologySettings,
-  ScanSettings
+  ScanSettings,
+  ScanOverlay
 } from 'scandit-react-native';
 
-ScanditModule.setAppKey('-- ENTER YOUR SCANDIT LICENSE KEY HERE --');
+ScanditModule.setAppKey('AUqOHwnFFxJTGIN5mAKlgV8h39u5OGnoUH9B25RatWMBGa/f/Upv+cp9fShvWu8/xG1gjvdhjFAIfiumeURAklxhvyMVTwJdnieiiyNpmenpNz5XRkhd449+HuniJ0Je2jR6teMZAixBwLgiAGmJ9wz3dBkAdB/4J/q1cHVyvZq9K9Np2N1i+cU6qh0cMZRkV4q2ZyW9rfUFxE0viXOuA9iDF3VG8ceLqA0Zz4DtqkpuSFGs0RmBAHWhDuOHhWgfpBfybojVVWknUfkmO14nLzqNkTxa7tcKzBEJJ5jrwjwnZMWVZQxI/oE2y34WOpHzP9N9XmYvcC/OPbjvRNxqUs+MmQu7Cz6A+gcXa+ulVazFY02IyK35O6dEMbgq79ncIvzaeb0lShgEQV9Ds6C+925k8JxPqe6N6qTDJ3Ny2bfsVk5VFZFXqe3LhxAxGXgdT37AhWjEjRJ+/bi/DQq0CclQclgsfkSOb7SG4M+rfYVXVIhzHM67HC0exzh0fAGgIAZb5FSQInWamftYsVWzx1g0Q+QCryrguvSaIQMs1zHEXIa48QxtR/f0pXwxYq2TqsElz/9/oDfjLVLHbikpm7CCpBTqY5gKHVCzNFznuEH0EKzAnXrGVjsDpVvIpIAHPJwsCnWM23LHYlIILHh/lQ7OvBVvXRQayejp47cMWeOEXWhm9jPI6UDLaC7KyvmixOSZcqLJJrWxxGF4qQNOwKPHt1eZ12sYL9FZsFGYhMEuEXf9m0sdp/g7/Uc7++zPH0LvBn/jVImDaaYBCEnXuNce5+5qfs1qtX1D+qCRtl/1B04QPDv35g==');
 
-export default class SimpleSample extends Component {
+export default class MatrixScanSample extends Component {
 
   componentWillMount() {
     this.settings = new ScanSettings();
@@ -29,21 +30,11 @@ export default class SimpleSample extends Component {
     this.settings.setSymbologyEnabled(Barcode.Symbology.EAN8, true);
     this.settings.setSymbologyEnabled(Barcode.Symbology.UPCA, true);
     this.settings.setSymbologyEnabled(Barcode.Symbology.UPCE, true);
-    this.settings.setSymbologyEnabled(Barcode.Symbology.CODE39, true);
-    this.settings.setSymbologyEnabled(Barcode.Symbology.ITF, true);
-    this.settings.setSymbologyEnabled(Barcode.Symbology.QR, true);
-    this.settings.setSymbologyEnabled(Barcode.Symbology.DATA_MATRIX, true);
-    this.settings.setSymbologyEnabled(Barcode.Symbology.CODE128, true);
-
-    /* Some 1d barcode symbologies allow you to encode variable-length data. By default, the
-       Scandit BarcodeScanner SDK only scans barcodes in a certain length range. If your
-       application requires scanning of one of these symbologies, and the length is falling
-       outside the default range, you may need to adjust the "active symbol counts" for this
-       symbology. This is shown in the following few lines of code. */
-    this.settings.getSymbologySettings(Barcode.Symbology.CODE39)
-      .activeSymbolCounts = [7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
-    /* For details on defaults and how to calculate the symbol counts for each symbology, take
-       a look at http://docs.scandit.com/stable/c_api/symbologies.html. */
+    
+    this.settings.matrixScanEnabled = true;
+    this.settings.codeRejectionEnabled = true;
+    this.settings.highDensityModeEnabled = true;
+    this.settings.maxNumberOfCodesPerFrame = 10;
   }
 
   isAndroidMarshmallowOrNewer() {
@@ -84,6 +75,7 @@ export default class SimpleSample extends Component {
   }
 
   cameraPermissionGranted() {
+    this.scanner.setGuiStyle(ScanOverlay.GuiStyle.MATRIX_SCAN);
     this.scanner.startScanning();
   }
 
@@ -95,7 +87,7 @@ export default class SimpleSample extends Component {
   componentWillUnmount() {
     AppState.removeEventListener('change', this._handleAppStateChange);
   }
-
+  
   _handleAppStateChange = async (nextAppState) => {
     if (nextAppState.match(/inactive|background/)) {
       this.scanner.stopScanning();
@@ -116,19 +108,24 @@ export default class SimpleSample extends Component {
   render() {
     return (
       <View style={{
-        flex: 1,
-        flexDirection: 'column'}}>
-        <BarcodePicker
-          onScan={(session) => { this.onScan(session) }}
-          scanSettings= { this.settings }
-          ref={(scan) => { this.scanner = scan }}
-          style={{ flex: 1 }}/>
-      </View>
+            flex: 1,
+            flexDirection: 'column'}}>
+            <BarcodePicker
+                onRecognizeNewCodes={(session) => { this.onRecognizeNewCodes(session) }}
+                scanSettings= { this.settings }
+        ref={(scan) => { this.scanner = scan }}
+                style={{ flex: 1 }}/>
+    </View>
     );
   }
 
-  onScan(session) {
-    alert(session.newlyRecognizedCodes[0].data + " " + session.newlyRecognizedCodes[0].symbology);
+  onRecognizeNewCodes(session) {
+    // If you want to visually reject a code you should use ScanSession's rejectCode.
+    // For example, the following code will reject all EAN8 codes.
+    session.newlyTrackedCodes.forEach(function(barcode) {
+      if (barcode.symbology == Barcode.Symbology.EAN8) {
+        session.rejectTrackedCode(barcode);
+      }
+    });
   }
-
 }

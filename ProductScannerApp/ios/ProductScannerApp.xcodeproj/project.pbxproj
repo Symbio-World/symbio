@@ -35,7 +35,8 @@
 		C63DF17E2414333500FB7E74 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C63DF17D2414333500FB7E74 /* QuartzCore.framework */; };
 		C63DF1802414333B00FB7E74 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C63DF17F2414333B00FB7E74 /* SystemConfiguration.framework */; };
 		C63DF1822414334300FB7E74 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C63DF1812414334300FB7E74 /* MediaPlayer.framework */; };
-		C63DF1842414343000FB7E74 /* ScanditBarcodeScanner.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C63DF1832414343000FB7E74 /* ScanditBarcodeScanner.bundle */; };
+		C6458AF32414D04000416359 /* ScanditBarcodeScanner.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6458AF22414D04000416359 /* ScanditBarcodeScanner.framework */; };
+		C6458AF52414D04B00416359 /* ScanditBarcodeScanner.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C6458AF42414D04B00416359 /* ScanditBarcodeScanner.bundle */; };
 		DF90851223AF070A396B9782 /* libPods-ProductScannerApp-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BC90F4B180B184E721C3B9C /* libPods-ProductScannerApp-tvOS.a */; };
 /* End PBXBuildFile section */
 
@@ -96,7 +97,8 @@
 		C63DF17D2414333500FB7E74 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		C63DF17F2414333B00FB7E74 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		C63DF1812414334300FB7E74 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
-		C63DF1832414343000FB7E74 /* ScanditBarcodeScanner.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = ScanditBarcodeScanner.bundle; path = "../node_modules/scandit-react-native/ios/ScanditBarcodeScanner/Frameworks/ScanditBarcodeScanner.framework/Resources/ScanditBarcodeScanner.bundle"; sourceTree = "<group>"; };
+		C6458AF22414D04000416359 /* ScanditBarcodeScanner.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ScanditBarcodeScanner.framework; path = "../node_modules/scandit-react-native/ios/ScanditBarcodeScanner/Frameworks/ScanditBarcodeScanner.framework"; sourceTree = "<group>"; };
+		C6458AF42414D04B00416359 /* ScanditBarcodeScanner.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = ScanditBarcodeScanner.bundle; path = "../node_modules/scandit-react-native/ios/ScanditBarcodeScanner/Frameworks/ScanditBarcodeScanner.framework/Resources/ScanditBarcodeScanner.bundle"; sourceTree = "<group>"; };
 		E70A51873F50B36A4B4C0DD3 /* Pods-ProductScannerAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProductScannerAppTests.debug.xcconfig"; path = "Target Support Files/Pods-ProductScannerAppTests/Pods-ProductScannerAppTests.debug.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		ED2971642150620600B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
@@ -125,6 +127,7 @@
 				C63DF1762414331B00FB7E74 /* CoreGraphics.framework in Frameworks */,
 				C63DF1742414331500FB7E74 /* Foundation.framework in Frameworks */,
 				C63DF1722414330D00FB7E74 /* UIKit.framework in Frameworks */,
+				C6458AF32414D04000416359 /* ScanditBarcodeScanner.framework in Frameworks */,
 				C63DF1702414330600FB7E74 /* CoreVideo.framework in Frameworks */,
 				C63DF16E241432FF00FB7E74 /* MessageUI.framework in Frameworks */,
 				C63DF16C241432F900FB7E74 /* OpenGLES.framework in Frameworks */,
@@ -203,7 +206,8 @@
 				C63DF16B241432F800FB7E74 /* OpenGLES.framework */,
 				C63DF169241432F200FB7E74 /* CoreText.framework */,
 				C63DF167241432EB00FB7E74 /* libz.tbd */,
-				C63DF1832414343000FB7E74 /* ScanditBarcodeScanner.bundle */,
+				C6458AF42414D04B00416359 /* ScanditBarcodeScanner.bundle */,
+				C6458AF22414D04000416359 /* ScanditBarcodeScanner.framework */,
 				C63DF165241432E300FB7E74 /* libiconv.tbd */,
 				C63DF163241432DD00FB7E74 /* libc++.tbd */,
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
@@ -358,6 +362,9 @@
 						CreatedOnToolsVersion = 6.2;
 						TestTargetID = 13B07F861A680F5B00A75B9A;
 					};
+					13B07F861A680F5B00A75B9A = {
+						DevelopmentTeam = 8XV4FNGTJR;
+					};
 					2D02E47A1E0B4A5D006451C7 = {
 						CreatedOnToolsVersion = 8.2.1;
 						ProvisioningStyle = Automatic;
@@ -405,7 +412,7 @@
 			files = (
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
-				C63DF1842414343000FB7E74 /* ScanditBarcodeScanner.bundle in Resources */,
+				C6458AF52414D04B00416359 /* ScanditBarcodeScanner.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -675,6 +682,7 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
+				DEVELOPMENT_TEAM = 8XV4FNGTJR;
 				INFOPLIST_FILE = ProductScannerAppTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -696,6 +704,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = NO;
+				DEVELOPMENT_TEAM = 8XV4FNGTJR;
 				INFOPLIST_FILE = ProductScannerApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
@@ -703,7 +712,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.productscannerapp;
 				PRODUCT_NAME = ProductScannerApp;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
@@ -715,6 +724,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 8XV4FNGTJR;
 				INFOPLIST_FILE = ProductScannerApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
@@ -722,7 +732,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.productscannerapp;
 				PRODUCT_NAME = ProductScannerApp;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
