@@ -35,11 +35,10 @@ it('renders product card if data fetch succeeded', async () => {
   expect(productCards.length).toBe(1)
 });
 
-it('renders error card if error occured', async () => {
+it('renders error card if error occurs', async () => {
   const promise = Promise.reject(new Error())
   fetchProduct.mockImplementationOnce(() => promise)
   const testRenderer = renderer.create(<ProductCardContainer barcode={'6414893012318'} />);
-  await promise
   await Promise.resolve()
   const testInstance = testRenderer.root
   const activityIndicators = testInstance.findAllByType(ActivityIndicator)

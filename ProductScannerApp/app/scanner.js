@@ -1,7 +1,6 @@
-import React from 'react';
+import React, { Component } from 'react';
 import {
   AppState,
-  Text,
   View,
   Platform,
   PermissionsAndroid,
@@ -10,16 +9,15 @@ import {
 import {
   BarcodePicker,
   Barcode,
-  ScanSettings,
-  ScanOverlay
+  ScanSettings
 } from 'scandit-react-native';
+import { Overlay } from 'react-native-elements';
 
-import { Overlay } from './overlay'
 import { ProductCardContainer } from './product-card-container'
 
-export class Scanner extends React.Component {
+export class Scanner extends Component {
   state = {
-    overlays: []
+    barcode: null
   }
 
   componentWillMount() {
@@ -28,11 +26,21 @@ export class Scanner extends React.Component {
     this.settings.setSymbologyEnabled(Barcode.Symbology.EAN8, true);
     this.settings.setSymbologyEnabled(Barcode.Symbology.UPCA, true);
     this.settings.setSymbologyEnabled(Barcode.Symbology.UPCE, true);
+    this.settings.setSymbologyEnabled(Barcode.Symbology.CODE39, true);
+    this.settings.setSymbologyEnabled(Barcode.Symbology.ITF, true);
+    this.settings.setSymbologyEnabled(Barcode.Symbology.QR, true);
+    this.settings.setSymbologyEnabled(Barcode.Symbology.DATA_MATRIX, true);
+    this.settings.setSymbologyEnabled(Barcode.Symbology.CODE128, true);
 
-    this.settings.matrixScanEnabled = true;
-    this.settings.codeRejectionEnabled = true;
-    this.settings.highDensityModeEnabled = true;
-    this.settings.maxNumberOfCodesPerFrame = 10;
+    /* Some 1d barcode symbologies allow you to encode variable-length data. By default, the
+       Scandit BarcodeScanner SDK only scans barcodes in a certain length range. If your
+       application requires scanning of one of these symbologies, and the length is falling
+       outside the default range, you may need to adjust the "active symbol counts" for this
+       symbology. This is shown in the following few lines of code. */
+    this.settings.getSymbologySettings(Barcode.Symbology.CODE39)
+      .activeSymbolCounts = [7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
+    /* For details on defaults and how to calculate the symbol counts for each symbology, take
+       a look at http://docs.scandit.com/stable/c_api/symbologies.html. */
   }
 
   isAndroidMarshmallowOrNewer() {
@@ -54,7 +62,7 @@ export class Scanner extends React.Component {
         const granted = await PermissionsAndroid.request(PermissionsAndroid.PERMISSIONS.CAMERA);
         if (granted === PermissionsAndroid.RESULTS.GRANTED) {
           console.log("Android Camera Permission has been granted.");
-          this.cameraPermissionGranted();
+          this.startScanning();
         } else {
           console.log("Android Camera Permission has been denied - the app will shut itself down.");
           this.cameraPermissionDenied();
@@ -63,7 +71,7 @@ export class Scanner extends React.Component {
         console.warn(err);
       }
     } else {
-      this.cameraPermissionGranted();
+      this.startScanning();
     }
   }
 
@@ -72,9 +80,12 @@ export class Scanner extends React.Component {
     BackHandler.exitApp();
   }
 
-  cameraPermissionGranted() {
-    this.scanner.setGuiStyle(ScanOverlay.GuiStyle.MATRIX_SCAN);
+  startScanning() {
     this.scanner.startScanning();
+  }
+
+  stopScanning() {
+    this.scanner.stopScanning();
   }
 
   async componentDidMount() {
@@ -97,7 +108,7 @@ export class Scanner extends React.Component {
   async checkForCameraPermission() {
     const hasPermission = await this.hasCameraPermission();
     if (hasPermission) {
-      this.cameraPermissionGranted();
+      this.startScanning();
     } else {
       await this.requestCameraPermission();
     }
@@ -105,22 +116,23 @@ export class Scanner extends React.Component {
 
   render() {
     return (
-      <View
+      <View 
         style={{
           flex: 1,
           flexDirection: 'column'
         }}
       >
-        {this.state.overlays.map(({ top, left, barcode }) => (
-          <Overlay key={barcode} top={top} left={left} onClose={() => this.closeOverlay(barcode)}>
-            <ProductCardContainer barcode={barcode} />
+        {this.state.barcode && (
+          <Overlay 
+            isVisible={true}
+            onBackdropPress={() => this.onOverlayDismiss()}
+          >
+            <ProductCardContainer barcode={this.state.barcode} />
           </Overlay>
-        ))}
+        )}
         <BarcodePicker
-          onRecognizeNewCodes={(session) => { this.onRecognizeNewCodes(session) }}
-          scanSettings={this.settings}
-          setBeepEnabled={false}
-          setVibrateEnabled={true}
+          onScan={(session) => { this.onScan(session) }}
+          scanSettings= { this.settings }
           ref={(scan) => { this.scanner = scan }}
           style={{ flex: 1 }}
         />
@@ -128,19 +140,15 @@ export class Scanner extends React.Component {
     );
   }
 
-  closeOverlay(barcode) {
-    this.setState({
-      overlays: this.state.overlays.filter(overlay => barcode !== overlay.barcode)
-    })
+  onOverlayDismiss() {
+    this.setState({ barcode: null })
+    this.startScanning()
   }
 
-  onRecognizeNewCodes(session) {
-    this.setState({
-      overlays: session.allTrackedCodes.map(barcode => ({
-        barcode: barcode.data,
-        left: barcode.convertedLocation.topLeft[0],
-        top: barcode.convertedLocation.topLeft[1]
-      }))
+  onScan(session) {
+    const barcode = session.newlyRecognizedCodes[0].data
+    this.setState({ barcode }, () => {
+      this.stopScanning()
     })
   }
 }
