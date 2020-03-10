@@ -4,7 +4,7 @@ import {
   TouchableWithoutFeedback,
   View,
 } from 'react-native'
-import { t, color } from 'react-native-tailwindcss';
+import { t } from 'react-native-tailwindcss';
 
 export const Overlay = ({ children, onDismiss }) => (
   <Modal
@@ -13,17 +13,11 @@ export const Overlay = ({ children, onDismiss }) => (
     animationType='none'
     onRequestClose={onDismiss}
   >
-    <TouchableWithoutFeedback
-      onPress={onDismiss}
-      testID="RNE__Overlay__backdrop"
-    >
-      <View
-        testID="backdrop"
-        style={[t.absolute, t.inset0, t.bgTransparent]}
-      />
+    <TouchableWithoutFeedback onPress={onDismiss}>
+      <View style={[t.absolute, t.inset0, t.bgTransparent]} />
     </TouchableWithoutFeedback>
 
-    <View style={[t.bgRed500, t.flex1, t.m12]}>
+    <View style={[t.flex1, t.m12]}>
       {children}
     </View>
   </Modal>

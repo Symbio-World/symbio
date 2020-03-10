@@ -4,18 +4,14 @@ import {
   Text,
   View,
 } from 'react-native';
+import { t, color } from 'react-native-tailwindcss';
 
 export const ProductCard = ({
   image,
   name,
-  children,
 }) => (
-  <View>
-    <Image
-      style={{width: 50, height: 50}}
-      source={{ uri: image }}
-    />
-    <Text>{name}</Text>
-    <Text>{children}</Text>
+  <View style={[t.bgWhite, t.flex1, t.p4]}>
+    <Image style={[t.h40]} source={{ uri: image }} />
+    <Text style={[t.textLg, t.textCenter]}>{name}</Text>
   </View>
 )

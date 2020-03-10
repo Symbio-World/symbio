@@ -4,6 +4,11 @@ import renderer from 'react-test-renderer';
 
 import { ProductCard } from './product-card';
 
-it('renders correctly', () => {
-  renderer.create(<ProductCard name={'Margarin'} />);
-});
+describe('ProductCard', () => {
+  it('renders correctly', () => {
+    const tree = renderer
+      .create(<ProductCard name='Test'/>)
+      .toJSON();
+    expect(tree).toMatchSnapshot();
+  });  
+})

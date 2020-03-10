@@ -119,9 +119,7 @@ export class Scanner extends Component {
     return (
       <View style={[t.flex1]}>
         {this.state.barcode && (
-          <Overlay
-            onDismiss={() => this.onDismiss()}
-          >
+          <Overlay onDismiss={() => this.onDismiss()}>
             <ProductCardContainer barcode={this.state.barcode} />
           </Overlay>
         )}
