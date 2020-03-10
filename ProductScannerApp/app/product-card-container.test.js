@@ -1,13 +1,12 @@
 import 'react-native';
 import React from 'react';
 import renderer from 'react-test-renderer';
-import { ActivityIndicator } from 'react-native'
+import { ActivityIndicator, Text } from 'react-native'
 
 import { ProductCardContainer } from './product-card-container';
 import { fetchProduct } from './product-api'
 import { testProduct } from './product.fixture'
 import { ProductCard } from './product-card'
-import { ErrorCard } from './error-card'
 
 jest.mock('./product-api')
 
@@ -44,7 +43,7 @@ describe('ProductCardContainer', () => {
     const testInstance = testRenderer.root
     const activityIndicators = testInstance.findAllByType(ActivityIndicator)
     expect(activityIndicators.length).toBe(0)
-    const productCards = testInstance.findAllByType(ErrorCard)
+    const productCards = testInstance.findAllByType(Text)
     expect(productCards.length).toBe(1)
   })
 })

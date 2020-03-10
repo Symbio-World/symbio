@@ -1,9 +1,8 @@
 import React from 'react';
-import { ActivityIndicator } from 'react-native'
+import { ActivityIndicator, Text } from 'react-native'
 
 import { fetchProduct } from './product-api'
 import { ProductCard } from './product-card'
-import { ErrorCard } from './error-card'
 
 export class ProductCardContainer extends React.Component {
   state = {}
@@ -28,7 +27,7 @@ export class ProductCardContainer extends React.Component {
     }
 
     if (this.state.error) {
-      return <ErrorCard retryFunction={this.fetchProduct} />
+      return <Text>There was an error, please retry</Text>
     }
 
     return <ActivityIndicator size='large' color="#00ff00" />

@@ -20,17 +20,19 @@ const queryBarcode = async (barcode) => {
     }
   }).catch(throwApiError)
   const { image, name, description } = res.data.items[0].pagemap.product[0]
+  const links = res.data.items.map(i => i.link)
   return {
     image,
     name,
-    description
+    description,
+    links
   }
 }
 
 const translateProduct = async product => {
   const translatedJoined = await translator.translate(`${product.name};;${product.description}`).catch(throwApiError)
   const [name, description] = translatedJoined.split(";;")
-  return { image: product.image, name, description }
+  return { ...product, name, description }
 }
 
 const throwApiError = e => {
