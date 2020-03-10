@@ -5,25 +5,10 @@ const GOOGLE_CUSTOM_SEARCH_URL = 'https://www.googleapis.com/customsearch/v1'
 const GOOGLE_CUSTOM_SEARCH_KEY = 'AIzaSyDfMdqbe9YU_gkLi1sbFh6AGvC8zEbOqf8'
 const GOOGLE_CUSTOM_SEARCH_CX = '006501581230154090039:nqafvo0yauk'
 
-export class ApiError extends Error {
-  constructor(message) {
-    super(message)
-    this.name = 'ApiError'
-    this.message = message
-  }
-}
-
-const throwApiError = e => {
-  throw new ApiError(e)
-}
-
 export const fetchProduct = async (barcode) => {
-  const { name: rawName, image } = await queryBarcode(barcode)
-  const name = await translator.translate(rawName).catch(throwApiError);
-  return {
-    name,
-    image
-  }
+  const product = await queryBarcode(barcode)
+  const translated = await translateProduct(product)
+  return translated
 }
 
 const queryBarcode = async (barcode) => {
@@ -34,10 +19,28 @@ const queryBarcode = async (barcode) => {
       q: barcode
     }
   }).catch(throwApiError)
-  const { image, name } = res.data.items[0].pagemap.product[0]
+  const { image, name, description } = res.data.items[0].pagemap.product[0]
   return {
     image,
-    name
+    name,
+    description
   }
 }
 
+const translateProduct = async product => {
+  const translatedJoined = await translator.translate(`${product.name};;${product.description}`).catch(throwApiError)
+  const [name, description] = translatedJoined.split(";;")
+  return { image: product.image, name, description }
+}
+
+const throwApiError = e => {
+  throw new ApiError(e)
+}
+
+export class ApiError extends Error {
+  constructor(message) {
+    super(message)
+    this.name = 'ApiError'
+    this.message = message
+  }
+}

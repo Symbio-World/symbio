@@ -33,71 +33,10 @@ exports[`Overlay renders correctly 1`] = `
         },
       ]
     }
-    testID="RNE__Overlay__backdrop"
   />
   <View
     style={
       Array [
-        Object {
-          "backgroundColor": "#f56565",
-        },
-        Object {
-          "flex": 1,
-        },
-        Object {
-          "margin": 48,
-        },
-      ]
-    }
-  >
-    <Text>
-      test
-    </Text>
-  </View>
-</Modal>
-`;
-
-exports[`overlay renders correctly 1`] = `
-<Modal
-  animationType="none"
-  hardwareAccelerated={false}
-  transparent={true}
-  visible={true}
->
-  <View
-    accessible={true}
-    focusable={false}
-    onClick={[Function]}
-    onResponderGrant={[Function]}
-    onResponderMove={[Function]}
-    onResponderRelease={[Function]}
-    onResponderTerminate={[Function]}
-    onResponderTerminationRequest={[Function]}
-    onStartShouldSetResponder={[Function]}
-    style={
-      Array [
-        Object {
-          "position": "absolute",
-        },
-        Object {
-          "bottom": 0,
-          "left": 0,
-          "right": 0,
-          "top": 0,
-        },
-        Object {
-          "backgroundColor": "rgba(0,0,0,0)",
-        },
-      ]
-    }
-    testID="RNE__Overlay__backdrop"
-  />
-  <View
-    style={
-      Array [
-        Object {
-          "backgroundColor": "#f56565",
-        },
         Object {
           "flex": 1,
         },
