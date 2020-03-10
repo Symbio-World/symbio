@@ -1,25 +1,16 @@
 import React from 'react'
 import {
   View,
-} from 'react-native'
-import {
   Button,
-  Icon,
-} from 'react-native-elements'
+} from 'react-native'
+import { t, color } from 'react-native-tailwindcss';
 
-export const Overlay = ({ top, left, children, onClose }) => (
+export const Overlay = ({ children, onClose }) => (
   <View
-    style={{
-      position: 'absolute',
-      zIndex: 1,
-      top,
-      left,
-    }}
+    style={[t.absolute, t.inset0, t.z30, color.red100]}
   >
     <Button 
-      icon={<Icon name='close' size={30} color='red' />}
-      style={{ position: 'absolute', top: -10, left: -10 }}
-      type='clear'
+      title="Press me"
       onPress={onClose}
     />
     {children}

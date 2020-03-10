@@ -11,8 +11,9 @@ import {
   Barcode,
   ScanSettings
 } from 'scandit-react-native';
-import { Overlay } from 'react-native-elements';
+import { t } from 'react-native-tailwindcss';
 
+import { Overlay } from './overlay';
 import { ProductCardContainer } from './product-card-container'
 
 export class Scanner extends Component {
@@ -97,7 +98,7 @@ export class Scanner extends Component {
     AppState.removeEventListener('change', this._handleAppStateChange);
   }
 
-  _handleAppStateChange = async (nextAppState) => {
+  _handleAppStateChange = async nextAppState => {
     if (nextAppState.match(/inactive|background/)) {
       this.scanner.stopScanning();
     } else {
@@ -116,31 +117,25 @@ export class Scanner extends Component {
 
   render() {
     return (
-      <View 
-        style={{
-          flex: 1,
-          flexDirection: 'column'
-        }}
-      >
+      <View style={[t.flex1, t.z0]}>
         {this.state.barcode && (
-          <Overlay 
-            isVisible={true}
-            onBackdropPress={() => this.onOverlayDismiss()}
+          <Overlay
+            onDismiss={() => this.onDismiss()}
           >
             <ProductCardContainer barcode={this.state.barcode} />
           </Overlay>
         )}
         <BarcodePicker
-          onScan={(session) => { this.onScan(session) }}
+          onScan={session => { this.onScan(session) }}
           scanSettings= { this.settings }
-          ref={(scan) => { this.scanner = scan }}
+          ref={scan => { this.scanner = scan }}
           style={{ flex: 1 }}
         />
       </View>
     );
   }
 
-  onOverlayDismiss() {
+  onDismiss() {
     this.setState({ barcode: null })
     this.startScanning()
   }
