@@ -1,23 +1,27 @@
 import 'react-native';
 import React from 'react';
 import renderer from 'react-test-renderer';
-import { Overlay } from 'react-native-elements'
 
-import { testSession } from './scanner.fixture'
 import { Scanner } from './scanner'
+import { Overlay } from './overlay'
+import { testSession } from './scanner.fixture'
 
-it('renders correctly', () => {
-  renderer.create(<Scanner />);
-});
+describe('Scanner', () => {
+  it('renders correctly', () => {
+    const tree = renderer
+      .create(<Scanner />)
+      .toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+  
+  it('renders 0 overlays at the start', () => {
+    const testRenderer = renderer.create(<Scanner />)
+    const testInstance = testRenderer.root
+    const overlays = testInstance.findAllByType(Overlay)
+    expect(overlays.length).toBe(0)
+  });
 
-it('renders 0 overlays at the start', () => {
-  const testRenderer = renderer.create(<Scanner />)
-  const testInstance = testRenderer.root
-  const overlays = testInstance.findAllByType(Overlay)
-  expect(overlays.length).toBe(0)
-});
-
-// TODO
+  // TODO
 // it('renders overlay when scanned', () => {
 //   const testRenderer = renderer.create(<Scanner />, {
 //     createNodeMock: (element) => {
@@ -48,3 +52,7 @@ it('renders 0 overlays at the start', () => {
 //   const updatedOverlays = testInstance.findAllByType(Overlay)
 //   expect(updatedOverlays.length).toBe(testSession.allTrackedCodes.length - 1)
 // })
+})
+
+
+

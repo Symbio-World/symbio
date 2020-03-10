@@ -1,19 +1,23 @@
 import 'react-native';
 import React from 'react';
 import renderer from 'react-test-renderer';
-import { Button } from 'react-native-elements'
-
+import { Text, TouchableWithoutFeedback } from 'react-native';
 import { Overlay } from './overlay';
 
-it('renders correctly', () => {
-  renderer.create(<Overlay />);
-});
-
-it('on close icon click triggers onClose', () => {
-  const testOnClose = jest.fn()
-  testRenderer = renderer.create(<Overlay onClose={testOnClose} />);
-  const testInstance = testRenderer.root
-  const button = testInstance.findByType(Button)
-  button.props.onPress();
-  expect(testOnClose.mock.calls.length).toBe(1)
-});
+describe('Overlay', () => {
+  it('renders correctly', () => {
+    const tree = renderer
+      .create(<Overlay><Text>test</Text></Overlay>)
+      .toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+  
+  it('triggers onDismiss', () => {
+    const testOnDismiss = jest.fn()
+    testRenderer = renderer.create(<Overlay onDismiss={testOnDismiss} />);
+    const testInstance = testRenderer.root
+    const backdrop = testInstance.findByType(TouchableWithoutFeedback)
+    backdrop.props.onPress();
+    expect(testOnDismiss.mock.calls.length).toBe(1)
+  });
+})
