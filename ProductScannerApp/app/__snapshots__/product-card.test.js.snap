@@ -1,0 +1,51 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ProductCard renders correctly 1`] = `
+<RCTScrollView
+  style={
+    Array [
+      Object {
+        "backgroundColor": "#fff",
+      },
+      Object {
+        "flex": 1,
+      },
+      Object {
+        "padding": 16,
+      },
+    ]
+  }
+>
+  <View>
+    <Image
+      source={
+        Object {
+          "uri": undefined,
+        }
+      }
+      style={
+        Array [
+          Object {
+            "height": 160,
+          },
+        ]
+      }
+    />
+    <Text
+      style={
+        Array [
+          Object {
+            "fontSize": 18,
+          },
+          Object {
+            "textAlign": "center",
+          },
+        ]
+      }
+    >
+      Test
+    </Text>
+    <Text />
+  </View>
+</RCTScrollView>
+`;

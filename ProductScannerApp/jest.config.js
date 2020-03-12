@@ -8,6 +8,7 @@ module.exports = {
     + "|react-native-ratings"
     + "|react-native-power-translator"
     + "|react-native-tailwindcss"
+    + "|react-native-bootsplash"
     + ")/)",
   ],
 }

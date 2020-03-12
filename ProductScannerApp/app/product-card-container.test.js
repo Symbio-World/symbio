@@ -4,11 +4,11 @@ import renderer from 'react-test-renderer';
 import { ActivityIndicator, Text } from 'react-native'
 
 import { ProductCardContainer } from './product-card-container';
-import { fetchProduct } from './product-api'
+import { fetchProduct } from './fetch-product'
 import { testProduct } from './product.fixture'
 import { ProductCard } from './product-card'
 
-jest.mock('./product-api')
+jest.mock('./fetch-product')
 
 describe('ProductCardContainer', () => {
   it('renders correctly', () => {

@@ -11,7 +11,7 @@ export const ProductCard = ({
   image,
   name,
   description,
-  links
+  links = []
 }) => (
   <ScrollView style={[t.bgWhite, t.flex1, t.p4]}>
     <Image style={[t.h40]} source={{ uri: image }} />
@@ -19,6 +19,7 @@ export const ProductCard = ({
     <Text>{description}</Text>
     {links.map(link => (
       <Text
+        key={link}
         style={[t.textBlue600, t.m2]}
         onPress={() => Linking.openURL(`https://translate.google.com/translate?sl=auto&tl=en&u=${link}`)}
       >

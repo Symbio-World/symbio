@@ -1,7 +1,7 @@
 import React from 'react';
 import { ActivityIndicator, Text } from 'react-native'
 
-import { fetchProduct } from './product-api'
+import { fetchProduct } from './fetch-product'
 import { ProductCard } from './product-card'
 
 export class ProductCardContainer extends React.Component {
