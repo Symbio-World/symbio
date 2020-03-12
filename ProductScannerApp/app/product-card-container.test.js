@@ -4,11 +4,11 @@ import renderer from 'react-test-renderer';
 import { ActivityIndicator, Text } from 'react-native'
 
 import { ProductCardContainer } from './product-card-container';
-import { fetchProduct } from './fetch-product'
+import { getProductData } from './get-product-data'
 import { testProduct } from './product.fixture'
 import { ProductCard } from './product-card'
 
-jest.mock('./fetch-product')
+jest.mock('./get-product-data')
 
 describe('ProductCardContainer', () => {
   it('renders correctly', () => {
@@ -24,7 +24,7 @@ describe('ProductCardContainer', () => {
   
   it('renders product card if data fetch succeeded', async () => {
     const promise = Promise.resolve(testProduct)
-    fetchProduct.mockImplementationOnce(() => promise)
+    getProductData.mockImplementationOnce(() => promise)
     const testRenderer = renderer.create(<ProductCardContainer barcode={'6414893012318'} />);
     await promise
     await Promise.resolve()
@@ -37,7 +37,7 @@ describe('ProductCardContainer', () => {
   
   it('renders error card if error occurs', async () => {
     const promise = Promise.reject(new Error())
-    fetchProduct.mockImplementationOnce(() => promise)
+    getProductData.mockImplementationOnce(() => promise)
     const testRenderer = renderer.create(<ProductCardContainer barcode={'6414893012318'} />)
     await Promise.resolve()
     const testInstance = testRenderer.root

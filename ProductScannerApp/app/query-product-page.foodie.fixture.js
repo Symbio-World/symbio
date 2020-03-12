@@ -1,6 +1,8 @@
 export const testFoodieLink = 'https://www.foodie.fi/entry/rainbow-margariini-40--kevyt-400-g/6414893012318'
 export const testFoodieResult = {
-	ingridients: `Vesi, rypsiöljy, kasvirasvat (palmu, kookos), suola, emulgointiaineet (E 471 kasviperäinen, E 476), säilöntäaine (E 202), happamuudensäätöaine (E 330, E 500), aromit, väri (E 160a), A- ja D-vitamiini.`
+	ingredients: 'Vesi, rypsiöljy, kasvirasvat (palmu, kookos), suola, emulgointiaineet (E 471 kasviperäinen, E 476), säilöntäaine (E 202), happamuudensäätöaine (E 330, E 500), aromit, väri (E 160a), A- ja D-vitamiini.',
+	allergens: 'Maito ja maitotuotteet, myös laktoosi, Soijapavut ja soijapaputuotteet',
+	origin: 'Suomi'
 }
 export const testFoodieHttpResponse = `
 

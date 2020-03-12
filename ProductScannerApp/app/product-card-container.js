@@ -1,18 +1,18 @@
 import React from 'react';
 import { ActivityIndicator, Text } from 'react-native'
 
-import { fetchProduct } from './fetch-product'
+import { getProductData } from './get-product-data'
 import { ProductCard } from './product-card'
 
 export class ProductCardContainer extends React.Component {
   state = {}
 
   componentDidMount() {
-    this.fetchProduct()
+    this.getProduct()
   }
 
-  async fetchProduct() {
-    const product = await fetchProduct(this.props.barcode)
+  async getProduct() {
+    const product = await getProductData(this.props.barcode)
       .catch(error => {
         this.setState({
           error
@@ -22,6 +22,7 @@ export class ProductCardContainer extends React.Component {
   }
 
   render() {
+    console.log('state', JSON.stringify(this.state, null, 4))
     if (this.state.product) {
       return <ProductCard {...this.state.product} />
     }

@@ -5,8 +5,11 @@ import cheerio from 'cheerio'
 export const queryProductPage = async link => {
   const response = await axios.get(link).catch(throwQueryProductPageError)
   const $ = cheerio.load(response.data)
+
   return {
-    ingridients: $("[id$='ingredients']").text()
+    ingredients: $("[id$='ingredients']").text(),
+    allergens: $('#info').find('table').find('td').eq(1).text(),
+    origin: $('#origin').find('p').text(),
   }
 }
 
