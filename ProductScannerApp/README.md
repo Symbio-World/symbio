@@ -31,3 +31,10 @@ Run a specific test with
 ```
 npm test -- -t "fetches product successfully"
 ```
+
+* Android Release
+```
+keytool -genkeypair -v -keystore google-play-key.keystore -alias google-play-key-alias -keyalg RSA -keysize 2048 -validity 10000
+```
+
+password "symbio"
