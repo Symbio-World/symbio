@@ -1,30 +1,19 @@
-import { translator } from './translator'
-import { ApiError } from './api-error'
+import * as R from 'ramda'
 
-export const SEPARATOR = ';;;'
+import { translate } from './translate'
 
 const defaultOpts = { skip: [] }
 export const translateObject = async (obj, { skip } = defaultOpts) => {
-  const keys = Object.keys(obj)
-  const values = Object.values(obj)
-  const stringToTranslate = values.join(SEPARATOR)
-  const translatedString = await translator.translate(stringToTranslate).catch(throwTranslateObjectError)
-  const translatedValues = translatedString.split(SEPARATOR)
+  const skipped = R.omit(skip, obj)
+  const keys = Object.keys(skipped)
+  const values = Object.values(skipped)
+  const translatedValues = await translate(values)
   const translatedObject = keys.reduce((acc, key, index) => ({
     ...acc,
-    [key]: skip.includes(key) ? values[index] : translatedValues[index]
+    [key]: translatedValues[index]
   }), {})
-  return translatedObject
-}
-
-const throwTranslateObjectError = e => {
-  throw new TranslateObjectError(e)
-}
-
-export class TranslateObjectError extends ApiError {
-  constructor(message) {
-    super(message)
-    this.name = 'TranslateObjectError'
-    this.message = message
+  return {
+    ...obj,
+    ...translatedObject
   }
 }

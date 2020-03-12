@@ -22,7 +22,6 @@ export class ProductCardContainer extends React.Component {
   }
 
   render() {
-    console.log('state', JSON.stringify(this.state, null, 4))
     if (this.state.product) {
       return <ProductCard {...this.state.product} />
     }

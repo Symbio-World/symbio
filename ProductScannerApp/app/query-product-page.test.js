@@ -10,7 +10,7 @@ import {
 jest.mock('axios')
 
 describe('QueryProductPage', () => {
-  it('errors with api error when query barcode fails', async () => {
+  it('errors when query fails', async () => {
     axios.get.mockImplementationOnce(() => Promise.reject(new Error()))
     await expect(queryProductPage(testFoodieLink)).rejects.toThrow(QueryProductPageError)
   });  

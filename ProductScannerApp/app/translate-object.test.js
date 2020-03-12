@@ -1,16 +1,11 @@
-import { translator } from './translator'
+import { translate } from './translate'
+import { translateObject } from './translate-object'
 
-import {
-  SEPARATOR,
-  translateObject,
-  TranslateObjectError
-} from './translate-object'
-
-jest.mock('./translator')
+jest.mock('./translate')
 
 describe('TranslateObject', () => {
   it('returns translated object', async () => {
-    translator.translate.mockImplementationOnce(() => Promise.resolve(`Hello${SEPARATOR}Friend${SEPARATOR}World`))
+    translate.mockImplementationOnce(() => Promise.resolve(['Hello', 'Friend', 'World']))
     const translatedObj = await translateObject({
       name: 'Ola',
       description: 'Amigo',
@@ -24,7 +19,7 @@ describe('TranslateObject', () => {
   })
 
   it('respects skip option', async () => {
-    translator.translate.mockImplementationOnce(() => Promise.resolve(`Hello${SEPARATOR}Friend${SEPARATOR}World`))
+    translate.mockImplementationOnce(() => Promise.resolve(['Hello', 'Friend']))
     const translatedObj = await translateObject({
       name: 'Ola',
       description: 'Amigo',
@@ -35,10 +30,5 @@ describe('TranslateObject', () => {
       description: 'Friend',
       whatever: 'Mundo',
     })
-  })
-
-  it('errors with api error when translations fails', async () => {
-    translator.translate.mockImplementationOnce(() => Promise.reject(new Error()))
-    await expect(translateObject({})).rejects.toThrow(TranslateObjectError);
   })
 })

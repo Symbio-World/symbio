@@ -19,7 +19,7 @@ describe('QueryBarcode', () => {
     expect(product).toEqual(aggregate.testResult)
   })
 
-  it('errors with api error when query barcode fails', async () => {
+  it('errors when query fails', async () => {
     axios.get.mockImplementationOnce(() => Promise.reject(new Error()))
     await expect(queryBarcode(simple.testBarcode)).rejects.toThrow(QueryBarcodeError)
   });  
