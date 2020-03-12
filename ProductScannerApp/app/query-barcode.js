@@ -14,12 +14,10 @@ export const queryBarcode = async barcode => {
       q: barcode
     }
   }).catch(throwQueryBarcodeError)
-  const { image, name, description } = response.data.items[0].pagemap.product[0]
+  const product = response.data.items[0].pagemap.product[0]
   const links = response.data.items.map(i => i.link)
   return {
-    image,
-    name,
-    description,
+    ...product,
     links
   }
 }

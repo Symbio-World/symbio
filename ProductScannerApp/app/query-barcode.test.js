@@ -5,7 +5,7 @@ import {
   testBarcode,
   testHttpResponse,
   testResult,
-} from './query-barcode.fixture'
+} from './query-barcode.first-item-contains-all-keys.fixture'
 
 jest.mock('axios')
 
