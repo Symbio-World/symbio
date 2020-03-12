@@ -14,7 +14,16 @@ export const queryBarcode = async barcode => {
       q: barcode
     }
   }).catch(throwQueryBarcodeError)
-  const product = response.data.items[0].pagemap.product[0]
+  // const product = response.data.items[0].pagemap.product[0]
+  const product = response.data.items.reduce((acc, item) => {
+    if (!item.pagemap || !item.pagemap.product) {
+      return acc
+    }
+    return {
+      ...item.pagemap.product[0],
+      ...acc
+    }
+  }, {})
   const links = response.data.items.map(i => i.link)
   return {
     ...product,
