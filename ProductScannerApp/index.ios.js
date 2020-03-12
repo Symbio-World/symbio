@@ -2,7 +2,7 @@ import { AppRegistry } from 'react-native';
 import { Home } from './app/home';
 import { name as appName } from './app.json';
 import { ScanditModule } from 'scandit-react-native'
-import { SCANDIT_API_KEY } from 'react-native-dotenv'
+import { SCANDIT_IOS_API_KEY } from 'react-native-dotenv'
 
-ScanditModule.setAppKey(SCANDIT_API_KEY);
+ScanditModule.setAppKey(SCANDIT_IOS_API_KEY);
 AppRegistry.registerComponent(appName, () => Home);
