@@ -1,4 +1,17 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Scanner } from './scanner';
+import RNBootSplash from "react-native-bootsplash";
 
-export const Home = () => <Scanner />
+export const Home = () => {
+  let init = async () => {
+    // …do multiple async tasks
+  };
+
+  useEffect(() => {
+    init().finally(() => {
+      RNBootSplash.hide({ duration: 250 });
+    });
+  }, []);
+
+  return <Scanner />
+}

@@ -37,6 +37,7 @@
 		C63DF1822414334300FB7E74 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C63DF1812414334300FB7E74 /* MediaPlayer.framework */; };
 		C6458AF32414D04000416359 /* ScanditBarcodeScanner.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6458AF22414D04000416359 /* ScanditBarcodeScanner.framework */; };
 		C6458AF52414D04B00416359 /* ScanditBarcodeScanner.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C6458AF42414D04B00416359 /* ScanditBarcodeScanner.bundle */; };
+		C680F549241A66A4002B6F07 /* BootSplash.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C680F548241A66A4002B6F07 /* BootSplash.storyboard */; };
 		DF90851223AF070A396B9782 /* libPods-ProductScannerApp-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BC90F4B180B184E721C3B9C /* libPods-ProductScannerApp-tvOS.a */; };
 /* End PBXBuildFile section */
 
@@ -99,6 +100,7 @@
 		C63DF1812414334300FB7E74 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		C6458AF22414D04000416359 /* ScanditBarcodeScanner.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ScanditBarcodeScanner.framework; path = "../node_modules/scandit-react-native/ios/ScanditBarcodeScanner/Frameworks/ScanditBarcodeScanner.framework"; sourceTree = "<group>"; };
 		C6458AF42414D04B00416359 /* ScanditBarcodeScanner.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = ScanditBarcodeScanner.bundle; path = "../node_modules/scandit-react-native/ios/ScanditBarcodeScanner/Frameworks/ScanditBarcodeScanner.framework/Resources/ScanditBarcodeScanner.bundle"; sourceTree = "<group>"; };
+		C680F548241A66A4002B6F07 /* BootSplash.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = BootSplash.storyboard; path = ProductScannerApp/BootSplash.storyboard; sourceTree = "<group>"; };
 		E70A51873F50B36A4B4C0DD3 /* Pods-ProductScannerAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProductScannerAppTests.debug.xcconfig"; path = "Target Support Files/Pods-ProductScannerAppTests/Pods-ProductScannerAppTests.debug.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		ED2971642150620600B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
@@ -183,6 +185,7 @@
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
 				13B07FB61A68108700A75B9A /* Info.plist */,
+				C680F548241A66A4002B6F07 /* BootSplash.storyboard */,
 				13B07FB11A68108700A75B9A /* LaunchScreen.xib */,
 				13B07FB71A68108700A75B9A /* main.m */,
 			);
@@ -422,6 +425,7 @@
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
 				C6458AF52414D04B00416359 /* ScanditBarcodeScanner.bundle in Resources */,
+				C680F549241A66A4002B6F07 /* BootSplash.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
