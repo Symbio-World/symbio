@@ -1,20 +1,17 @@
 import axios from 'axios'
-import {
-  GOOGLE_CUSTOM_SEARCH_URL,
-  GOOGLE_CUSTOM_SEARCH_KEY,
-  GOOGLE_CUSTOM_SEARCH_CX,
-} from 'react-native-dotenv'
+import { googleSearch } from './config'
 import { ApiError } from './api-error'
 
+const GOOGLE_CUSTOM_SEARCH_URL = 'https://www.googleapis.com/customsearch/v1'
+
 export const queryBarcode = async barcode => {
-  const response = await axios.get(GOOGLE_CUSTOM_SEARCH_URL, {
+  const response = await axios.get(googleSearch.url, {
     params: {
-      key: GOOGLE_CUSTOM_SEARCH_KEY,
-      cx: GOOGLE_CUSTOM_SEARCH_CX,
+      key: googleSearch.key,
+      cx: googleSearch.cx,
       q: barcode
     }
   }).catch(throwQueryBarcodeError)
-  // const product = response.data.items[0].pagemap.product[0]
   const product = response.data.items.reduce((acc, item) => {
     if (!item.pagemap || !item.pagemap.product) {
       return acc
