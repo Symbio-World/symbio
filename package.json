@@ -1,0 +1,26 @@
+{
+  "name": "root",
+  "private": true,
+  "workspaces": {
+    "packages": ["*"],
+    "nohoist": ["ProductScannerApp/**"]
+  },
+  "scripts": {
+    "lint": "yarn workspaces run lint",
+    "watch": "yarn workspaces run watch",
+    "build": "yarn workspaces run build",
+    "test": "yarn workspaces run test",
+    "clean": "yarn workspaces run clean",
+    "clean:all": "yarn clean && yarn clean:node_modules && yarn clean:yarn-error && rm yarn.lock",
+    "clean:node_modules": "find . -name 'node_modules' -type d -prune -exec rm -rf '{}' +",
+    "clean:yarn-error": "find . -name 'yarn-error.log' -type f -delete"
+  },
+  "lint-staged": {
+    "*.js": [
+      "eslint --format=codeframe"
+    ]
+  },
+  "devDependencies": {
+    "wsrun": "^5.0.2"
+  }
+}

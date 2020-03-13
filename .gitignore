@@ -1,5 +1,3 @@
 .DS_Store
-*.certSigningRequest
-*.cer
-*.mobileprovision
-*.mobileprovision
+node_modules/
+*.log
