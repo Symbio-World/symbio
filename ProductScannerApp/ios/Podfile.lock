@@ -219,7 +219,7 @@ PODS:
     - ReactCommon/jscallinvoker (= 0.61.5)
   - RNBootSplash (2.0.5):
     - React
-  - scandit-react-native (5.14.0):
+  - scandit-react-native (5.14.2):
     - React
   - Yoga (1.14.0)
 
@@ -341,8 +341,8 @@ SPEC CHECKSUMS:
   React-RCTText: 9ccc88273e9a3aacff5094d2175a605efa854dbe
   React-RCTVibration: a49a1f42bf8f5acf1c3e297097517c6b3af377ad
   ReactCommon: 198c7c8d3591f975e5431bec1b0b3b581aa1c5dd
-  RNBootSplash: a80f184f2417a3aba8452ad52c82d4026f723574
-  scandit-react-native: fdef17d21d7515a8689f661501ef665e20ec49ae
+  RNBootSplash: e5e37b64a03a9655e2db8c2e12a7a30853cf3352
+  scandit-react-native: 7121abb4f7bff02074b67ba7a6a8b1a7147cbb25
   Yoga: f2a7cd4280bfe2cca5a7aed98ba0eb3d1310f18b
 
 PODFILE CHECKSUM: 7a208841c8bfb90f365e9da0a2236e91cdfee4d6

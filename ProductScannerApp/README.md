@@ -1,40 +1,57 @@
 * Installation
 
+Install yarn
 ```
-npm install
+brew install yarn
+```
+
+Install pod
+```
+brew install cocoapods
+```
+
+Download js dependencies
+```
+yarn
 ```
 
 unzip `scandit-barcodescanner-ios_5.14.1.zip`
 
 create a Frameworks folder inside the <directory_of_your_project>/node_modules/scandit-react-native/ios/ScanditBarcodeScanner and move the ScanditBarcodeScanner.framework from the Barcode Scanner for iOS package into the new folder.
 
-* Start
-
-Open 2 terminals
-
-In one run
-
+Install cocoapods dependencies
 ```
-npm start
+cd ios && pod install
 ```
 
-In the other run
+* Run
+
+Instructions are similar for android, just use `android` instead of `ios`
+
+Run on iOS emulator 
 
 ```
-npm run ios/android
+yarn ios
 ```
+Run on iOS device
 
+```
+yarn ios -- --device
+```
+Run on iOS device in release mode
+
+```
+yarn ios -- --device --configuration Release
+```
 
 * Test
 
 Run a specific test with
 ```
-npm test -- -t "fetches product successfully"
+yarn test -- -t "<test name>"
 ```
 
-* Android Release
+Run a specific auite with
 ```
-keytool -genkeypair -v -keystore google-play-key.keystore -alias google-play-key-alias -keyalg RSA -keysize 2048 -validity 10000
+yarn test -- -t "<suite name>"
 ```
-
-password "symbio"
