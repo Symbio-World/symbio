@@ -1,12 +1,18 @@
 import axios, { AxiosRequestConfig, AxiosResponse } from 'axios'
 
-export type Fetch<T> = (
-  config?: AxiosRequestConfig,
-) => Promise<AxiosResponse<T>>
+type RequestConfig = Pick<
+  AxiosRequestConfig,
+  'method' | 'url' | 'data' | 'params'
+>
 
-export const fetch = axios
+type Response<T> = AxiosResponse<T>
+
+export type Fetch = <T>(config: RequestConfig) => Promise<Response<T>>
+export const fetch: Fetch = <T>(config: RequestConfig) =>
+  axios.request<T>(config)
 
 export class HttpError extends Error {
+  // @ts-ignore
   constructor(message) {
     super(message)
     this.name = 'HttpError'

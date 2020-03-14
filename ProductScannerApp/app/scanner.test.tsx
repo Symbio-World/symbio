@@ -4,7 +4,7 @@ import renderer from 'react-test-renderer'
 
 import { Scanner } from './scanner'
 import { Overlay } from './overlay'
-import { testSession } from './scanner.fixture'
+// import { testSession } from './scanner.fixture'
 
 describe('Scanner', () => {
   it('renders correctly', () => {

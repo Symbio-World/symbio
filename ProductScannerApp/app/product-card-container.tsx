@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { ActivityIndicator, Text } from 'react-native'
+import { ActivityIndicator } from 'react-native'
 
 import {
   fetchProductData,
@@ -21,7 +21,7 @@ type CreateProductCardContainer = (deps: Deps) => React.FC<Props>
 export const createProductCardContainer: CreateProductCardContainer = ({
   fetchProductData,
 }) => props => {
-  const [product, setProduct] = useState<ProductData>(null)
+  const [product, setProduct] = useState<ProductData | null>(null)
   // const [error, setError] = useState<Error>(null)
 
   const fetchProduct = async () => {

@@ -12,8 +12,6 @@ import {
 } from './query-product-page'
 import { translateObject, TranslateObject } from './translate-object'
 
-const skipTranslation = ['image', 'links', 'brand']
-
 type CreateFetchProductData = (deps: Deps) => FetchProductData
 
 export type FetchProductData = (link: string) => Promise<ProductData>
@@ -34,7 +32,10 @@ export const createFetchProductData: CreateFetchProductData = ({
   const initialProductData = await searchBarcode(barcode)
   const productPageData = await queryProductPage(initialProductData.links[0])
   const productData = { ...initialProductData, ...productPageData }
-  const translated = await translateObject(R.omit(['links'], productData))
+  const translated = await translateObject(
+    // @ts-ignore
+    R.omit(['links', 'image', 'brand'], productData),
+  )
   return {
     ...productData,
     ...translated,

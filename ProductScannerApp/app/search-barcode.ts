@@ -67,11 +67,13 @@ export const searchBarcode = createSearchBarcode({
   ...googleSearch,
 })
 
+// @ts-ignore
 const throwSearchBarcodeError = e => {
   throw new SearchBarcodeError(e)
 }
 
 export class SearchBarcodeError extends HttpError {
+  // @ts-ignore
   constructor(message) {
     super(message)
     this.name = 'SearchBarcodeError'

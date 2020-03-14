@@ -6,7 +6,7 @@ type CreateTranslate = (deps: Deps) => Translate
 export type Translate = (strings: string[]) => Promise<string[]>
 
 type Deps = {
-  fetch: Fetch<TranslateResponse>
+  fetch: Fetch
 } & typeof googleTranslateApi
 
 type TranslateResponse = {
@@ -25,7 +25,7 @@ export const createTranslate: CreateTranslate = ({
   key,
   url,
 }) => async (strings: string[]) => {
-  const response = await fetch({
+  const response = await fetch<TranslateResponse>({
     method: 'POST',
     url,
     data: {
@@ -47,11 +47,13 @@ export const translate: Translate = createTranslate({
   ...googleTranslateApi,
 })
 
+// @ts-ignore
 const throwTranslateError = e => {
   throw new TranslateError(e)
 }
 
 export class TranslateError extends HttpError {
+  // @ts-ignore
   constructor(message) {
     super(message)
     this.name = 'TranslateError'

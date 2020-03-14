@@ -6,7 +6,7 @@ type CreateQueryProductPage = (deps: Deps) => QueryProductPage
 export type QueryProductPage = (link: string) => Promise<ProductPageData>
 
 type Deps = {
-  fetch: Fetch<string>
+  fetch: Fetch
 }
 
 export type ProductPageData = {
@@ -18,7 +18,7 @@ export type ProductPageData = {
 export const createQueryProductPage: CreateQueryProductPage = ({
   fetch,
 }) => async link => {
-  const response = await fetch({
+  const response = await fetch<string>({
     method: 'GET',
     url: link,
   }).catch(throwQueryProductPageError)
@@ -39,11 +39,13 @@ export const createQueryProductPage: CreateQueryProductPage = ({
 
 export const queryProductPage = createQueryProductPage({ fetch })
 
+// @ts-ignore
 const throwQueryProductPageError = e => {
   throw new QueryProductPageError(e)
 }
 
 export class QueryProductPageError extends HttpError {
+  // @ts-ignore
   constructor(message) {
     super(message)
     this.name = 'QueryProductPageError'

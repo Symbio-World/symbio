@@ -3,7 +3,7 @@ import { Scanner } from './scanner'
 import RNBootSplash from 'react-native-bootsplash'
 
 export const Home = () => {
-  let init = async () => {
+  const init = async () => {
     // …do multiple async tasks
   }
 

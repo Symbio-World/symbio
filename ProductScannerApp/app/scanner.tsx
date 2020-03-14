@@ -12,7 +12,7 @@ import { t } from 'react-native-tailwindcss'
 import { Overlay } from './overlay'
 import { ProductCardContainer } from './product-card-container'
 
-let settings = new ScanSettings()
+const settings = new ScanSettings()
 settings.setSymbologyEnabled(Barcode.Symbology.EAN13, true)
 settings.setSymbologyEnabled(Barcode.Symbology.EAN8, true)
 settings.setSymbologyEnabled(Barcode.Symbology.UPCA, true)
@@ -40,7 +40,7 @@ settings.getSymbologySettings(Barcode.Symbology.CODE39).activeSymbolCounts = [
 ]
 
 export const Scanner: React.FC = () => {
-  const [barcode, setBarcode] = useState<string>(null)
+  const [barcode, setBarcode] = useState<string | null>(null)
   const scanner = useRef(null)
 
   const isAndroidMarshmallowOrNewer = () => {
@@ -86,10 +86,12 @@ export const Scanner: React.FC = () => {
   }
 
   const startScanning = () => {
+    // @ts-ignore
     scanner.current.startScanning()
   }
 
   const stopScanning = () => {
+    // @ts-ignore
     scanner.current.stopScanning()
   }
 
@@ -102,6 +104,7 @@ export const Scanner: React.FC = () => {
     }
   }
 
+  // @ts-ignore
   const handleAppStateChange = async nextAppState => {
     if (nextAppState.match(/inactive|background/)) {
       stopScanning()
@@ -123,6 +126,7 @@ export const Scanner: React.FC = () => {
     startScanning()
   }
 
+  // @ts-ignore
   const onScan = session => {
     const barcode = session.newlyRecognizedCodes[0].data
     stopScanning()
