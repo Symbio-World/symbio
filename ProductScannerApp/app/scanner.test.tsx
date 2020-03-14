@@ -1,6 +1,6 @@
 import 'react-native'
 import React from 'react'
-import renderer from 'react-test-renderer'
+import { create } from 'react-test-renderer'
 
 import { Scanner } from './scanner'
 import { Overlay } from './overlay'
@@ -8,12 +8,12 @@ import { Overlay } from './overlay'
 
 describe('Scanner', () => {
   it('renders correctly', () => {
-    const tree = renderer.create(<Scanner />).toJSON()
+    const tree = create(<Scanner />).toJSON()
     expect(tree).toMatchSnapshot()
   })
 
   it('renders 0 overlays at the start', () => {
-    const testRenderer = renderer.create(<Scanner />)
+    const testRenderer = create(<Scanner />)
     const testInstance = testRenderer.root
     const overlays = testInstance.findAllByType(Overlay)
     expect(overlays.length).toBe(0)

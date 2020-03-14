@@ -22,17 +22,17 @@ describe('AuthContext', () => {
 
       return <Text>{user?.uid}</Text>
     }
-    let root: ReactTestRenderer
+    let testRenderer: ReactTestRenderer
     act(() => {
-      root = create(<AuthProvider><Child /></AuthProvider>)
+      testRenderer = create(<AuthProvider><Child /></AuthProvider>)
     })
 
-    expect(root!.toJSON()).toMatchSnapshot();
+    expect(testRenderer!.toJSON()).toMatchSnapshot();
 
     await act(async () => {
       await promise
     })
 
-    expect(root!.toJSON()).toMatchSnapshot();
+    expect(testRenderer!.toJSON()).toMatchSnapshot();
   })
 })
