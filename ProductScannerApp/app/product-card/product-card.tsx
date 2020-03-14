@@ -1,8 +1,7 @@
 import React from 'react'
 import { Image, Text, ScrollView } from 'react-native'
 import { t } from 'react-native-tailwindcss'
-
-import { ProductData } from './fetch-product-data'
+import { ProductData } from 'fetcher-core'
 
 type Props = Omit<ProductData, 'links'>
 

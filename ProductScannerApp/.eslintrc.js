@@ -1,4 +1,4 @@
-const config = require('ts-dev-common/.eslintrc')
+const config = require('ts-scripts/.eslintrc')
 
 module.exports = {
   ...config,

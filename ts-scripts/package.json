@@ -1,5 +1,5 @@
 {
-  "name": "ts-dev-common",
+  "name": "ts-scripts",
   "version": "1.0.0",
   "scripts": {
     "lint": "echo lint",

@@ -1,16 +1,16 @@
 import * as R from 'ramda'
 
 import {
-  searchBarcode,
   SearchBarcode,
   ProductSearchData,
 } from './search-barcode'
 import {
-  queryProductPage,
   QueryProductPage,
   ProductPageData,
 } from './query-product-page'
-import { translateObject, TranslateObject } from './translate-object'
+import {
+  TranslateObject
+} from './translate-object'
 
 type CreateFetchProductData = (deps: Deps) => FetchProductData
 
@@ -41,9 +41,3 @@ export const createFetchProductData: CreateFetchProductData = ({
     ...translated,
   }
 }
-
-export const fetchProductData = createFetchProductData({
-  searchBarcode,
-  queryProductPage,
-  translateObject,
-})

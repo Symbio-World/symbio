@@ -12,7 +12,7 @@ describe('ProductCardContainer', () => {
     const ProductCardContainer = createProductCardContainer({
       fetchProductData,
     })
-    renderer.create(<ProductCardContainer barcode="6414893012318" />)
+    create(<ProductCardContainer barcode="6414893012318" />)
   })
 
   it('renders loading screen at the start', () => {

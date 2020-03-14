@@ -1,12 +1,16 @@
-import cheerio from 'cheerio'
-import { fetch, Fetch, HttpError } from './fetch'
+// @ts-ignore
+import cheerio from 'cheerio-without-node-native'
+import { Fetch, HttpError } from './fetch'
 
 type CreateQueryProductPage = (deps: Deps) => QueryProductPage
 
 export type QueryProductPage = (link: string) => Promise<ProductPageData>
 
+export type Parse = (html: string) => ProductPageData
+
 type Deps = {
-  fetch: Fetch
+  fetch: Fetch,
+  parse: Parse,
 }
 
 export type ProductPageData = {
@@ -17,27 +21,14 @@ export type ProductPageData = {
 
 export const createQueryProductPage: CreateQueryProductPage = ({
   fetch,
+  parse,
 }) => async link => {
   const response = await fetch<string>({
     method: 'GET',
     url: link,
   }).catch(throwQueryProductPageError)
-  const $ = cheerio.load(response.data)
-
-  return {
-    ingredients: $("[id$='ingredients']").text(),
-    allergens: $('#info')
-      .find('table')
-      .find('td')
-      .eq(1)
-      .text(),
-    origin: $('#origin')
-      .find('p')
-      .text(),
-  }
+  return parse(response.data)
 }
-
-export const queryProductPage = createQueryProductPage({ fetch })
 
 // @ts-ignore
 const throwQueryProductPageError = e => {

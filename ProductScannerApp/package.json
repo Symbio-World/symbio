@@ -2,15 +2,16 @@
   "name": "ProductScannerApp",
   "version": "0.0.1",
   "scripts": {
+    "lint": "eslint .",
+    "watch": "react-native start --reset-cache",
+    "test": "tsc && jest",
+    "clean": "rm -rf node_modules/ && yarn clean-pods",
+    "start": "yarn ios && yarn android",
     "android": "react-native run-android",
     "ios": "react-native run-ios",
-    "start": "react-native start --reset-cache",
-    "test": "tsc && jest",
-    "lint": "eslint .",
-    "clean": "rm -rf node_modules/ && yarn clean-pods",
     "setup-scandit": "rm -rf scandit-barcodescanner-ios_5.14.2/ && unzip scandit-barcodescanner-ios_5.14.2.zip && mkdir node_modules/scandit-react-native/ios/ScanditBarcodeScanner/Frameworks && mv scandit-barcodescanner-ios_5.14.2/ScanditSDK/ScanditBarcodeScanner.framework node_modules/scandit-react-native/ios/ScanditBarcodeScanner/Frameworks/ScanditBarcodeScanner.framework && rm -rf scandit-barcodescanner-ios_5.14.2/",
     "install-pods": "cd ios && pod install",
-    "clean-pods": "rm -rf ios/Pods Podfile.lock"
+    "clean-pods": "rm -rf ios/Pods ios/Podfile.lock"
   },
   "dependencies": {
     "@react-native-firebase/app": "^6.3.4",
@@ -19,7 +20,6 @@
     "buffer": "5.5.0",
     "cheerio": "0.22.0",
     "events": "3.1.0",
-    "ramda": "0.27.0",
     "react": "16.13.0",
     "react-native": "0.61.5",
     "react-native-bootsplash": "2.0.5",
@@ -33,14 +33,12 @@
     "@babel/runtime": "7.8.7",
     "@react-native-community/eslint-config": "0.0.7",
     "@types/cheerio": "^0.22.16",
-    "@types/ramda": "^0.26.43",
     "@types/react": "^16.9.23",
     "@types/react-native": "0.61.21",
     "@types/react-test-renderer": "16.9.2",
     "babel-jest": "25.1.0",
-    "intermock": "^0.2.2",
     "metro-react-native-babel-preset": "0.58.0",
     "react-test-renderer": "16.13.0",
-    "ts-dev-common": "1.0.0"
+    "ts-scripts": "1.0.0"
   }
 }

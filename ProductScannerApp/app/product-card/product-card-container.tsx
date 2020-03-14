@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import { ActivityIndicator } from 'react-native'
-
 import {
-  fetchProductData,
   FetchProductData,
   ProductData,
-} from './fetch-product-data'
+} from 'fetcher-core'
 import { ProductCard } from './product-card'
 
 type Props = {
@@ -48,7 +46,3 @@ export const createProductCardContainer: CreateProductCardContainer = ({
 
   return <ActivityIndicator size="large" color="#00ff00" />
 }
-
-export const ProductCardContainer = createProductCardContainer({
-  fetchProductData,
-})

@@ -1,6 +1,5 @@
 scandit-barcodescanner-ios*
 *-service-account*
-.env
 *.certSigningRequest
 *.cer
 *.mobileprovision

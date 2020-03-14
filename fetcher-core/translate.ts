@@ -1,5 +1,5 @@
-import { fetch, Fetch, HttpError } from './fetch'
-import { googleTranslateApi } from './config'
+import { Fetch, HttpError } from './fetch'
+import { GoogleTranslateApiConfig } from './config'
 
 type CreateTranslate = (deps: Deps) => Translate
 
@@ -7,7 +7,7 @@ export type Translate = (strings: string[]) => Promise<string[]>
 
 type Deps = {
   fetch: Fetch
-} & typeof googleTranslateApi
+} & GoogleTranslateApiConfig
 
 type TranslateResponse = {
   data: {
@@ -41,11 +41,6 @@ export const createTranslate: CreateTranslate = ({
   )
   return translations
 }
-
-export const translate: Translate = createTranslate({
-  fetch,
-  ...googleTranslateApi,
-})
 
 // @ts-ignore
 const throwTranslateError = e => {

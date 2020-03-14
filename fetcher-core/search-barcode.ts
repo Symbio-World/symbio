@@ -1,5 +1,5 @@
-import { fetch, Fetch, HttpError } from './fetch'
-import { googleSearch } from './config'
+import { Fetch, HttpError } from './fetch'
+import { GoogleSearchConfig } from './config'
 
 type CreateSearchBarcode = (deps: Deps) => SearchBarcode
 
@@ -7,7 +7,7 @@ export type SearchBarcode = (barcode: string) => Promise<ProductSearchData>
 
 type Deps = {
   fetch: Fetch
-} & typeof googleSearch
+} & GoogleSearchConfig
 
 export type ProductSearchData = SearchResponseItemProduct & {
   links: string[]
@@ -61,11 +61,6 @@ export const createSearchBarcode: CreateSearchBarcode = ({
     links,
   }
 }
-
-export const searchBarcode = createSearchBarcode({
-  fetch,
-  ...googleSearch,
-})
 
 // @ts-ignore
 const throwSearchBarcodeError = e => {

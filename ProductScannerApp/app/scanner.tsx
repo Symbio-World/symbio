@@ -10,7 +10,7 @@ import { BarcodePicker, Barcode, ScanSettings } from 'scandit-react-native'
 import { t } from 'react-native-tailwindcss'
 
 import { Overlay } from './overlay'
-import { ProductCardContainer } from './product-card-container'
+import { ProductCardContainer } from './product-card'
 
 const settings = new ScanSettings()
 settings.setSymbologyEnabled(Barcode.Symbology.EAN13, true)

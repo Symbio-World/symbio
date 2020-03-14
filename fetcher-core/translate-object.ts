@@ -1,6 +1,6 @@
 import * as R from 'ramda'
 
-import { translate, Translate } from './translate'
+import { Translate } from './translate'
 
 type CreateTranslateObject = (deps: Deps) => TranslateObject
 
@@ -34,7 +34,3 @@ export const createTranslateObject: CreateTranslateObject = ({
     ...translatedObject,
   }
 }
-
-export const translateObject: TranslateObject = createTranslateObject({
-  translate,
-})

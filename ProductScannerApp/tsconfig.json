@@ -1,5 +1,5 @@
 {
-  "extends": "ts-dev-common/tsconfig.json",
+  "extends": "ts-scripts/tsconfig.json",
   "compilerOptions": {
     "jsx": "react",
     "typeRoots": ["./types", "./node_modules/@types"],

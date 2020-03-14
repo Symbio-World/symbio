@@ -1,4 +1,4 @@
-const config = require('ts-dev-common/jest.config')
+const config = require('ts-scripts/jest.config')
 
 module.exports = {
   ...config,

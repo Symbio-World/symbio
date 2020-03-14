@@ -13,14 +13,15 @@ describe('QueryProductPage', () => {
     const fetch = jest.fn<any, any>(() =>
       Promise.resolve({ data: testFoodieHttpResponse }),
     )
-    const productData = await createQueryProductPage({ fetch })(testFoodieLink)
+    const parse = jest.fn<any, any>(() => testFoodieResult)
+    const productData = await createQueryProductPage({ fetch, parse })(testFoodieLink)
     expect(productData).toEqual(testFoodieResult)
   })
 
   it('errors when query fails', async () => {
     const fetch = jest.fn(() => Promise.reject(new Error()))
     await expect(
-      createQueryProductPage({ fetch })(testFoodieLink),
+      createQueryProductPage({ fetch, parse: jest.fn() })(testFoodieLink),
     ).rejects.toThrow(QueryProductPageError)
   })
 })

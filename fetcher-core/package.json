@@ -1,0 +1,22 @@
+{
+  "name": "fetcher-core",
+  "version": "1.0.0",
+  "main": "build/index.js",
+  "scripts": {
+    "lint": "tsc --noEmit && eslint . --quiet --fix",
+    "build": "tsc",
+    "watch": "tsc --watch",
+    "test": "jest",
+    "clean": "rm -rf ./build"
+  },
+  "devDependencies": {
+    "@types/cheerio": "0.22.16",
+    "@types/ramda": "0.26.43",
+    "intermock": "0.2.2",
+    "ts-scripts": "1.0.0"
+  },
+  "dependencies": {
+    "buffer": "5.5.0",
+    "ramda": "^0.27.0"
+  }
+}
