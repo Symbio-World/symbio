@@ -1,32 +1,59 @@
-import axios from 'axios'
+import {
+  fetch,
+  Fetch,
+  HttpError,
+} from './fetch'
 import { googleTranslateApi } from './config'
-import { ApiError } from './api-error'
 
-export const translate = async strings => {
-  validate(strings)
-  const response = await axios.post(googleTranslateApi.url, {
-    q: strings,
-    target: googleTranslateApi.target,
-  }, {
+type CreateTranslate = (deps: Deps) => Translate
+
+export type Translate = (strings: string[]) => Promise<string[]>
+
+type Deps = {
+  fetch: Fetch<TranslateResponse>
+} & typeof googleTranslateApi
+
+type TranslateResponse = {
+  data: {
+    translations: Translation[]
+  }
+}
+
+type Translation = {
+  translatedText: string
+}
+
+export const createTranslate: CreateTranslate = ({
+  fetch,
+  target,
+  key,
+  url
+}) => async (strings: string[]) => {
+  const response = await fetch({
+    method: 'POST',
+    url,
+    data: {
+      q: strings,
+      target,
+    },
     params: {
-      key: googleTranslateApi.key
+      key
     }
   }).catch(throwTranslateError)
   const translations = response.data.data.translations.map(t => t.translatedText)
   return translations
 }
 
-const validate = objects => objects.forEach(o => {
-  if (typeof o !== 'string') {
-    throwTranslateError(`Expected an array of strings`)
-  }
+export const translate: Translate = createTranslate({
+  fetch,
+  ...googleTranslateApi,
 })
 
-const throwTranslateError = e => {
+const throwTranslateError = (e) => {
   throw new TranslateError(e)
 }
 
-export class TranslateError extends ApiError {
+export class TranslateError extends HttpError {
   constructor(message) {
     super(message)
     this.name = 'TranslateError'

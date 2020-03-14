@@ -1,12 +1,9 @@
-import { translate } from './translate'
-import { translateObject } from './translate-object'
-
-jest.mock('./translate')
+import { createTranslateObject } from './translate-object'
 
 describe('TranslateObject', () => {
   it('returns translated object', async () => {
-    translate.mockImplementationOnce(() => Promise.resolve(['Hello', 'Friend', 'World']))
-    const translatedObj = await translateObject({
+    const translate = jest.fn<any, any>(() => Promise.resolve(['Hello', 'Friend', 'World']))
+    const translatedObj = await createTranslateObject({ translate })({
       name: 'Ola',
       description: 'Amigo',
       whatever: 'Mundo',
@@ -15,20 +12,6 @@ describe('TranslateObject', () => {
       name: 'Hello',
       description: 'Friend',
       whatever: 'World',
-    })
-  })
-
-  it('respects skip option', async () => {
-    translate.mockImplementationOnce(() => Promise.resolve(['Hello', 'Friend']))
-    const translatedObj = await translateObject({
-      name: 'Ola',
-      description: 'Amigo',
-      whatever: 'Mundo',
-    }, { skip: ['whatever'] })
-    expect(translatedObj).toEqual({
-      name: 'Hello',
-      description: 'Friend',
-      whatever: 'Mundo',
     })
   })
 })

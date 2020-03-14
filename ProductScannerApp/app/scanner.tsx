@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import {
   AppState,
   View,
@@ -16,40 +16,29 @@ import { t } from 'react-native-tailwindcss';
 import { Overlay } from './overlay';
 import { ProductCardContainer } from './product-card-container'
 
-export class Scanner extends Component {
-  state = {
-    barcode: null
-  }
+let settings = new ScanSettings()
+settings.setSymbologyEnabled(Barcode.Symbology.EAN13, true)
+settings.setSymbologyEnabled(Barcode.Symbology.EAN8, true)
+settings.setSymbologyEnabled(Barcode.Symbology.UPCA, true)
+settings.setSymbologyEnabled(Barcode.Symbology.UPCE, true)
+settings.setSymbologyEnabled(Barcode.Symbology.CODE39, true)
+settings.setSymbologyEnabled(Barcode.Symbology.ITF, true)
+settings.setSymbologyEnabled(Barcode.Symbology.QR, true)
+settings.setSymbologyEnabled(Barcode.Symbology.DATA_MATRIX, true)
+settings.setSymbologyEnabled(Barcode.Symbology.CODE128, true)
+settings.getSymbologySettings(Barcode.Symbology.CODE39)
+  .activeSymbolCounts = [7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
 
-  componentWillMount() {
-    this.settings = new ScanSettings();
-    this.settings.setSymbologyEnabled(Barcode.Symbology.EAN13, true);
-    this.settings.setSymbologyEnabled(Barcode.Symbology.EAN8, true);
-    this.settings.setSymbologyEnabled(Barcode.Symbology.UPCA, true);
-    this.settings.setSymbologyEnabled(Barcode.Symbology.UPCE, true);
-    this.settings.setSymbologyEnabled(Barcode.Symbology.CODE39, true);
-    this.settings.setSymbologyEnabled(Barcode.Symbology.ITF, true);
-    this.settings.setSymbologyEnabled(Barcode.Symbology.QR, true);
-    this.settings.setSymbologyEnabled(Barcode.Symbology.DATA_MATRIX, true);
-    this.settings.setSymbologyEnabled(Barcode.Symbology.CODE128, true);
+export const Scanner: React.FC = () => {
+  const [barcode, setBarcode] = useState<string>(null)
+  const scanner = useRef(null);
 
-    /* Some 1d barcode symbologies allow you to encode variable-length data. By default, the
-       Scandit BarcodeScanner SDK only scans barcodes in a certain length range. If your
-       application requires scanning of one of these symbologies, and the length is falling
-       outside the default range, you may need to adjust the "active symbol counts" for this
-       symbology. This is shown in the following few lines of code. */
-    this.settings.getSymbologySettings(Barcode.Symbology.CODE39)
-      .activeSymbolCounts = [7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
-    /* For details on defaults and how to calculate the symbol counts for each symbology, take
-       a look at http://docs.scandit.com/stable/c_api/symbologies.html. */
-  }
-
-  isAndroidMarshmallowOrNewer() {
+  const isAndroidMarshmallowOrNewer = () => {
     return Platform.OS === 'android' && Platform.Version >= 23;
   }
 
-  async hasCameraPermission() {
-    if (this.isAndroidMarshmallowOrNewer()) {
+  const hasCameraPermission = async () => {
+    if (isAndroidMarshmallowOrNewer()) {
       const granted = await PermissionsAndroid.check(PermissionsAndroid.PERMISSIONS.CAMERA);
       return granted;
     } else {
@@ -57,91 +46,86 @@ export class Scanner extends Component {
     }
   }
 
-  async requestCameraPermission() {
-    if (this.isAndroidMarshmallowOrNewer()) {
+  const cameraPermissionDenied = () => {
+    BackHandler.exitApp();
+  }
+
+  const requestCameraPermission = async () => {
+    if (isAndroidMarshmallowOrNewer()) {
       try {
         const granted = await PermissionsAndroid.request(PermissionsAndroid.PERMISSIONS.CAMERA);
         if (granted === PermissionsAndroid.RESULTS.GRANTED) {
           console.log("Android Camera Permission has been granted.");
-          this.startScanning();
+          startScanning();
         } else {
           console.log("Android Camera Permission has been denied - the app will shut itself down.");
-          this.cameraPermissionDenied();
+          cameraPermissionDenied();
         }
       } catch (err) {
         console.warn(err);
       }
     } else {
-      this.startScanning();
+      startScanning();
     }
   }
 
-  // This method should only be called if the Platform.OS is android.
-  cameraPermissionDenied() {
-    BackHandler.exitApp();
+  const startScanning = () => {
+    scanner.current.startScanning();
   }
 
-  startScanning() {
-    this.scanner.startScanning();
+  const stopScanning = () => {
+    scanner.current.stopScanning();
   }
 
-  stopScanning() {
-    this.scanner.stopScanning();
-  }
-
-  async componentDidMount() {
-    AppState.addEventListener('change', this._handleAppStateChange);
-    this.checkForCameraPermission();
-  }
-
-  componentWillUnmount() {
-    AppState.removeEventListener('change', this._handleAppStateChange);
-  }
-
-  _handleAppStateChange = async nextAppState => {
-    if (nextAppState.match(/inactive|background/)) {
-      this.scanner.stopScanning();
-    } else {
-      this.checkForCameraPermission();
-    }
-  }
-
-  async checkForCameraPermission() {
-    const hasPermission = await this.hasCameraPermission();
+  const checkForCameraPermission = async () => {
+    const hasPermission = await hasCameraPermission();
     if (hasPermission) {
-      this.startScanning();
+      startScanning();
     } else {
-      await this.requestCameraPermission();
+      await requestCameraPermission();
     }
   }
 
-  render() {
-    return (
-      <View style={[t.flex1]}>
-        {this.state.barcode && (
-          <Overlay onDismiss={() => this.onDismiss()}>
-            <ProductCardContainer barcode={this.state.barcode} />
-          </Overlay>
-        )}
-        <BarcodePicker
-          onScan={session => { this.onScan(session) }}
-          scanSettings= { this.settings }
-          ref={scan => { this.scanner = scan }}
-          style={{ flex: 1 }}
-        />
-      </View>
-    );
+  const handleAppStateChange = async nextAppState => {
+    if (nextAppState.match(/inactive|background/)) {
+      stopScanning();
+    } else {
+      checkForCameraPermission();
+    }
   }
 
-  onDismiss() {
-    this.setState({ barcode: null })
-    this.startScanning()
+  useEffect(() => {
+    AppState.addEventListener('change', handleAppStateChange);
+    checkForCameraPermission();
+    return () => {
+      AppState.removeEventListener('change', handleAppStateChange);
+    }
+  }, [])
+
+  const onDismiss = () => {
+    setBarcode(null)
+    startScanning()
   }
 
-  onScan(session) {
+  const onScan = (session) => {
     const barcode = session.newlyRecognizedCodes[0].data
-    this.setState({ barcode }, () => {
-      this.stopScanning()
-    })
+    stopScanning()
+    setBarcode(barcode)
   }
+
+  return (
+    <View style={[t.flex1]}>
+      {barcode && (
+        <Overlay onDismiss={onDismiss}>
+          <ProductCardContainer barcode={barcode} />
+        </Overlay>
+      )}
+      <BarcodePicker
+        onScan={onScan}
+        scanSettings= {settings}
+        ref={scanner}
+        style={{ flex: 1 }}
+      />
+    </View>
+  );
 }

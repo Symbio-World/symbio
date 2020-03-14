@@ -1,35 +1,52 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { ActivityIndicator, Text } from 'react-native'
 
-import { getProductData } from './get-product-data'
+import {
+  fetchProductData,
+  FetchProductData,
+  ProductData
+} from './fetch-product-data'
 import { ProductCard } from './product-card'
 
-export class ProductCardContainer extends React.Component {
-  state = {}
-
-  componentDidMount() {
-    this.getProduct()
-  }
-
-  async getProduct() {
-    const product = await getProductData(this.props.barcode)
-      .catch(error => {
-        this.setState({
-          error
-        })
-      })
-    this.setState({ product })
-  }
-
-  render() {
-    if (this.state.product) {
-      return <ProductCard {...this.state.product} />
-    }
-
-    if (this.state.error) {
-      return <Text>There was an error, please retry</Text>
-    }
-
-    return <ActivityIndicator size='large' color="#00ff00" />
-  }
+type Props = {
+  barcode: string,
 }
+
+type Deps = {
+  fetchProductData: FetchProductData
+}
+
+type CreateProductCardContainer = (deps: Deps) => React.FC<Props>
+
+export const createProductCardContainer: CreateProductCardContainer = ({
+  fetchProductData
+}) => props => {
+  const [product, setProduct] = useState<ProductData>(null)
+  // const [error, setError] = useState<Error>(null)
+
+  const fetchProduct = async () => {
+    const product = await fetchProductData(props.barcode)
+      // .catch(error => {
+      //   this.setState({
+      //     error
+      //   })
+      // })
+    setProduct(product)
+  }
+
+  useEffect(() => {
+    fetchProduct()
+  }, [])
+
+  if (product) {
+    return <ProductCard {...product} />
+  }
+
+  // if (error) {
+  //   return <Text>There was an error, please retry</Text>
+  // }
+
+  return <ActivityIndicator size='large' color="#00ff00" />
+}
+
+export const ProductCardContainer = createProductCardContainer({ fetchProductData })

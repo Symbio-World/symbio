@@ -7,8 +7,8 @@ import { ProductCard } from './product-card';
 describe('ProductCard', () => {
   it('renders correctly', () => {
     const tree = renderer
-      .create(<ProductCard name='Test'/>)
+      .create(<ProductCard />)
       .toJSON();
     expect(tree).toMatchSnapshot();
-  });  
+  });
 })

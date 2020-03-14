@@ -46,6 +46,16 @@ Run a specific auite with
 yarn test -- -t "<suite name>"
 ```
 
+Update snapshot tests
+```
+yarn test -- -u
+```
+
+To create a mock data from a typescript type use the following command
+```
+node ./node_modules/intermock/build/src/cli/index.js --files ./app/product.type.ts --interfaces "Product"
+```
+
 # Worflow
 
 ## Firebase

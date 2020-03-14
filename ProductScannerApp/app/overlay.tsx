@@ -6,7 +6,12 @@ import {
 } from 'react-native'
 import { t } from 'react-native-tailwindcss';
 
-export const Overlay = ({ children, onDismiss }) => (
+type Props = {
+  children?: React.ReactNode,
+  onDismiss?: () => void
+}
+
+export const Overlay: React.FC<Props> = ({ children, onDismiss }) => (
   <Modal
     transparent={true}
     visible={true}

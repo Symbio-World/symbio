@@ -1,9 +1,31 @@
-import axios from 'axios'
-import { ApiError } from './api-error'
 import cheerio from 'cheerio'
+import {
+  fetch,
+  Fetch,
+  HttpError,
+} from './fetch'
 
-export const queryProductPage = async link => {
-  const response = await axios.get(link).catch(throwQueryProductPageError)
+type CreateQueryProductPage = (deps: Deps) => QueryProductPage
+
+export type QueryProductPage = (link: string) => Promise<ProductPageData>
+
+type Deps = {
+  fetch: Fetch<{ data: string }>
+}
+
+export type ProductPageData = {
+  ingredients?: string,
+  allergens?: string,
+  origin?: string,
+}
+
+export const createQueryProductPage: CreateQueryProductPage = ({
+  fetch
+}) => async link => {
+  const response = await fetch({
+    method: 'GET',
+    url: link
+  }).catch(throwQueryProductPageError)
   const $ = cheerio.load(response.data)
 
   return {
@@ -13,11 +35,13 @@ export const queryProductPage = async link => {
   }
 }
 
+export const queryProductPage = createQueryProductPage({ fetch })
+
 const throwQueryProductPageError = e => {
   throw new QueryProductPageError(e)
 }
 
-export class QueryProductPageError extends ApiError {
+export class QueryProductPageError extends HttpError {
   constructor(message) {
     super(message)
     this.name = 'QueryProductPageError'

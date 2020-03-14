@@ -42,9 +42,7 @@ exports[`ProductCard renders correctly 1`] = `
           },
         ]
       }
-    >
-      Test
-    </Text>
+    />
     <Text />
     <Text />
     <Text />

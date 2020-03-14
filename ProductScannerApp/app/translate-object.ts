@@ -1,12 +1,22 @@
 import * as R from 'ramda'
 
-import { translate } from './translate'
+import { translate, Translate } from './translate'
 
-const defaultOpts = { skip: [] }
-export const translateObject = async (obj, { skip } = defaultOpts) => {
-  const skipped = R.omit(skip, obj)
-  const keys = Object.keys(skipped)
-  const values = Object.values(skipped)
+type CreateTranslateObject = (deps: Deps) => TranslateObject
+
+export type TranslateObject = (obj: StringValueObject) => Promise<StringValueObject>
+
+type Deps = {
+  translate: Translate
+}
+
+type StringValueObject = {
+  [key: string]: string
+}
+
+export const createTranslateObject: CreateTranslateObject = ({ translate }) => async obj => {
+  const keys = R.keys(obj)
+  const values = R.values(obj)
   const translatedValues = await translate(values)
   const translatedObject = keys.reduce((acc, key, index) => ({
     ...acc,
@@ -17,3 +27,7 @@ export const translateObject = async (obj, { skip } = defaultOpts) => {
     ...translatedObject
   }
 }
+
+export const translateObject: TranslateObject = createTranslateObject({
+  translate
+})

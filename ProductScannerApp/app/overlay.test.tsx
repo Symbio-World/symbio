@@ -11,10 +11,10 @@ describe('Overlay', () => {
       .toJSON();
     expect(tree).toMatchSnapshot();
   });
-  
+
   it('triggers onDismiss', () => {
     const testOnDismiss = jest.fn()
-    testRenderer = renderer.create(<Overlay onDismiss={testOnDismiss} />);
+    const testRenderer = renderer.create(<Overlay onDismiss={testOnDismiss} />);
     const testInstance = testRenderer.root
     const backdrop = testInstance.findByType(TouchableWithoutFeedback)
     backdrop.props.onPress();

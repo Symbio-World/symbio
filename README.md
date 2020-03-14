@@ -97,3 +97,7 @@ yarn workspaces info
 More info on (yarn workspace)[https://yarnpkg.com/lang/en/docs/cli/workspace/]
 More info on (yarn workspaces)[https://yarnpkg.com/en/docs/cli/workspaces]
 More info on (wsrun)[https://github.com/hfour/wsrun]
+
+# Inspiration
+
+https://www.infoq.com/presentations/mock-fsharp-tdd/

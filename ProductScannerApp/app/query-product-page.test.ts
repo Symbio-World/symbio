@@ -1,23 +1,19 @@
-import axios from 'axios'
-
-import { queryProductPage, QueryProductPageError } from './query-product-page'
+import { createQueryProductPage, QueryProductPageError } from './query-product-page'
 import {
   testFoodieLink,
   testFoodieHttpResponse,
   testFoodieResult,
 } from './query-product-page.foodie.fixture'
 
-jest.mock('axios')
-
 describe('QueryProductPage', () => {
-  it('errors when query fails', async () => {
-    axios.get.mockImplementationOnce(() => Promise.reject(new Error()))
-    await expect(queryProductPage(testFoodieLink)).rejects.toThrow(QueryProductPageError)
-  });  
-
   it('returns product page data for foodie.fi', async () => {
-    axios.get.mockImplementationOnce(() => Promise.resolve({ data: testFoodieHttpResponse }))
-    const productData = await queryProductPage(testFoodieLink)
+    const fetch = jest.fn<any, any>(() => Promise.resolve({ data: testFoodieHttpResponse }))
+    const productData = await createQueryProductPage({ fetch })(testFoodieLink)
     expect(productData).toEqual(testFoodieResult)
   })
+
+  it('errors when query fails', async () => {
+    const fetch = jest.fn<any, any>(() => Promise.reject(new Error()))
+    await expect(createQueryProductPage({ fetch })(testFoodieLink)).rejects.toThrow(QueryProductPageError)
+  });
 })

@@ -8,7 +8,7 @@ export const Home = () => {
   };
 
   useEffect(() => {
-    init().finally(() => {
+    init().then(() => {
       RNBootSplash.hide({ duration: 250 });
     });
   }, []);
