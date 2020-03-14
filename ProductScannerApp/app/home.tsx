@@ -1,14 +1,15 @@
 import React, { useEffect } from 'react'
-import { Scanner } from './scanner'
+import auth from '@react-native-firebase/auth'
 import RNBootSplash from 'react-native-bootsplash'
+import { Scanner } from './scanner'
 
 export const Home = () => {
-  const init = async () => {
-    // …do multiple async tasks
+  const authenticate = async () => {
+    await auth().signInAnonymously()
   }
 
   useEffect(() => {
-    init().then(() => {
+    authenticate().then(() => {
       RNBootSplash.hide({ duration: 250 })
     })
   }, [])

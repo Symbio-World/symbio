@@ -5,9 +5,19 @@
 brew install cocoapods
 ```
 
+## Install packages if you have not yet run yarn in workspace root
+```
+yarn
+```
+
+## Setup scandit
+```
+yarn setup-scandit
+```
+
 ## Install cocoapods dependencies
 ```
-cd ios && pod install
+yarn install-pods
 ```
 
 # Run

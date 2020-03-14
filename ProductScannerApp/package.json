@@ -7,13 +7,14 @@
     "start": "react-native start --reset-cache",
     "test": "tsc && jest",
     "lint": "eslint .",
-    "clean": "rm -rf node_modules/ ios/Pods Podfile.lock",
-    "postinstall": "yarn setup-scandit && yarn install-pods",
+    "clean": "rm -rf node_modules/ && yarn clean-pods",
     "setup-scandit": "rm -rf scandit-barcodescanner-ios_5.14.2/ && unzip scandit-barcodescanner-ios_5.14.2.zip && mkdir node_modules/scandit-react-native/ios/ScanditBarcodeScanner/Frameworks && mv scandit-barcodescanner-ios_5.14.2/ScanditSDK/ScanditBarcodeScanner.framework node_modules/scandit-react-native/ios/ScanditBarcodeScanner/Frameworks/ScanditBarcodeScanner.framework && rm -rf scandit-barcodescanner-ios_5.14.2/",
-    "install-pods": "cd ios && pod install"
+    "install-pods": "cd ios && pod install",
+    "clean-pods": "rm -rf ios/Pods Podfile.lock"
   },
   "dependencies": {
-    "@types/react": "^16.9.23",
+    "@react-native-firebase/app": "^6.3.4",
+    "@react-native-firebase/auth": "^6.3.4",
     "axios": "0.19.2",
     "buffer": "5.5.0",
     "cheerio": "0.22.0",
@@ -33,7 +34,7 @@
     "@react-native-community/eslint-config": "0.0.7",
     "@types/cheerio": "^0.22.16",
     "@types/ramda": "^0.26.43",
-    "@types/react": "16.9.23",
+    "@types/react": "^16.9.23",
     "@types/react-native": "0.61.21",
     "@types/react-test-renderer": "16.9.2",
     "babel-jest": "25.1.0",
