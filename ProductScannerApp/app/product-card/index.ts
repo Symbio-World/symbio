@@ -1,5 +1,4 @@
 import axios from 'axios'
-import cheerio from 'cheerio'
 import {
   GOOGLE_CUSTOM_SEARCH_ENGINE_KEY,
   GOOGLE_CUSTOM_SEARCH_ENGINE_CX,
@@ -10,25 +9,12 @@ import {
 } from 'fetcher-core'
 
 import { createProductCardContainer } from './product-card-container'
+import { parse } from './parse'
 
 export const ProductCardContainer = createProductCardContainer({
   fetchProductData: createFetchProduct({
     fetch: axios.request,
-    parse: (html) => {
-      const $ = cheerio.load(html)
-
-      return {
-        ingredients: $("[id$='ingredients']").text(),
-        allergens: $('#info')
-          .find('table')
-          .find('td')
-          .eq(1)
-          .text(),
-        origin: $('#origin')
-          .find('p')
-          .text(),
-      }
-    },
+    parse,
     googleSeachConfig: {
       key: GOOGLE_CUSTOM_SEARCH_ENGINE_KEY,
       cx: GOOGLE_CUSTOM_SEARCH_ENGINE_CX,

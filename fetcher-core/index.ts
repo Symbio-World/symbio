@@ -13,7 +13,7 @@ type Deps = {
   googleTranslateApiConfig: GoogleTranslateApiConfig,
 }
 
-export { FetchProductData, ProductData }
+export { FetchProductData, ProductData, Parse }
 export type CreateFetchProduct = (deps: Deps) => FetchProductData
 
 export const createFetchProduct: CreateFetchProduct = ({

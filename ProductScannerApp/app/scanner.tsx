@@ -9,7 +9,7 @@ import {
 import { BarcodePicker, Barcode, ScanSettings } from 'scandit-react-native'
 import { t } from 'react-native-tailwindcss'
 
-import { Overlay } from './overlay'
+import { Overlay } from './ui-kit/overlay'
 import { ProductCardContainer } from './product-card'
 
 const settings = new ScanSettings()

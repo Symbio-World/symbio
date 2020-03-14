@@ -26,7 +26,9 @@ export const createAuthProvider: CreateAuthProvider = ({
   const [user, setUser] = useState<User>()
 
   const authenticate = async () => {
+    console.log('signInAnonymously', signInAnonymously)
     const { user } = await signInAnonymously()
+    console.log('user', user)
     setUser(user)
   }
 
@@ -34,6 +36,7 @@ export const createAuthProvider: CreateAuthProvider = ({
     authenticate()
   }, [])
 
+  console.log('user', user)
   return (
     <authContext.Provider value={{ user }}>{children}</authContext.Provider>
   )

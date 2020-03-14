@@ -9,7 +9,7 @@
   },
   "scripts": {
     "lint": "yarn workspaces run lint",
-    "watch": "yarn workspaces run watch",
+    "watch": "yarn wsrun watch",
     "build": "yarn workspaces run build",
     "test": "yarn workspaces run test",
     "clean": "yarn workspaces run clean",

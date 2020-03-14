@@ -3,7 +3,7 @@ import React from 'react'
 import { create } from 'react-test-renderer'
 
 import { Scanner } from './scanner'
-import { Overlay } from './overlay'
+import { Overlay } from './ui-kit/overlay'
 // import { testSession } from './scanner.fixture'
 
 describe('Scanner', () => {
@@ -25,7 +25,6 @@ describe('Scanner', () => {
   //     createNodeMock: (element) => {
   //       console.log('entered')
   //       if (element.type === 'BarcodePicker') {
-  //         console.log('here')
   //         return {
   //           stopScanning: () => {}
   //         };
