@@ -35,7 +35,6 @@
     "@types/ramda": "^0.26.43",
     "@types/react": "16.9.23",
     "@types/react-native": "0.61.21",
-    "@types/react-native-dotenv": "^0.2.0",
     "@types/react-test-renderer": "16.9.2",
     "babel-jest": "25.1.0",
     "intermock": "^0.2.2",
