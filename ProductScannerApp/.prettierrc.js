@@ -1,6 +1,1 @@
-module.exports = {
-  bracketSpacing: false,
-  jsxBracketSameLine: true,
-  singleQuote: true,
-  trailingComma: 'all',
-};
+module.exports = require('ts-dev-common/.prettierrc.js')

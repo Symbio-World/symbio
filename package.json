@@ -3,7 +3,9 @@
   "private": true,
   "workspaces": {
     "packages": ["*"],
-    "nohoist": ["ProductScannerApp/**"]
+    "nohoist": [
+      "ProductScannerApp/**"
+    ]
   },
   "scripts": {
     "lint": "yarn workspaces run lint",

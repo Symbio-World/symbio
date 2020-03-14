@@ -1,23 +1,8 @@
 {
+  "extends": "ts-dev-common/tsconfig.json",
   "compilerOptions": {
-    "allowJs": true,
-    "allowSyntheticDefaultImports": true,
-    "esModuleInterop": true,
-    "isolatedModules": true,
     "jsx": "react",
-    "lib": ["es6"],
-    "moduleResolution": "node",
-    "noEmit": true,
-    "target": "ESNext",
-    "noImplicitAny": true,
-    "typeRoots": [ "./types", "./node_modules/@types"],
-    "resolveJsonModule": true
+    "typeRoots": ["./types", "./node_modules/@types"]
   },
-  "exclude": [
-    "node_modules",
-    "typings",
-    "babel.config.js",
-    "metro.config.js",
-    "jest.config.js"
-  ]
+  "exclude": ["babel.config.js", "metro.config.js"]
 }

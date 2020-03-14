@@ -1,10 +1,6 @@
-import React from 'react';
-import {
-  Image,
-  Text,
-  ScrollView,
-} from 'react-native';
-import { t } from 'react-native-tailwindcss';
+import React from 'react'
+import { Image, Text, ScrollView } from 'react-native'
+import { t } from 'react-native-tailwindcss'
 
 import { ProductData } from './fetch-product-data'
 

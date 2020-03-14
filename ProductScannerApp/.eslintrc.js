@@ -1,4 +1,6 @@
+const config = require('ts-lib-common/.eslintrc')
+
 module.exports = {
-  root: true,
-  extends: '@react-native-community',
-};
+  ...config,
+  extends: [...config.extends, '@react-native-community'],
+}

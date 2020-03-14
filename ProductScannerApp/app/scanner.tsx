@@ -1,19 +1,15 @@
-import React, { useRef, useState, useEffect } from 'react';
+import React, { useRef, useState, useEffect } from 'react'
 import {
   AppState,
   View,
   Platform,
   PermissionsAndroid,
-  BackHandler
-} from 'react-native';
-import {
-  BarcodePicker,
-  Barcode,
-  ScanSettings
-} from 'scandit-react-native';
-import { t } from 'react-native-tailwindcss';
+  BackHandler,
+} from 'react-native'
+import { BarcodePicker, Barcode, ScanSettings } from 'scandit-react-native'
+import { t } from 'react-native-tailwindcss'
 
-import { Overlay } from './overlay';
+import { Overlay } from './overlay'
 import { ProductCardContainer } from './product-card-container'
 
 let settings = new ScanSettings()
@@ -26,79 +22,99 @@ settings.setSymbologyEnabled(Barcode.Symbology.ITF, true)
 settings.setSymbologyEnabled(Barcode.Symbology.QR, true)
 settings.setSymbologyEnabled(Barcode.Symbology.DATA_MATRIX, true)
 settings.setSymbologyEnabled(Barcode.Symbology.CODE128, true)
-settings.getSymbologySettings(Barcode.Symbology.CODE39)
-  .activeSymbolCounts = [7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
+settings.getSymbologySettings(Barcode.Symbology.CODE39).activeSymbolCounts = [
+  7,
+  8,
+  9,
+  10,
+  11,
+  12,
+  13,
+  14,
+  15,
+  16,
+  17,
+  18,
+  19,
+  20,
+]
 
 export const Scanner: React.FC = () => {
   const [barcode, setBarcode] = useState<string>(null)
-  const scanner = useRef(null);
+  const scanner = useRef(null)
 
   const isAndroidMarshmallowOrNewer = () => {
-    return Platform.OS === 'android' && Platform.Version >= 23;
+    return Platform.OS === 'android' && Platform.Version >= 23
   }
 
   const hasCameraPermission = async () => {
     if (isAndroidMarshmallowOrNewer()) {
-      const granted = await PermissionsAndroid.check(PermissionsAndroid.PERMISSIONS.CAMERA);
-      return granted;
+      const granted = await PermissionsAndroid.check(
+        PermissionsAndroid.PERMISSIONS.CAMERA,
+      )
+      return granted
     } else {
-      return true;
+      return true
     }
   }
 
   const cameraPermissionDenied = () => {
-    BackHandler.exitApp();
+    BackHandler.exitApp()
   }
 
   const requestCameraPermission = async () => {
     if (isAndroidMarshmallowOrNewer()) {
       try {
-        const granted = await PermissionsAndroid.request(PermissionsAndroid.PERMISSIONS.CAMERA);
+        const granted = await PermissionsAndroid.request(
+          PermissionsAndroid.PERMISSIONS.CAMERA,
+        )
         if (granted === PermissionsAndroid.RESULTS.GRANTED) {
-          console.log("Android Camera Permission has been granted.");
-          startScanning();
+          console.log('Android Camera Permission has been granted.')
+          startScanning()
         } else {
-          console.log("Android Camera Permission has been denied - the app will shut itself down.");
-          cameraPermissionDenied();
+          console.log(
+            'Android Camera Permission has been denied - the app will shut itself down.',
+          )
+          cameraPermissionDenied()
         }
       } catch (err) {
-        console.warn(err);
+        console.warn(err)
       }
     } else {
-      startScanning();
+      startScanning()
     }
   }
 
   const startScanning = () => {
-    scanner.current.startScanning();
+    scanner.current.startScanning()
   }
 
   const stopScanning = () => {
-    scanner.current.stopScanning();
+    scanner.current.stopScanning()
   }
 
   const checkForCameraPermission = async () => {
-    const hasPermission = await hasCameraPermission();
+    const hasPermission = await hasCameraPermission()
     if (hasPermission) {
-      startScanning();
+      startScanning()
     } else {
-      await requestCameraPermission();
+      await requestCameraPermission()
     }
   }
 
   const handleAppStateChange = async nextAppState => {
     if (nextAppState.match(/inactive|background/)) {
-      stopScanning();
+      stopScanning()
     } else {
-      checkForCameraPermission();
+      checkForCameraPermission()
     }
   }
 
   useEffect(() => {
-    AppState.addEventListener('change', handleAppStateChange);
-    checkForCameraPermission();
+    AppState.addEventListener('change', handleAppStateChange)
+    checkForCameraPermission()
     return () => {
-      AppState.removeEventListener('change', handleAppStateChange);
+      AppState.removeEventListener('change', handleAppStateChange)
     }
   }, [])
 
@@ -107,7 +123,7 @@ export const Scanner: React.FC = () => {
     startScanning()
   }
 
-  const onScan = (session) => {
+  const onScan = session => {
     const barcode = session.newlyRecognizedCodes[0].data
     stopScanning()
     setBarcode(barcode)
@@ -122,10 +138,10 @@ export const Scanner: React.FC = () => {
       )}
       <BarcodePicker
         onScan={onScan}
-        scanSettings= {settings}
+        scanSettings={settings}
         ref={scanner}
         style={{ flex: 1 }}
       />
     </View>
-  );
+  )
 }

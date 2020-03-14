@@ -1,6 +1,8 @@
 import axios, { AxiosRequestConfig, AxiosResponse } from 'axios'
 
-export type Fetch<T> = (config?: AxiosRequestConfig) => Promise<AxiosResponse<T>>
+export type Fetch<T> = (
+  config?: AxiosRequestConfig,
+) => Promise<AxiosResponse<T>>
 
 export const fetch = axios
 

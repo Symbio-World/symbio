@@ -5,11 +5,6 @@
 brew install cocoapods
 ```
 
-## Setup Scandit SDK
-unzip `scandit-barcodescanner-ios_5.14.1.zip`
-
-create a Frameworks folder inside the <directory_of_your_project>/node_modules/scandit-react-native/ios/ScanditBarcodeScanner and move the ScanditBarcodeScanner.framework from the Barcode Scanner for iOS package into the new folder.
-
 ## Install cocoapods dependencies
 ```
 cd ios && pod install

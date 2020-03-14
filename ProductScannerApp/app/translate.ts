@@ -1,8 +1,4 @@
-import {
-  fetch,
-  Fetch,
-  HttpError,
-} from './fetch'
+import { fetch, Fetch, HttpError } from './fetch'
 import { googleTranslateApi } from './config'
 
 type CreateTranslate = (deps: Deps) => Translate
@@ -27,7 +23,7 @@ export const createTranslate: CreateTranslate = ({
   fetch,
   target,
   key,
-  url
+  url,
 }) => async (strings: string[]) => {
   const response = await fetch({
     method: 'POST',
@@ -37,10 +33,12 @@ export const createTranslate: CreateTranslate = ({
       target,
     },
     params: {
-      key
-    }
+      key,
+    },
   }).catch(throwTranslateError)
-  const translations = response.data.data.translations.map(t => t.translatedText)
+  const translations = response.data.data.translations.map(
+    t => t.translatedText,
+  )
   return translations
 }
 
@@ -49,7 +47,7 @@ export const translate: Translate = createTranslate({
   ...googleTranslateApi,
 })
 
-const throwTranslateError = (e) => {
+const throwTranslateError = e => {
   throw new TranslateError(e)
 }
 

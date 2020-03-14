@@ -21,10 +21,21 @@ Use node >= 10 or install nvm https://github.com/nvm-sh/nvm and run
 nvm use
 ```
 
-## Plugins
+## VS Code setup
 
-Install EditorConfig plugin
+Required:
+- EditorConfig for VSCode
+- ESLint by Dirk Baeumer
+- Prettier - Code formatter
+- npm Intellisense
 
+Optional, but gives great convenience
+- Auto Rename Tag by Jun Han
+- Bracker Pair Colorizer 2 by CoenraadS
+- file-icons
+- GitLens
+- Jest
+- vsc-nvm
 
 # Workflow
 ## Libraries and apps

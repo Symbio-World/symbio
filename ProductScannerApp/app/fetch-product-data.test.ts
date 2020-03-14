@@ -2,18 +2,24 @@ import { createFetchProductData } from './fetch-product-data'
 
 describe('FetchProductData', () => {
   const links = ['https://example.com']
-  const searchBarcode = jest.fn<any, any>(() => Promise.resolve({
-    name: 'Ola',
-    links,
-  }))
-  const queryProductPage = jest.fn<any, any>(() => Promise.resolve({
-    data: 'Mundo'
-  }))
-  const translateObject = jest.fn<any, any>(() => Promise.resolve({
-    name: 'Hello',
-    links,
-    data: 'World'
-  }))
+  const searchBarcode = jest.fn<any, any>(() =>
+    Promise.resolve({
+      name: 'Ola',
+      links,
+    }),
+  )
+  const queryProductPage = jest.fn<any, any>(() =>
+    Promise.resolve({
+      data: 'Mundo',
+    }),
+  )
+  const translateObject = jest.fn<any, any>(() =>
+    Promise.resolve({
+      name: 'Hello',
+      links,
+      data: 'World',
+    }),
+  )
   const deps = {
     searchBarcode,
     queryProductPage,
@@ -36,7 +42,7 @@ describe('FetchProductData', () => {
     expect(product).toEqual({
       name: 'Hello',
       links,
-      data: 'World'
+      data: 'World',
     })
   })
 })

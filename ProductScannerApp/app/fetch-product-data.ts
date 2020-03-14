@@ -18,11 +18,11 @@ type CreateFetchProductData = (deps: Deps) => FetchProductData
 
 export type FetchProductData = (link: string) => Promise<ProductData>
 
-type Deps = ({
-  searchBarcode: SearchBarcode,
-  queryProductPage: QueryProductPage,
-  translateObject: TranslateObject,
-})
+type Deps = {
+  searchBarcode: SearchBarcode
+  queryProductPage: QueryProductPage
+  translateObject: TranslateObject
+}
 
 export type ProductData = ProductSearchData & ProductPageData
 

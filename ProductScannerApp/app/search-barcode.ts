@@ -1,8 +1,4 @@
-import {
-  fetch,
-  Fetch,
-  HttpError,
-} from './fetch'
+import { fetch, Fetch, HttpError } from './fetch'
 import { googleSearch } from './config'
 
 type CreateSearchBarcode = (deps: Deps) => SearchBarcode
@@ -14,7 +10,7 @@ type Deps = {
 } & typeof googleSearch
 
 export type ProductSearchData = SearchResponseItemProduct & {
-  links: string[],
+  links: string[]
 }
 
 type SearchResponse = {
@@ -22,26 +18,26 @@ type SearchResponse = {
 }
 
 type SearchResponseItem = {
-  link: string,
+  link: string
   pagemap: {
     product?: SearchResponseItemProduct[]
   }
 }
 
 type SearchResponseItemProduct = {
-  image?: string,
-  name?: string,
-  description?: string,
-  sku?: string,
-  category?: string,
-  brand?: string,
+  image?: string
+  name?: string
+  description?: string
+  sku?: string
+  category?: string
+  brand?: string
 }
 
 export const createSearchBarcode: CreateSearchBarcode = ({
   fetch,
   url,
   key,
-  cx
+  cx,
 }) => async barcode => {
   const response = await fetch({
     method: 'GET',
@@ -49,23 +45,26 @@ export const createSearchBarcode: CreateSearchBarcode = ({
     params: {
       key,
       cx,
-      q: barcode
-    }
+      q: barcode,
+    },
   }).catch(throwSearchBarcodeError)
-  const product = response.data.items.reduce((acc, item) => ({
-    ...item?.pagemap?.product?.[0],
-    ...acc
-  }), {})
+  const product = response.data.items.reduce(
+    (acc, item) => ({
+      ...item?.pagemap?.product?.[0],
+      ...acc,
+    }),
+    {},
+  )
   const links = response.data.items.map(i => i.link)
   return {
     ...product,
-    links
+    links,
   }
 }
 
 export const searchBarcode = createSearchBarcode({
   fetch,
-  ...googleSearch
+  ...googleSearch,
 })
 
 const throwSearchBarcodeError = e => {

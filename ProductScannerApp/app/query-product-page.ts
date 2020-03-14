@@ -1,37 +1,39 @@
 import cheerio from 'cheerio'
-import {
-  fetch,
-  Fetch,
-  HttpError,
-} from './fetch'
+import { fetch, Fetch, HttpError } from './fetch'
 
 type CreateQueryProductPage = (deps: Deps) => QueryProductPage
 
 export type QueryProductPage = (link: string) => Promise<ProductPageData>
 
 type Deps = {
-  fetch: Fetch<{ data: string }>
+  fetch: Fetch<string>
 }
 
 export type ProductPageData = {
-  ingredients?: string,
-  allergens?: string,
-  origin?: string,
+  ingredients?: string
+  allergens?: string
+  origin?: string
 }
 
 export const createQueryProductPage: CreateQueryProductPage = ({
-  fetch
+  fetch,
 }) => async link => {
   const response = await fetch({
     method: 'GET',
-    url: link
+    url: link,
   }).catch(throwQueryProductPageError)
   const $ = cheerio.load(response.data)
 
   return {
     ingredients: $("[id$='ingredients']").text(),
-    allergens: $('#info').find('table').find('td').eq(1).text(),
-    origin: $('#origin').find('p').text(),
+    allergens: $('#info')
+      .find('table')
+      .find('td')
+      .eq(1)
+      .text(),
+    origin: $('#origin')
+      .find('p')
+      .text(),
   }
 }
 

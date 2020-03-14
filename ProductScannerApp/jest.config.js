@@ -1,13 +1,15 @@
+const config = require('ts-dev-common/jest.config')
+
 module.exports = {
+  ...config,
   preset: 'react-native',
-  moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],
   transformIgnorePatterns: [
-    "node_modules/(?!(react-native"
-    + "|scandit-react-native"
-    + "|react-native-status-bar-height"
-    + "|react-native-ratings"
-    + "|react-native-tailwindcss"
-    + "|react-native-bootsplash"
-    + ")/)",
+    'node_modules/(?!(react-native' +
+      '|scandit-react-native' +
+      '|react-native-status-bar-height' +
+      '|react-native-ratings' +
+      '|react-native-tailwindcss' +
+      '|react-native-bootsplash' +
+      ')/)',
   ],
 }

@@ -1,15 +1,15 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react'
 import { ActivityIndicator, Text } from 'react-native'
 
 import {
   fetchProductData,
   FetchProductData,
-  ProductData
+  ProductData,
 } from './fetch-product-data'
 import { ProductCard } from './product-card'
 
 type Props = {
-  barcode: string,
+  barcode: string
 }
 
 type Deps = {
@@ -19,18 +19,18 @@ type Deps = {
 type CreateProductCardContainer = (deps: Deps) => React.FC<Props>
 
 export const createProductCardContainer: CreateProductCardContainer = ({
-  fetchProductData
+  fetchProductData,
 }) => props => {
   const [product, setProduct] = useState<ProductData>(null)
   // const [error, setError] = useState<Error>(null)
 
   const fetchProduct = async () => {
     const product = await fetchProductData(props.barcode)
-      // .catch(error => {
-      //   this.setState({
-      //     error
-      //   })
-      // })
+    // .catch(error => {
+    //   this.setState({
+    //     error
+    //   })
+    // })
     setProduct(product)
   }
 
@@ -46,7 +46,9 @@ export const createProductCardContainer: CreateProductCardContainer = ({
   //   return <Text>There was an error, please retry</Text>
   // }
 
-  return <ActivityIndicator size='large' color="#00ff00" />
+  return <ActivityIndicator size="large" color="#00ff00" />
 }
 
-export const ProductCardContainer = createProductCardContainer({ fetchProductData })
+export const ProductCardContainer = createProductCardContainer({
+  fetchProductData,
+})

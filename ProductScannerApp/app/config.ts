@@ -15,7 +15,7 @@ export const googleSearch = {
 export const googleTranslateApi = {
   key: GOOGLE_TRANSLATE_API_KEY,
   url: 'https://translation.googleapis.com/language/translate/v2',
-  target: 'en'
+  target: 'en',
 }
 
 export const scandit = {
