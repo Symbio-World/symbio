@@ -76,7 +76,7 @@ import com.android.build.OutputFile
  */
 
 project.ext.react = [
-    entryFile: "index.js",
+    entryFile: "index.android.ts",
     enableHermes: false,  // clean and rebuild if changing
 ]
 
@@ -131,8 +131,8 @@ android {
         applicationId "com.productscannerapp"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 3
-        versionName "3.0"
+        versionCode 4
+        versionName "4.0"
     }
     splits {
         abi {

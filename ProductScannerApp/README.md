@@ -70,7 +70,17 @@ https://github.com/axios/axios
 # Deployment
 
 ## IOS
+- increment version in
+1. Open Xcode -> Product -> Build
+2. Product -> Archive -> Upload
+
+Initially followed this tutorial
 https://readybytes.in/blog/how-to-deploy-a-react-native-ios-app-on-the-app-store
 
 ## Android
+- increment versions in android/app/build.gradle
+- Open Android Studio -> Generate Signed Bundle/APK -> locate
+- Upload to Play Store
+
+Initially followed this tutorial
 https://reactnative.dev/docs/signed-apk-android
