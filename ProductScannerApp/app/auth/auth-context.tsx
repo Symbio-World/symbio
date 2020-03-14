@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useContext } from 'react'
 
-type User = {
+export type User = {
   uid: string
 }
 

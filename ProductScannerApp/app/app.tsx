@@ -3,7 +3,7 @@ import RNBootSplash from 'react-native-bootsplash'
 import { Home } from './home'
 import { AuthProvider } from './auth'
 
-export const App = () => {
+export const App: React.FC = () => {
   useEffect(() => {
     RNBootSplash.hide({ duration: 100 })
   }, [])
