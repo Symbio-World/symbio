@@ -2,7 +2,8 @@
   "extends": "ts-dev-common/tsconfig.json",
   "compilerOptions": {
     "jsx": "react",
-    "typeRoots": ["./types", "./node_modules/@types"]
+    "typeRoots": ["./types", "./node_modules/@types"],
+    "skipLibCheck": true,
   },
   "exclude": ["babel.config.js", "metro.config.js"]
 }

@@ -21,7 +21,7 @@ type CreateProductCardContainer = (deps: Deps) => React.FC<Props>
 export const createProductCardContainer: CreateProductCardContainer = ({
   fetchProductData,
 }) => props => {
-  const [product, setProduct] = useState<ProductData | null>(null)
+  const [product, setProduct] = useState<ProductData>()
   // const [error, setError] = useState<Error>(null)
 
   const fetchProduct = async () => {

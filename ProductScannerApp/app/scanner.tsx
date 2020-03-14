@@ -40,7 +40,7 @@ settings.getSymbologySettings(Barcode.Symbology.CODE39).activeSymbolCounts = [
 ]
 
 export const Scanner: React.FC = () => {
-  const [barcode, setBarcode] = useState<string | null>(null)
+  const [barcode, setBarcode] = useState<string>()
   const scanner = useRef(null)
 
   const isAndroidMarshmallowOrNewer = () => {
@@ -122,7 +122,7 @@ export const Scanner: React.FC = () => {
   }, [])
 
   const onDismiss = () => {
-    setBarcode(null)
+    setBarcode(undefined)
     startScanning()
   }
 

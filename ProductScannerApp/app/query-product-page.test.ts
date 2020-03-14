@@ -18,7 +18,7 @@ describe('QueryProductPage', () => {
   })
 
   it('errors when query fails', async () => {
-    const fetch = jest.fn<any, any>(() => Promise.reject(new Error()))
+    const fetch = jest.fn(() => Promise.reject(new Error()))
     await expect(
       createQueryProductPage({ fetch })(testFoodieLink),
     ).rejects.toThrow(QueryProductPageError)

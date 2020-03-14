@@ -1,6 +1,6 @@
 import 'react-native'
 import React from 'react'
-import renderer from 'react-test-renderer'
+import renderer, { ReactTestRenderer } from 'react-test-renderer'
 import { ActivityIndicator } from 'react-native'
 
 import { createProductCardContainer } from './product-card-container'
@@ -34,14 +34,13 @@ describe('ProductCardContainer', () => {
     const ProductCardContainer = createProductCardContainer({
       fetchProductData,
     })
-    let testRenderer
+    let testRenderer: ReactTestRenderer
     renderer.act(() => {
       testRenderer = renderer.create(
         <ProductCardContainer barcode={'6414893012318'} />,
       )
     })
-    // @ts-ignore
-    const testInstance = testRenderer.root
+    const testInstance = testRenderer!.root
     let activityIndicators = testInstance.findAllByType(ActivityIndicator)
     expect(activityIndicators.length).toBe(1)
 

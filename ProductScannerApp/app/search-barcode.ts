@@ -6,7 +6,7 @@ type CreateSearchBarcode = (deps: Deps) => SearchBarcode
 export type SearchBarcode = (barcode: string) => Promise<ProductSearchData>
 
 type Deps = {
-  fetch: Fetch<SearchResponse>
+  fetch: Fetch
 } & typeof googleSearch
 
 export type ProductSearchData = SearchResponseItemProduct & {
@@ -39,7 +39,7 @@ export const createSearchBarcode: CreateSearchBarcode = ({
   key,
   cx,
 }) => async barcode => {
-  const response = await fetch({
+  const response = await fetch<SearchResponse>({
     method: 'GET',
     url,
     params: {

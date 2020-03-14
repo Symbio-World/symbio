@@ -17,9 +17,12 @@ module.exports = {
   parserOptions: {
     ecmaVersion: 2018,
     sourceType: 'module',
-    project: `./tsconfig.json`
+    project: `./tsconfig.json`,
   },
   rules: {
     '@typescript-eslint/no-use-before-define': ['error', { functions: false }],
+    '@typescript-eslint/explicit-function-return-type': {
+      allowExpressions: true,
+    },
   },
 }
