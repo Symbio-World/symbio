@@ -1,6 +1,7 @@
-import { createSearchBarcode, SearchBarcodeError } from './search-barcode'
+import { createSearchBarcode, SearchBarcodeError, NoDataFoundError } from './search-barcode'
 import * as simple from './search-barcode.first-item-contains-all-keys.fixture'
 import * as aggregate from './search-barcode.first-item-does-not-contains-all-keys.fixture'
+import * as noData from './search-barcode.no-items.fixture'
 
 describe('SearchBarcode', () => {
   const otherDeps = { url: '', key: '', cx: '' }
@@ -23,6 +24,15 @@ describe('SearchBarcode', () => {
       aggregate.barcode,
     )
     expect(product).toEqual(aggregate.result)
+  })
+
+  it('if no data is found throws error', async () => {
+    const fetch = jest.fn<any, any>(() =>
+      Promise.resolve({ data: noData.httpResponse }),
+    )
+    await expect(createSearchBarcode({ fetch, ...otherDeps })(
+      noData.barcode,
+    )).rejects.toThrow(NoDataFoundError)
   })
 
   it('errors when query fails', async () => {

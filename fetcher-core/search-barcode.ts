@@ -14,7 +14,7 @@ export type ProductSearchData = SearchResponseItemProduct & {
 }
 
 type SearchResponse = {
-  items: SearchResponseItem[]
+  items?: SearchResponseItem[]
 }
 
 type SearchResponseItem = {
@@ -48,6 +48,10 @@ export const createSearchBarcode: CreateSearchBarcode = ({
       q: barcode,
     },
   }).catch(throwSearchBarcodeError)
+  console.log(JSON.stringify(response.data, null, 4))
+
+  if(!response.data.items) throw new NoDataFoundError()
+
   const product = response.data.items.reduce(
     (acc, item) => ({
       ...item?.pagemap?.product?.[0],
@@ -73,5 +77,13 @@ export class SearchBarcodeError extends HttpError {
     super(message)
     this.name = 'SearchBarcodeError'
     this.message = message
+  }
+}
+
+export class NoDataFoundError extends Error {
+  // @ts-ignore
+  constructor() {
+    super()
+    this.name = 'NoDataFoundError'
   }
 }
