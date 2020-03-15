@@ -9,8 +9,9 @@ describe('AuthContext', () => {
   it('renders correctly', () => {
     const signInAnonymously = jest.fn()
     const AuthProvider = createAuthProvider({ signInAnonymously })
-    create(<AuthProvider>Test</AuthProvider>)
+    const tree = create(<AuthProvider>Test</AuthProvider>)
     expect(signInAnonymously).toHaveBeenCalled
+    expect(tree).toMatchSnapshot()
   })
 
   it('can be consumed', async () => {
@@ -22,17 +23,17 @@ describe('AuthContext', () => {
 
       return <Text>{user?.uid}</Text>
     }
-    let testRenderer: ReactTestRenderer
+    let tree: ReactTestRenderer
     act(() => {
-      testRenderer = create(<AuthProvider><Child /></AuthProvider>)
+      tree = create(<AuthProvider><Child /></AuthProvider>)
     })
 
-    expect(testRenderer!.toJSON()).toMatchSnapshot();
+    expect(tree!.toJSON()).toMatchSnapshot();
 
     await act(async () => {
       await promise
     })
 
-    expect(testRenderer!.toJSON()).toMatchSnapshot();
+    expect(tree!.toJSON()).toMatchSnapshot();
   })
 })

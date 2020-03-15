@@ -18,9 +18,9 @@ describe('Overlay', () => {
 
   it('triggers onDismiss', () => {
     const testOnDismiss = jest.fn()
-    const testRenderer = renderer.create(<Overlay onDismiss={testOnDismiss} />)
-    const testInstance = testRenderer.root
-    const backdrop = testInstance.findByType(TouchableWithoutFeedback)
+    const tree = renderer.create(<Overlay onDismiss={testOnDismiss} />)
+    const root = tree.root
+    const backdrop = root.findByType(TouchableWithoutFeedback)
     backdrop.props.onPress()
     expect(testOnDismiss.mock.calls.length).toBe(1)
   })

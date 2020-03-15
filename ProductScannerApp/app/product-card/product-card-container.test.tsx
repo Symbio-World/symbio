@@ -20,11 +20,11 @@ describe('ProductCardContainer', () => {
     const ProductCardContainer = createProductCardContainer({
       fetchProductData,
     })
-    const testRenderer = create(
+    const tree = create(
       <ProductCardContainer barcode="6414893012318" />,
     )
-    const testInstance = testRenderer.root
-    const activityIndicators = testInstance.findAllByType(ActivityIndicator)
+    const root = tree.root
+    const activityIndicators = root.findAllByType(ActivityIndicator)
     expect(activityIndicators.length).toBe(1)
   })
 
@@ -34,34 +34,34 @@ describe('ProductCardContainer', () => {
     const ProductCardContainer = createProductCardContainer({
       fetchProductData,
     })
-    let testRenderer: ReactTestRenderer
+    let tree: ReactTestRenderer
     act(() => {
-      testRenderer = create(
+      tree = create(
         <ProductCardContainer barcode={'6414893012318'} />,
       )
     })
-    const testInstance = testRenderer!.root
-    let activityIndicators = testInstance.findAllByType(ActivityIndicator)
+    const root = tree!.root
+    let activityIndicators = root.findAllByType(ActivityIndicator)
     expect(activityIndicators.length).toBe(1)
 
     await act(async () => {
       await promise
     })
-    activityIndicators = testInstance.findAllByType(ActivityIndicator)
+    activityIndicators = root.findAllByType(ActivityIndicator)
     expect(activityIndicators.length).toBe(0)
-    const productCards = testInstance.findAllByType(ProductCard)
+    const productCards = root.findAllByType(ProductCard)
     expect(productCards.length).toBe(1)
   })
 
   // it('renders error card if error occurs', async () => {
   //   const promise = Promise.reject(new Error());
   //   (getProductData as jest.Mock).mockImplementationOnce(() => promise)
-  //   const testRenderer = renderer.create(<ProductCardContainer barcode={'6414893012318'} />)
+  //   const tree = renderer.create(<ProductCardContainer barcode={'6414893012318'} />)
   //   await Promise.resolve()
-  //   const testInstance = testRenderer.root
-  //   const activityIndicators = testInstance.findAllByType(ActivityIndicator)
+  //   const root = tree.root
+  //   const activityIndicators = root.findAllByType(ActivityIndicator)
   //   expect(activityIndicators.length).toBe(0)
-  //   const productCards = testInstance.findAllByType(Text)
+  //   const productCards = root.findAllByType(Text)
   //   expect(productCards.length).toBe(1)
   // })
 })

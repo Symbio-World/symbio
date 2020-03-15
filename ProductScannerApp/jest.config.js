@@ -8,6 +8,7 @@ module.exports = {
       babelConfig: true,
     },
   },
+  setupFilesAfterEnv: ['<rootDir>/setup-tests.js'],
   transformIgnorePatterns: [
     'node_modules/(?!(react-native' +
       '|scandit-react-native' +
