@@ -1,6 +1,6 @@
 import { Fetch } from './fetch'
 import { createFetchProductData, FetchProductData, ProductData } from './fetch-product-data'
-import { createSearchBarcode } from './search-barcode'
+import { createSearchBarcode, NoDataFoundError } from './search-barcode'
 import { createQueryProductPage, Parse } from './query-product-page'
 import { createTranslateObject } from './translate-object'
 import { createTranslate } from './translate'
@@ -13,7 +13,7 @@ type Deps = {
   googleTranslateApiConfig: GoogleTranslateApiConfig,
 }
 
-export { FetchProductData, ProductData, Parse }
+export { FetchProductData, ProductData, Parse, NoDataFoundError }
 export type CreateFetchProduct = (deps: Deps) => FetchProductData
 
 export const createFetchProduct: CreateFetchProduct = ({

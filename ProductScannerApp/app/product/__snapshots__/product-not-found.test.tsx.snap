@@ -1,0 +1,63 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ProductNotFound renders correctly 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "flex": 1,
+      },
+      Object {
+        "justifyContent": "center",
+      },
+    ]
+  }
+>
+  <Text>
+    Unfortunately we could not found any product with this barcode
+    <Text />
+  </Text>
+  <View
+    accessible={true}
+    focusable={true}
+    isTVSelectable={true}
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Object {
+        "backgroundColor": "#48bb78",
+        "borderRadius": 4,
+        "display": "flex",
+        "justifyContent": "center",
+        "opacity": 1,
+        "padding": 16,
+        "textAlignVertical": "center",
+      }
+    }
+    testID="setup-tags-screen-submit"
+  >
+    <Text
+      style={
+        Array [
+          Object {
+            "textAlign": "center",
+          },
+          Object {
+            "fontSize": 24,
+          },
+          Object {
+            "color": "#fff",
+          },
+        ]
+      }
+    >
+      Add Manually
+    </Text>
+  </View>
+</View>
+`;

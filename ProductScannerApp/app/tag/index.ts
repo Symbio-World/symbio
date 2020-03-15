@@ -1,9 +1,9 @@
 import firestore from '@react-native-firebase/firestore'
-import { createSetupTagsScreenContainer } from './setup-tags-screen-container'
+import { createSetupTagsViewContainer } from './setup-tags-view-container'
 import { saveTags } from './save-tags'
 
 export { fetchTags } from './fetch-tags'
-export const SetupTagsScreenContainer = createSetupTagsScreenContainer({
+export const SetupTagsViewContainer = createSetupTagsViewContainer({
   saveTags,
   tags: [
     'Vegan',

@@ -1,12 +1,12 @@
 import 'react-native'
 import React from 'react'
 import { render, fireEvent } from 'react-native-testing-library'
-import { SetupTagsScreen } from './setup-tags-screen'
+import { SetupTagsView } from './setup-tags-view'
 import { Tag } from '../ui-kit/tag'
 
-describe('SetupTagsScreen', () => {
+describe('SetupTagsView', () => {
   it('renders correctly', () => {
-    const { toJSON } = render(<SetupTagsScreen />)
+    const { toJSON } = render(<SetupTagsView />)
     expect(toJSON()).toMatchSnapshot()
   })
 
@@ -14,7 +14,7 @@ describe('SetupTagsScreen', () => {
     const handleTagPress = jest.fn()
     const tag = 'testTag'
     const { getByType } = render(
-      <SetupTagsScreen tags={[tag]} onTagPress={handleTagPress} />,
+      <SetupTagsView tags={[tag]} onTagPress={handleTagPress} />,
     )
     fireEvent.press(getByType(Tag))
     expect(handleTagPress).toHaveBeenCalledWith(tag)

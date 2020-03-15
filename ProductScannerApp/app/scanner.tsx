@@ -11,7 +11,7 @@ import { BarcodePicker, Barcode, ScanSettings } from 'scandit-react-native'
 import { t } from 'react-native-tailwindcss'
 
 import { Modal } from './ui-kit/modal'
-import { ProductCardContainer } from './product-card'
+import { ProductViewContainer } from './product'
 
 const settings = new ScanSettings()
 settings.setSymbologyEnabled(Barcode.Symbology.EAN13, true)
@@ -138,7 +138,7 @@ export const Scanner: React.FC = () => {
     <View style={[t.flex1]}>
       {barcode && (
         <Modal onDismiss={handleDismiss}>
-          <ProductCardContainer barcode={barcode} />
+          <ProductViewContainer barcode={barcode} />
         </Modal>
       )}
       <BarcodePicker

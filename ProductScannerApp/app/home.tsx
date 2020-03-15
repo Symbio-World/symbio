@@ -4,7 +4,7 @@ import { useAuth } from './auth'
 import { fetchTags } from './tag'
 import { Scanner } from './scanner'
 import { Loading } from './ui-kit/loading'
-import { SetupTagsScreenContainer } from './tag'
+import { SetupTagsViewContainer } from './tag'
 
 export const Home: React.FC = () => {
   const { user } = useAuth()
@@ -13,7 +13,7 @@ export const Home: React.FC = () => {
   if (!user || (!tags && isValidating)) return <Loading />
 
   if (!tags) return (
-    <SetupTagsScreenContainer
+    <SetupTagsViewContainer
       userId={user.id}
       onStore={mutate}
     />

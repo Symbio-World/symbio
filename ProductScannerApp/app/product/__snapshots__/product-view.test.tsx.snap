@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ProductCard renders correctly 1`] = `
+exports[`ProductView renders correctly 1`] = `
 <RCTScrollView
   style={
     Array [
@@ -10,14 +10,12 @@ exports[`ProductCard renders correctly 1`] = `
       Object {
         "flex": 1,
       },
-      Object {
-        "padding": 16,
-      },
     ]
   }
 >
   <View>
     <Image
+      resizeMode="contain"
       source={
         Object {
           "uri": undefined,
@@ -26,7 +24,10 @@ exports[`ProductCard renders correctly 1`] = `
       style={
         Array [
           Object {
-            "height": 160,
+            "height": 224,
+          },
+          Object {
+            "backgroundColor": "#edf2f7",
           },
         ]
       }

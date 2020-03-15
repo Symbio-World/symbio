@@ -8,10 +8,10 @@ import {
   createFetchProduct,
 } from 'fetcher-core'
 
-import { createProductCardContainer } from './product-card-container'
+import { createProductViewContainer } from './product-view-container'
 import { parse } from './parse'
 
-export const ProductCardContainer = createProductCardContainer({
+export const ProductViewContainer = createProductViewContainer({
   fetchProductData: createFetchProduct({
     fetch: axios.request,
     parse,

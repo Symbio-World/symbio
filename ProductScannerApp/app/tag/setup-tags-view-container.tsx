@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { SetupTagsScreen } from './setup-tags-screen'
+import { SetupTagsView } from './setup-tags-view'
 
 type Props = {
   userId: string
@@ -11,9 +11,9 @@ type Deps = {
   tags: string[]
 }
 
-type CreateSetupTagsScreenContainer = (deps: Deps) => React.FC<Props>
+type CreateSetupTagsViewContainer = (deps: Deps) => React.FC<Props>
 
-export const createSetupTagsScreenContainer: CreateSetupTagsScreenContainer = ({
+export const createSetupTagsViewContainer: CreateSetupTagsViewContainer = ({
   saveTags,
   tags,
 }) => ({ userId, onStore = () => {} }) => {
@@ -29,7 +29,7 @@ export const createSetupTagsScreenContainer: CreateSetupTagsScreenContainer = ({
   }
 
   return (
-    <SetupTagsScreen
+    <SetupTagsView
       selectedTags={selectedTags}
       tags={tags}
       onTagPress={onTagPress}

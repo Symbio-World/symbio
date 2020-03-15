@@ -48,7 +48,6 @@ export const createSearchBarcode: CreateSearchBarcode = ({
       q: barcode,
     },
   }).catch(throwSearchBarcodeError)
-  console.log(JSON.stringify(response.data, null, 4))
 
   if(!response.data.items) throw new NoDataFoundError()
 

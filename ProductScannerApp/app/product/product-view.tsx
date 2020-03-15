@@ -5,9 +5,9 @@ import { ProductData } from 'fetcher-core'
 
 type Props = Omit<ProductData, 'links'>
 
-export const ProductCard: React.FC<Props> = props => (
-  <ScrollView style={[t.bgWhite, t.flex1, t.p4]}>
-    <Image style={[t.h40]} source={{ uri: props.image }} />
+export const ProductView: React.FC<Props> = props => (
+  <ScrollView style={[t.bgWhite, t.flex1]}>
+    <Image style={[t.h56, t.bgGray200]} source={{ uri: props.image }} resizeMode='contain' />
     <Text style={[t.textLg, t.textCenter]}>{props.name}</Text>
     <Text>{props.description}</Text>
     <Text>{props.ingredients}</Text>

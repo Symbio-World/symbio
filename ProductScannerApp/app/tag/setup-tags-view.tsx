@@ -1,8 +1,8 @@
 import React from 'react'
-import { ScrollView, View, Text, TouchableOpacity } from 'react-native'
+import { ScrollView, View, Text } from 'react-native'
 import { t } from 'react-native-tailwindcss'
-import { User } from '../auth'
 import { Tag } from '../ui-kit/tag'
+import { Button } from '../ui-kit/button'
 
 type Props = {
   tags?: string[]
@@ -10,7 +10,7 @@ type Props = {
   onTagPress?: (tag: string) => void
   onSubmit?: () => void
 }
-export const SetupTagsScreen: React.FC<Props> = ({
+export const SetupTagsView: React.FC<Props> = ({
   tags = [],
   selectedTags = [],
   onTagPress = () => {},
@@ -40,22 +40,7 @@ export const SetupTagsScreen: React.FC<Props> = ({
         <View style={[t.h24]} />
       </ScrollView>
       <View style={[t.absolute, t.bottom0, t.wFull, t.bgWhite]}>
-        <TouchableOpacity
-          style={[
-            t.bgGreen500,
-            t.p4,
-            t.alignCenter,
-            t.justifyCenter,
-            t.flex,
-            t.rounded,
-          ]}
-          testID="setup-tags-screen-submit"
-          onPress={onSubmit}
-        >
-          <Text style={[t.textCenter, t.text2xl, t.textWhite]}>
-            Get Started
-          </Text>
-        </TouchableOpacity>
+        <Button onPress={onSubmit} title='Get Started' />
       </View>
     </View>
   )

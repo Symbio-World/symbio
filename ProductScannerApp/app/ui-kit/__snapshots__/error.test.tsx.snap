@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ProductCardContainer renders correctly 1`] = `
+exports[`Error renders correctly 1`] = `
 <View
   style={
     Array [
@@ -13,11 +13,8 @@ exports[`ProductCardContainer renders correctly 1`] = `
     ]
   }
 >
-  <ActivityIndicator
-    animating={true}
-    color="#48bb78"
-    hidesWhenStopped={true}
-    size="large"
-  />
+  <Text>
+    Something went wrong...
+  </Text>
 </View>
 `;
