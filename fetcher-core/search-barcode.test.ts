@@ -7,28 +7,28 @@ describe('SearchBarcode', () => {
 
   it('returns product data', async () => {
     const fetch = jest.fn<any, any>(() =>
-      Promise.resolve({ data: simple.testHttpResponse }),
+      Promise.resolve({ data: simple.httpResponse }),
     )
     const product = await createSearchBarcode({ fetch, ...otherDeps })(
-      simple.testBarcode,
+      simple.barcode,
     )
-    expect(product).toEqual(simple.testResult)
+    expect(product).toEqual(simple.result)
   })
 
   it('aggregates product data', async () => {
     const fetch = jest.fn<any, any>(() =>
-      Promise.resolve({ data: aggregate.testHttpResponse }),
+      Promise.resolve({ data: aggregate.httpResponse }),
     )
     const product = await createSearchBarcode({ fetch, ...otherDeps })(
-      aggregate.testBarcode,
+      aggregate.barcode,
     )
-    expect(product).toEqual(aggregate.testResult)
+    expect(product).toEqual(aggregate.result)
   })
 
   it('errors when query fails', async () => {
     const fetch = jest.fn<any, any>(() => Promise.reject(new Error()))
     await expect(
-      createSearchBarcode({ fetch, ...otherDeps })(simple.testBarcode),
+      createSearchBarcode({ fetch, ...otherDeps })(simple.barcode),
     ).rejects.toThrow(SearchBarcodeError)
   })
 })

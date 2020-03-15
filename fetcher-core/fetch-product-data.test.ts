@@ -27,9 +27,9 @@ describe('FetchProductData', () => {
   }
 
   it('searches barcode', async () => {
-    const testBarcode = 'test barcode'
-    await createFetchProductData(deps)(testBarcode)
-    expect(deps.searchBarcode).toHaveBeenCalledWith(testBarcode)
+    const barcode = 'test barcode'
+    await createFetchProductData(deps)(barcode)
+    expect(deps.searchBarcode).toHaveBeenCalledWith(barcode)
   })
 
   it('grabs additional data from product page', async () => {

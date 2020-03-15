@@ -13,33 +13,45 @@ describe('IntroContainer', () => {
     expect(toJSON()).toMatchSnapshot()
   }),
     it('submits tags', () => {
-      const testStoreUserTags = jest.fn()
-      const testUser = { uid: 'uid' }
-      const testTag = 'testTag'
+      const storeUserTags = jest.fn()
+      const user = { uid: 'uid' }
+      const tag = 'testTag'
       const IntroContainer = createIntroContainer({
-        storeUserTags: testStoreUserTags,
-        tags: [testTag],
+        storeUserTags: storeUserTags,
+        tags: [tag],
       })
-      const introContainer = <IntroContainer user={testUser} />
+      const introContainer = <IntroContainer user={user} />
       const { getByText, getByTestId, update } = render(introContainer)
-      fireEvent.press(getByText(testTag))
+      fireEvent.press(getByText(tag))
       fireEvent.press(getByTestId('intro-submit'))
-      expect(testStoreUserTags).toHaveBeenCalledWith(testUser, ['testTag'])
+      expect(storeUserTags).toHaveBeenCalledWith(user, ['testTag'])
     })
 
-    it('deselects tags', () => {
-      const testStoreUserTags = jest.fn()
-      const testUser = { uid: 'uid' }
-      const testTag = 'testTag'
-      const IntroContainer = createIntroContainer({
-        storeUserTags: testStoreUserTags,
-        tags: [testTag],
-      })
-      const introContainer = <IntroContainer user={testUser} />
-      const { getByText, getByTestId, update } = render(introContainer)
-      fireEvent.press(getByText(testTag))
-      fireEvent.press(getByText(testTag))
-      fireEvent.press(getByTestId('intro-submit'))
-      expect(testStoreUserTags).toHaveBeenCalledWith(testUser, [])
+  it('deselects tags', () => {
+    const storeUserTags = jest.fn()
+    const user = { uid: 'uid' }
+    const tag = 'testTag'
+    const IntroContainer = createIntroContainer({
+      storeUserTags: storeUserTags,
+      tags: [tag],
     })
+    const introContainer = <IntroContainer user={user} />
+    const { getByText, getByTestId } = render(introContainer)
+    fireEvent.press(getByText(tag))
+    fireEvent.press(getByText(tag))
+    fireEvent.press(getByTestId('intro-submit'))
+    expect(storeUserTags).toHaveBeenCalledWith(user, [])
+  })
+
+  it('triggers onStore if stored', () => {
+    const handleStore = jest.fn<any, any>()
+    const IntroContainer = createIntroContainer({
+      storeUserTags: jest.fn(() => Promise.resolve()),
+      tags: [],
+    })
+    const introContainer = <IntroContainer user={{ uid: 'uid' }} onStore={handleStore} />
+    const { getByTestId } = render(introContainer)
+    fireEvent.press(getByTestId('intro-submit'))
+    expect(handleStore).toHaveBeenCalled()
+  })
 })

@@ -1,4 +1,4 @@
-export const testResponse = {
+export const response = {
   data: {
     translations: [
       {

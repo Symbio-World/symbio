@@ -1,4 +1,4 @@
-export const testSession = {
+export const session = {
   allRecognizedCodes: [
     {
       isRecognized: true,

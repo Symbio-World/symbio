@@ -1,5 +1,5 @@
-export const testBarcode = '6414893012318'
-export const testResult = {
+export const barcode = '6414893012318'
+export const result = {
   image:
     'https://s3-eu-west-1.amazonaws.com/balticsimages/images/180x220/3e7ec4eda0859d692d7eccbd7142d281.png',
   name: 'Porgandiga praekapsas 900 g',
@@ -16,7 +16,7 @@ export const testResult = {
     'https://www.selver.ee/ru/praekapsas-porgandiga-salvest-900-g',
   ],
 }
-export const testHttpResponse = {
+export const httpResponse = {
   kind: 'customsearch#search',
   url: {
     type: 'application/json',

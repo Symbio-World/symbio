@@ -1,10 +1,11 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useAsync } from 'react-async'
 import { User } from '../auth'
 import { Intro } from './intro'
 
 type Props = {
   user: User
+  onStore?: () => void
 }
 
 type Deps = {
@@ -17,7 +18,7 @@ type CreateIntroContainer = (deps: Deps) => React.FC<Props>
 export const createIntroContainer: CreateIntroContainer = ({
   storeUserTags,
   tags,
-}) => ({ user }) => {
+}) => ({ user, onStore = () => {} }) => {
   const [selectedTags, setSelectedTags] = useState<string[]>([])
   const { isPending, error, run } = useAsync<void>({
     deferFn: ([user, tags]) => storeUserTags(user, tags),
@@ -27,14 +28,20 @@ export const createIntroContainer: CreateIntroContainer = ({
     selectedTags.includes(tag)
       ? setSelectedTags(tags.filter(t => t !== tag))
       : setSelectedTags([tag, ...selectedTags])
-  const onSubmit = () => run(user, selectedTags)
+  const handleSubmit = () => run(user, selectedTags)
+
+  useEffect(() => {
+    if (!isPending) {
+      onStore()
+    }
+  }, [isPending])
 
   return (
     <Intro
       selectedTags={selectedTags}
       tags={tags}
       onTagPress={onTagPress}
-      onSubmit={onSubmit}
+      onSubmit={handleSubmit}
     />
   )
 }

@@ -15,9 +15,9 @@ describe('Overlay', () => {
   })
 
   it('triggers onDismiss', () => {
-    const testOnDismiss = jest.fn()
-    const { getByType } = render(<Overlay onDismiss={testOnDismiss} />)
+    const handleDismiss = jest.fn()
+    const { getByType } = render(<Overlay onDismiss={handleDismiss} />)
     fireEvent.press(getByType(TouchableWithoutFeedback))
-    expect(testOnDismiss.mock.calls.length).toBe(1)
+    expect(handleDismiss.mock.calls.length).toBe(1)
   })
 })

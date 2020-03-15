@@ -1,15 +1,15 @@
 import { createTranslate, TranslateError } from './translate'
-import { testResponse } from './translate.fixture'
+import * as fixture from './translate.fixture'
 
 describe('Translate', () => {
   const deps = { target: '', key: '', url: '' }
 
   it('returns translations', async () => {
     const fetch = jest.fn<any, any>(() =>
-      Promise.resolve({ data: testResponse }),
+      Promise.resolve({ data: fixture.response }),
     )
-    const testStrings = ['Hallo Welt', 'Mein Name ist Jeff', '']
-    const translations = await createTranslate({ fetch, ...deps })(testStrings)
+    const strings = ['Hallo Welt', 'Mein Name ist Jeff', '']
+    const translations = await createTranslate({ fetch, ...deps })(strings)
     expect(translations).toEqual(['Hello World', 'My name is Jeff', ''])
   })
 

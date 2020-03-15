@@ -1,5 +1,5 @@
-export const testBarcode = '6414893012318'
-export const testResult = {
+export const barcode = '6414893012318'
+export const result = {
   image:
     'https://foodieimages.s3.amazonaws.com/images/entries/180x220/6414893012318_0.png',
   name: 'Rainbow Margariini 40% kevyt 400 g',
@@ -15,7 +15,7 @@ export const testResult = {
     'http://www.prismamarket.ru/chastnye-marki/produkty-pitaniia/maslo/Margarin-Rainbow-40--400-g',
   ],
 }
-export const testHttpResponse = {
+export const httpResponse = {
   kind: 'customsearch#search',
   url: {
     type: 'application/json',

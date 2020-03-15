@@ -34,7 +34,7 @@ describe('ProductCardContainer', () => {
       <ProductCardContainer barcode="6414893012318" />
     )
     const { getByType } = render(productCardContainer)
-    expect(fetchProductData).toHaveBeenCalled
+    expect(fetchProductData).toHaveBeenCalled()
     await promise
     expect(getByType(ProductCard))
   })

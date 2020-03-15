@@ -17,9 +17,9 @@ describe('Tag', () => {
   })
 
   it('calls onPress', () => {
-    const testOnPress = jest.fn()
-    const { getByType } = render(<Tag title='Test' onPress={testOnPress} />)
+    const handlePress = jest.fn()
+    const { getByType } = render(<Tag title='Test' onPress={handlePress} />)
     fireEvent.press(getByType(TouchableOpacity))
-    expect(testOnPress).toHaveBeenCalled
+    expect(handlePress).toHaveBeenCalled()
   })
 })

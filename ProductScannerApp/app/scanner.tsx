@@ -121,7 +121,7 @@ export const Scanner: React.FC = () => {
     }
   }, [])
 
-  const onDismiss = () => {
+  const handleDismiss = () => {
     setBarcode(undefined)
     startScanning()
   }
@@ -136,7 +136,7 @@ export const Scanner: React.FC = () => {
   return (
     <View style={[t.flex1]}>
       {barcode && (
-        <Overlay onDismiss={onDismiss}>
+        <Overlay onDismiss={handleDismiss}>
           <ProductCardContainer barcode={barcode} />
         </Overlay>
       )}

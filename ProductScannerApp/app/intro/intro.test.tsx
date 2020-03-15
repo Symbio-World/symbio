@@ -11,10 +11,12 @@ describe('Intro', () => {
   })
 
   it('calls onTagPress', () => {
-    const testOnTagPress = jest.fn()
-    const testTag = 'testTag'
-    const { getByType } = render(<Intro tags={[testTag]} onTagPress={testOnTagPress} />)
+    const handleTagPress = jest.fn()
+    const tag = 'testTag'
+    const { getByType } = render(
+      <Intro tags={[tag]} onTagPress={handleTagPress} />,
+    )
     fireEvent.press(getByType(Tag))
-    expect(testOnTagPress).toHaveBeenCalledWith(testTag)
+    expect(handleTagPress).toHaveBeenCalledWith(tag)
   })
 })
