@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`SetupTagsViewContainer renders correctly 1`] = `
+exports[`SetupPrinciplesViewContainer renders correctly 1`] = `
 <View
   style={
     Array [
@@ -130,7 +130,6 @@ exports[`SetupTagsViewContainer renders correctly 1`] = `
           "textAlignVertical": "center",
         }
       }
-      testID="setup-tags-screen-submit"
     >
       <Text
         style={

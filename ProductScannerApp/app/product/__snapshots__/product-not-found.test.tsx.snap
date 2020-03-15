@@ -18,8 +18,60 @@ exports[`ProductNotFound renders correctly 1`] = `
 >
   <Text>
     Unfortunately we could not found any product with this barcode
+     
     <Text />
   </Text>
+  <View
+    style={
+      Array [
+        Object {
+          "marginVertical": 20,
+        },
+      ]
+    }
+  >
+    <View
+      accessible={true}
+      focusable={true}
+      isTVSelectable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Object {
+          "backgroundColor": "#48bb78",
+          "borderRadius": 4,
+          "display": "flex",
+          "justifyContent": "center",
+          "opacity": 1,
+          "padding": 16,
+          "textAlignVertical": "center",
+        }
+      }
+    >
+      <Text
+        style={
+          Array [
+            Object {
+              "textAlign": "center",
+            },
+            Object {
+              "fontSize": 24,
+            },
+            Object {
+              "color": "#fff",
+            },
+          ]
+        }
+      >
+        Search with google
+      </Text>
+    </View>
+  </View>
   <View
     accessible={true}
     focusable={true}
@@ -42,7 +94,6 @@ exports[`ProductNotFound renders correctly 1`] = `
         "textAlignVertical": "center",
       }
     }
-    testID="setup-tags-screen-submit"
   >
     <Text
       style={

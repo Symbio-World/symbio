@@ -17,7 +17,6 @@ export const Button: React.FC<Props> = ({ onPress = () => {}, title }) => {
       t.flex,
       t.rounded,
     ]}
-    testID="setup-tags-screen-submit"
     onPress={onPress}
   >
     <Text style={[t.textCenter, t.text2xl, t.textWhite]}>

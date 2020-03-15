@@ -23,7 +23,6 @@ exports[`Error renders correctly 1`] = `
       "textAlignVertical": "center",
     }
   }
-  testID="setup-tags-screen-submit"
 >
   <Text
     style={

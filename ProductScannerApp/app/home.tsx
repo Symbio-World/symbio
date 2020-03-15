@@ -1,23 +1,20 @@
 import React, { useEffect, useState } from 'react'
 import useSWR from 'swr'
 import { useAuth } from './auth'
-import { fetchTags } from './tag'
+import { fetchPrinciples } from './principle'
 import { Scanner } from './scanner'
 import { Loading } from './ui-kit/loading'
-import { SetupTagsViewContainer } from './tag'
+import { SetupPrinciplesViewContainer } from './principle'
 
 export const Home: React.FC = () => {
   const { user } = useAuth()
-  const { data: tags, error, isValidating, mutate } = useSWR<string[] | null>(user ? user.id : null, fetchTags)
+  const { data: principles, error, isValidating, mutate } = useSWR<
+    string[] | null
+  >(user ? user.id : null, fetchPrinciples)
 
-  if (!user || (!tags && isValidating)) return <Loading />
+  if (!user || (!principles && isValidating)) return <Loading />
 
-  if (!tags) return (
-    <SetupTagsViewContainer
-      userId={user.id}
-      onStore={mutate}
-    />
-  )
+  if (!principles) return <SetupPrinciplesViewContainer onSave={mutate} />
 
   return <Scanner />
 }

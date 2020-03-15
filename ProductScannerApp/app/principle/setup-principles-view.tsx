@@ -1,19 +1,19 @@
 import React from 'react'
 import { ScrollView, View, Text } from 'react-native'
 import { t } from 'react-native-tailwindcss'
-import { Tag } from '../ui-kit/tag'
+import { Principle } from './principle'
 import { Button } from '../ui-kit/button'
 
 type Props = {
-  tags?: string[]
-  selectedTags?: string[]
-  onTagPress?: (tag: string) => void
+  principles?: string[]
+  selectedPrinciples?: string[]
+  onPrinciplePress?: (principle: string) => void
   onSubmit?: () => void
 }
-export const SetupTagsView: React.FC<Props> = ({
-  tags = [],
-  selectedTags = [],
-  onTagPress = () => {},
+export const SetupPrinciplesView: React.FC<Props> = ({
+  principles = [],
+  selectedPrinciples = [],
+  onPrinciplePress = () => {},
   onSubmit = () => {},
 }) => {
   return (
@@ -27,12 +27,12 @@ export const SetupTagsView: React.FC<Props> = ({
           </Text>
           <Text style={[t.fontBold]}>What is important to you?</Text>
           <View style={[t.flexRow, t.flexWrap, t.mY4]}>
-            {tags.map(t => (
-              <Tag
+            {principles.map(t => (
+              <Principle
                 key={t}
                 title={t}
-                onPress={() => onTagPress(t)}
-                selected={selectedTags.includes(t)}
+                onPress={() => onPrinciplePress(t)}
+                selected={selectedPrinciples.includes(t)}
               />
             ))}
           </View>

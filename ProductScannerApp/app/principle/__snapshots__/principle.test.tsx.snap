@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Tag can be selected 1`] = `
+exports[`Principle can be selected 1`] = `
 <View
   accessible={true}
   focusable={true}
@@ -45,7 +45,7 @@ exports[`Tag can be selected 1`] = `
 </View>
 `;
 
-exports[`Tag renders correctly 1`] = `
+exports[`Principle renders correctly 1`] = `
 <View
   accessible={true}
   focusable={true}
