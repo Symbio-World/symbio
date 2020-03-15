@@ -14,7 +14,7 @@ import {
 
 type CreateFetchProductData = (deps: Deps) => FetchProductData
 
-export type FetchProductData = (link: string) => Promise<ProductData>
+export type FetchProductData = (barcode: string) => Promise<ProductData>
 
 type Deps = {
   searchBarcode: SearchBarcode

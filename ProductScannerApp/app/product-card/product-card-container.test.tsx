@@ -38,16 +38,4 @@ describe('ProductCardContainer', () => {
     await promise
     expect(getByType(ProductCard))
   })
-
-  // it('renders error card if error occurs', async () => {
-  //   const promise = Promise.reject(new Error());
-  //   (getProductData as jest.Mock).mockImplementationOnce(() => promise)
-  //   const tree = renderer.create(<ProductCardContainer barcode={'6414893012318'} />)
-  //   await Promise.resolve()
-  //   const root = tree.root
-  //   const activityIndicators = root.findAllByType(ActivityIndicator)
-  //   expect(activityIndicators.length).toBe(0)
-  //   const productCards = root.findAllByType(Text)
-  //   expect(productCards.length).toBe(1)
-  // })
 })

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import useSWR from 'swr'
 import { useAuth } from './auth'
 import { fetchTags } from './tag'
 import { Scanner } from './scanner'
@@ -7,24 +8,14 @@ import { SetupTagsScreenContainer } from './tag'
 
 export const Home: React.FC = () => {
   const { user } = useAuth()
-  const [tags, setTags] = useState<string[]>()
+  const { data: tags, error, isValidating, mutate } = useSWR<string[] | null>(user ? user.id : null, fetchTags)
 
-  const getTags = async () => {
-    if (user) {
-      const tags = await fetchTags(user.id)
-      setTags(tags)
-    }
-  }
-  useEffect(() => {
-    getTags()
-  }, [user])
-
-  if (!user) return <Loading />
+  if (!user || (!tags && isValidating)) return <Loading />
 
   if (!tags) return (
     <SetupTagsScreenContainer
       userId={user.id}
-      onStore={getTags}
+      onStore={mutate}
     />
   )
 

@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useContext } from 'react'
+import useSWR from 'swr'
 
 export type User = {
   id: string
@@ -23,17 +24,7 @@ type CreateAuthProvider = (deps: Deps) => React.FC<Props>
 export const createAuthProvider: CreateAuthProvider = ({
   signInAnonymously
 }) => ({ children }: Props) => {
-  const [user, setUser] = useState<User>()
-
-  const authenticate = async () => {
-    const user = await signInAnonymously()
-    setUser(user)
-  }
-
-  useEffect(() => {
-    authenticate()
-  }, [])
-
+  const { data: user, error } = useSWR<User>('user', signInAnonymously)
   return (
     <authContext.Provider value={{ user }}>{children}</authContext.Provider>
   )
