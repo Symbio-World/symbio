@@ -27,14 +27,14 @@ describe('AuthContext', () => {
   })
 
   it('can be consumed', async () => {
-    const user = { uid: 'uid' }
-    const promise = Promise.resolve({ user: user })
+    const user = { id: 'id' }
+    const promise = Promise.resolve(user)
     const signInAnonymously = jest.fn<any, any>(() => promise)
     const AuthProvider = createAuthProvider({ signInAnonymously })
     const Child = () => {
       const { user } = useAuth()
 
-      return <Text>{user?.uid}</Text>
+      return <Text>{user?.id}</Text>
     }
     const { getByText } = render(
       <AuthProvider>
@@ -43,6 +43,6 @@ describe('AuthContext', () => {
     )
 
     await promise
-    expect(getByText(user.uid))
+    expect(getByText(user.id))
   })
 })

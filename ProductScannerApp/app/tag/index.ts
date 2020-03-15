@@ -1,14 +1,10 @@
 import firestore from '@react-native-firebase/firestore'
 import { createSetupTagsScreenContainer } from './setup-tags-screen-container'
+import { saveTags } from './save-tags'
 
+export { fetchTags } from './fetch-tags'
 export const SetupTagsScreenContainer = createSetupTagsScreenContainer({
-  storeUserTags: async ({ uid }, tags) => {
-    await firestore()
-      .collection('user-tags')
-      .doc(uid)
-      .set({ tags })
-      .catch(console.log)
-  },
+  saveTags,
   tags: [
     'Vegan',
     'Gluten free',

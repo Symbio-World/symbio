@@ -1,27 +1,26 @@
 import React, { useState, useEffect } from 'react'
 import { useAsync } from 'react-async'
-import { User } from '../auth'
 import { SetupTagsScreen } from './setup-tags-screen'
 
 type Props = {
-  user: User
+  userId: string
   onStore?: () => void
 }
 
 type Deps = {
-  storeUserTags: (user: User, tags: string[]) => Promise<void>
+  saveTags: (userId: string, tags: string[]) => Promise<void>
   tags: string[]
 }
 
 type CreateSetupTagsScreenContainer = (deps: Deps) => React.FC<Props>
 
 export const createSetupTagsScreenContainer: CreateSetupTagsScreenContainer = ({
-  storeUserTags,
+  saveTags,
   tags,
-}) => ({ user, onStore = () => {} }) => {
+}) => ({ userId, onStore = () => {} }) => {
   const [selectedTags, setSelectedTags] = useState<string[]>([])
   const { isPending, error, run } = useAsync<void>({
-    deferFn: ([user, tags]) => storeUserTags(user, tags),
+    deferFn: ([user, tags]) => saveTags(userId, tags),
   })
 
   const onTagPress = (tag: string) =>
@@ -29,7 +28,7 @@ export const createSetupTagsScreenContainer: CreateSetupTagsScreenContainer = ({
       ? setSelectedTags(tags.filter(t => t !== tag))
       : setSelectedTags([tag, ...selectedTags])
   const handleSubmit = () => {
-    run(user, selectedTags)
+    run(userId, selectedTags)
     onStore()
   }
 

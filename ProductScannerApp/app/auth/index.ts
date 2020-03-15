@@ -4,6 +4,8 @@ import { createAuthProvider } from './auth-context'
 export { useAuth, User } from './auth-context'
 
 export const AuthProvider = createAuthProvider({
-  signInAnonymously: () => auth().signInAnonymously()
+  signInAnonymously: async () => {
+    const { user } = await auth().signInAnonymously()
+    return { id: user.uid }
+  },
 })
-

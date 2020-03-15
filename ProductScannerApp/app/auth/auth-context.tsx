@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useContext } from 'react'
 
 export type User = {
-  uid: string
+  id: string
 }
 
 type AuthContext = {
@@ -15,7 +15,7 @@ type Props = {
 }
 
 type Deps = {
-  signInAnonymously: () => Promise<{ user: User }>
+  signInAnonymously: () => Promise<User>
 }
 
 type CreateAuthProvider = (deps: Deps) => React.FC<Props>
@@ -26,7 +26,7 @@ export const createAuthProvider: CreateAuthProvider = ({
   const [user, setUser] = useState<User>()
 
   const authenticate = async () => {
-    const { user } = await signInAnonymously()
+    const user = await signInAnonymously()
     setUser(user)
   }
 
