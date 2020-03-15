@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from 'react'
-import { useAsync } from 'react-async'
+import React, { useState } from 'react'
 import { SetupTagsScreen } from './setup-tags-screen'
 
 type Props = {
@@ -19,16 +18,13 @@ export const createSetupTagsScreenContainer: CreateSetupTagsScreenContainer = ({
   tags,
 }) => ({ userId, onStore = () => {} }) => {
   const [selectedTags, setSelectedTags] = useState<string[]>([])
-  const { isPending, error, run } = useAsync<void>({
-    deferFn: ([user, tags]) => saveTags(userId, tags),
-  })
 
   const onTagPress = (tag: string) =>
     selectedTags.includes(tag)
       ? setSelectedTags(tags.filter(t => t !== tag))
       : setSelectedTags([tag, ...selectedTags])
   const handleSubmit = () => {
-    run(userId, selectedTags)
+    saveTags(userId, selectedTags)
     onStore()
   }
 

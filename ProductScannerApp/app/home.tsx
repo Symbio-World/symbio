@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import { useAsync } from 'react-async'
 import { useAuth } from './auth'
 import { fetchTags } from './tag'
 import { Scanner } from './scanner'
@@ -11,10 +10,8 @@ export const Home: React.FC = () => {
   const [tags, setTags] = useState<string[]>()
 
   const getTags = async () => {
-    console.log(user)
     if (user) {
       const tags = await fetchTags(user.id)
-      console.log(tags)
       setTags(tags)
     }
   }

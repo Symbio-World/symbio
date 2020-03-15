@@ -22,7 +22,6 @@
     "cheerio": "0.22.0",
     "events": "3.1.0",
     "react": "16.13.0",
-    "react-async": "10.0.0",
     "react-native": "0.61.5",
     "react-native-bootsplash": "2.0.5",
     "react-native-dotenv": "0.2.0",
