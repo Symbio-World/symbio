@@ -5,11 +5,12 @@ import {
   Platform,
   PermissionsAndroid,
   BackHandler,
+  Text,
 } from 'react-native'
 import { BarcodePicker, Barcode, ScanSettings } from 'scandit-react-native'
 import { t } from 'react-native-tailwindcss'
 
-import { Overlay } from './ui-kit/overlay'
+import { Modal } from './ui-kit/modal'
 import { ProductCardContainer } from './product-card'
 
 const settings = new ScanSettings()
@@ -136,9 +137,9 @@ export const Scanner: React.FC = () => {
   return (
     <View style={[t.flex1]}>
       {barcode && (
-        <Overlay onDismiss={handleDismiss}>
+        <Modal onDismiss={handleDismiss}>
           <ProductCardContainer barcode={barcode} />
-        </Overlay>
+        </Modal>
       )}
       <BarcodePicker
         onScan={onScan}
@@ -146,6 +147,21 @@ export const Scanner: React.FC = () => {
         ref={scanner}
         style={{ flex: 1 }}
       />
+      <View
+        style={[
+          t.absolute,
+          t.bottom0,
+          t.wFull,
+          t.h16,
+          t.justifyCenter,
+          t.bgBlack,
+          t.opacity50,
+        ]}
+      >
+        <Text style={[t.textWhite, t.textCenter, t.fontBold, t.text3xl]}>
+          Scan barcode
+        </Text>
+      </View>
     </View>
   )
 }

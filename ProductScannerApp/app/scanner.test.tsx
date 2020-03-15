@@ -2,7 +2,6 @@ import 'react-native'
 import React from 'react'
 import { render } from 'react-native-testing-library'
 import { Scanner } from './scanner'
-import { Overlay } from './ui-kit/overlay'
 // import * as fixture from './scanner.fixture'
 
 describe('Scanner', () => {

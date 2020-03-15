@@ -1,0 +1,77 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Modal renders correctly 1`] = `
+<Modal
+  animationType="slide"
+  hardwareAccelerated={false}
+  visible={true}
+>
+  <View
+    style={
+      Array [
+        Object {
+          "backgroundColor": "#a0aec0",
+        },
+        Object {
+          "padding": 8,
+        },
+        Object {
+          "opacity": 0.5,
+        },
+        Object {
+          "position": "absolute",
+        },
+        Object {
+          "zIndex": 10,
+        },
+        Object {
+          "width": "100%",
+        },
+      ]
+    }
+  >
+    <Text
+      accessible={true}
+      allowFontScaling={false}
+      focusable={false}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Array [
+          Object {
+            "color": "#fff",
+            "fontSize": 44,
+          },
+          undefined,
+          Object {
+            "fontFamily": "Material Icons",
+            "fontStyle": "normal",
+            "fontWeight": "normal",
+          },
+          Object {},
+        ]
+      }
+    >
+      
+    </Text>
+  </View>
+  <View
+    style={
+      Array [
+        Object {
+          "flex": 1,
+        },
+      ]
+    }
+  >
+    <Text>
+      test
+    </Text>
+  </View>
+</Modal>
+`;

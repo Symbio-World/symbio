@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react'
+import { StatusBar } from 'react-native'
 import RNBootSplash from 'react-native-bootsplash'
 import { Home } from './home'
 import { AuthProvider } from './auth'
@@ -10,6 +11,7 @@ export const App: React.FC = () => {
 
   return (
     <AuthProvider>
+      <StatusBar hidden />
       <Home />
     </AuthProvider>
   )

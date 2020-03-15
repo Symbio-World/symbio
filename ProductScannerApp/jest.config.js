@@ -16,6 +16,7 @@ module.exports = {
       '|react-native-ratings' +
       '|react-native-tailwindcss' +
       '|react-native-bootsplash' +
+      '|react-native-vector-icons' +
       ')/)',
   ],
 }
