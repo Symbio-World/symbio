@@ -32,5 +32,6 @@ export const createFetchProduct: CreateFetchProduct = ({
       fetch,
       ...googleTranslateApiConfig
     })
-  })
+  }),
+  preferredDomains: ['prisma.ee', 'foodie.fi']
 })

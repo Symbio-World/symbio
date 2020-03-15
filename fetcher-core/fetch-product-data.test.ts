@@ -24,6 +24,7 @@ describe('FetchProductData', () => {
     searchBarcode,
     queryProductPage,
     translateObject,
+    preferredDomains: [],
   }
 
   it('searches barcode', async () => {
@@ -44,5 +45,38 @@ describe('FetchProductData', () => {
       links,
       data: 'World',
     })
+  })
+  it('respects preferred domains', async () => {
+    const links = ['https://example.com', 'https://prisma.ee']
+    const searchBarcode = jest.fn<any, any>(() =>
+      Promise.resolve({
+        name: 'Ola',
+        links,
+      }),
+    )
+    const queryProductPage = jest.fn<any, any>(() =>
+      Promise.resolve({
+        data: 'Mundo',
+      }),
+    )
+    const translateObject = jest.fn<any, any>(() =>
+      Promise.resolve({
+        name: 'Hello',
+        links,
+        data: 'World',
+      }),
+    )
+    const deps = {
+      searchBarcode,
+      queryProductPage,
+      translateObject,
+      preferredDomains: [],
+    }
+
+    await createFetchProductData({
+      ...deps,
+      preferredDomains: ['prisma.ee'],
+    })('test barcode')
+    expect(queryProductPage).toHaveBeenCalledWith('https://prisma.ee')
   })
 })
