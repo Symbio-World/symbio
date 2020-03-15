@@ -21,7 +21,7 @@ export const createProductViewContainer: CreateProductViewContainer = ({
   fetchProductData,
 }) => ({ barcode }) => {
   const { data: product, error } = useSWR<ProductData>(barcode, fetchProductData)
-  console.log(error)
+
   if (error instanceof NoDataFoundError) return <ProductNotFound barcode={barcode} />
   if (error) return <Error error={error} />
   if (!product) return <Loading />

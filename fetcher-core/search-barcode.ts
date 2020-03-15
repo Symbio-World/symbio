@@ -84,5 +84,6 @@ export class NoDataFoundError extends Error {
   constructor() {
     super()
     this.name = 'NoDataFoundError'
+    Object.setPrototypeOf(this, NoDataFoundError.prototype);
   }
 }

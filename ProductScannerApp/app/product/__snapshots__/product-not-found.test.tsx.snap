@@ -10,6 +10,9 @@ exports[`ProductNotFound renders correctly 1`] = `
       Object {
         "justifyContent": "center",
       },
+      Object {
+        "margin": 20,
+      },
     ]
   }
 >
