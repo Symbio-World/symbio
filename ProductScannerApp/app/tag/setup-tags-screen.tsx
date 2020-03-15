@@ -10,7 +10,7 @@ type Props = {
   onTagPress?: (tag: string) => void
   onSubmit?: () => void
 }
-export const Intro: React.FC<Props> = ({
+export const SetupTagsScreen: React.FC<Props> = ({
   tags = [],
   selectedTags = [],
   onTagPress = () => {},
@@ -49,7 +49,7 @@ export const Intro: React.FC<Props> = ({
             t.flex,
             t.rounded,
           ]}
-          testID="intro-submit"
+          testID="setup-tags-screen-submit"
           onPress={onSubmit}
         >
           <Text style={[t.textCenter, t.text2xl, t.textWhite]}>

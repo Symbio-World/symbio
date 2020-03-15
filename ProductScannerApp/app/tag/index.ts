@@ -1,12 +1,12 @@
 import firestore from '@react-native-firebase/firestore'
-import { createIntroContainer } from './intro-container'
+import { createSetupTagsScreenContainer } from './setup-tags-screen-container'
 
-export const IntroContainer = createIntroContainer({
+export const SetupTagsScreenContainer = createSetupTagsScreenContainer({
   storeUserTags: async ({ uid }, tags) => {
     await firestore()
       .collection('user-tags')
       .doc(uid)
-      .set({tags})
+      .set({ tags })
       .catch(console.log)
   },
   tags: [

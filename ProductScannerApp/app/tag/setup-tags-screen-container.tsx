@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useAsync } from 'react-async'
 import { User } from '../auth'
-import { Intro } from './intro'
+import { SetupTagsScreen } from './setup-tags-screen'
 
 type Props = {
   user: User
@@ -13,9 +13,9 @@ type Deps = {
   tags: string[]
 }
 
-type CreateIntroContainer = (deps: Deps) => React.FC<Props>
+type CreateSetupTagsScreenContainer = (deps: Deps) => React.FC<Props>
 
-export const createIntroContainer: CreateIntroContainer = ({
+export const createSetupTagsScreenContainer: CreateSetupTagsScreenContainer = ({
   storeUserTags,
   tags,
 }) => ({ user, onStore = () => {} }) => {
@@ -34,7 +34,7 @@ export const createIntroContainer: CreateIntroContainer = ({
   }
 
   return (
-    <Intro
+    <SetupTagsScreen
       selectedTags={selectedTags}
       tags={tags}
       onTagPress={onTagPress}
