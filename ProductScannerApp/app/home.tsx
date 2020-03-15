@@ -7,5 +7,9 @@ import { IntroContainer } from './intro'
 export const Home: React.FC = () => {
   const { user } = useAuth()
 
-  return user ? <IntroContainer user={user} /> : <Loading />
+  return user ? (
+    <IntroContainer user={user} onStore={() => console.log('hello')} />
+  ) : (
+    <Loading />
+  )
 }

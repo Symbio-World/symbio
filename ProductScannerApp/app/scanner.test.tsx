@@ -15,7 +15,6 @@ describe('Scanner', () => {
   // it('renders overlay when scanned', () => {
   //   const tree = renderer.create(<Scanner />, {
   //     createNodeMock: (element) => {
-  //       console.log('entered')
   //       if (element.type === 'BarcodePicker') {
   //         return {
   //           stopScanning: () => {}

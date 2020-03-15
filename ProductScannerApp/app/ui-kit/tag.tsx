@@ -20,6 +20,8 @@ export const Tag: React.FC<Props> = ({
         t.m3,
         t.pY3,
         t.pX6,
+        t.borderGreen500,
+        t.border2
       ]}
       onPress={onPress}
     >

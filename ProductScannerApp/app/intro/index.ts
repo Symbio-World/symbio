@@ -4,8 +4,10 @@ import { createIntroContainer } from './intro-container'
 export const IntroContainer = createIntroContainer({
   storeUserTags: async ({ uid }, tags) => {
     await firestore()
-    .collection('user-tags')
-    .add({ uid, tags })
+      .collection('user-tags')
+      .doc(uid)
+      .set({tags})
+      .catch(console.log)
   },
   tags: [
     'Vegan',
@@ -15,5 +17,5 @@ export const IntroContainer = createIntroContainer({
     'Halal',
     'Organic',
     'Eco friendly',
-  ]
+  ],
 })

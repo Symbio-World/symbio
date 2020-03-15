@@ -5,5 +5,4 @@ import { ScanditModule } from 'scandit-react-native'
 import { scandit } from './app/config'
 
 ScanditModule.setAppKey(scandit.iosKey)
-console.log('ok')
 AppRegistry.registerComponent(appName, () => App)

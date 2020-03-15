@@ -28,13 +28,10 @@ export const createIntroContainer: CreateIntroContainer = ({
     selectedTags.includes(tag)
       ? setSelectedTags(tags.filter(t => t !== tag))
       : setSelectedTags([tag, ...selectedTags])
-  const handleSubmit = () => run(user, selectedTags)
-
-  useEffect(() => {
-    if (!isPending) {
-      onStore()
-    }
-  }, [isPending])
+  const handleSubmit = () => {
+    run(user, selectedTags)
+    onStore()
+  }
 
   return (
     <Intro

@@ -15,6 +15,7 @@ exports[`Tag can be selected 1`] = `
   style={
     Object {
       "backgroundColor": "#48bb78",
+      "borderColor": "#48bb78",
       "borderRadius": 9999,
       "margin": 12,
       "opacity": 1,
@@ -58,6 +59,7 @@ exports[`Tag renders correctly 1`] = `
   style={
     Object {
       "backgroundColor": "#fff",
+      "borderColor": "#48bb78",
       "borderRadius": 9999,
       "margin": 12,
       "opacity": 1,
