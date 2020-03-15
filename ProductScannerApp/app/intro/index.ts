@@ -6,5 +6,14 @@ export const IntroContainer = createIntroContainer({
     await firestore()
     .collection('user-tags')
     .add({ uid, tags })
-  }
+  },
+  tags: [
+    'Vegan',
+    'Gluten free',
+    'Nut free',
+    'Lactose free',
+    'Halal',
+    'Organic',
+    'Eco friendly',
+  ]
 })

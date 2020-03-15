@@ -1,31 +1,27 @@
 import 'react-native'
 import React from 'react'
-import { create, act, ReactTestRenderer } from 'react-test-renderer'
+import { render } from 'react-native-testing-library'
 import { ActivityIndicator } from 'react-native'
-
 import { createProductCardContainer } from './product-card-container'
 import { ProductCard } from './product-card'
 
 describe('ProductCardContainer', () => {
   it('renders correctly', () => {
-    const fetchProductData = jest.fn<any, any>(() => Promise.resolve())
     const ProductCardContainer = createProductCardContainer({
-      fetchProductData,
+      fetchProductData: jest.fn(),
     })
-    create(<ProductCardContainer barcode="6414893012318" />)
+    const { toJSON } = render(<ProductCardContainer barcode="6414893012318" />)
+    expect(toJSON()).toMatchSnapshot()
   })
 
   it('renders loading screen at the start', () => {
-    const fetchProductData = jest.fn<any, any>(() => Promise.resolve())
     const ProductCardContainer = createProductCardContainer({
-      fetchProductData,
+      fetchProductData: jest.fn(),
     })
-    const tree = create(
+    const { getByType } = render(
       <ProductCardContainer barcode="6414893012318" />,
     )
-    const root = tree.root
-    const activityIndicators = root.findAllByType(ActivityIndicator)
-    expect(activityIndicators.length).toBe(1)
+    expect(getByType(ActivityIndicator))
   })
 
   it('renders product card if data fetch succeeded', async () => {
@@ -34,23 +30,13 @@ describe('ProductCardContainer', () => {
     const ProductCardContainer = createProductCardContainer({
       fetchProductData,
     })
-    let tree: ReactTestRenderer
-    act(() => {
-      tree = create(
-        <ProductCardContainer barcode={'6414893012318'} />,
-      )
-    })
-    const root = tree!.root
-    let activityIndicators = root.findAllByType(ActivityIndicator)
-    expect(activityIndicators.length).toBe(1)
-
-    await act(async () => {
-      await promise
-    })
-    activityIndicators = root.findAllByType(ActivityIndicator)
-    expect(activityIndicators.length).toBe(0)
-    const productCards = root.findAllByType(ProductCard)
-    expect(productCards.length).toBe(1)
+    const productCardContainer = (
+      <ProductCardContainer barcode="6414893012318" />
+    )
+    const { getByType } = render(productCardContainer)
+    expect(fetchProductData).toHaveBeenCalled
+    await promise
+    expect(getByType(ProductCard))
   })
 
   // it('renders error card if error occurs', async () => {

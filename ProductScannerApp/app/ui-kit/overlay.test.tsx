@@ -1,27 +1,23 @@
 import 'react-native'
 import React from 'react'
-import renderer from 'react-test-renderer'
+import { render, fireEvent } from 'react-native-testing-library'
 import { Text, TouchableWithoutFeedback } from 'react-native'
 import { Overlay } from './overlay'
 
 describe('Overlay', () => {
   it('renders correctly', () => {
-    const tree = renderer
-      .create(
+    const { toJSON } = render(
         <Overlay>
           <Text>test</Text>
         </Overlay>,
       )
-      .toJSON()
-    expect(tree).toMatchSnapshot()
+    expect(toJSON()).toMatchSnapshot()
   })
 
   it('triggers onDismiss', () => {
     const testOnDismiss = jest.fn()
-    const tree = renderer.create(<Overlay onDismiss={testOnDismiss} />)
-    const root = tree.root
-    const backdrop = root.findByType(TouchableWithoutFeedback)
-    backdrop.props.onPress()
+    const { getByType } = render(<Overlay onDismiss={testOnDismiss} />)
+    fireEvent.press(getByType(TouchableWithoutFeedback))
     expect(testOnDismiss.mock.calls.length).toBe(1)
   })
 })

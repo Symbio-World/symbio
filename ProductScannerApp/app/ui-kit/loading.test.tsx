@@ -1,12 +1,11 @@
 import 'react-native'
 import React from 'react'
-import { create } from 'react-test-renderer'
-
+import { render, fireEvent } from 'react-native-testing-library'
 import { Loading } from './loading'
 
 describe('Loading', () => {
   it('renders correctly', () => {
-    const tree = create(<Loading />).toJSON()
-    expect(tree).toMatchSnapshot()
+    const { toJSON } = render(<Loading />)
+    expect(toJSON()).toMatchSnapshot()
   })
 })

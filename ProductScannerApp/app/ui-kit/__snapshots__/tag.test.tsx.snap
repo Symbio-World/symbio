@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Tag renders correctly 1`] = `
+exports[`Tag can be selected 1`] = `
 <View
   accessible={true}
   focusable={true}
@@ -31,6 +31,49 @@ exports[`Tag renders correctly 1`] = `
         },
         Object {
           "color": "#fff",
+        },
+        Object {
+          "fontWeight": "bold",
+        },
+      ]
+    }
+  >
+    Test
+  </Text>
+</View>
+`;
+
+exports[`Tag renders correctly 1`] = `
+<View
+  accessible={true}
+  focusable={true}
+  isTVSelectable={true}
+  onClick={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    Object {
+      "backgroundColor": "#fff",
+      "borderRadius": 9999,
+      "margin": 12,
+      "opacity": 1,
+      "paddingHorizontal": 24,
+      "paddingVertical": 12,
+    }
+  }
+>
+  <Text
+    style={
+      Array [
+        Object {
+          "fontSize": 20,
+        },
+        Object {
+          "color": "#48bb78",
         },
         Object {
           "fontWeight": "bold",

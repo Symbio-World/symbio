@@ -6,11 +6,13 @@ import { Tag } from '../ui-kit/tag'
 
 type Props = {
   tags?: string[]
+  selectedTags?: string[]
   onTagPress?: (tag: string) => void
   onSubmit?: () => void
 }
 export const Intro: React.FC<Props> = ({
   tags = [],
+  selectedTags = [],
   onTagPress = () => {},
   onSubmit = () => {},
 }) => {
@@ -26,7 +28,12 @@ export const Intro: React.FC<Props> = ({
           <Text style={[t.fontBold]}>What is important to you?</Text>
           <View style={[t.flexRow, t.flexWrap, t.mY4]}>
             {tags.map(t => (
-              <Tag key={t} title={t} onPress={() => onTagPress(t)} />
+              <Tag
+                key={t}
+                title={t}
+                onPress={() => onTagPress(t)}
+                selected={selectedTags.includes(t)}
+              />
             ))}
           </View>
         </View>
@@ -42,6 +49,8 @@ export const Intro: React.FC<Props> = ({
             t.flex,
             t.rounded,
           ]}
+          testID="intro-submit"
+          onPress={onSubmit}
         >
           <Text style={[t.textCenter, t.text2xl, t.textWhite]}>
             Get Started

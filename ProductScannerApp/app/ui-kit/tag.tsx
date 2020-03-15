@@ -1,18 +1,33 @@
 import React from 'react'
-import { View, Text, TouchableOpacity } from 'react-native'
+import { Text, TouchableOpacity } from 'react-native'
 import { t } from 'react-native-tailwindcss'
 
 type Props = {
   title: string
+  selected?: boolean
   onPress?: () => void
 }
-export const Tag: React.FC<Props> = ({ title, onPress = () => {} }) => {
+export const Tag: React.FC<Props> = ({
+  title,
+  onPress = () => {},
+  selected = false,
+}) => {
   return (
     <TouchableOpacity
-      style={[t.bgGreen500, t.roundedFull, t.m3, t.pY3, t.pX6]}
+      style={[
+        selected ? t.bgGreen500 : t.bgWhite,
+        t.roundedFull,
+        t.m3,
+        t.pY3,
+        t.pX6,
+      ]}
       onPress={onPress}
     >
-      <Text style={[t.textXl, t.textWhite, t.fontBold]}>{title}</Text>
+      <Text
+        style={[t.textXl, selected ? t.textWhite : t.textGreen500, t.fontBold]}
+      >
+        {title}
+      </Text>
     </TouchableOpacity>
   )
 }

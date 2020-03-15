@@ -1,22 +1,14 @@
 import 'react-native'
 import React from 'react'
-import { create } from 'react-test-renderer'
-
+import { render } from 'react-native-testing-library'
 import { Scanner } from './scanner'
 import { Overlay } from './ui-kit/overlay'
 // import { testSession } from './scanner.fixture'
 
 describe('Scanner', () => {
   it('renders correctly', () => {
-    const tree = create(<Scanner />).toJSON()
-    expect(tree).toMatchSnapshot()
-  })
-
-  it('renders 0 overlays at the start', () => {
-    const tree = create(<Scanner />)
-    const root = tree.root
-    const overlays = root.findAllByType(Overlay)
-    expect(overlays.length).toBe(0)
+    const { toJSON } = render(<Scanner />)
+    expect(toJSON()).toMatchSnapshot()
   })
 
   // TODO

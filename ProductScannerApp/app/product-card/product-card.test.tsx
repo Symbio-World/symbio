@@ -1,12 +1,11 @@
 import 'react-native'
 import React from 'react'
-import { create } from 'react-test-renderer'
-
+import { render } from 'react-native-testing-library'
 import { ProductCard } from './product-card'
 
 describe('ProductCard', () => {
   it('renders correctly', () => {
-    const tree = create(<ProductCard />).toJSON()
-    expect(tree).toMatchSnapshot()
+    const { toJSON } = render(<ProductCard />)
+    expect(toJSON()).toMatchSnapshot()
   })
 })
