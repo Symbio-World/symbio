@@ -87,5 +87,6 @@ https://readybytes.in/blog/how-to-deploy-a-react-native-ios-app-on-the-app-store
 - Open Android Studio -> Generate Signed Bundle/APK -> locate
 - Upload to Play Store
 
-Initially followed this tutorial
+Initially followed these tutorials
 https://reactnative.dev/docs/signed-apk-android
+https://developer.android.com/studio/publish/app-signing#sign_release
