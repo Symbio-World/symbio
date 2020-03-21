@@ -21,7 +21,8 @@ Use node >= 10 or install nvm https://github.com/nvm-sh/nvm and run
 nvm use
 ```
 
-## VS Code setup
+## VS Code setup 
+### For typescript projects
 
 Required:
 - EditorConfig for VSCode
@@ -37,7 +38,8 @@ Optional, but gives great convenience
 - Jest
 - vsc-nvm
 
-# Workflow
+
+# Conventions
 ## Libraries and apps
 There are 2 types of packages: libraries and apps (services). An app can depend on one or more library, but not on another app. A library can depend on another library, but not on an app
 
@@ -60,10 +62,13 @@ stop
 deploy
 destroy
 
-# Project management
-The easiest is to `cd ..` into a package and work as normal,
-but you can choose to do everything from a root folder
+# Workflow
 
+To start working on any package either
+- open a package as a separate VS Code window
+- cd into the package
+
+You can choose to do everything from a root folder, but commands are a bit involved, see below
 ## To run a command in all packages
 ```
 yarn wsrun <command-name> // runs yarn <command-name> in each package
