@@ -17,6 +17,7 @@ module.exports = {
       '|react-native-tailwindcss' +
       '|react-native-bootsplash' +
       '|react-native-vector-icons' +
+      '|react-native-simple-toast' +
       ')/)',
   ],
 }
