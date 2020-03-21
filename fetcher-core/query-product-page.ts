@@ -6,7 +6,7 @@ type CreateQueryProductPage = (deps: Deps) => QueryProductPage
 
 export type QueryProductPage = (link: string) => Promise<ProductPageData>
 
-export type Parse = (html: string) => ProductPageData
+export type Parse = (link: string, html: string) => ProductPageData
 
 type Deps = {
   fetch: Fetch,
@@ -15,7 +15,7 @@ type Deps = {
 
 export type ProductPageData = {
   ingredients?: string
-  allergens?: string
+  allergens?: string[]
   origin?: string
 }
 
@@ -27,7 +27,7 @@ export const createQueryProductPage: CreateQueryProductPage = ({
     method: 'GET',
     url: link,
   }).catch(throwQueryProductPageError)
-  return parse(response.data)
+  return parse(link, response.data)
 }
 
 // @ts-ignore
