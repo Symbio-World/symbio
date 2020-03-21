@@ -10,7 +10,7 @@ describe('SetupPrinciplesViewContainer', () => {
       savePrinciples: jest.fn(),
       principles: [],
     })
-    const { toJSON } = render(<SetupPrinciplesViewContainer userId={'userId'} />)
+    const { toJSON } = render(<SetupPrinciplesViewContainer />)
     expect(toJSON()).toMatchSnapshot()
   }),
     it('saves principles', () => {
@@ -21,7 +21,7 @@ describe('SetupPrinciplesViewContainer', () => {
         savePrinciples: savePrinciples,
         principles: [principle],
       })
-      const setupPrinciplesViewContainer = <SetupPrinciplesViewContainer userId={userId} />
+      const setupPrinciplesViewContainer = <SetupPrinciplesViewContainer />
       const { getByText, getByType } = render(setupPrinciplesViewContainer)
       fireEvent.press(getByText(principle))
       fireEvent.press(getByType(Button))
@@ -36,7 +36,7 @@ describe('SetupPrinciplesViewContainer', () => {
       savePrinciples: savePrinciples,
       principles: [principles],
     })
-    const setupPrinciplesViewContainer = <SetupPrinciplesViewContainer userId={userId} />
+    const setupPrinciplesViewContainer = <SetupPrinciplesViewContainer />
     const { getByText, getByType } = render(setupPrinciplesViewContainer)
     fireEvent.press(getByText(principles))
     fireEvent.press(getByText(principles))
@@ -51,7 +51,7 @@ describe('SetupPrinciplesViewContainer', () => {
       principles: [],
     })
     const setupPrinciplesViewContainer = (
-      <SetupPrinciplesViewContainer userId={'userId'} onSave={handleSave} />
+      <SetupPrinciplesViewContainer onSave={handleSave} />
     )
     const { getByType } = render(setupPrinciplesViewContainer)
     fireEvent.press(getByType(Button))
