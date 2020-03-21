@@ -2,6 +2,7 @@ import * as R from 'ramda'
 
 import { Translate } from './translate'
 
+// TODO: fix types
 type CreateTranslateObject = (deps: Deps) => TranslateObject
 
 export type TranslateObject = (
@@ -16,53 +17,83 @@ type NestedStringValueObject = {
   [key: string]: string | NestedStringValueObject
 }
 
-const parseValues = (obj: any, array: any[]): any => {
+const checkValueType = (
+  {
+    value = '',
+    onArray = (value: any) => value,
+    onObject = (value: any) => value,
+    onString = (value: any) => value,
+    onNumber = (value: any) => value,
+  }: any) => {
+  const isValueString = typeof value === 'string'
+  const isValueNumber = typeof value === 'number'
+  const isValueArray = Array.isArray(value)
+
+  if (isValueNumber) {
+    return onNumber(value)
+  }
+
+  if (isValueString) {
+    return onString(value)
+  }
+  if (isValueArray) {
+    return onArray(value)
+  }
+
+  onObject(value)
+}
+
+const replaceValueWithInd = (obj: any, array: any[]): any => {
   const keys = Object.keys(obj)
   return keys.reduce((acc, k) => {
-    const isValueString = typeof obj[k] === 'string'
-    const isValueFalse = !obj[k]
-    const isValueArray = Array.isArray(obj[k])
-
-    if (isValueFalse && !isValueString) {
+    if (!obj[k] && !(typeof obj[k] === 'string')) {
       throw new Error(`Encounter wrong value ${k}: ${obj[k]}`)
     }
 
-    if (isValueString) {
-      const newArray = [ ...acc.array, obj[k] ]
-      const newObject = { ...acc.obj, [k]: newArray.length - 1 }
-      return {
-        obj: newObject, array: newArray
+    return checkValueType({
+      value: obj[k],
+      onString: (value: any) => {
+        const newArray = [ ...acc.array, value ]
+        const newObject = { ...acc.obj, [k]: newArray.length - 1 }
+        return {
+          obj: newObject, array: newArray
+        }
+      },
+      onArray: (value: any[]) => {
+        const newArray = [ ...acc.array, ...value ]
+        const newObject = { ...acc.obj, [k]: [newArray.length - obj[k].length, newArray.length - 1] }
+        return {
+          obj: newObject, array: newArray
+        }
+      },
+      onObject: (value: any) => {
+        return { ...acc, ...replaceValueWithInd(value, acc.array) }
       }
-    }
-
-    if (isValueArray) {
-      const newArray = [ ...acc.array, ...obj[k] ]
-      const newObject = { ...acc.obj, [k]: [newArray.length - obj[k].length, newArray.length - 1] }
-      return {
-        obj: newObject, array: newArray
-      }
-    }
-
-    return { ...acc, ...parseValues(obj[k], acc.array) }
+    })
   }, { obj: { ...obj }, array: [ ...array ] })
 }
 
 const replaceIndWithValue = (obj: any, array: any[]): any => {
   const keys = R.keys(obj)
   return keys.reduce((acc, k) => {
-    const isValueNumber = typeof obj[k] === 'number'
-    const isValueArray = Array.isArray(obj[k])
-
-    if (isValueNumber) {
-      return { ...acc, [k]: array[obj[k]] }
+    if (!obj[k] && !(typeof obj[k] === 'number')) {
+      throw new Error(`Encounter wrong value ${String(k)}: ${obj[k]}`)
     }
 
-    if (isValueArray) {
-      const arrayOfValues = array.slice(obj[k][0], obj[k][1] + 1)
-      return { ...acc, [k]: arrayOfValues }
-    }
-
-    return { ...acc, ...parseValues(obj[k], array) }
+    return checkValueType({
+      value: obj[k],
+      onNumber: (value: any) => {
+        return { ...acc, [k]: array[value] }
+      },
+      onArray: (value: any[]) => {
+        const [startInd, endInd] = value
+        const arrayOfValues = array.slice(startInd, endInd + 1)
+        return { ...acc, [k]: arrayOfValues }
+      },
+      onObject: (value: any) => {
+        return { ...acc, ...replaceIndWithValue(value, array) }
+      }
+    })
   }, {})
 }
 
@@ -71,7 +102,7 @@ export const createTranslateObject: CreateTranslateObject = ({
 }) => async obj => {
   const keys = R.keys(obj)
   const values = R.values(obj)
-  const { obj: objectWithArrayInd, array: wordsForTranslate } = parseValues(obj, [])
+  const { obj: objectWithArrayInd, array: wordsForTranslate } = replaceValueWithInd(obj, [])
   const translatedValues = await translate(wordsForTranslate as string[])
   const translatedObject = replaceIndWithValue(objectWithArrayInd, translatedValues)
   return {
