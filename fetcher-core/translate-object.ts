@@ -20,11 +20,17 @@ type NestedStringValueObject = {
 const checkValueType = (
   {
     value = '',
+    checkIsValueWrongType = (value: any) => {
+      if (!value) {
+        throw new Error('Value has wrong type')
+      }
+    },
     onArray = (value: any) => value,
     onObject = (value: any) => value,
     onString = (value: any) => value,
     onNumber = (value: any) => value,
   }: any) => {
+  checkIsValueWrongType(value)
   const isValueString = typeof value === 'string'
   const isValueNumber = typeof value === 'number'
   const isValueArray = Array.isArray(value)
@@ -46,12 +52,13 @@ const checkValueType = (
 const replaceValueWithInd = (obj: any, array: any[]): any => {
   const keys = Object.keys(obj)
   return keys.reduce((acc, k) => {
-    if (!obj[k] && !(typeof obj[k] === 'string')) {
-      throw new Error(`Encounter wrong value ${k}: ${obj[k]}`)
-    }
-
     return checkValueType({
       value: obj[k],
+      checkIsValueWrongType: (value: any) => {
+        if (!value && !(typeof value === 'string')) {
+          throw new Error(`Encounter wrong value ${k}: ${obj[k]}`)
+        }
+      },
       onString: (value: any) => {
         const newArray = [ ...acc.array, value ]
         const newObject = { ...acc.obj, [k]: newArray.length - 1 }
@@ -76,12 +83,13 @@ const replaceValueWithInd = (obj: any, array: any[]): any => {
 const replaceIndWithValue = (obj: any, array: any[]): any => {
   const keys = R.keys(obj)
   return keys.reduce((acc, k) => {
-    if (!obj[k] && !(typeof obj[k] === 'number')) {
-      throw new Error(`Encounter wrong value ${String(k)}: ${obj[k]}`)
-    }
-
     return checkValueType({
       value: obj[k],
+      checkIsValueWrongType: (value: any) => {
+        if (!value && !(typeof value === 'number')) {
+          throw new Error(`Encounter wrong value ${String(k)}: ${obj[k]}`)
+        }
+      },
       onNumber: (value: any) => {
         return { ...acc, [k]: array[value] }
       },
