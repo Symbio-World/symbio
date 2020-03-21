@@ -20,7 +20,6 @@ export const SetupPrinciplesViewContainer = createSetupPrinciplesViewContainer({
     'Fair trade',
     'Package free',
     'Recyclable',
-    'Compostable'
-    'Muslim',
+    'Compostable',
   ],
 })
