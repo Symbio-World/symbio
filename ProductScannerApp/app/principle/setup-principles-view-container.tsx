@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import { SetupPrinciplesView } from './setup-principles-view'
-// TODO move this into deps
 import { useAuth } from '../auth'
 
 type Props = {

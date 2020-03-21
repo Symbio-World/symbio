@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import { FeedbackView } from './feedback-view'
-// TODO move this into deps
 import { useAuth } from '../auth'
 
 type Props = {

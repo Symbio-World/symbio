@@ -30,4 +30,4 @@ export const createAuthProvider: CreateAuthProvider = ({
   )
 }
 
-export const useAuth = () => useContext(authContext)
+export const useAuth = (): AuthContext => useContext(authContext)

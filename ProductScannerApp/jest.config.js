@@ -1,13 +1,14 @@
-const config = require('ts-scripts/jest.config')
+const defaultConfig = require('ts-scripts/jest.config')
 
 module.exports = {
-  ...config,
+  ...defaultConfig,
   preset: 'react-native',
   globals: {
     'ts-jest': {
       babelConfig: true,
     },
   },
+
   setupFilesAfterEnv: ['<rootDir>/setup-tests.js'],
   transformIgnorePatterns: [
     'node_modules/(?!(react-native' +
@@ -18,6 +19,7 @@ module.exports = {
       '|react-native-bootsplash' +
       '|react-native-vector-icons' +
       '|react-native-simple-toast' +
+      '|@react-native-firebase' +
       ')/)',
   ],
 }
