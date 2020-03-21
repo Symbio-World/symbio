@@ -1,0 +1,14 @@
+;; shadow-cljs configuration
+{:source-paths
+ ["src"]
+
+ :dependencies
+ []
+
+ :builds
+ {:parser-core {:target :node-library
+                 :output-to "build/index.js"
+                 :exports-fn index/exports}
+  :test {:target    :node-test
+         :output-to "test-build/node-tests.js"
+         :autorun   true}}}
