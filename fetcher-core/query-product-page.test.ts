@@ -5,7 +5,6 @@ import {
 
 describe('QueryProductPage', () => {
   it('returns product page data for foodie.fi', async () => {
-    console.log(math.add(1, 2))
     const fetch = jest.fn<any, any>(() =>
       Promise.resolve({ data: 'html' }),
     )
