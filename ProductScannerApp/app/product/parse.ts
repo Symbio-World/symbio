@@ -5,6 +5,7 @@ import { Parse } from 'fetcher-core'
 const PRISMA = 'prisma'
 const FOODIE = 'foodie'
 const SELVER = 'selver'
+const BARBORA = 'barbora'
 
 export const parse: Parse = (link, html) => {
   if (link.includes(PRISMA) || link.includes(FOODIE)) {
@@ -13,6 +14,9 @@ export const parse: Parse = (link, html) => {
   if (link.includes(SELVER)) {
     return parseSelver(html)
   }
+  if (link.includes(BARBORA)) {
+    return parseBarbora(html)
+  }
   return {}
 }
 
@@ -20,7 +24,7 @@ export const parseBarbora = (html: string) => {
   const $ = cheerio.load(html)
   return {
     ingredients: $('dt:contains("Koostisosad")').next().text().trim(),
-    allergens: $('dt:contains("ALLERGEENID")').next().text().trim(),
+    allergens: [$('dt:contains("ALLERGEENID")').next().text().trim()],
     origin: $('dt:contains("Päritoluriik")').next().text().trim(),
   }
 }
@@ -68,8 +72,5 @@ const parsePrismaAllergens = ($: CheerioStatic) => {
     .toArray()
     .map(el => $(el).text())
 
-  return R.splitEvery(2, allergensRaw).map(([label, statement]) => ({
-    label,
-    statement,
-  }))
+  return R.splitEvery(2, allergensRaw).map(([label, statement]) => `${label}: ${statement}`)
 }

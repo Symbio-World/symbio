@@ -31,7 +31,11 @@ export const ProductView: React.FC<Props> = props => {
         <Text style={[t.fontBold, t.mT8]}>Ingredients</Text>
         <Text>{props.ingredients ? props.ingredients : '-'}</Text>
         <Text style={[t.fontBold, t.mT8]}>Allergens</Text>
-        <Text>{props.allergens ? props.allergens : '-'}</Text>
+        {props.allergens ? (
+          props.allergens.map(t => <Text>{t}</Text>)
+        ) : (
+          <Text>'-'</Text>
+        )}
         <Text style={[t.fontBold, t.mT8]}>Origin</Text>
         <Text>{props.origin}</Text>
         <View style={[t.mT5]}>

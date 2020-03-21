@@ -10,11 +10,7 @@ describe('Parse', () => {
       ingredients:
         'Vesi, rypsiöljy, kasvirasvat (palmu, kookos), suola, emulgointiaineet (E 471 kasviperäinen, E 476), säilöntäaine (E 202), happamuudensäätöaine (E 330, E 500), aromit, väri (E 160a), A- ja D-vitamiini.',
       allergens: [
-        {
-          label: 'Ei sisällä',
-          statement:
-            'Maito ja maitotuotteet, myös laktoosi, Soijapavut ja soijapaputuotteet',
-        },
+        'Ei sisällä: Maito ja maitotuotteet, myös laktoosi, Soijapavut ja soijapaputuotteet'
       ],
       origin: 'Suomi',
     })
@@ -25,16 +21,8 @@ describe('Parse', () => {
       ingredients:
         'sealiha 55%,vesi,veiseliha 10%,seapekk,kanamuna,vadakupulber sh piim,sool,lihavalk,stabilisaator E450,tärklis,suhkur,happesuse regulaator E451,antioksüdant E316,lõhna-ja maitseained,säilitusaine E250',
       allergens: [
-        {
-          label: 'Sisaldab',
-          statement:
-            'Munad ja neist valmistatud tooted, Piim ja sellest valmistatud tooted (sealhulgas laktoos)',
-        },
-        {
-          label: 'Võib sisaldada',
-          statement:
-            'Sojaoad ja neist valmistatud tooted, Seller ja sellest valmistatud tooted, Sinep ja sellest valmistatud tooted',
-        },
+        'Sisaldab: Munad ja neist valmistatud tooted, Piim ja sellest valmistatud tooted (sealhulgas laktoos)',
+        'Võib sisaldada: Sojaoad ja neist valmistatud tooted, Seller ja sellest valmistatud tooted, Sinep ja sellest valmistatud tooted'
       ],
       origin: 'Eesti',
     })
@@ -55,7 +43,9 @@ describe('Parse', () => {
   it('parses barbora', async () => {
     expect(parseBarbora(barbora.html)).toEqual({
       ingredients: 'Täistera KAERAhelbed',
-      allergens: 'Sisaldab: gluteeni sisaldavad teraviljad',
+      allergens: [
+        'Sisaldab: gluteeni sisaldavad teraviljad'
+      ],
       origin: 'Soome',
     })
   })
