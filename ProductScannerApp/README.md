@@ -62,8 +62,12 @@ yarn test -- -u
 https://invertase.io/oss/react-native-firebase/
 Firebase provides 
 - error reporting
+- authentication
 - analytics
 - database
+
+## Testing with React Native testing library
+https://callstack.github.io/react-native-testing-library/docs/api
 
 ## Styling
 To speed up writing styles use Tailwind css https://tvke.github.io/react-native-tailwindcss/

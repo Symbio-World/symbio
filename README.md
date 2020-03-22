@@ -31,6 +31,7 @@ Required:
 - npm Intellisense
 
 Optional, but gives great convenience
+- Markdown All in One
 - Auto Rename Tag by Jun Han
 - Bracker Pair Colorizer 2 by CoenraadS
 - file-icons
