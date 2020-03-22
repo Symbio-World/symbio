@@ -3,17 +3,27 @@ import { createTranslateObject } from './translate-object'
 describe('TranslateObject', () => {
   it('returns translated object', async () => {
     const translate = jest.fn(() =>
-      Promise.resolve(['Hello', 'Friend', 'World']),
+      Promise.resolve(['ingredients', 's', 'q', 'f', 'c', 'origin']),
     )
-    const translatedObj = await createTranslateObject({ translate })({
-      name: 'Ola',
-      description: 'Amigo',
-      whatever: 'Mundo',
-    })
+    const translatedObj = await createTranslateObject({ translate })(({
+      ingredients: 'sealiha 55%,vesi',
+      allergens: [
+        's', 'q'
+      ],
+      nutrients: [
+        'f', 'c'
+      ],
+      origin: 'Mundo',
+    } as any))
     expect(translatedObj).toEqual({
-      name: 'Hello',
-      description: 'Friend',
-      whatever: 'World',
+      ingredients: 'ingredients',
+      allergens: [
+        's', 'q'
+      ],
+      nutrients: [
+        'f', 'c'
+      ],
+      origin: 'origin',
     })
   })
 })
