@@ -1,0 +1,9 @@
+{
+  "extends": "ts-scripts/tsconfig.json",
+  "compilerOptions": {
+    "outDir": "./build",
+    "sourceMap": true,
+    "target": "es2017"
+  },
+  "compileOnSave": true
+}
