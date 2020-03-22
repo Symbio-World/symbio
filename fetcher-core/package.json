@@ -10,7 +10,6 @@
     "clean": "rm -rf ./build"
   },
   "devDependencies": {
-    "@types/cheerio": "0.22.16",
     "@types/ramda": "0.26.43",
     "intermock": "0.2.2",
     "ts-scripts": "1.0.0"

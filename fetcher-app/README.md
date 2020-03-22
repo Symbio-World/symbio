@@ -4,3 +4,5 @@ Install firebase tools globally
 ```
 yarn global add firebase-tools
 ```
+
+Architecture inspired by CQRS pattern

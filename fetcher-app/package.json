@@ -1,5 +1,5 @@
 {
-  "name": "functions",
+  "name": "fetcher-app",
   "private": true,
   "version": "1.0.0",
   "scripts": {
@@ -9,16 +9,24 @@
     "start": "npm run shell",
     "deploy": "firebase deploy --only functions",
     "logs": "firebase functions:log",
-    "clean": "rm -rf build"
+    "clean": "rm -rf build",
+    "test": "jest",
+    "set-env": "firebase functions:config:set env=\"$(cat env.json)\""
   },
   "main": "build/index.js",
   "dependencies": {
+    "axios": "^0.19.2",
+    "cheerio": "^1.0.0-rc.3",
+    "fetcher-core": "1.0.0",
     "firebase-admin": "^8.6.0",
-    "firebase-functions": "^3.3.0"
+    "firebase-functions": "^3.3.0",
+    "ramda": "^0.27.0"
   },
   "devDependencies": {
-    "typescript": "^3.2.2",
+    "@types/cheerio": "^0.22.17",
+    "@types/ramda": "^0.26.44",
     "firebase-functions-test": "^0.1.6",
-    "ts-scripts": "1.0.0"
+    "ts-scripts": "1.0.0",
+    "typescript": "^3.2.2"
   }
 }
