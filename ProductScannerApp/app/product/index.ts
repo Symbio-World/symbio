@@ -1,29 +1,13 @@
-import axios from 'axios'
-import {
-  GOOGLE_CUSTOM_SEARCH_ENGINE_KEY,
-  GOOGLE_CUSTOM_SEARCH_ENGINE_CX,
-  GOOGLE_TRANSLATE_API_KEY,
-} from 'react-native-dotenv'
-import {
-  createFetchProduct,
-} from 'fetcher-core'
+import firebase from '@react-native-firebase/app'
+import '@react-native-firebase/functions';
+import { ProductData } from 'fetcher-core'
 
 import { createProductViewContainer } from './product-view-container'
-import { parse } from './parse'
 
 export const ProductViewContainer = createProductViewContainer({
-  fetchProductData: createFetchProduct({
-    fetch: axios.request,
-    parse,
-    googleSeachConfig: {
-      key: GOOGLE_CUSTOM_SEARCH_ENGINE_KEY,
-      cx: GOOGLE_CUSTOM_SEARCH_ENGINE_CX,
-      url: 'https://www.googleapis.com/customsearch/v1'
-    },
-    googleTranslateApiConfig: {
-      key: GOOGLE_TRANSLATE_API_KEY,
-      url: 'https://translation.googleapis.com/language/translate/v2',
-      target: 'en'
-    }
-  }),
+  fetchProductData: async barcode => {
+    const product = await firebase.functions().httpsCallable('getProduct')({ barcode })
+    // @ts-ignore
+    return product as ProductData
+  },
 })

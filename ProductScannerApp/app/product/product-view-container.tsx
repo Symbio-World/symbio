@@ -1,5 +1,4 @@
 import React from 'react'
-import { Text } from 'react-native'
 import useSWR from 'swr'
 import { FetchProductData, ProductData, NoDataFoundError } from 'fetcher-core'
 import { Loading } from '../ui-kit/loading'

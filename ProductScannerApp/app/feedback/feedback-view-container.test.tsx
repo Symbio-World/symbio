@@ -27,7 +27,7 @@ describe('FeedbackViewContainer', () => {
         saveFeedback,
       })
       const feedbackViewContainer = <FeedbackViewContainer />
-      const { getByText, getByType } = render(feedbackViewContainer)
+      const { getByType } = render(feedbackViewContainer)
       fireEvent.changeText(getByType(TextInput), feedback)
       fireEvent.press(getByType(Button))
       expect(saveFeedback).toHaveBeenCalledWith(user.id, feedback)

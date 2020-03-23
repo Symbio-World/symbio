@@ -1,7 +1,7 @@
 import 'react-native'
 import React from 'react'
 import { Text } from 'react-native'
-import { render, fireEvent } from 'react-native-testing-library'
+import { render } from 'react-native-testing-library'
 import { createAuthProvider, useAuth } from './auth-context'
 
 describe('AuthContext', () => {

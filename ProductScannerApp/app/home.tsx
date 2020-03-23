@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import useSWR from 'swr'
 import { useAuth } from './auth'
 import { fetchPrinciples } from './principle'
@@ -8,7 +8,7 @@ import { SetupPrinciplesViewContainer } from './principle'
 
 export const Home: React.FC = () => {
   const { user } = useAuth()
-  const { data: principles, error, isValidating, mutate } = useSWR<
+  const { data: principles, isValidating, mutate } = useSWR<
     string[] | null
   >(user ? user.id : null, fetchPrinciples)
 
