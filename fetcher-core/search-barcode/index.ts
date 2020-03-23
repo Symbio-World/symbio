@@ -3,4 +3,5 @@ export {
   ProductSearchData,
   SearchBarcode,
   NoDataFoundError,
+  FetchSearchResponse,
 } from './search-barcode'

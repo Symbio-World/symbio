@@ -1,36 +1,49 @@
-import { Fetch } from './fetch'
-import { createFetchProductData, FetchProductData, ProductData } from './fetch-product-data'
-import { createSearchBarcode, NoDataFoundError } from './search-barcode'
-import { createQueryProductPage, Parse } from './query-product-page'
-import { createTranslateObject, createTranslate } from './translate'
-import { GoogleSearchConfig, GoogleTranslateApiConfig } from './config'
+import {
+  createFetchProductData,
+  FetchProductData,
+  ProductData,
+} from './fetch-product-data'
+import {
+  createSearchBarcode,
+  NoDataFoundError,
+  FetchSearchResponse,
+} from './search-barcode'
+import {
+  createQueryProductPage,
+  Parse,
+  FetchProductPage,
+} from './query-product-page'
+import {
+  createTranslateObject,
+  createTranslate,
+  FetchTranslateResponse,
+} from './translate'
 
 type Deps = {
-  fetch: Fetch
-  parse: Parse,
-  googleSeachConfig: GoogleSearchConfig,
-  googleTranslateApiConfig: GoogleTranslateApiConfig,
+  fetchTranslateResponse: FetchTranslateResponse
+  fetchSearchResponse: FetchSearchResponse
+  fetchProductPage: FetchProductPage
+  parse: Parse
 }
 
 export { FetchProductData, ProductData, Parse, NoDataFoundError }
 export type CreateFetchProduct = (deps: Deps) => FetchProductData
 
 export const createFetchProduct: CreateFetchProduct = ({
-  fetch,
+  fetchSearchResponse,
+  fetchProductPage,
+  fetchTranslateResponse,
   parse,
-  googleSeachConfig,
-  googleTranslateApiConfig,
-}) => createFetchProductData({
-  searchBarcode: createSearchBarcode({
-    fetch,
-    ...googleSeachConfig
-  }),
-  queryProductPage: createQueryProductPage({ fetch, parse }),
-  translateObject: createTranslateObject({
-    translate: createTranslate({
-      fetch,
-      ...googleTranslateApiConfig
-    })
-  }),
-  preferredDomains: ['prisma.ee', 'foodie.fi']
-})
+}) =>
+  createFetchProductData({
+    searchBarcode: createSearchBarcode({
+      fetchSearchResponse,
+    }),
+    queryProductPage: createQueryProductPage({ fetchProductPage, parse }),
+    translateObject: createTranslateObject({
+      translate: createTranslate({
+        fetchTranslateResponse,
+      }),
+    }),
+    preferredDomains: ['prisma.ee', 'foodie.fi'],
+  })

@@ -31,29 +31,29 @@ yarn ios
 
 ## Run on iOS device
 ```
-yarn ios -- --device
+yarn ios --device
 ```
 
 ## Run on iOS device in release mode
 ```
-yarn ios -- --device --configuration Release
+yarn ios --device --configuration Release
 ```
 
 # Test
 
 Run a specific test with
 ```
-yarn test -- -t "<test name>"
+yarn test -t "<test name>"
 ```
 
 Run a specific auite with
 ```
-yarn test -- -t "<suite name>"
+yarn test -t "<suite name>"
 ```
 
 Update snapshot tests
 ```
-yarn test -- -u
+yarn test -u
 ```
 
 # Worflow

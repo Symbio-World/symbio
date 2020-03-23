@@ -1,13 +1,11 @@
-import { Fetch, HttpError } from '../fetch'
-import { GoogleSearchConfig } from '../config'
-
 type CreateSearchBarcode = (deps: Deps) => SearchBarcode
 
 export type SearchBarcode = (barcode: string) => Promise<ProductSearchData>
 
+export type FetchSearchResponse = (barcode: string) => Promise<SearchResponse>
 type Deps = {
-  fetch: Fetch
-} & GoogleSearchConfig
+  fetchSearchResponse: FetchSearchResponse
+}
 
 export type ProductSearchData = SearchResponseItemProduct & {
   links: string[]
@@ -34,31 +32,20 @@ type SearchResponseItemProduct = {
 }
 
 export const createSearchBarcode: CreateSearchBarcode = ({
-  fetch,
-  url,
-  key,
-  cx,
+  fetchSearchResponse
 }) => async barcode => {
-  const response = await fetch<SearchResponse>({
-    method: 'GET',
-    url,
-    params: {
-      key,
-      cx,
-      q: barcode,
-    },
-  }).catch(throwSearchBarcodeError)
+  const response = await fetchSearchResponse(barcode).catch(throwSearchBarcodeError)
 
-  if(!response.data.items) throw new NoDataFoundError()
+  if(!response.items) throw new NoDataFoundError()
 
-  const product = response.data.items.reduce(
+  const product = response.items.reduce(
     (acc, item) => ({
       ...item?.pagemap?.product?.[0],
       ...acc,
     }),
     {},
   )
-  const links = response.data.items.map(i => i.link)
+  const links = response.items.map(i => i.link)
   return {
     ...product,
     links,
@@ -70,7 +57,7 @@ const throwSearchBarcodeError = e => {
   throw new SearchBarcodeError(e)
 }
 
-export class SearchBarcodeError extends HttpError {
+export class SearchBarcodeError extends Error {
   // @ts-ignore
   constructor(message) {
     super(message)
