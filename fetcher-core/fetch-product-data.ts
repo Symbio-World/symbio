@@ -2,7 +2,7 @@ import * as R from 'ramda'
 
 import { SearchBarcode, ProductSearchData } from './search-barcode'
 import { QueryProductPage, ProductPageData } from './query-product-page'
-import { TranslateObject } from './translate-object'
+import { TranslateObject } from './translate'
 
 type CreateFetchProductData = (deps: Deps) => FetchProductData
 

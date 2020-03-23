@@ -50,18 +50,11 @@ App should not include any business logic. All business logic must be in an acco
 ## Yarn workspaces
 Project uses yarn workspaces. It allows for the following workflow:
 Each folder is an isolated npm package with its own dependencies
-Each package usually implements the following commands:
-lint
-build
-watch
-test
-clean
+Each package 
+- must imlement `test`, `clean` and `clean-all` command
+- also usually implements `lint`, `build` and `watch`
 
-if package is an app it might also include some of these
-start
-stop
-deploy
-destroy
+if package is an app it might also include some of these `start`, `stop`, `deploy`, `destroy`
 
 # Workflow
 

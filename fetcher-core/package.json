@@ -7,7 +7,8 @@
     "build": "tsc",
     "watch": "tsc --watch",
     "test": "jest",
-    "clean": "rm -rf ./build"
+    "clean": "rm -rf ./build",
+    "clean-all": "yarn clean && rm -rf node_modules/"
   },
   "devDependencies": {
     "@types/ramda": "0.26.43",

@@ -2,8 +2,7 @@ import { Fetch } from './fetch'
 import { createFetchProductData, FetchProductData, ProductData } from './fetch-product-data'
 import { createSearchBarcode, NoDataFoundError } from './search-barcode'
 import { createQueryProductPage, Parse } from './query-product-page'
-import { createTranslateObject } from './translate-object'
-import { createTranslate } from './translate'
+import { createTranslateObject, createTranslate } from './translate'
 import { GoogleSearchConfig, GoogleTranslateApiConfig } from './config'
 
 type Deps = {

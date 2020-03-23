@@ -1,5 +1,5 @@
-import { Fetch, HttpError } from './fetch'
-import { GoogleSearchConfig } from './config'
+import { Fetch, HttpError } from '../fetch'
+import { GoogleSearchConfig } from '../config'
 
 type CreateSearchBarcode = (deps: Deps) => SearchBarcode
 

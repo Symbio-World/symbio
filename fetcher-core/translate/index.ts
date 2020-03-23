@@ -1,1 +1,2 @@
-export { createTranslateObject } from './translate-object'
+export { createTranslateObject, TranslateObject } from './translate-object'
+export { createTranslate } from './translate'

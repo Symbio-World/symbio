@@ -10,6 +10,7 @@
     "deploy": "firebase deploy --only functions",
     "logs": "firebase functions:log",
     "clean": "rm -rf build",
+    "clean-all": "yarn clean && rm -rf node_modules/",
     "test": "jest",
     "set-env": "firebase functions:config:set env=\"$(cat env.json)\""
   },

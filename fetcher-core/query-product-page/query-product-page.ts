@@ -1,6 +1,4 @@
-// @ts-ignore
-import cheerio from 'cheerio-without-node-native'
-import { Fetch, HttpError } from './fetch'
+import { Fetch, HttpError } from '../fetch'
 
 type CreateQueryProductPage = (deps: Deps) => QueryProductPage
 
