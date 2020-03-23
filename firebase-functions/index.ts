@@ -1,41 +1,38 @@
 import * as functions from 'firebase-functions'
-import axios from 'axios'
-import { createFetchProduct } from 'fetcher-core'
 import { parse } from 'parser-core'
-import { config } from './config'
+import { createFetchProduct } from 'fetcher-core'
+import {
+  fetchSearchResponse,
+  fetchProductPage,
+  fetchTranslateResponse,
+} from './fetch-product-parts'
+import { storeEvent } from './store-event'
 
-const fetchProduct = createFetchProduct({
-  fetchSearchResponse: async barcode => {
-    const result = await axios.get(config.googleSearch.url, {
-      params: {
-        key: config.googleSearch.key,
-        cx: config.googleSearch.cx,
-        q: barcode,
-      },
-    })
-    return result.data
-  },
-  fetchProductPage: async link => {
-    const result = await axios.get(link)
-    return result.data
-  },
-  fetchTranslateResponse: async strings => {
-    const result = await axios.post(
-      config.googleTranslate.url,
-      {
-        q: strings,
-        target: config.googleTranslate.target,
-      },
-      {
-        params: {
-          key: config.googleTranslate.key,
-        },
-      },
-    )
-    return result.data
-  },
-  parse,
-})
-export const getProduct = functions.https.onCall(data => {
-  return data.barcode ? fetchProduct(data.barcode) : {}
+export const getProduct = functions.https.onCall(async data => {
+  const barcode = data.barcode
+  const fetchProduct = createFetchProduct({
+    fetchSearchResponse: async b => {
+      const searchResponse = await fetchSearchResponse(b)
+      storeEvent({ searchResponse, barcode })
+      return searchResponse
+    },
+    fetchProductPage: async link => {
+      const html = await fetchProductPage(link)
+      storeEvent({ html, barcode, link })
+      return html
+    },
+    fetchTranslateResponse: async strings => {
+      const translateResponse = await fetchTranslateResponse(strings)
+      storeEvent({ translateResponse, barcode, strings })
+      return translateResponse
+    },
+    parse: (link, html) => {
+      const productPageData = parse(link, html)
+      storeEvent({ productPageData, link, barcode })
+      return productPageData
+    },
+  })
+  const productData = barcode ? await fetchProduct(barcode) : {}
+  storeEvent({ barcode, productData })
+  return productData
 })

@@ -26,7 +26,15 @@ type Deps = {
   parse: Parse
 }
 
-export { FetchProductData, ProductData, Parse, NoDataFoundError }
+export {
+  FetchProductData,
+  ProductData,
+  Parse,
+  NoDataFoundError,
+  FetchSearchResponse,
+  FetchProductPage,
+  FetchTranslateResponse,
+}
 export type CreateFetchProduct = (deps: Deps) => FetchProductData
 
 export const createFetchProduct: CreateFetchProduct = ({

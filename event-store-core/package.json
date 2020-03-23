@@ -1,0 +1,16 @@
+{
+  "name": "event-store-core",
+  "version": "1.0.0",
+  "main": "build/index.js",
+  "scripts": {
+    "lint": "tsc --noEmit && eslint . --quiet --fix",
+    "build": "tsc",
+    "watch": "tsc --watch",
+    "test": "jest",
+    "clean": "rm -rf ./build",
+    "clean-all": "yarn clean && rm -rf node_modules/"
+  },
+  "devDependencies": {
+    "ts-scripts": "1.0.0"
+  }
+}
