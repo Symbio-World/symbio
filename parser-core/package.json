@@ -1,5 +1,5 @@
 {
-  "name": "fetcher-core",
+  "name": "parser-core",
   "version": "1.0.0",
   "main": "build/index.js",
   "scripts": {
@@ -11,10 +11,13 @@
     "clean-all": "yarn clean && rm -rf node_modules/"
   },
   "devDependencies": {
+    "@types/cheerio": "^0.22.17",
     "@types/ramda": "0.27.0",
     "ts-scripts": "1.0.0"
   },
   "dependencies": {
+    "cheerio": "^1.0.0-rc.3",
+    "fetcher-core": "1.0.0",
     "ramda": "0.27.0"
   }
 }
