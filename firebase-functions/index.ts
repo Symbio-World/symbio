@@ -1,8 +1,8 @@
 import * as functions from 'firebase-functions'
 import axios from 'axios'
-import { config } from './config'
 import { createFetchProduct } from 'fetcher-core'
-import { parse } from './parse'
+import { parse } from 'parser-core'
+import { config } from './config'
 
 const fetchProduct = createFetchProduct({
   fetch: axios.request,

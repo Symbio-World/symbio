@@ -51,10 +51,10 @@ App should not include any business logic. All business logic must be in an acco
 Project uses yarn workspaces. It allows for the following workflow:
 Each folder is an isolated npm package with its own dependencies
 Each package 
-- must imlement `test`, `clean` and `clean-all` command
-- also usually implements `lint`, `build` and `watch`
+- must imlement `test`, `clean` and `clean-all` commands
+- might implement `lint`, `build`, `watch`, etc.
 
-if package is an app it might also include some of these `start`, `stop`, `deploy`, `destroy`
+if package is an app it might also implement `start`, `stop`, `deploy`, `destroy`, etc.
 
 # Workflow
 

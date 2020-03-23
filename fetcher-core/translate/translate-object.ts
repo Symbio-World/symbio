@@ -16,26 +16,11 @@ export const createTranslateObject: CreateTranslateObject = ({
 }) => async obj => {
   const pathValuePairs = parseTree(obj)
   const values = pathValuePairs.map(({ value }) => value)
-  const translatedValues = await translate(values as string[]).catch(
-    throwTranslateObjectError,
-  )
+  const translatedValues = await translate(values as string[])
   const translatedPathValuePairs = pathValuePairs.map(({ path }, index) => ({
     path,
     value: translatedValues[index],
   }))
   const translatedObject = toTree(translatedPathValuePairs)
   return translatedObject as ValueMap
-}
-
-const throwTranslateObjectError = (s: string) => {
-  throw new TranslateObjectError(s)
-}
-
-export class TranslateObjectError extends Error {
-  // @ts-ignore
-  constructor(message) {
-    super(message)
-    this.name = 'TranslateObjectError'
-    this.message = message
-  }
 }
