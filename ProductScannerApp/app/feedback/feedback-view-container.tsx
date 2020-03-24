@@ -2,17 +2,14 @@ import React from 'react'
 import { FeedbackView } from './feedback-view'
 import { useAuth } from '../auth'
 
+type CreateFeedbackViewContainer = (deps: Deps) => React.FC<Props>
+type Deps = {
+  saveFeedback: (userId: string, feedback: string) => Promise<void>
+}
 type Props = {
   title?: string
   onSave?: () => void
 }
-
-type Deps = {
-  saveFeedback: (userId: string, feedback: string) => Promise<void>
-}
-
-type CreateFeedbackViewContainer = (deps: Deps) => React.FC<Props>
-
 export const createFeedbackViewContainer: CreateFeedbackViewContainer = ({
   saveFeedback,
 }) => ({ title, onSave = () => {} }) => {

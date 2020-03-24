@@ -2,16 +2,14 @@ import React, { useState } from 'react'
 import { SetupPrinciplesView } from './setup-principles-view'
 import { useAuth } from '../auth'
 
-type Props = {
-  onSave?: () => void
-}
-
+type CreateSetupPrinciplesViewContainer = (deps: Deps) => React.FC<Props>
 type Deps = {
   savePrinciples: (userId: string, principles: string[]) => Promise<void>
   principles: string[]
 }
-
-type CreateSetupPrinciplesViewContainer = (deps: Deps) => React.FC<Props>
+type Props = {
+  onSave?: () => void
+}
 
 export const createSetupPrinciplesViewContainer: CreateSetupPrinciplesViewContainer = ({
   savePrinciples,
