@@ -9,9 +9,11 @@ jest.mock('../auth')
 
 describe('SetupPrinciplesViewContainer', () => {
   const user = { id: 'id' }
+
   beforeEach(() => {
-    (useAuth as jest.Mock).mockImplementation(() => ({ user }))
+    ;(useAuth as jest.Mock).mockImplementation(() => ({ user }))
   })
+
   it('renders correctly', () => {
     const SetupPrinciplesViewContainer = createSetupPrinciplesViewContainer({
       savePrinciples: jest.fn(),
@@ -19,32 +21,33 @@ describe('SetupPrinciplesViewContainer', () => {
     })
     const { toJSON } = render(<SetupPrinciplesViewContainer />)
     expect(toJSON()).toMatchSnapshot()
-  }),
-    it('saves principles', () => {
-      const savePrinciples = jest.fn()
-      const principle = 'principle'
-      const SetupPrinciplesViewContainer = createSetupPrinciplesViewContainer({
-        savePrinciples: savePrinciples,
-        principles: [principle],
-      })
-      const setupPrinciplesViewContainer = <SetupPrinciplesViewContainer />
-      const { getByText, getByType } = render(setupPrinciplesViewContainer)
-      fireEvent.press(getByText(principle))
-      fireEvent.press(getByType(Button))
-      expect(savePrinciples).toHaveBeenCalledWith(user.id, [principle])
-    })
+  })
 
-  it('deselects principles', () => {
+  it('saves principles', () => {
     const savePrinciples = jest.fn()
-    const principles = 'principle'
+    const principle = 'principle'
     const SetupPrinciplesViewContainer = createSetupPrinciplesViewContainer({
       savePrinciples: savePrinciples,
-      principles: [principles],
+      principles: [principle],
     })
     const setupPrinciplesViewContainer = <SetupPrinciplesViewContainer />
     const { getByText, getByType } = render(setupPrinciplesViewContainer)
-    fireEvent.press(getByText(principles))
-    fireEvent.press(getByText(principles))
+    fireEvent.press(getByText(principle))
+    fireEvent.press(getByType(Button))
+    expect(savePrinciples).toHaveBeenCalledWith(user.id, [principle])
+  })
+
+  it('deselects principles', () => {
+    const savePrinciples = jest.fn()
+    const principle = 'principle'
+    const SetupPrinciplesViewContainer = createSetupPrinciplesViewContainer({
+      savePrinciples: savePrinciples,
+      principles: [principle],
+    })
+    const setupPrinciplesViewContainer = <SetupPrinciplesViewContainer />
+    const { getByText, getByType } = render(setupPrinciplesViewContainer)
+    fireEvent.press(getByText(principle))
+    fireEvent.press(getByText(principle))
     fireEvent.press(getByType(Button))
     expect(savePrinciples).toHaveBeenCalledWith(user.id, [])
   })

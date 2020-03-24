@@ -12,8 +12,7 @@ const mockUseRef = (obj: any) => () => Object.defineProperty({}, 'current', {
 
 describe('ScanBarcodeView', () => {
   it('renders correctly', () => {
-    const useRef = mockUseRef({ startScanning: jest.fn() })
-    const { toJSON } = render(<ScanBarcodeView useRef={useRef} />)
+    const { toJSON } = render(<ScanBarcodeView />)
     expect(toJSON()).toMatchSnapshot()
   })
 

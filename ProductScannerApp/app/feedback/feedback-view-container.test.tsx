@@ -10,28 +10,31 @@ jest.mock('../auth')
 
 describe('FeedbackViewContainer', () => {
   const user = { id: 'id' }
+
   beforeEach(() => {
-    (useAuth as jest.Mock).mockImplementation(() => ({ user }))
+    ;(useAuth as jest.Mock).mockImplementation(() => ({ user }))
   })
+
   it('renders correctly', () => {
     const FeedbackViewContainer = createFeedbackViewContainer({
       saveFeedback: jest.fn(),
     })
     const { toJSON } = render(<FeedbackViewContainer title="Test" />)
     expect(toJSON()).toMatchSnapshot()
-  }),
-    it('saves feedback', () => {
-      const saveFeedback = jest.fn()
-      const feedback = 'feedback'
-      const FeedbackViewContainer = createFeedbackViewContainer({
-        saveFeedback,
-      })
-      const feedbackViewContainer = <FeedbackViewContainer />
-      const { getByType } = render(feedbackViewContainer)
-      fireEvent.changeText(getByType(TextInput), feedback)
-      fireEvent.press(getByType(Button))
-      expect(saveFeedback).toHaveBeenCalledWith(user.id, feedback)
+  })
+
+  it('saves feedback', () => {
+    const saveFeedback = jest.fn()
+    const feedback = 'feedback'
+    const FeedbackViewContainer = createFeedbackViewContainer({
+      saveFeedback,
     })
+    const feedbackViewContainer = <FeedbackViewContainer />
+    const { getByType } = render(feedbackViewContainer)
+    fireEvent.changeText(getByType(TextInput), feedback)
+    fireEvent.press(getByType(Button))
+    expect(saveFeedback).toHaveBeenCalledWith(user.id, feedback)
+  })
 
   it('triggers onSave if stored', () => {
     const handleSave = jest.fn()
