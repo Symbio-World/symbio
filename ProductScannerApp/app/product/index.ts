@@ -1,5 +1,5 @@
 import functions from '@react-native-firebase/functions';
-import { ProductData } from '@symbio/fetcher-core'
+import { ProductData } from '@symbio/conveyor-core'
 
 import { createProductViewContainer } from './product-view-container'
 

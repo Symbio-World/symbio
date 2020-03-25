@@ -3,7 +3,7 @@ import {
   FetchTranslateResponse,
   FetchProductPage,
   FetchSearchResponse,
-} from '@symbio/fetcher-core'
+} from '@symbio/conveyor-core'
 import { config } from './config'
 
 export const fetchSearchResponse: FetchSearchResponse = async barcode => {

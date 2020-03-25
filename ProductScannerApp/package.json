@@ -21,7 +21,7 @@
     "@react-native-firebase/functions": "^6.3.4",
     "axios": "0.19.2",
     "@symbio/event-store-core": "1.0.0",
-    "@symbio/fetcher-core": "1.0.0",
+    "@symbio/conveyor-core": "1.0.0",
     "react": "16.13.0",
     "react-native": "0.61.5",
     "react-native-bootsplash": "2.0.5",

@@ -1,5 +1,5 @@
 {
-  "name": "@symbio/fetcher-core",
+  "name": "@symbio/conveyor-core",
   "version": "1.0.0",
   "main": "build/index.js",
   "scripts": {

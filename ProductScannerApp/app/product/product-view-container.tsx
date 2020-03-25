@@ -1,6 +1,6 @@
 import React from 'react'
 import useSWR from 'swr'
-import { FetchProductData, ProductData, NoDataFoundError } from '@symbio/fetcher-core'
+import { FetchProductData, ProductData, NoDataFoundError } from '@symbio/conveyor-core'
 import { Loading } from '../ui-kit/loading'
 import { Error } from '../ui-kit/error'
 import { ProductView } from './product-view'
