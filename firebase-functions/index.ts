@@ -1,5 +1,5 @@
 import * as functions from 'firebase-functions'
-import { parse } from '@symbio/parser-core'
+import { parseProductPage } from '@symbio/parser-core'
 import { createConveyor } from '@symbio/conveyor-core'
 import {
   fetchSearchResponse,
@@ -21,8 +21,8 @@ export const getProduct = functions.https.onCall(async data => {
       storeEvent({ html, barcode, link })
       return html
     },
-    parse: (link, html) => {
-      const productPageData = parse(link, html)
+    parseProductPage: (link, html) => {
+      const productPageData = parseProductPage(link, html)
       storeEvent({ productPageData, link, barcode })
       return productPageData
     },

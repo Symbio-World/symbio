@@ -10,7 +10,7 @@ import {
 } from './search-barcode'
 import {
   createQueryProductPage,
-  Parse,
+  ParseProductPage,
   FetchProductPage,
 } from './query-product-page'
 import {
@@ -23,13 +23,13 @@ type Deps = {
   fetchTranslateResponse: FetchTranslateResponse
   fetchSearchResponse: FetchSearchResponse
   fetchProductPage: FetchProductPage
-  parse: Parse
+  parseProductPage: ParseProductPage
 }
 
 export {
   FetchProductData,
   ProductData,
-  Parse,
+  ParseProductPage,
   NoDataFoundError,
   FetchSearchResponse,
   FetchProductPage,
@@ -41,13 +41,16 @@ export const createConveyor: CreateConveyor = ({
   fetchSearchResponse,
   fetchProductPage,
   fetchTranslateResponse,
-  parse,
+  parseProductPage,
 }) =>
   createFetchProductData({
     searchBarcode: createSearchBarcode({
       fetchSearchResponse,
     }),
-    queryProductPage: createQueryProductPage({ fetchProductPage, parse }),
+    queryProductPage: createQueryProductPage({
+      fetchProductPage,
+      parseProductPage,
+    }),
     translateObject: createTranslateObject({
       translate: createTranslate({
         fetchTranslateResponse,

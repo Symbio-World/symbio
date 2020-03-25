@@ -2,6 +2,6 @@ export {
   createQueryProductPage,
   ProductPageData,
   QueryProductPage,
-  Parse,
-  FetchProductPage
+  ParseProductPage,
+  FetchProductPage,
 } from './query-product-page'

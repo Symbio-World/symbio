@@ -1,13 +1,13 @@
 import * as R from 'ramda'
 import cheerio from 'cheerio'
-import { Parse } from '@symbio/conveyor-core'
+import { ParseProductPage } from '@symbio/conveyor-core'
 
 const PRISMA = 'prisma'
 const FOODIE = 'foodie'
 const SELVER = 'selver'
 const BARBORA = 'barbora'
 
-export const parse: Parse = (link, html) => {
+export const parseProductPage: ParseProductPage = (link, html) => {
   if (link.includes(PRISMA) || link.includes(FOODIE)) {
     return parsePrisma(html)
   }
@@ -23,21 +23,44 @@ export const parse: Parse = (link, html) => {
 export const parseBarbora = (html: string) => {
   const $ = cheerio.load(html)
   return {
-    ingredients: $('dt:contains("Koostisosad")').next().text().trim(),
-    allergens: [$('dt:contains("ALLERGEENID")').next().text().trim()],
-    origin: $('dt:contains("Päritoluriik")').next().text().trim(),
+    ingredients: $('dt:contains("Koostisosad")')
+      .next()
+      .text()
+      .trim(),
+    allergens: [
+      $('dt:contains("ALLERGEENID")')
+        .next()
+        .text()
+        .trim(),
+    ],
+    origin: $('dt:contains("Päritoluriik")')
+      .next()
+      .text()
+      .trim(),
   }
 }
 
 export const parseSelver = (html: string) => {
   const $ = cheerio.load(html)
   return {
-    ingredients: $('h5:contains("Koostis")').next().text().trim(),
+    ingredients: $('h5:contains("Koostis")')
+      .next()
+      .text()
+      .trim(),
     allergens: [
-      $('h5:contains("Allergeenid")').next().text().trim(),
-      $('h5:contains("Hoiatused")').next().text().trim(),
+      $('h5:contains("Allergeenid")')
+        .next()
+        .text()
+        .trim(),
+      $('h5:contains("Hoiatused")')
+        .next()
+        .text()
+        .trim(),
     ],
-    origin: $('th:contains("Päritolumaa")').next().text().trim(),
+    origin: $('th:contains("Päritolumaa")')
+      .next()
+      .text()
+      .trim(),
   }
 }
 
@@ -72,5 +95,7 @@ const parsePrismaAllergens = ($: CheerioStatic) => {
     .toArray()
     .map(el => $(el).text())
 
-  return R.splitEvery(2, allergensRaw).map(([label, statement]) => `${label}: ${statement}`)
+  return R.splitEvery(2, allergensRaw).map(
+    ([label, statement]) => `${label}: ${statement}`,
+  )
 }
