@@ -1,5 +1,5 @@
 {
-  "extends": "ts-scripts/tsconfig.json",
+  "extends": "@symbio/ts-scripts/tsconfig.json",
   "compilerOptions": {
     "target": "es5",
     "outDir": "./build"

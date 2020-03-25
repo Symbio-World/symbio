@@ -1,5 +1,5 @@
 {
-  "name": "parser-core",
+  "name": "@symbio/parser-core",
   "version": "1.0.0",
   "main": "build/index.js",
   "scripts": {
@@ -10,14 +10,14 @@
     "clean": "rm -rf ./build",
     "clean-all": "yarn clean && rm -rf node_modules/"
   },
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.3",
+    "@symbio/fetcher-core": "1.0.0",
+    "ramda": "0.27.0"
+  },
   "devDependencies": {
     "@types/cheerio": "^0.22.17",
     "@types/ramda": "0.27.0",
-    "ts-scripts": "1.0.0"
-  },
-  "dependencies": {
-    "cheerio": "^1.0.0-rc.3",
-    "fetcher-core": "1.0.0",
-    "ramda": "0.27.0"
+    "@symbio/ts-scripts": "1.0.0"
   }
 }

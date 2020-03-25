@@ -1,6 +1,6 @@
 import * as functions from 'firebase-functions'
-import { parse } from 'parser-core'
-import { createFetchProduct } from 'fetcher-core'
+import { parse } from '@symbio/parser-core'
+import { createFetchProduct } from '@symbio/fetcher-core'
 import {
   fetchSearchResponse,
   fetchProductPage,

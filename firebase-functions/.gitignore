@@ -1,6 +1,7 @@
 service-account.json
-env.ts
+env.json
 build/
+.packages/
 
 # Logs
 logs

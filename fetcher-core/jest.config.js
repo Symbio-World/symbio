@@ -1,1 +1,1 @@
-module.exports = require('ts-scripts/jest.config');
+module.exports = require('@symbio/ts-scripts/jest.config');

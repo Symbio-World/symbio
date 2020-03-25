@@ -1,5 +1,5 @@
 {
-  "name": "event-store-core",
+  "name": "@symbio/event-store-core",
   "version": "1.0.0",
   "main": "build/index.js",
   "scripts": {
@@ -11,6 +11,6 @@
     "clean-all": "yarn clean && rm -rf node_modules/"
   },
   "devDependencies": {
-    "ts-scripts": "1.0.0"
+    "@symbio/ts-scripts": "1.0.0"
   }
 }

@@ -1,5 +1,5 @@
 {
-  "name": "ProductScannerApp",
+  "name": "@symbio/ProductScannerApp",
   "version": "0.0.1",
   "scripts": {
     "lint": "eslint .",
@@ -20,8 +20,8 @@
     "@react-native-firebase/firestore": "6.3.4",
     "@react-native-firebase/functions": "^6.3.4",
     "axios": "0.19.2",
-    "event-store-core": "1.0.0",
-    "fetcher-core": "1.0.0",
+    "@symbio/event-store-core": "1.0.0",
+    "@symbio/fetcher-core": "1.0.0",
     "react": "16.13.0",
     "react-native": "0.61.5",
     "react-native-bootsplash": "2.0.5",
@@ -43,6 +43,6 @@
     "metro-react-native-babel-preset": "0.58.0",
     "react-native-testing-library": "1.12.0",
     "react-test-renderer": "^16.13.0",
-    "ts-scripts": "1.0.0"
+    "@symbio/ts-scripts": "1.0.0"
   }
 }

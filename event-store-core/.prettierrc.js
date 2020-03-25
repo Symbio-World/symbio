@@ -1,1 +1,1 @@
-module.exports = require('ts-scripts/.prettierrc.js')
+module.exports = require('@symbio/ts-scripts/.prettierrc.js')

@@ -1,31 +1,42 @@
 {
-  "name": "fetcher-app",
+  "name": "@symbio/firebase-functions",
   "private": true,
   "version": "1.0.0",
+  "engines": {
+    "node": "8"
+  },
   "scripts": {
     "build": "tsc",
-    "serve": "npm run build && firebase emulators:start --only functions",
-    "shell": "npm run build && firebase functions:shell",
-    "start": "npm run shell",
-    "deploy": "firebase deploy --only functions",
+    "watch": "tsc --watch",
+    "serve": "firebase emulators:start --only functions",
+    "shell": "firebase functions:shell",
+    "start": "yarn shell",
+    "deploy": "npx @rxdi/firelink deploy --only functions",
     "logs": "firebase functions:log",
-    "clean": "rm -rf build",
+    "clean": "rm -rf build .packages",
     "clean-all": "yarn clean && rm -rf node_modules/",
     "test": "jest",
     "set-env": "firebase functions:config:set env=\"$(cat env.json)\""
   },
   "main": "build/index.js",
+  "fireDependencies": {
+    "@symbio/event-store-core": "../event-store-core",
+    "@symbio/fetcher-core": "../fetcher-core",
+    "@symbio/parser-core": "../parser-core",
+    "@symbio/ts-scripts": "../ts-scripts"
+  },
+  "fireConfig": {},
   "dependencies": {
+    "@symbio/event-store-core": "1.0.0",
+    "@symbio/fetcher-core": "1.0.0",
+    "@symbio/parser-core": "1.0.0",
     "axios": "^0.19.2",
-    "event-store-core": "1.0.0",
-    "fetcher-core": "1.0.0",
     "firebase-admin": "^8.10.0",
-    "firebase-functions": "^3.3.0",
-    "parser-core": "1.0.0"
+    "firebase-functions": "^3.3.0"
   },
   "devDependencies": {
+    "@symbio/ts-scripts": "1.0.0",
     "firebase-functions-test": "^0.1.6",
-    "ts-scripts": "1.0.0",
-    "typescript": "^3.2.2"
+    "firebase-tools": "^7.16.1"
   }
 }

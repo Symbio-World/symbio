@@ -1,4 +1,4 @@
-const config = require('ts-scripts/.eslintrc')
+const config = require('@symbio/ts-scripts/.eslintrc')
 
 module.exports = {
   ...config,

@@ -1,6 +1,6 @@
 import * as R from 'ramda'
 import cheerio from 'cheerio'
-import { Parse } from 'fetcher-core'
+import { Parse } from '@symbio/fetcher-core'
 
 const PRISMA = 'prisma'
 const FOODIE = 'foodie'

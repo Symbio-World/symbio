@@ -6,6 +6,7 @@
     "nohoist": ["**"]
   },
   "scripts": {
+    "build": "yarn wsrun build",
     "watch": "yarn wsrun watch",
     "test": "yarn wsrun test",
     "clean": "yarn wsrun clean",

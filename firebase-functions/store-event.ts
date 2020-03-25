@@ -1,12 +1,12 @@
 import admin from 'firebase-admin'
-import { createStoreEvent } from 'event-store-core'
-import { env } from './env'
+import { createStoreEvent } from '@symbio/event-store-core'
+import { config } from './config'
 
 admin.initializeApp({
   credential: admin.credential.cert(
-    require(env.firebaseAdmin.serviceAccountPath),
+    require(config.firebaseAdmin.serviceAccountPath),
   ),
-  databaseURL: env.firebaseAdmin.databaseUrl,
+  databaseURL: config.firebaseAdmin.databaseUrl,
 })
 
 export const storeEvent = createStoreEvent({

@@ -1,4 +1,4 @@
-const defaultConfig = require('ts-scripts/jest.config')
+const defaultConfig = require('@symbio/ts-scripts/jest.config')
 
 module.exports = {
   ...defaultConfig,

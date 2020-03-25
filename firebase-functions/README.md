@@ -4,8 +4,15 @@ yarn serve
 ```
 
 # Deploy
-
-Install firebase tools globally
+Add engines to package.json
 ```
-yarn global add firebase-tools
+  "engines": {
+    "node": "8"
+  },
+```
+
+Move to node 8 and deploy
+```
+nvm use 8
+yarn deploy
 ```

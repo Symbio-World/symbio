@@ -1,9 +1,13 @@
 {
-  "extends": "ts-scripts/tsconfig.json",
+  "extends": "@symbio/ts-scripts/tsconfig.json",
   "compilerOptions": {
     "outDir": "./build",
     "sourceMap": true,
     "target": "es2017"
   },
+  "include": [
+    "*.ts",
+    "./env.json"
+  ],
   "compileOnSave": true
 }

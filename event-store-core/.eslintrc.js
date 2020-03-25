@@ -1,1 +1,1 @@
-module.exports = require('ts-scripts/.eslintrc')
+module.exports = require('@symbio/ts-scripts/.eslintrc')

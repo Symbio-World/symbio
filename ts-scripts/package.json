@@ -1,5 +1,5 @@
 {
-  "name": "ts-scripts",
+  "name": "@symbio/ts-scripts",
   "version": "1.0.0",
   "scripts": {
     "test": "echo test",

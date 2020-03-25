@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { View } from 'react-native'
+import { t } from 'react-native-tailwindcss'
 import { ScanBarcodeView } from './scan-barcode-view'
 import { ProductViewContainer } from '../product'
 import { Modal } from '../ui-kit/modal'
@@ -26,7 +27,7 @@ export const createScanBarcodeViewContainer: CreateScanBarcodeViewContainer = ({
   }
 
   return (
-    <View>
+    <View style={[t.flex1]}>
       {barcode && (
         <Modal onDismiss={handleDismiss}>
           <ProductViewContainer barcode={barcode} />

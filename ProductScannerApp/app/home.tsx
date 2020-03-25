@@ -2,7 +2,7 @@ import React from 'react'
 import useSWR from 'swr'
 import { useAuth } from './auth'
 import { fetchPrinciples } from './principle'
-import { Scanner } from './scanner'
+import { ScanBarcodeViewContainer } from './barcode'
 import { Loading } from './ui-kit/loading'
 import { SetupPrinciplesViewContainer } from './principle'
 
@@ -16,5 +16,5 @@ export const Home: React.FC = () => {
 
   if (!principles) return <SetupPrinciplesViewContainer onSave={mutate} />
 
-  return <Scanner />
+  return <ScanBarcodeViewContainer />
 }

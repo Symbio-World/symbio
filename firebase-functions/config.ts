@@ -1,5 +1,4 @@
-import functions from 'firebase-functions'
-import { env } from './env'
+import * as functions from 'firebase-functions'
 
 type GoogleSearchConfig = {
   cx: string
@@ -13,10 +12,18 @@ type GoogleTranslateApiConfig = {
   target: string
 }
 
-type Config = {
+type FirebaseAdminConfig = {
+  serviceAccountPath: string
+  databaseUrl: string
+}
+
+export type Config = {
   googleSearch: GoogleSearchConfig
   googleTranslate: GoogleTranslateApiConfig
+  firebaseAdmin: FirebaseAdminConfig
 }
 
 export const config: Config =
-  process.env.NODE_ENV === 'production' ? functions.config().env : env
+  process.env.NODE_ENV === 'production'
+    ? functions.config().env
+    : require('./env.json')
