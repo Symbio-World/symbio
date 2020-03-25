@@ -1,5 +1,5 @@
 {
-  "name": "@symbio/conveyor-plugin-parser",
+  "name": "@symbio/conveyor-station-parser-cheerio",
   "version": "1.0.0",
   "main": "build/index.js",
   "scripts": {

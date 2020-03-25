@@ -1,5 +1,5 @@
 import * as functions from 'firebase-functions'
-import { parseProductPage } from '@symbio/conveyor-plugin-parser'
+import { parseProductPage } from '@symbio/conveyor-station-parser-cheerio'
 import { createConveyor } from '@symbio/conveyor-core'
 import {
   fetchSearchResponse,
