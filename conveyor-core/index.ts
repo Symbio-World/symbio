@@ -35,9 +35,9 @@ export {
   FetchProductPage,
   FetchTranslateResponse,
 }
-export type CreateFetchProduct = (deps: Deps) => FetchProductData
+export type CreateConveyor = (deps: Deps) => FetchProductData
 
-export const createFetchProduct: CreateFetchProduct = ({
+export const createConveyor: CreateConveyor = ({
   fetchSearchResponse,
   fetchProductPage,
   fetchTranslateResponse,

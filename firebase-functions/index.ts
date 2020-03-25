@@ -1,6 +1,6 @@
 import * as functions from 'firebase-functions'
 import { parse } from '@symbio/parser-core'
-import { createFetchProduct } from '@symbio/conveyor-core'
+import { createConveyor } from '@symbio/conveyor-core'
 import {
   fetchSearchResponse,
   fetchProductPage,
@@ -10,7 +10,7 @@ import { storeEvent } from './store-event'
 
 export const getProduct = functions.https.onCall(async data => {
   const barcode = data.barcode
-  const fetchProduct = createFetchProduct({
+  const conveyor = createConveyor({
     fetchSearchResponse: async b => {
       const searchResponse = await fetchSearchResponse(b)
       storeEvent({ searchResponse, barcode })
@@ -21,18 +21,18 @@ export const getProduct = functions.https.onCall(async data => {
       storeEvent({ html, barcode, link })
       return html
     },
-    fetchTranslateResponse: async strings => {
-      const translateResponse = await fetchTranslateResponse(strings)
-      storeEvent({ translateResponse, barcode, strings })
-      return translateResponse
-    },
     parse: (link, html) => {
       const productPageData = parse(link, html)
       storeEvent({ productPageData, link, barcode })
       return productPageData
     },
+    fetchTranslateResponse: async strings => {
+      const translateResponse = await fetchTranslateResponse(strings)
+      storeEvent({ translateResponse, barcode, strings })
+      return translateResponse
+    },
   })
-  const productData = barcode ? await fetchProduct(barcode) : {}
+  const productData = barcode ? await conveyor(barcode) : {}
   storeEvent({ barcode, productData })
   return productData
 })
