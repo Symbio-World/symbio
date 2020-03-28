@@ -10,7 +10,13 @@ module.exports = {
     'plugin:functional/external-recommended',
     'plugin:functional/recommended',
   ],
-  plugins: ['filenames', '@typescript-eslint', 'functional', 'import', '@lwc/eslint-plugin-lwc'],
+  plugins: [
+    'filenames',
+    '@typescript-eslint',
+    'functional',
+    'import',
+    '@lwc/eslint-plugin-lwc',
+  ],
   env: {
     node: true,
     jest: true,
@@ -20,6 +26,17 @@ module.exports = {
     project: `./tsconfig.json`,
   },
   ignorePatterns: ['node_modules/', 'build/', 'jest.config.js'],
+  overrides: [
+    {
+      files: ['*.test.ts'],
+      rules: {
+        'functional/no-expression-statement': 'off',
+        'functional/functional-parameters': 'off',
+        'functional/no-let': 'off',
+        '@lwc/lwc/no-async-await': 'off',
+      },
+    },
+  ],
   rules: {
     'functional/prefer-readonly-type': 0,
     'import/no-default-export': 2,
