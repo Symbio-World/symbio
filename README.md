@@ -22,7 +22,6 @@ nvm use
 ```
 
 ## VS Code setup 
-### For typescript projects
 
 Required:
 - EditorConfig for VSCode
@@ -34,29 +33,57 @@ Optional, but gives great convenience
 - Markdown All in One
 - Auto Rename Tag by Jun Han
 - Bracker Pair Colorizer 2 by CoenraadS
-- file-icons
-- GitLens
-- Jest
+- GitLens - git on steroids
+- Jest - run tests from
+- Quokka.js - evaluate js in editor
+- file-icons - nicer icons
 - vsc-nvm
-
 
 # Conventions
 ## Libraries and apps
-There are 2 types of packages: libraries and apps (services). An app can depend on one or more library, but not on another app. A library can depend on another library, but not on an app
+There are 2 types of packages: 
+- library - can be depended on
+- app (service) - cannot be depended on
 
-## Cores and apps
-App should not include any business logic. All business logic must be in an accompanying library, i.e. app called `trader-app` depends on a library called `trader-core` that has. App is only responsible for implementing interfaces and supplying them to the core. Read about hexagonal architecture for more information
+Rules:
+- A library can depend on another library, but not on an app
+- An app can depend on one or more library, but not on another app. 
+- An app should not include any business logic. All business logic must be in an accompanying library, i.e. app called `trader-app` depends on a library called `trader-core`
+- App is only responsible for implementing interfaces and supplying them to the core
+
+## Cores and adapters
+Libraries can be of different types as well. These mainly follow from hexagonal/onion architecture
+- core - busineness logic
+- adapters (plugins)
+
+## Naming Conventions
+- packages are kebab-cased
+- file names must be camelCased or PascalCased
+  - React components are PascalCased
+  - files that return types are PascalCased
+  - everything else is camelCased
+- `create...` to indicate th
+- `fetch...` to describe external calls
+- `scrape...` for extraction of data, i.e. retrieving data from html
+- `crawl...` for following links
+- `parse...` for representing something as something else, i.e. breaking it down into pieces, constituent parts, or segments
+- Name conventions for scripts in package json
+  - `lint`
+  - `build`
+  - `watch`
+  - `test`
+  - `clean` - clean build artifacts
+  - `clean-all` - also clean dependencies
+
+# Workflow
 
 ## Yarn workspaces
 Project uses yarn workspaces. It allows for the following workflow:
 Each folder is an isolated npm package with its own dependencies
-Each package 
-- must imlement `test`, `clean` and `clean-all` commands
-- might implement `lint`, `build`, `watch`, etc.
+Each package should imlement  commands
 
 if package is an app it might also implement `start`, `stop`, `deploy`, `destroy`, etc.
 
-# Workflow
 
 To start working on any package either
 - open a package as a separate VS Code window

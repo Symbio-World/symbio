@@ -2,10 +2,15 @@
   "name": "root",
   "private": true,
   "workspaces": {
-    "packages": ["*"],
-    "nohoist": ["**"]
+    "packages": [
+      "*"
+    ],
+    "nohoist": [
+      "**"
+    ]
   },
   "scripts": {
+    "lint": "yarn wsrun lint",
     "build": "yarn wsrun build",
     "watch": "yarn wsrun watch",
     "test": "yarn wsrun test",
