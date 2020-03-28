@@ -7,22 +7,50 @@ module.exports = {
     'plugin:@typescript-eslint/recommended-requiring-type-checking',
     'prettier',
     'prettier/@typescript-eslint',
+    'plugin:functional/external-recommended',
+    'plugin:functional/recommended',
   ],
-  plugins: ['@typescript-eslint'],
+  plugins: ['filenames', '@typescript-eslint', 'functional', 'import', '@lwc/eslint-plugin-lwc'],
   env: {
     node: true,
     jest: true,
   },
   parser: '@typescript-eslint/parser',
   parserOptions: {
-    ecmaVersion: 2018,
-    sourceType: 'module',
     project: `./tsconfig.json`,
   },
+  ignorePatterns: ['node_modules/', 'build/', 'jest.config.js'],
   rules: {
-    '@typescript-eslint/no-use-before-define': ['error', { functions: false }],
-    '@typescript-eslint/explicit-function-return-type': {
-      allowExpressions: true,
-    },
+    'functional/prefer-readonly-type': 0,
+    'import/no-default-export': 2,
+    'filenames/match-regex': [2, '^[a-zA-Z.]+$', false],
+    'filenames/match-exported': 2,
+    '@lwc/lwc/no-async-await': 2,
+    '@typescript-eslint/prefer-function-type': 2,
+    '@typescript-eslint/naming-convention': [
+      'error',
+      {
+        selector: 'default',
+        format: ['camelCase'],
+      },
+      {
+        selector: 'variableLike',
+        format: ['camelCase', 'PascalCase'],
+      },
+      {
+        selector: 'typeLike',
+        format: ['PascalCase'],
+      },
+      {
+        selector: 'parameter',
+        format: ['camelCase'],
+        leadingUnderscore: 'allow',
+      },
+      {
+        selector: 'property',
+        format: ['camelCase', 'PascalCase'],
+        leadingUnderscore: 'allow',
+      },
+    ],
   },
 }
