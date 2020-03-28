@@ -23,7 +23,7 @@ describe('createProcessBarcode', () => {
     ingredients: translatedIngredients,
   }
 
-  const scrapeFirstPage = () => ({ ingredients })
+  const scrapeFirstPage: CPB.ScrapeProductPage = () => ({ ingredients })
 
   beforeEach(() => {
     searchBarcode = jest.fn(() => TE.right({ name, links }))
@@ -78,7 +78,7 @@ describe('createProcessBarcode', () => {
 
   it('aggregates data from all pages', async () => {
     const origin = 'Finland'
-    const scrapeSecondPage = () => ({
+    const scrapeSecondPage: CPB.ScrapeProductPage = () => ({
       ingredients: 'discard',
       origin,
     })
