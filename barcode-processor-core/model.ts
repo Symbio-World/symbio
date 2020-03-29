@@ -29,7 +29,7 @@ export const ProductPage = t.type({
 })
 export type ProductPage = t.TypeOf<typeof ProductPage>
 
-const ProductSearchDataOptional = t.partial({
+export const ProductSearchDataOptional = t.partial({
   image: t.string,
   name: t.string,
   description: t.string,
@@ -37,9 +37,15 @@ const ProductSearchDataOptional = t.partial({
   category: t.string,
   brand: t.string,
 })
-const ProductSearchDataRequired = t.type({
+export type ProductSearchDataOptional = t.TypeOf<
+  typeof ProductSearchDataOptional
+>
+export const ProductSearchDataRequired = t.type({
   links: t.array(Link),
 })
+export type ProductSearchDataRequired = t.TypeOf<
+  typeof ProductSearchDataRequired
+>
 export const ProductSearchData = t.intersection([
   ProductSearchDataOptional,
   ProductSearchDataRequired,

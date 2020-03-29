@@ -3,12 +3,12 @@ import * as A from 'fp-ts/lib/Array'
 import * as TE from 'fp-ts/lib/TaskEither'
 import * as T from 'fp-ts/lib/Task'
 import { pipe } from 'fp-ts/lib/pipeable'
-import * as t from 'io-ts'
 import * as Model from './model'
+import * as Error from './error'
 
 export type SearchBarcode = (
   barcode: Model.Barcode,
-) => TE.TaskEither<t.Errors, Model.ProductSearchData>
+) => TE.TaskEither<Error.SearchBarcodeError, Model.ProductSearchData>
 
 export type FetchProductPage = (link: Model.Link) => T.Task<Model.ProductPage>
 
@@ -22,15 +22,15 @@ export type TranslateProductData = (
 
 export type ProcessBarcode = (
   b: Model.Barcode,
-) => TE.TaskEither<t.Errors, Model.ProductData>
+) => TE.TaskEither<Error.ProcessBarcodeError, Model.ProductData>
 
-export type Steps = Readonly<{
+export type Props = Readonly<{
   searchBarcode: SearchBarcode
   fetchProductPage: FetchProductPage
   scrapeProductPage: ScrapeProductPage
   translateProductData: TranslateProductData
 }>
-export type CreateProcessBarcode = (steps: Steps) => ProcessBarcode
+export type CreateProcessBarcode = (props: Props) => ProcessBarcode
 export const createProcessBarcode: CreateProcessBarcode = ({
   searchBarcode,
   fetchProductPage,
