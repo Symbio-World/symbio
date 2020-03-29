@@ -44,11 +44,13 @@ module.exports = {
     'functional/no-expression-statement': 0,
     'functional/no-mixed-type': 0,
     'functional/no-return-void': 0,
+    'functional/no-conditional-statement': 0,
     'import/no-default-export': 2,
     'filenames/match-regex': [2, '^[a-zA-Z.]+$', false],
     'filenames/match-exported': 2,
     '@lwc/lwc/no-async-await': 2,
     '@typescript-eslint/prefer-function-type': 2,
+    '@typescript-eslint/explicit-function-return-type': 0,
     '@typescript-eslint/no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
     '@typescript-eslint/naming-convention': [
       'error',
