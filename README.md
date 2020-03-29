@@ -16,28 +16,11 @@ yarn
 
 ## NVM
 
-Use node >= 10 or install nvm https://github.com/nvm-sh/nvm and run
+Preferred node version is in .npmrc. 
+Install nvm https://github.com/nvm-sh/nvm and run
 ```
 nvm use
 ```
-
-## VS Code setup 
-
-Required:
-- EditorConfig for VSCode
-- ESLint by Dirk Baeumer
-- Prettier - Code formatter
-- npm Intellisense
-
-Optional, but gives great convenience
-- Markdown All in One
-- Auto Rename Tag by Jun Han
-- Bracker Pair Colorizer 2 by CoenraadS
-- GitLens - git on steroids
-- Jest - run tests from
-- Quokka.js - evaluate js in editor
-- file-icons - nicer icons
-- vsc-nvm
 
 # Conventions
 ## Libraries and apps
@@ -62,7 +45,7 @@ Libraries can be of different types as well. These mainly follow from hexagonal/
   - React components are PascalCased
   - files that return types are PascalCased
   - everything else is camelCased
-- `create...` to indicate th
+- `create...` to indicate a factory, it creates 
 - `fetch...` to describe external calls
 - `scrape...` for extraction of data, i.e. retrieving data from html
 - `crawl...` for following links
