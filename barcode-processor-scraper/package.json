@@ -1,5 +1,5 @@
 {
-  "name": "@symbio/conveyor-adapter-parser",
+  "name": "@symbio/barcode-processor-scraper",
   "version": "1.0.0",
   "main": "build/index.js",
   "scripts": {
@@ -12,7 +12,7 @@
   },
   "dependencies": {
     "cheerio": "^1.0.0-rc.3",
-    "@symbio/conveyor-core": "1.0.0",
+    "@symbio/barcode-processor-core": "1.0.0",
     "ramda": "0.27.0"
   },
   "devDependencies": {

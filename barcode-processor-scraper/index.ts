@@ -1,0 +1,1 @@
+export { scrapeProductPage } from './scrapeProductData'

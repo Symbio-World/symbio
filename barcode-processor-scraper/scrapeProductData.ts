@@ -1,26 +1,26 @@
 import * as R from 'ramda'
 import cheerio from 'cheerio'
-import { ParseProductPage } from '@symbio/conveyor-core'
+import * as Core from '@symbio/barcode-processor-core'
 
 const PRISMA = 'prisma'
 const FOODIE = 'foodie'
 const SELVER = 'selver'
 const BARBORA = 'barbora'
 
-export const parseProductPage: ParseProductPage = (link, html) => {
+export const scrapeProductPage: Core.ScrapeProductPage = ({ link, html }) => {
   if (link.includes(PRISMA) || link.includes(FOODIE)) {
-    return parsePrisma(html)
+    return scrapePrisma(html)
   }
   if (link.includes(SELVER)) {
-    return parseSelver(html)
+    return scrapeSelver(html)
   }
   if (link.includes(BARBORA)) {
-    return parseBarbora(html)
+    return scrapeBarbora(html)
   }
   return {}
 }
 
-export const parseBarbora = (html: string) => {
+export const scrapeBarbora = (html: string) => {
   const $ = cheerio.load(html)
   return {
     ingredients: $('dt:contains("Koostisosad")')
@@ -40,7 +40,7 @@ export const parseBarbora = (html: string) => {
   }
 }
 
-export const parseSelver = (html: string) => {
+export const scrapeSelver = (html: string) => {
   const $ = cheerio.load(html)
   return {
     ingredients: $('h5:contains("Koostis")')
@@ -64,17 +64,17 @@ export const parseSelver = (html: string) => {
   }
 }
 
-export const parsePrisma = (html: string) => {
+export const scrapePrisma = (html: string) => {
   const $ = cheerio.load(html)
 
   return {
     ingredients: $("[id$='ingredients']").text(),
-    allergens: parsePrismaAllergens($),
-    origin: parsePrismaOrigin($),
+    allergens: scrapePrismaAllergens($),
+    origin: scrapePrismaOrigin($),
   }
 }
 
-const parsePrismaOrigin = ($: CheerioStatic) => {
+const scrapePrismaOrigin = ($: CheerioStatic) => {
   const byId = $('#origin')
     .find('p')
     .text()
@@ -87,7 +87,7 @@ const parsePrismaOrigin = ($: CheerioStatic) => {
     .trim()
 }
 
-const parsePrismaAllergens = ($: CheerioStatic) => {
+const scrapePrismaAllergens = ($: CheerioStatic) => {
   const allergensRaw = $('#info')
     .find('table')
     .eq(0)
