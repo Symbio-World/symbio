@@ -4,7 +4,7 @@ import * as T from 'fp-ts/lib/Task'
 import * as E from 'fp-ts/lib/Either'
 import * as CPB from './createProcessBarcode'
 import * as Model from './model'
-import * as fixture from './productData.fixture'
+import * as fixture from './model.fixture'
 
 describe('createProcessBarcode', () => {
   let searchBarcode: CPB.SearchBarcode
