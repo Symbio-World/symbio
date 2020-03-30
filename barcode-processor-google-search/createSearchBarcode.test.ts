@@ -1,6 +1,4 @@
-import { pipe } from 'fp-ts/lib/pipeable'
-import * as TE from 'fp-ts/lib/TaskEither'
-import * as E from 'fp-ts/lib/Either'
+import { TE, pipe, E } from '@symbio/ts-lib'
 import * as Core from '@symbio/barcode-processor-core'
 import { createSearchBarcode } from './createSearchBarcode'
 import { fetchSearchResponse } from './fetchSearchResponse'

@@ -1,4 +1,4 @@
-import * as R from 'ramda'
+import { R } from '@symbio/ts-lib'
 
 export type Leaf = boolean | number | string | null | undefined
 export type Value = Leaf | Value[] | Tree

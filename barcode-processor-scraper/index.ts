@@ -1,1 +1,1 @@
-export { scrapeProductPage } from './scrapeProductData'
+export { scrapeProductPage } from './scrapeProductPage'

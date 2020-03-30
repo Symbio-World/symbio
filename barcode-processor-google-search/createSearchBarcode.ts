@@ -1,9 +1,8 @@
-import * as TE from 'fp-ts/lib/TaskEither'
-import { pipe } from 'fp-ts/lib/pipeable'
+import { TE, pipe } from '@symbio/ts-lib'
 import * as Core from '@symbio/barcode-processor-core'
 import { fetchSearchResponse } from './fetchSearchResponse'
 import { GoogleSearchConfig } from './GoogleSearchConfig'
-import { SearchResponse } from './model'
+import { SearchResponse } from './SearchResponse'
 
 type Deps = {
   config: GoogleSearchConfig
@@ -17,7 +16,7 @@ export const createSearchBarcode: CreateSearchBarcode = ({ config, onSearchRespo
       onSearchResponse?.(response)
       const product = response.items.reduce(
         (acc, item) => ({
-          ...item.pagemap.product[0],
+          ...item.pagemap.product?.[0],
           ...acc,
         }),
         {},

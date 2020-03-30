@@ -1,16 +1,10 @@
-import { pipe } from 'fp-ts/lib/pipeable'
-// import * as TE from 'fp-ts/lib/TaskEither'
-import * as E from 'fp-ts/lib/Either'
-// import * as T from 'fp-ts/lib/Task'
-// import * as t from 'io-ts'
-// import { PathReporter } from 'io-ts/lib/PathReporter'
+import { E, pipe, axios } from '@symbio/ts-lib'
 import * as Core from '@symbio/barcode-processor-core'
 import { fetchSearchResponse } from './fetchSearchResponse'
 import { GoogleSearchConfig } from './GoogleSearchConfig'
+import * as fixture from './SearchResponse.fixture'
 
-import axios from 'axios'
-
-jest.mock('axios')
+jest.mock('@symbio/ts-lib/axios')
 
 describe('fetchSearchResponse', () => {
   const config: GoogleSearchConfig = { cx: '', key: '', url: '' }
@@ -36,6 +30,25 @@ describe('fetchSearchResponse', () => {
   it('fails if does not conform to schema fails', async () => {
     ;(axios.get as jest.Mock).mockImplementation(() =>
       Promise.resolve({ data: {} }),
+    )
+
+    const e = await fetchSearchResponse(config, barcode)()
+    pipe(
+      e,
+      E.fold(
+        error => {
+          expect(error).toBeInstanceOf(Core.ValidationError)
+        },
+        _ => {
+          throw new Error()
+        },
+      ),
+    )
+  })
+
+  it('product might be empty', async () => {
+    ;(axios.get as jest.Mock).mockImplementation(() =>
+      Promise.resolve({ data: fixture }),
     )
 
     const e = await fetchSearchResponse(config, barcode)()

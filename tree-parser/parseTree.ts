@@ -1,4 +1,4 @@
-import * as R from 'ramda'
+import { R } from '@symbio/ts-lib'
 import {
   Tree,
   Path,

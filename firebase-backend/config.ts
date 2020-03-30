@@ -1,16 +1,6 @@
 import * as functions from 'firebase-functions'
-
-type GoogleSearchConfig = {
-  cx: string
-  key: string
-  url: string
-}
-
-type GoogleTranslateApiConfig = {
-  key: string
-  url: string
-  target: string
-}
+import { GoogleSearchConfig } from '@symbio/barcode-processor-google-search'
+import { GoogleTranslateConfig } from '@symbio/barcode-processor-google-translate'
 
 type FirebaseAdminConfig = {
   serviceAccountPath: string
@@ -19,7 +9,7 @@ type FirebaseAdminConfig = {
 
 export type Config = {
   googleSearch: GoogleSearchConfig
-  googleTranslate: GoogleTranslateApiConfig
+  googleTranslate: GoogleTranslateConfig
   firebaseAdmin: FirebaseAdminConfig
 }
 

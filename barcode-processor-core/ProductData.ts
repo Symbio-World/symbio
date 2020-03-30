@@ -1,4 +1,4 @@
-import * as t from 'io-ts'
+import { t } from '@symbio/ts-lib'
 
 export const Barcode = t.brand(
   t.string,

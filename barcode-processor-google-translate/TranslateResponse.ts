@@ -1,4 +1,4 @@
-import * as t from 'io-ts'
+import { t } from '@symbio/ts-lib'
 
 export const Translation = t.type({
   translatedText: t.string

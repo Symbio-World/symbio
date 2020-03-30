@@ -1,2 +1,3 @@
 export * from './createSearchBarcode'
-export * from './model'
+export * from './SearchResponse'
+export * from './GoogleSearchConfig'

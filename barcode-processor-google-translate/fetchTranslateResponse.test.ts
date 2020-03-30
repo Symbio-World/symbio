@@ -1,12 +1,9 @@
-import { pipe } from 'fp-ts/lib/pipeable'
-import * as E from 'fp-ts/lib/Either'
+import { E, pipe, axios } from '@symbio/ts-lib'
 import * as Core from '@symbio/barcode-processor-core'
 import { fetchTranslateResponse } from './fetchTranslateResponse'
 import { GoogleTranslateConfig } from './GoogleTranslateConfig'
 
-import axios from 'axios'
-
-jest.mock('axios')
+jest.mock('@symbio/ts-lib/axios')
 
 describe('fetchTranslateResponse', () => {
   const config: GoogleTranslateConfig = { key: '', url: '', target: '' }

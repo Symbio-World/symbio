@@ -1,11 +1,8 @@
-import axios from 'axios'
-import { pipe } from 'fp-ts/lib/pipeable'
-import * as TE from 'fp-ts/lib/TaskEither'
-import * as T from 'fp-ts/lib/Task'
-import * as E from 'fp-ts/lib/Either'
+import { E, T, TE, pipe, axios } from '@symbio/ts-lib'
 import * as Core from '@symbio/barcode-processor-core'
+import { PathReporter } from 'io-ts/lib/PathReporter'
 import { GoogleSearchConfig } from './GoogleSearchConfig'
-import { SearchResponse } from './model'
+import { SearchResponse } from './SearchResponse'
 
 export type FetchSearchResponse = (
   config: GoogleSearchConfig,
@@ -22,18 +19,25 @@ export const fetchSearchResponse: FetchSearchResponse = (config, barcode) => {
             q: barcode,
           },
         }),
-      _ => new Core.SearchBarcodeRequestFailed(),
+      e => new Core.SearchBarcodeRequestFailed(e),
     ),
     TE.chain(resp =>
       pipe(
         SearchResponse.decode(resp.data),
-        E.mapLeft(_ => new Core.ValidationError()),
+        E.mapLeft(e => PathReporter.report(E.left(e))),
+        E.mapLeft(e => new Core.ValidationError(e.join('\n\n'))),
         TE.fromEither,
       ),
     ),
     TE.chain((response: SearchResponse) =>
       !response.items || response.items.length === 0
-        ? TE.leftTask(T.of(new Core.NoSearchResultsFound()))
+        ? TE.leftTask(
+            T.of(
+              new Core.NoSearchResultsFound(
+                `items key is empty in response ${response}`,
+              ),
+            ),
+          )
         : TE.rightTask(T.of(response)),
     ),
   )

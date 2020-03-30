@@ -1,8 +1,8 @@
-import { scrapePrisma, scrapeSelver, scrapeBarbora } from './scrapeProductData'
-import * as foodie from './scrapeProductData.foodie.fixture'
-import * as prisma from './scrapeProductData.prisma.fixture'
-import * as selver from './scrapeProductData.selver.fixture'
-import * as barbora from './scrapeProductData.barbora.fixture'
+import { scrapePrisma, scrapeSelver, scrapeBarbora } from './scrapeProductPage'
+import * as foodie from './scrapeProductPage.foodie.fixture'
+import * as prisma from './scrapeProductPage.prisma.fixture'
+import * as selver from './scrapeProductPage.selver.fixture'
+import * as barbora from './scrapeProductPage.barbora.fixture'
 
 describe('scrapeProductPage', () => {
   it('scrapes foodie', async () => {

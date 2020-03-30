@@ -1,4 +1,4 @@
-import * as Model from './model'
+import * as Model from './ProductData'
 
 export const barcode = '5782412334' as Model.Barcode
 export const name = 'Margariini'

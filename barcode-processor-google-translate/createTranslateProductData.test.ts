@@ -1,11 +1,9 @@
-import { pipe } from 'fp-ts/lib/pipeable'
-import * as E from 'fp-ts/lib/Either'
-import * as TE from 'fp-ts/lib/TaskEither'
-import * as fixture from '@symbio/barcode-processor-core/model.fixture'
+import { E, TE, pipe } from '@symbio/ts-lib'
+import * as fixture from '@symbio/barcode-processor-core/ProductData.fixture'
 import { createTranslateProductData } from './createTranslateProductData'
 import { GoogleTranslateConfig } from './GoogleTranslateConfig'
 import { fetchTranslateResponse } from './fetchTranslateResponse'
-import * as Model from './model'
+import * as Model from './TranslateResponse'
 
 jest.mock('./fetchTranslateResponse')
 

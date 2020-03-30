@@ -1,25 +1,27 @@
-/* eslint functional/no-class: 0 functional/no-this-expression: 0 */
+/* eslint-disable functional/no-class, functional/no-this-expression */
+import { normalizeErrorMessage } from '@symbio/ts-lib'
+
 export class NoSearchResultsFound extends Error {
-  constructor(message?: string) {
-      super(message);
-      this.name = 'NoSearchResultsFound';
-      Object.setPrototypeOf(this, NoSearchResultsFound.prototype);
+  constructor(e?: unknown) {
+    super(normalizeErrorMessage(e))
+    this.name = 'NoSearchResultsFound'
+    Object.setPrototypeOf(this, NoSearchResultsFound.prototype)
   }
 }
 
 export class SearchBarcodeRequestFailed extends Error {
-  constructor(message?: string) {
-      super(message);
-      this.name = 'SearchBarcodeRequestFailed';
-      Object.setPrototypeOf(this, SearchBarcodeRequestFailed.prototype);
+  constructor(e?: unknown) {
+    super(normalizeErrorMessage(e))
+    this.name = 'SearchBarcodeRequestFailed'
+    Object.setPrototypeOf(this, SearchBarcodeRequestFailed.prototype)
   }
 }
 
 export class ValidationError extends Error {
-  constructor(message?: string) {
-      super(message);
-      this.name = 'ValidationError';
-      Object.setPrototypeOf(this, ValidationError.prototype);
+  constructor(e?: unknown) {
+    super(normalizeErrorMessage(e))
+    this.name = 'ValidationError'
+    Object.setPrototypeOf(this, ValidationError.prototype)
   }
 }
 
@@ -29,13 +31,24 @@ export type SearchBarcodeError =
   | SearchBarcodeRequestFailed
 
 export class TranslateRequestFailed extends Error {
-  constructor(message?: string) {
-      super(message);
-      this.name = 'TranslateRequestFailed';
-      Object.setPrototypeOf(this, TranslateRequestFailed.prototype);
+  constructor(e?: unknown) {
+    super(normalizeErrorMessage(e))
+    this.name = 'TranslateRequestFailed'
+    Object.setPrototypeOf(this, TranslateRequestFailed.prototype)
   }
 }
 
 export type TranslateProductDataError = ValidationError | TranslateRequestFailed
 
-export type ProcessBarcodeError = SearchBarcodeError | TranslateProductDataError
+export class FetchProductPageRequestFailed extends Error {
+  constructor(e?: unknown) {
+    super(normalizeErrorMessage(e))
+    this.name = 'FetchProductPageRequestFailed'
+    Object.setPrototypeOf(this, FetchProductPageRequestFailed.prototype)
+  }
+}
+
+export type FetchProductPageError = ValidationError | FetchProductPageRequestFailed
+
+
+export type ProcessBarcodeError = SearchBarcodeError | TranslateProductDataError | FetchProductPageError

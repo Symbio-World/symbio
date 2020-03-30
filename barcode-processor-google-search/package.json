@@ -12,12 +12,9 @@
   },
   "dependencies": {
     "@symbio/barcode-processor-core": "1.0.0",
-    "axios": "^0.19.2",
-    "fp-ts": "^2.5.3",
-    "io-ts": "^2.1.2"
+    "@symbio/ts-lib": "1.0.0"
   },
   "devDependencies": {
-    "@symbio/ts-scripts": "1.0.0",
-    "@types/axios": "^0.14.0"
+    "@symbio/ts-scripts": "1.0.0"
   }
 }

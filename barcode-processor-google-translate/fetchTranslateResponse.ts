@@ -1,10 +1,8 @@
-import axios from 'axios'
-import { pipe } from 'fp-ts/lib/pipeable'
-import * as TE from 'fp-ts/lib/TaskEither'
-import * as E from 'fp-ts/lib/Either'
+import { E, TE, pipe, axios } from '@symbio/ts-lib'
+import { PathReporter } from 'io-ts/lib/PathReporter'
 import * as Core from '@symbio/barcode-processor-core'
 import { GoogleTranslateConfig } from './GoogleTranslateConfig'
-import { TranslateResponse } from './model'
+import { TranslateResponse } from './TranslateResponse'
 
 export type FetchTranslateResponse = (
   strings: string[],
@@ -29,14 +27,15 @@ export const fetchTranslateResponse: FetchTranslateResponse = (
             },
           },
         ),
-      _ => new Core.TranslateRequestFailed(),
+      e => new Core.TranslateRequestFailed(e),
     ),
     TE.chain(
       resp =>
         pipe(
           TranslateResponse.decode(resp.data),
-          E.mapLeft(
-            _ => new Core.ValidationError(),
+          E.mapLeft(e => PathReporter.report(E.left(e))),
+            E.mapLeft(
+            e => new Core.ValidationError(e),
           ),
           TE.fromEither,
         ),

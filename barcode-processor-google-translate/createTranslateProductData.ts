@@ -1,11 +1,9 @@
-import * as R from 'ramda'
-import * as TE from 'fp-ts/lib/TaskEither'
-import { pipe } from 'fp-ts/lib/pipeable'
+import { TE, pipe, R } from '@symbio/ts-lib'
 import * as Core from '@symbio/barcode-processor-core'
 import { parseTree, toTree } from '@symbio/tree-parser'
 import { GoogleTranslateConfig } from './GoogleTranslateConfig'
 import { fetchTranslateResponse } from './fetchTranslateResponse'
-import { TranslateResponse } from './model'
+import { TranslateResponse } from './TranslateResponse'
 
 const DO_NOT_TRANSLATE_KEYS = ['links', 'image', 'brand']
 

@@ -1,4 +1,4 @@
-import * as R from 'ramda'
+import { R } from '@symbio/ts-lib'
 import { PathValuePair, Tree, Value, isNumber } from './common'
 
 type ToValue = (pair: PathValuePair) => Value

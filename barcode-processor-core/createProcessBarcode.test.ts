@@ -1,10 +1,7 @@
-import { pipe } from 'fp-ts/lib/pipeable'
-import * as TE from 'fp-ts/lib/TaskEither'
-import * as T from 'fp-ts/lib/Task'
-import * as E from 'fp-ts/lib/Either'
+import { TE, pipe, E } from '@symbio/ts-lib'
 import * as CPB from './createProcessBarcode'
-import * as Model from './model'
-import * as fixture from './model.fixture'
+import * as PD from './ProductData'
+import * as fixture from './ProductData.fixture'
 
 describe('createProcessBarcode', () => {
   let searchBarcode: CPB.SearchBarcode
@@ -22,7 +19,7 @@ describe('createProcessBarcode', () => {
       TE.right({ name: fixture.name, links: fixture.links }),
     )
     fetchProductPage = jest.fn(link =>
-      T.of({ link, html: 'html' as Model.Html }),
+      TE.right({ link, html: 'html' as PD.Html }),
     )
     scrapeProductPage = jest.fn(scrapeFirstPage)
     translateProductData = jest.fn(() => TE.right(fixture.translated))

@@ -1,33 +1,42 @@
 {
-  "name": "@symbio/firebase-functions",
+  "name": "@symbio/firebase-backend",
   "private": true,
   "version": "1.0.0",
+  "engines": {
+    "node": "8"
+  },
   "scripts": {
+    "lint": "tsc && eslint . --ext js,jsx,ts,tsx",
     "build": "tsc",
     "watch": "tsc --watch",
+    "test": "yarn lint && jest",
+    "clean": "rm -rf build .packages",
+    "clean-all": "yarn clean && rm -rf node_modules/",
     "serve": "firebase emulators:start --only functions",
     "shell": "firebase functions:shell",
     "start": "yarn shell",
     "deploy": "npx @rxdi/firelink deploy --only functions",
     "logs": "firebase functions:log",
-    "clean": "rm -rf build .packages",
-    "clean-all": "yarn clean && rm -rf node_modules/",
-    "test": "jest",
     "set-env": "firebase functions:config:set env=\"$(cat env.json)\""
   },
   "main": "build/index.js",
   "fireDependencies": {
     "@symbio/event-store-core": "../event-store-core",
-    "@symbio/conveyor-core": "../conveyor-core",
-    "@symbio/conveyor-adapter-parser": "../conveyor-adapter-parser",
+    "@symbio/barcode-processor-core": "../barcode-processor-core",
+    "@symbio/barcode-processor-scraper": "../barcode-processor-scraper",
+    "@symbio/barcode-processor-google-search": "../barcode-processor-google-search",
+    "@symbio/barcode-processor-google-translate": "../barcode-processor-google-translate",
+    "@symbio/ts-lib": "../ts-lib",
     "@symbio/ts-scripts": "../ts-scripts"
   },
   "fireConfig": {},
   "dependencies": {
+    "@symbio/barcode-processor-core": "1.0.0",
+    "@symbio/barcode-processor-google-search": "1.0.0",
+    "@symbio/barcode-processor-google-translate": "1.0.0",
+    "@symbio/barcode-processor-scraper": "1.0.0",
     "@symbio/event-store-core": "1.0.0",
-    "@symbio/conveyor-core": "1.0.0",
-    "@symbio/conveyor-adapter-parser": "1.0.0",
-    "axios": "^0.19.2",
+    "@symbio/ts-lib": "1.0.0",
     "firebase-admin": "^8.10.0",
     "firebase-functions": "^3.3.0"
   },
