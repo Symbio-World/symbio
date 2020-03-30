@@ -1,4 +1,4 @@
-import axios, { AxiosResponse } from 'axios'
+import axios from 'axios'
 import { pipe } from 'fp-ts/lib/pipeable'
 import * as TE from 'fp-ts/lib/TaskEither'
 import * as T from 'fp-ts/lib/Task'
@@ -13,7 +13,7 @@ export type FetchSearchResponse = (
 ) => TE.TaskEither<Core.SearchBarcodeError, SearchResponse>
 export const fetchSearchResponse: FetchSearchResponse = (config, barcode) => {
   return pipe(
-    TE.tryCatch<Core.SearchBarcodeError, AxiosResponse>(
+    TE.tryCatch(
       () =>
         axios.get(config.url, {
           params: {
@@ -22,18 +22,18 @@ export const fetchSearchResponse: FetchSearchResponse = (config, barcode) => {
             q: barcode,
           },
         }),
-      _ => Core.SearchBarcodeRequestFailed,
+      _ => new Core.SearchBarcodeRequestFailed(),
     ),
-    TE.chain<Core.SearchBarcodeError, AxiosResponse, SearchResponse>(resp =>
+    TE.chain(resp =>
       pipe(
         SearchResponse.decode(resp.data),
-        E.mapLeft(_ => Core.ValidationError as Core.SearchBarcodeError),
+        E.mapLeft(_ => new Core.ValidationError()),
         TE.fromEither,
       ),
     ),
     TE.chain((response: SearchResponse) =>
       !response.items || response.items.length === 0
-        ? TE.leftTask(T.of(Core.NoSearchResultsFound))
+        ? TE.leftTask(T.of(new Core.NoSearchResultsFound()))
         : TE.rightTask(T.of(response)),
     ),
   )

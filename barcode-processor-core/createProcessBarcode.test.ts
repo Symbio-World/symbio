@@ -4,36 +4,29 @@ import * as T from 'fp-ts/lib/Task'
 import * as E from 'fp-ts/lib/Either'
 import * as CPB from './createProcessBarcode'
 import * as Model from './model'
+import * as fixture from './productData.fixture'
 
 describe('createProcessBarcode', () => {
   let searchBarcode: CPB.SearchBarcode
   let fetchProductPage: CPB.FetchProductPage
   let scrapeProductPage: CPB.ScrapeProductPage
   let translateProductData: CPB.TranslateProductData
-  let props: CPB.Props
+  let deps: CPB.Deps
 
-  const barcode = '5782412334' as Model.Barcode
-  const name = 'Margariini'
-  const links = ['http://link1.com', 'http://link2.com'] as Model.Link[]
-  const ingredients = 'Vesi'
-  const translatedName = 'Margarin'
-  const translatedIngredients = 'Water'
-  const translated = {
-    name: translatedName,
-    links,
-    ingredients: translatedIngredients,
-  }
-
-  const scrapeFirstPage: CPB.ScrapeProductPage = () => ({ ingredients })
+  const scrapeFirstPage: CPB.ScrapeProductPage = () => ({
+    ingredients: fixture.ingredients,
+  })
 
   beforeEach(() => {
-    searchBarcode = jest.fn(() => TE.right({ name, links }))
+    searchBarcode = jest.fn(() =>
+      TE.right({ name: fixture.name, links: fixture.links }),
+    )
     fetchProductPage = jest.fn(link =>
       T.of({ link, html: 'html' as Model.Html }),
     )
     scrapeProductPage = jest.fn(scrapeFirstPage)
-    translateProductData = jest.fn(() => T.of(translated))
-    props = {
+    translateProductData = jest.fn(() => TE.right(fixture.translated))
+    deps = {
       searchBarcode,
       fetchProductPage,
       scrapeProductPage,
@@ -42,25 +35,21 @@ describe('createProcessBarcode', () => {
   })
 
   it('searches barcode', async () => {
-    await CPB.createProcessBarcode(props)(barcode)()
+    await CPB.createProcessBarcode(deps)(fixture.barcode)()
 
-    expect(searchBarcode).toHaveBeenCalledWith(barcode)
+    expect(searchBarcode).toHaveBeenCalledWith(fixture.barcode)
   })
 
   it('fetches all product pages', async () => {
-    await CPB.createProcessBarcode(props)(barcode)()
+    await CPB.createProcessBarcode(deps)(fixture.barcode)()
 
-    expect(fetchProductPage).toHaveBeenCalledTimes(links.length)
+    expect(fetchProductPage).toHaveBeenCalledTimes(fixture.links.length)
   })
 
   it('translates data', async () => {
-    await CPB.createProcessBarcode(props)(barcode)()
+    await CPB.createProcessBarcode(deps)(fixture.barcode)()
 
-    expect(translateProductData).toHaveBeenCalledWith({
-      name,
-      ingredients,
-      links,
-    })
+    expect(translateProductData).toHaveBeenCalledWith(fixture.productData)
   })
 
   it('aggregates data from all pages', async () => {
@@ -73,18 +62,16 @@ describe('createProcessBarcode', () => {
       .mockImplementationOnce(scrapeFirstPage)
       .mockImplementationOnce(scrapeSecondPage)
 
-    await CPB.createProcessBarcode(props)(barcode)()
+    await CPB.createProcessBarcode(deps)(fixture.barcode)()
 
     expect(translateProductData).toHaveBeenCalledWith({
-      name,
-      ingredients,
-      links,
+      ...fixture.productData,
       origin,
     })
   })
 
   it('returns translated product data', async () => {
-    const e = await CPB.createProcessBarcode(props)(barcode)()
+    const e = await CPB.createProcessBarcode(deps)(fixture.barcode)()
     pipe(
       e,
       E.fold(
@@ -92,7 +79,7 @@ describe('createProcessBarcode', () => {
           throw e
         },
         productData => {
-          expect(productData).toEqual(translated)
+          expect(productData).toEqual(fixture.translated)
         },
       ),
     )

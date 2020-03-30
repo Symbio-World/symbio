@@ -67,6 +67,10 @@ module.exports = {
         format: ['PascalCase'],
       },
       {
+        selector: 'variable',
+        format: ['camelCase', 'PascalCase', 'UPPER_CASE'],
+      },
+      {
         selector: 'parameter',
         format: ['camelCase'],
         leadingUnderscore: 'allow',

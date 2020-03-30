@@ -1,15 +1,41 @@
-export const NoSearchResultsFound = 'NoSearchResultsFound'
-export type NoSearchResultsFound = typeof NoSearchResultsFound
+/* eslint functional/no-class: 0 functional/no-this-expression: 0 */
+export class NoSearchResultsFound extends Error {
+  constructor(message?: string) {
+      super(message);
+      this.name = 'NoSearchResultsFound';
+      Object.setPrototypeOf(this, NoSearchResultsFound.prototype);
+  }
+}
 
-export const SearchBarcodeRequestFailed = 'SearchBarcodeRequestFailed'
-export type SearchBarcodeRequestFailed = typeof SearchBarcodeRequestFailed
+export class SearchBarcodeRequestFailed extends Error {
+  constructor(message?: string) {
+      super(message);
+      this.name = 'SearchBarcodeRequestFailed';
+      Object.setPrototypeOf(this, SearchBarcodeRequestFailed.prototype);
+  }
+}
 
-export const ValidationError = 'ValidationError'
-export type ValidationError = typeof ValidationError
+export class ValidationError extends Error {
+  constructor(message?: string) {
+      super(message);
+      this.name = 'ValidationError';
+      Object.setPrototypeOf(this, ValidationError.prototype);
+  }
+}
 
 export type SearchBarcodeError =
-  | typeof ValidationError
-  | typeof NoSearchResultsFound
-  | typeof SearchBarcodeRequestFailed
+  | ValidationError
+  | NoSearchResultsFound
+  | SearchBarcodeRequestFailed
 
-export type ProcessBarcodeError = SearchBarcodeError
+export class TranslateRequestFailed extends Error {
+  constructor(message?: string) {
+      super(message);
+      this.name = 'TranslateRequestFailed';
+      Object.setPrototypeOf(this, TranslateRequestFailed.prototype);
+  }
+}
+
+export type TranslateProductDataError = ValidationError | TranslateRequestFailed
+
+export type ProcessBarcodeError = SearchBarcodeError | TranslateProductDataError

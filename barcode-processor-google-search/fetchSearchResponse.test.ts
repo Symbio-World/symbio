@@ -24,10 +24,10 @@ describe('fetchSearchResponse', () => {
       e,
       E.fold(
         e => {
-          expect(e).toBe(Core.SearchBarcodeRequestFailed)
+          expect(e).toBeInstanceOf(Core.SearchBarcodeRequestFailed)
         },
         _ => {
-          throw new Error('Should not succeed')
+          throw new Error()
         },
       ),
     )
@@ -43,12 +43,10 @@ describe('fetchSearchResponse', () => {
       e,
       E.fold(
         error => {
-          expect(error).toEqual(Core.ValidationError)
+          expect(error).toBeInstanceOf(Core.ValidationError)
         },
-        a => {
-          throw new Error(
-            `Should not succeed, but received ${JSON.stringify(a, null, 4)}`,
-          )
+        _ => {
+          throw new Error()
         },
       ),
     )
@@ -64,12 +62,10 @@ describe('fetchSearchResponse', () => {
       e,
       E.fold(
         error => {
-          expect(error).toBe(Core.NoSearchResultsFound)
+          expect(error).toBeInstanceOf(Core.NoSearchResultsFound)
         },
-        a => {
-          throw new Error(
-            `Should not succeed, but received ${JSON.stringify(a, null, 4)}`,
-          )
+        _ => {
+          throw new Error()
         },
       ),
     )

@@ -5,11 +5,11 @@ import { fetchSearchResponse } from './fetchSearchResponse'
 import { GoogleSearchConfig } from './GoogleSearchConfig'
 import { SearchResponse } from './model'
 
-type Props = {
+type Deps = {
   config: GoogleSearchConfig
   onSearchResponse?: (searchResponse: SearchResponse) => void
 }
-type CreateSearchBarcode = (props: Props) => Core.SearchBarcode
+type CreateSearchBarcode = (deps: Deps) => Core.SearchBarcode
 export const createSearchBarcode: CreateSearchBarcode = ({ config, onSearchResponse }) => barcode => {
   return pipe(
     fetchSearchResponse(config, barcode),

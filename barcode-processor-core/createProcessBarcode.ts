@@ -18,19 +18,19 @@ export type ScrapeProductPage = (
 
 export type TranslateProductData = (
   productData: Model.ProductData,
-) => T.Task<Model.ProductData>
+) => TE.TaskEither<Error.TranslateProductDataError, Model.ProductData>
 
 export type ProcessBarcode = (
   b: Model.Barcode,
 ) => TE.TaskEither<Error.ProcessBarcodeError, Model.ProductData>
 
-export type Props = Readonly<{
+export type Deps = Readonly<{
   searchBarcode: SearchBarcode
   fetchProductPage: FetchProductPage
   scrapeProductPage: ScrapeProductPage
   translateProductData: TranslateProductData
 }>
-export type CreateProcessBarcode = (props: Props) => ProcessBarcode
+export type CreateProcessBarcode = (deps: Deps) => ProcessBarcode
 export const createProcessBarcode: CreateProcessBarcode = ({
   searchBarcode,
   fetchProductPage,
@@ -41,7 +41,7 @@ export const createProcessBarcode: CreateProcessBarcode = ({
     searchBarcode(barcode),
     TE.chain(productSearchData => {
       const tasks = productSearchData.links.map(fetchProductPage)
-      const task = pipe(
+      return pipe(
         A.array.sequence(T.task)(tasks),
         T.chain(productPages => {
           const dataFromProductPages = productPages.map(scrapeProductPage)
@@ -52,7 +52,6 @@ export const createProcessBarcode: CreateProcessBarcode = ({
         }),
         T.chain(translateProductData),
       )
-      return TE.rightTask(task)
     }),
   )
 }
