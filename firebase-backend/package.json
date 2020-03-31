@@ -2,9 +2,6 @@
   "name": "@symbio/firebase-backend",
   "private": true,
   "version": "1.0.0",
-  "engines": {
-    "node": "8"
-  },
   "scripts": {
     "lint": "tsc && eslint . --ext js,jsx,ts,tsx",
     "build": "tsc",
@@ -26,6 +23,7 @@
     "@symbio/barcode-processor-scraper": "../barcode-processor-scraper",
     "@symbio/barcode-processor-google-search": "../barcode-processor-google-search",
     "@symbio/barcode-processor-google-translate": "../barcode-processor-google-translate",
+    "@symbio/tree-parser": "../tree-parser",
     "@symbio/ts-lib": "../ts-lib",
     "@symbio/ts-scripts": "../ts-scripts"
   },
@@ -36,6 +34,7 @@
     "@symbio/barcode-processor-google-translate": "1.0.0",
     "@symbio/barcode-processor-scraper": "1.0.0",
     "@symbio/event-store-core": "1.0.0",
+    "@symbio/tree-parser": "1.0.0",
     "@symbio/ts-lib": "1.0.0",
     "firebase-admin": "^8.10.0",
     "firebase-functions": "^3.3.0"
