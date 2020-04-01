@@ -56,28 +56,38 @@ module.exports = {
       'error',
       {
         selector: 'default',
-        format: ['camelCase'],
+        format: ['strictCamelCase'],
       },
       {
         selector: 'variableLike',
-        format: ['camelCase', 'PascalCase'],
+        format: ['strictCamelCase', 'StrictPascalCase', 'UPPER_CASE'],
+        custom: {
+          regex: '.*(ERROR|Error|FAILED|Failed)$',
+          match: false
+        }
       },
       {
         selector: 'typeLike',
-        format: ['PascalCase'],
+        format: ['StrictPascalCase', 'UPPER_CASE'],
+        custom: {
+          regex: '.*(ERROR|Error|FAILED|Failed)$',
+          match: false
+        }
       },
       {
         selector: 'variable',
-        format: ['camelCase', 'PascalCase', 'UPPER_CASE'],
+        types: ['boolean'],
+        format: ['StrictPascalCase'],
+        prefix: ['is', 'should', 'has', 'can', 'did', 'will'],
       },
       {
         selector: 'parameter',
-        format: ['camelCase'],
+        format: ['strictCamelCase'],
         leadingUnderscore: 'allow',
       },
       {
         selector: 'property',
-        format: ['camelCase', 'PascalCase'],
+        format: ['strictCamelCase', 'StrictPascalCase'],
         leadingUnderscore: 'allow',
       },
     ],

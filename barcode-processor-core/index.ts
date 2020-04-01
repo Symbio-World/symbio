@@ -1,3 +1,3 @@
 export * from './ProductData'
-export * from './error'
+export * from './failure'
 export * from './createProcessBarcode'

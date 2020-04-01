@@ -2,12 +2,12 @@
   "name": "@symbio/ts-scripts",
   "version": "1.0.0",
   "scripts": {
-    "lint": "echo lint",
-    "build": "echo build",
-    "watch": "echo watch",
-    "test": "echo test",
-    "clean": "echo clean",
-    "clean-all": "yarn clean && rm -rf node_modules"
+    "lint": "tsc && eslint . --ext js,jsx,ts,tsx",
+    "build": "tsc",
+    "watch": "tsc --watch",
+    "test": "yarn lint && jest --passWithNoTests",
+    "clean": "rm -rf ./build",
+    "clean-all": "yarn clean && rm -rf node_modules/"
   },
   "devDependencies": {
     "@lwc/eslint-plugin-lwc": "^0.9.0",
