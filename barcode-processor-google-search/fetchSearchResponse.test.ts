@@ -1,24 +1,25 @@
-import { E, pipe, axios } from '@symbio/ts-lib'
+import { E, pipe, F } from '@symbio/ts-lib'
+import { http } from '@symbio/ts-lib/http'
 import * as Core from '@symbio/barcode-processor-core'
 import { fetchSearchResponse } from './fetchSearchResponse'
 import { GoogleSearchConfig } from './GoogleSearchConfig'
 import * as fixture from './SearchResponse.fixture'
 
-jest.mock('@symbio/ts-lib/axios')
+jest.mock('@symbio/ts-lib/http')
 
 describe('fetchSearchResponse', () => {
   const config: GoogleSearchConfig = { cx: '', key: '', url: '' }
   const barcode = '1233432' as Core.Barcode
 
   it('fails if request fails', async () => {
-    ;(axios.get as jest.Mock).mockImplementation(() => Promise.reject())
+    ;(http.get as jest.Mock).mockImplementation(() => Promise.reject())
 
     const e = await fetchSearchResponse(config, barcode)()
     pipe(
       e,
       E.fold(
-        e => {
-          expect(e).toBeInstanceOf(Core.SearchBarcodeRequestFailed)
+        failure => {
+          expect(failure.name).toEqual(F.FETCH_FAILURE)
         },
         _ => {
           throw new Error()
@@ -28,7 +29,7 @@ describe('fetchSearchResponse', () => {
   })
 
   it('fails if does not conform to schema fails', async () => {
-    ;(axios.get as jest.Mock).mockImplementation(() =>
+    ;(http.get as jest.Mock).mockImplementation(() =>
       Promise.resolve({ data: {} }),
     )
 
@@ -36,27 +37,8 @@ describe('fetchSearchResponse', () => {
     pipe(
       e,
       E.fold(
-        error => {
-          expect(error).toBeInstanceOf(Core.ValidationError)
-        },
-        _ => {
-          throw new Error()
-        },
-      ),
-    )
-  })
-
-  it('product might be empty', async () => {
-    ;(axios.get as jest.Mock).mockImplementation(() =>
-      Promise.resolve({ data: fixture }),
-    )
-
-    const e = await fetchSearchResponse(config, barcode)()
-    pipe(
-      e,
-      E.fold(
-        error => {
-          expect(error).toBeInstanceOf(Core.ValidationError)
+        failure => {
+          expect(failure.name).toEqual(F.DECODING_FAILURE)
         },
         _ => {
           throw new Error()
@@ -66,7 +48,7 @@ describe('fetchSearchResponse', () => {
   })
 
   it('fails if items are empty', async () => {
-    ;(axios.get as jest.Mock).mockImplementation(() =>
+    ;(http.get as jest.Mock).mockImplementation(() =>
       Promise.resolve({ data: { items: [] } }),
     )
 
@@ -74,11 +56,30 @@ describe('fetchSearchResponse', () => {
     pipe(
       e,
       E.fold(
-        error => {
-          expect(error).toBeInstanceOf(Core.NoSearchResultsFound)
+        failure => {
+          expect(failure.name).toEqual(F.DECODING_FAILURE)
         },
         _ => {
           throw new Error()
+        },
+      ),
+    )
+  })
+
+  it('passes with real world payload', async () => {
+    ;(http.get as jest.Mock).mockImplementation(() =>
+      Promise.resolve({ data: fixture.searchResponse }),
+    )
+
+    const e = await fetchSearchResponse(config, barcode)()
+    pipe(
+      e,
+      E.fold(
+        failure => {
+          throw(failure)
+        },
+        searchResponse => {
+          expect(searchResponse).toEqual(fixture.searchResponse)
         },
       ),
     )

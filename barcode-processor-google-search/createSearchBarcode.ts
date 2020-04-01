@@ -1,4 +1,4 @@
-import { TE, pipe } from '@symbio/ts-lib'
+import { TE, pipe, t } from '@symbio/ts-lib'
 import * as Core from '@symbio/barcode-processor-core'
 import { fetchSearchResponse } from './fetchSearchResponse'
 import { GoogleSearchConfig } from './GoogleSearchConfig'
@@ -9,7 +9,10 @@ type Deps = {
   onSearchResponse?: (searchResponse: SearchResponse) => void
 }
 type CreateSearchBarcode = (deps: Deps) => Core.SearchBarcode
-export const createSearchBarcode: CreateSearchBarcode = ({ config, onSearchResponse }) => barcode => {
+export const createSearchBarcode: CreateSearchBarcode = ({
+  config,
+  onSearchResponse,
+}) => barcode => {
   return pipe(
     fetchSearchResponse(config, barcode),
     TE.chain(response => {
@@ -21,7 +24,9 @@ export const createSearchBarcode: CreateSearchBarcode = ({ config, onSearchRespo
         }),
         {},
       )
-      const links = response.items.map(i => i.link)
+      const links = response.items.map(i => i.link) as t.NonEmptyArray<
+        Core.Link
+      >
       const productSearchData = { ...product, links }
       return TE.right(productSearchData)
     }),

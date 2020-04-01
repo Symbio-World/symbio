@@ -1,4 +1,4 @@
-import { R } from '@symbio/ts-lib'
+import { R, _ } from '@symbio/ts-lib'
 import {
   Tree,
   Path,
@@ -6,7 +6,6 @@ import {
   Value,
   Leaf,
   isPrimitive,
-  isArray,
 } from './common'
 
 type ParseValue = (path: Path, value: Value) => PathValuePair[]
@@ -17,7 +16,7 @@ const parseValue: ParseValue = (path, value) => {
   if (R.isEmpty(value)) {
     return [{ path, value: value }]
   }
-  if (isArray(value) && !R.isEmpty(value)) {
+  if (_.isArray(value) && !R.isEmpty(value)) {
     const array = value as Value[]
     const pairs = array.map((v, index) => parseValue([...path, index], v))
     return R.unnest(pairs)

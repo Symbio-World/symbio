@@ -1,5 +1,5 @@
-import { R } from '@symbio/ts-lib'
-import { PathValuePair, Tree, Value, isNumber } from './common'
+import { R, _ } from '@symbio/ts-lib'
+import { PathValuePair, Tree, Value } from './common'
 
 type ToValue = (pair: PathValuePair) => Value
 const toValue: ToValue = ({ path, value }) => {
@@ -7,7 +7,7 @@ const toValue: ToValue = ({ path, value }) => {
     return value
   }
   const [firstKey, ...rest] = path
-  if (isNumber(firstKey)) {
+  if (_.isNumber(firstKey)) {
     return [toValue({ path: rest, value: value })]
   }
   return { [firstKey]: toValue({ path: rest, value }) }

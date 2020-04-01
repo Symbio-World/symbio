@@ -2,7 +2,7 @@
 import * as Core from '@symbio/barcode-processor-core'
 import * as Model from './SearchResponse'
 
-export const searchResponse = {
+export const searchResponse: Model.SearchResponse = {
   kind: 'customsearch#search',
   url: {
     type: 'application/json',
@@ -525,6 +525,6 @@ export const searchResponse = {
           },
         ],
       },
-    } as Model.Item,
-  ] as Model.Item[],
-} as Model.SearchResponse
+    },
+  ],
+}

@@ -1,26 +1,27 @@
-import { TE, pipe, A, R, flatMapOr } from '@symbio/ts-lib'
-import * as Model from './ProductData'
-import * as Failure from './failure'
+import { TE, pipe, A, R, flatMapOr, F } from '@symbio/ts-lib'
+import * as PD from './ProductData'
+
+export type Failures = F.FetchFailure | F.DecodingFailure
 
 export type SearchBarcode = (
-  barcode: Model.Barcode,
-) => TE.TaskEither<Failure.SearchBarcodeFailure, Model.ProductSearchData>
+  barcode: PD.Barcode,
+) => TE.TaskEither<Failures, PD.ProductSearchData>
 
 export type FetchProductPage = (
-  link: Model.Link,
-) => TE.TaskEither<Failure.FetchProductPageFailure, Model.ProductPage>
+  link: PD.Link,
+) => TE.TaskEither<Failures, PD.ProductPage>
 
 export type ScrapeProductPage = (
-  productPage: Model.ProductPage,
-) => Model.ProductPageData
+  productPage: PD.ProductPage,
+) => PD.ProductPageData
 
 export type TranslateProductData = (
-  productData: Model.ProductData,
-) => TE.TaskEither<Failure.TranslateProductDataFailure, Model.ProductData>
+  productData: PD.ProductData,
+) => TE.TaskEither<Failures, PD.ProductData>
 
 export type ProcessBarcode = (
-  b: Model.Barcode,
-) => TE.TaskEither<Failure.ProcessBarcodeFailure, Model.ProductData>
+  b: PD.Barcode,
+) => TE.TaskEither<Failures, PD.ProductData>
 
 export type Deps = {
   searchBarcode: SearchBarcode

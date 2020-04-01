@@ -1,4 +1,4 @@
-import { TE, pipe, E } from '@symbio/ts-lib'
+import { TE, pipe, E, t } from '@symbio/ts-lib'
 import * as CPB from './createProcessBarcode'
 import * as PD from './ProductData'
 import * as fixture from './ProductData.fixture'
@@ -16,7 +16,10 @@ describe('createProcessBarcode', () => {
 
   beforeEach(() => {
     searchBarcode = jest.fn(() =>
-      TE.right({ name: fixture.name, links: fixture.links }),
+      TE.right({
+        name: fixture.name,
+        links: fixture.links as t.NonEmptyArray<PD.Link>,
+      }),
     )
     fetchProductPage = jest.fn(link =>
       TE.right({ link, html: 'html' as PD.Html }),

@@ -1,4 +1,4 @@
-import { R } from '@symbio/ts-lib'
+import { _ } from '@symbio/ts-lib'
 
 export type Leaf = boolean | number | string | null | undefined
 export type Value = Leaf | Value[] | Tree
@@ -8,9 +8,5 @@ export type PathItem = string | number
 export type Path = PathItem[]
 export type PathValuePair = { path: Path; value: Leaf | [] | {} }
 
-export const isBoolean = (value: Value) => typeof value === 'boolean'
-export const isNumber = (value: Value) => typeof value === 'number'
-export const isString = (value: Value) => typeof value === 'string'
 export const isPrimitive = (value: Value) =>
-isBoolean(value) || isNumber(value) || isString(value) || R.isNil(value)
-export const isArray = (value: Value) => Array.isArray(value)
+  _.isBoolean(value) || _.isNumber(value) || _.isString(value) || _.isNil(value)
