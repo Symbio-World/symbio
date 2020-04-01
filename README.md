@@ -42,9 +42,10 @@ Libraries can be of different types as well. These mainly follow from hexagonal/
 ## Naming Conventions
 - packages are kebab-cased
 - file names must be camelCased or PascalCased
-  - React components are PascalCased
-  - files that return types are PascalCased
-  - everything else is camelCased
+- React components and types are PascalCased
+- files that return types are PascalCased
+- constants are UPPER_CASED
+- everything else is camelCased
 - `create...` to indicate a factory, it creates 
 - `fetch...` to describe external calls
 - `scrape...` for extraction of data, i.e. retrieving data from html
