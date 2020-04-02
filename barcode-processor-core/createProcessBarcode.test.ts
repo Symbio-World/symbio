@@ -1,4 +1,4 @@
-import { TE, pipe, E, t } from '@symbio/ts-lib'
+import { TE, E, t } from '@symbio/ts-lib'
 import * as CPB from './createProcessBarcode'
 import * as PD from './ProductData'
 import * as fixture from './ProductData.fixture'
@@ -72,16 +72,6 @@ describe('createProcessBarcode', () => {
 
   it('returns translated product data', async () => {
     const e = await CPB.createProcessBarcode(deps)(fixture.barcode)()
-    pipe(
-      e,
-      E.fold(
-        e => {
-          throw e
-        },
-        productData => {
-          expect(productData).toEqual(fixture.translated)
-        },
-      ),
-    )
+    expect(e).toEqual(E.right(fixture.translated))
   })
 })

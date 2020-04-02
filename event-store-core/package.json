@@ -3,12 +3,15 @@
   "version": "1.0.0",
   "main": "build/index.js",
   "scripts": {
-    "lint": "tsc --noEmit && eslint . --quiet --fix",
+    "lint": "tsc && eslint . --ext js,jsx,ts,tsx",
     "build": "tsc",
     "watch": "tsc --watch",
-    "test": "jest",
+    "test": "yarn lint && jest",
     "clean": "rm -rf ./build",
     "clean-all": "yarn clean && rm -rf node_modules/"
+  },
+  "dependencies": {
+    "@symbio/ts-lib": "1.0.0"
   },
   "devDependencies": {
     "@symbio/ts-scripts": "1.0.0"

@@ -1,8 +1,8 @@
-import { TE, pipe, R } from '@symbio/ts-lib'
+import axios from 'axios'
+import { TE, pipe, Rr, R, fetchAndDecode } from '@symbio/ts-lib'
 import * as Core from '@symbio/barcode-processor-core'
 import { parseTree, toTree } from '@symbio/tree-parser'
 import { GoogleTranslateConfig } from './GoogleTranslateConfig'
-import { fetchTranslateResponse } from './fetchTranslateResponse'
 import { TranslateResponse } from './TranslateResponse'
 
 const DO_NOT_TRANSLATE_KEYS = ['links', 'image', 'brand']
@@ -11,7 +11,7 @@ type Deps = {
   config: GoogleTranslateConfig
   onTranslateResponse?: (translateResponse: TranslateResponse) => void
 }
-type CreateTranslateProductData = (deps: Deps) => Core.TranslateProductData
+type CreateTranslateProductData = Rr.Reader<Deps, Core.TranslateProductData>
 export const createTranslateProductData: CreateTranslateProductData = ({
   config,
   onTranslateResponse,
@@ -19,10 +19,25 @@ export const createTranslateProductData: CreateTranslateProductData = ({
   return pipe(
     TE.right(productData),
     TE.chain(productData => {
-      const pathValuePairs = parseTree(R.omit(DO_NOT_TRANSLATE_KEYS, productData))
+      const pathValuePairs = parseTree(
+        R.omit(DO_NOT_TRANSLATE_KEYS, productData),
+      )
       const values = pathValuePairs.map(({ value }) => value)
       return pipe(
-        fetchTranslateResponse(values as string[], config),
+        fetchAndDecode(TranslateResponse, () =>
+          axios.post(
+            config.url,
+            {
+              q: values,
+              target: config.target,
+            },
+            {
+              params: {
+                key: config.key,
+              },
+            },
+          ),
+        ),
         TE.chain(response => {
           onTranslateResponse?.(response)
           const translatedValues = response.data.translations.map(

@@ -48,6 +48,7 @@ Libraries can be of different types as well. These mainly follow from hexagonal/
 - everything else is camelCased
 - `create...` to indicate a factory, it creates 
 - `fetch...` to describe external calls
+- `failure` instead of `error` to distinguish program expected failures from runtime errors
 - `scrape...` for extraction of data, i.e. retrieving data from html
 - `crawl...` for following links
 - `parse...` for representing something as something else, i.e. breaking it down into pieces, constituent parts, or segments

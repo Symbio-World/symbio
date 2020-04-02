@@ -1,4 +1,4 @@
-import { TE, pipe, A, R, flatMapOr, F } from '@symbio/ts-lib'
+import { TE, A, R, Rr, flatMapOr, F, pipe } from '@symbio/ts-lib'
 import * as PD from './ProductData'
 
 export type Failures = F.FetchFailure | F.DecodingFailure
@@ -29,8 +29,7 @@ export type Deps = {
   scrapeProductPage: ScrapeProductPage
   translateProductData: TranslateProductData
 }
-export type CreateProcessBarcode = (deps: Deps) => ProcessBarcode
-
+export type CreateProcessBarcode = Rr.Reader<Deps, ProcessBarcode>
 export const createProcessBarcode: CreateProcessBarcode = ({
   searchBarcode,
   fetchProductPage,

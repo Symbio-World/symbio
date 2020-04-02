@@ -1,11 +1,11 @@
-import { E, TE, pipe } from '@symbio/ts-lib'
+import { axios } from '@symbio/ts-lib/axios'
+import { E } from '@symbio/ts-lib'
 import * as fixture from '@symbio/barcode-processor-core/ProductData.fixture'
 import { createTranslateProductData } from './createTranslateProductData'
 import { GoogleTranslateConfig } from './GoogleTranslateConfig'
-import { fetchTranslateResponse } from './fetchTranslateResponse'
 import * as Model from './TranslateResponse'
 
-jest.mock('./fetchTranslateResponse')
+jest.mock('@symbio/ts-lib/axios')
 
 describe('createTranslateProductData', () => {
   const config: GoogleTranslateConfig = {
@@ -27,25 +27,8 @@ describe('createTranslateProductData', () => {
   }
 
   beforeEach(() => {
-    ;(fetchTranslateResponse as jest.Mock).mockImplementation(() =>
-      TE.right(translateResponse),
-    )
-  })
-
-  it('sends request', async () => {
-    const e = await createTranslateProductData({ config })(
-      fixture.productData,
-    )()
-    pipe(
-      e,
-      E.fold(
-        _ => {
-          throw new Error()
-        },
-        _ => {
-          expect(fetchTranslateResponse).toHaveBeenCalled()
-        },
-      ),
+    ;(axios.post as jest.Mock).mockImplementation(() =>
+      Promise.resolve({ data: translateResponse }),
     )
   })
 
@@ -55,20 +38,18 @@ describe('createTranslateProductData', () => {
       image: '',
       brand: '',
     }
-    const e = await createTranslateProductData({ config })(productData)()
-    pipe(
-      e,
-      E.fold(
-        _ => {
-          throw new Error()
+    await createTranslateProductData({ config })(productData)()
+    expect(axios.post).toHaveBeenCalledWith(
+      config.url,
+      {
+        q: [fixture.name, fixture.ingredients],
+        target: config.target,
+      },
+      {
+        params: {
+          key: config.key,
         },
-        _ => {
-          expect(fetchTranslateResponse).toHaveBeenCalledWith(
-            [fixture.name, fixture.ingredients],
-            config,
-          )
-        },
-      ),
+      },
     )
   })
 
@@ -76,16 +57,6 @@ describe('createTranslateProductData', () => {
     const e = await createTranslateProductData({ config })(
       fixture.productData,
     )()
-    pipe(
-      e,
-      E.fold(
-        _ => {
-          throw new Error()
-        },
-        productData => {
-          expect(productData).toEqual(fixture.translated)
-        },
-      ),
-    )
+    expect(e).toEqual(E.right(fixture.translated))
   })
 })

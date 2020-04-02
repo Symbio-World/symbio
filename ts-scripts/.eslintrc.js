@@ -10,13 +10,7 @@ module.exports = {
     'plugin:functional/external-recommended',
     'plugin:functional/recommended',
   ],
-  plugins: [
-    'filenames',
-    '@typescript-eslint',
-    'functional',
-    'import',
-    '@lwc/eslint-plugin-lwc',
-  ],
+  plugins: ['filenames', '@typescript-eslint', 'functional', 'import'],
   env: {
     node: true,
     jest: true,
@@ -48,46 +42,46 @@ module.exports = {
     'import/no-default-export': 2,
     'filenames/match-regex': [2, '^[a-zA-Z.]+$', false],
     'filenames/match-exported': 2,
-    '@lwc/lwc/no-async-await': 2,
     '@typescript-eslint/prefer-function-type': 2,
     '@typescript-eslint/explicit-function-return-type': 0,
-    '@typescript-eslint/no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
+    '@typescript-eslint/unbound-method': 0,
+    '@typescript-eslint/no-var-requires': 0,
     '@typescript-eslint/naming-convention': [
       'error',
       {
         selector: 'default',
-        format: ['strictCamelCase'],
+        format: ['camelCase'],
       },
       {
         selector: 'variableLike',
-        format: ['strictCamelCase', 'StrictPascalCase', 'UPPER_CASE'],
+        format: ['camelCase', 'PascalCase', 'UPPER_CASE'],
         custom: {
           regex: '.*(ERROR|Error|error|FAILED|Failed|failed)$',
-          match: false
-        }
+          match: false,
+        },
       },
       {
         selector: 'typeLike',
-        format: ['StrictPascalCase', 'UPPER_CASE'],
+        format: ['PascalCase', 'UPPER_CASE'],
         custom: {
           regex: '.*(ERROR|Error|FAILED|Failed)$',
-          match: false
-        }
+          match: false,
+        },
       },
       {
         selector: 'variable',
         types: ['boolean'],
-        format: ['StrictPascalCase'],
+        format: ['PascalCase'],
         prefix: ['is', 'should', 'has', 'can', 'did', 'will'],
       },
       {
         selector: 'parameter',
-        format: ['strictCamelCase'],
+        format: ['camelCase'],
         leadingUnderscore: 'allow',
       },
       {
         selector: 'property',
-        format: ['strictCamelCase', 'StrictPascalCase'],
+        format: ['camelCase', 'PascalCase'],
         leadingUnderscore: 'allow',
       },
     ],

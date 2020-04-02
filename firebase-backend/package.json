@@ -6,7 +6,7 @@
     "lint": "tsc && eslint . --ext js,jsx,ts,tsx",
     "build": "tsc",
     "watch": "tsc --watch",
-    "test": "yarn lint && jest",
+    "test": "yarn lint && jest --passWithNoTests",
     "clean": "rm -rf build .packages",
     "clean-all": "yarn clean && rm -rf node_modules/",
     "serve": "firebase emulators:start --only functions",
