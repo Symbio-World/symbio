@@ -1,31 +1,29 @@
-import { TE, E, t } from '@symbio/ts-lib'
-import * as CPB from './createProcessBarcode'
-import * as PD from './ProductData'
+import * as Program from './createProcessBarcode'
 import * as fixture from './ProductData.fixture'
 
 describe('createProcessBarcode', () => {
-  let searchBarcode: CPB.SearchBarcode
-  let fetchProductPage: CPB.FetchProductPage
-  let scrapeProductPage: CPB.ScrapeProductPage
-  let translateProductData: CPB.TranslateProductData
-  let deps: CPB.Deps
+  let searchBarcode: Program.SearchBarcode
+  let fetchProductPage: Program.FetchProductPage
+  let scrapeProductPage: Program.ScrapeProductPage
+  let translateProductData: Program.TranslateProductData
+  let deps: Program.Deps
 
-  const scrapeFirstPage: CPB.ScrapeProductPage = () => ({
+  const scrapeFirstPage: Program.ScrapeProductPage = () => ({
     ingredients: fixture.ingredients,
   })
+  const defaultFetchProductPage: Program.FetchProductPage = link =>
+    Promise.resolve({ link, html: `html from ${link}` })
 
   beforeEach(() => {
     searchBarcode = jest.fn(() =>
-      TE.right({
+      Promise.resolve({
         name: fixture.name,
-        links: fixture.links as t.NonEmptyArray<PD.Link>,
+        links: fixture.links,
       }),
     )
-    fetchProductPage = jest.fn(link =>
-      TE.right({ link, html: 'html' as PD.Html }),
-    )
+    fetchProductPage = jest.fn(defaultFetchProductPage)
     scrapeProductPage = jest.fn(scrapeFirstPage)
-    translateProductData = jest.fn(() => TE.right(fixture.translated))
+    translateProductData = jest.fn(() => Promise.resolve(fixture.translated))
     deps = {
       searchBarcode,
       fetchProductPage,
@@ -35,26 +33,23 @@ describe('createProcessBarcode', () => {
   })
 
   it('searches barcode', async () => {
-    await CPB.createProcessBarcode(deps)(fixture.barcode)()
-
+    await Program.createProcessBarcode(deps)(fixture.barcode)
     expect(searchBarcode).toHaveBeenCalledWith(fixture.barcode)
   })
 
   it('fetches all product pages', async () => {
-    await CPB.createProcessBarcode(deps)(fixture.barcode)()
-
+    await Program.createProcessBarcode(deps)(fixture.barcode)
     expect(fetchProductPage).toHaveBeenCalledTimes(fixture.links.length)
   })
 
   it('translates data', async () => {
-    await CPB.createProcessBarcode(deps)(fixture.barcode)()
-
+    await Program.createProcessBarcode(deps)(fixture.barcode)
     expect(translateProductData).toHaveBeenCalledWith(fixture.productData)
   })
 
   it('aggregates data from all pages', async () => {
     const origin = 'Finland'
-    const scrapeSecondPage: CPB.ScrapeProductPage = () => ({
+    const scrapeSecondPage: Program.ScrapeProductPage = () => ({
       ingredients: 'discard',
       origin,
     })
@@ -62,7 +57,7 @@ describe('createProcessBarcode', () => {
       .mockImplementationOnce(scrapeFirstPage)
       .mockImplementationOnce(scrapeSecondPage)
 
-    await CPB.createProcessBarcode(deps)(fixture.barcode)()
+    await Program.createProcessBarcode(deps)(fixture.barcode)
 
     expect(translateProductData).toHaveBeenCalledWith({
       ...fixture.productData,
@@ -71,7 +66,19 @@ describe('createProcessBarcode', () => {
   })
 
   it('returns translated product data', async () => {
-    const e = await CPB.createProcessBarcode(deps)(fixture.barcode)()
-    expect(e).toEqual(E.right(fixture.translated))
+    const productData = await Program.createProcessBarcode(deps)(
+      fixture.barcode,
+    )
+    expect(productData).toEqual(fixture.translated)
+  })
+
+  it('handles fetch product page failure', async () => {
+    ;(fetchProductPage as jest.Mock)
+      .mockImplementationOnce(defaultFetchProductPage)
+      .mockImplementationOnce(() => Promise.reject())
+    const productData = await Program.createProcessBarcode(deps)(
+      fixture.barcode,
+    )
+    expect(productData).toEqual(fixture.translated)
   })
 })

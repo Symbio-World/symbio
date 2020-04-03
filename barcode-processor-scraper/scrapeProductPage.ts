@@ -1,4 +1,4 @@
-import { R } from '@symbio/ts-lib'
+import * as R from 'ramda'
 import cheerio from 'cheerio'
 import * as Core from '@symbio/barcode-processor-core'
 

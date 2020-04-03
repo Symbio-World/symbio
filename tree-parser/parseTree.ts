@@ -1,12 +1,6 @@
-import { R, _ } from '@symbio/ts-lib'
-import {
-  Tree,
-  Path,
-  PathValuePair,
-  Value,
-  Leaf,
-  isPrimitive,
-} from './common'
+import * as R from 'ramda'
+import * as _ from 'lodash'
+import { Tree, Path, PathValuePair, Value, Leaf, isPrimitive } from './common'
 
 type ParseValue = (path: Path, value: Value) => PathValuePair[]
 const parseValue: ParseValue = (path, value) => {

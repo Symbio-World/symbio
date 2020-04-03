@@ -1,4 +1,4 @@
-import { _ } from '@symbio/ts-lib'
+import * as _ from 'lodash'
 
 export type Leaf = boolean | number | string | null | undefined
 export type Value = Leaf | Value[] | Tree

@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { TE, pipe, Rr, R, fetchAndDecode } from '@symbio/ts-lib'
+import * as R from 'ramda'
 import * as Core from '@symbio/barcode-processor-core'
 import { parseTree, toTree } from '@symbio/tree-parser'
 import { GoogleTranslateConfig } from './GoogleTranslateConfig'
@@ -11,51 +11,37 @@ type Deps = {
   config: GoogleTranslateConfig
   onTranslateResponse?: (translateResponse: TranslateResponse) => void
 }
-type CreateTranslateProductData = Rr.Reader<Deps, Core.TranslateProductData>
+type CreateTranslateProductData = (deps: Deps) => Core.TranslateProductData
 export const createTranslateProductData: CreateTranslateProductData = ({
   config,
   onTranslateResponse,
-}) => productData => {
-  return pipe(
-    TE.right(productData),
-    TE.chain(productData => {
-      const pathValuePairs = parseTree(
-        R.omit(DO_NOT_TRANSLATE_KEYS, productData),
-      )
-      const values = pathValuePairs.map(({ value }) => value)
-      return pipe(
-        fetchAndDecode(TranslateResponse, () =>
-          axios.post(
-            config.url,
-            {
-              q: values,
-              target: config.target,
-            },
-            {
-              params: {
-                key: config.key,
-              },
-            },
-          ),
-        ),
-        TE.chain(response => {
-          onTranslateResponse?.(response)
-          const translatedValues = response.data.translations.map(
-            t => t.translatedText,
-          )
-          const translatedPathValuePairs = pathValuePairs.map(
-            ({ path }, index) => ({
-              path,
-              value: translatedValues[index],
-            }),
-          )
-          const translatedProductData = toTree(translatedPathValuePairs)
-          return TE.right({
-            ...productData,
-            ...translatedProductData,
-          })
-        }),
-      )
-    }),
+}) => async productData => {
+  const pathValuePairs = parseTree(R.omit(DO_NOT_TRANSLATE_KEYS, productData))
+  const values = pathValuePairs.map(({ value }) => value)
+  const axiosResponse = await axios.post<TranslateResponse>(
+    config.url,
+    {
+      q: values,
+      target: config.target,
+    },
+    {
+      params: {
+        key: config.key,
+      },
+    },
   )
+  const translateResponse = axiosResponse.data
+  onTranslateResponse?.(translateResponse)
+  const translatedValues = translateResponse.data.translations.map(
+    t => t.translatedText,
+  )
+  const translatedPathValuePairs = pathValuePairs.map(({ path }, index) => ({
+    path,
+    value: translatedValues[index],
+  }))
+  const translatedProductData = toTree(translatedPathValuePairs)
+  return {
+    ...productData,
+    ...translatedProductData,
+  }
 }

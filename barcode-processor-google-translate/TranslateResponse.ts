@@ -1,13 +1,9 @@
-import { t } from '@symbio/ts-lib'
+export type Translation = {
+  translatedText: string
+}
 
-export const Translation = t.type({
-  translatedText: t.string
-})
-export type Translation = t.TypeOf<typeof Translation>
-
-export const TranslateResponse = t.type({
-  data: t.type({
-    translations: t.array(Translation)
-  })
-})
-export type TranslateResponse = t.TypeOf<typeof TranslateResponse>
+export type TranslateResponse = {
+  data: {
+    translations: Translation[]
+  }
+}

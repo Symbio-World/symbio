@@ -1,4 +1,5 @@
-import { R, _ } from '@symbio/ts-lib'
+import * as R from 'ramda'
+import * as _ from 'lodash'
 import { PathValuePair, Tree, Value } from './common'
 
 type ToValue = (pair: PathValuePair) => Value

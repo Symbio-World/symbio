@@ -1,8 +1,5 @@
 /* eslint-disable @typescript-eslint/naming-convention, @typescript-eslint/camelcase */
-import * as Core from '@symbio/barcode-processor-core'
-import * as Model from './SearchResponse'
-
-export const searchResponse: Model.SearchResponse = {
+export const searchResponse = {
   kind: 'customsearch#search',
   url: {
     type: 'application/json',
@@ -38,7 +35,7 @@ export const searchResponse: Model.SearchResponse = {
       kind: 'customsearch#result',
       title: 'Tatar 1 kg, tartu mill - prisma',
       htmlTitle: 'Tatar 1 kg, tartu mill - prisma',
-      link: 'https://www.prismamarket.ee/entry/tatar-1-kg/4750020030919' as Core.Link,
+      link: 'https://www.prismamarket.ee/entry/tatar-1-kg/4750020030919',
       displayLink: 'www.prismamarket.ee',
       snippet:
         '19 sept. 2003 ... Tatar 1 kg, tartu mill, 4750020030919, koostisosad: , päritolumaa: euroopa liit - \nprisma.',
@@ -119,7 +116,7 @@ export const searchResponse: Model.SearchResponse = {
       kind: 'customsearch#result',
       title: 'Kuivained - Tartu Mill',
       htmlTitle: 'Kuivained - Tartu Mill',
-      link: 'https://tartumill.ee/et/tooted/kuivained/' as Core.Link,
+      link: 'https://tartumill.ee/et/tooted/kuivained/',
       displayLink: 'tartumill.ee',
       snippet:
         'Kaal: 1 kg. Kast: 20. Alusel: 42. EAN: 4750020030919. Lae suur pilt. Kollane \npoolitatud hernes. 100g toote toiteväärtus: Energiasisaldus1431 kJ / 337 kcal ...',
@@ -148,7 +145,7 @@ export const searchResponse: Model.SearchResponse = {
         'Tatar, TARTU MILL, 1 kg - Tangained - Kuivained, hommikusöögid ...',
       htmlTitle:
         'Tatar, TARTU MILL, 1 kg - Tangained - Kuivained, hommikusöögid ...',
-      link: 'https://www.selver.ee/tatar-tartu-mill-1-kg' as Core.Link,
+      link: 'https://www.selver.ee/tatar-tartu-mill-1-kg',
       displayLink: 'www.selver.ee',
       snippet:
         'Tatar, TARTU MILL, 1 kg. 1,89 € 1,89 €/kg. 1. Osta. Ribakood, 4750020030919. \nTootja, DOBELES DZIRNAVNIEKS AS. Päritolumaa, Läti. Tootekirjeldus. Tatar ...',
@@ -251,7 +248,7 @@ export const searchResponse: Model.SearchResponse = {
       kind: 'customsearch#result',
       title: 'Dry goods - Tartu Mill',
       htmlTitle: 'Dry goods - Tartu Mill',
-      link: 'https://tartumill.ee/en/tooted/kuivained/' as Core.Link,
+      link: 'https://tartumill.ee/en/tooted/kuivained/',
       displayLink: 'tartumill.ee',
       snippet:
         'Weight: 1 kg. Case: 20. Pallet: 42. EAN: 4750020030919. Download picture. \nYellow split peas. Nutritional value per 100 g of product: Energy1431 kJ / 337 \nkcal ...',
@@ -279,7 +276,7 @@ export const searchResponse: Model.SearchResponse = {
       title: 'Tatar, TARTU MILL, 1 kg - Крупы - Бакалея, сухие завтраки ...',
       htmlTitle:
         'Tatar, TARTU MILL, 1 kg - Крупы - Бакалея, сухие завтраки ...',
-      link: 'https://www.selver.ee/ru/tatar-tartu-mill-1-kg' as Core.Link,
+      link: 'https://www.selver.ee/ru/tatar-tartu-mill-1-kg',
       displayLink: 'www.selver.ee',
       snippet:
         'В корзину. Штрих, 4750020030919. Производитель, DOBELES \nDZIRNAVNIEKS AS. Страна происхождения, Латвия. Описание. Tatar. \nИнгредиенты. Tatar ...',
@@ -382,7 +379,7 @@ export const searchResponse: Model.SearchResponse = {
       kind: 'customsearch#result',
       title: 'Aldar Cash Carry oktoober-november by Aldar Market - issuu',
       htmlTitle: 'Aldar Cash Carry oktoober-november by Aldar Market - issuu',
-      link: 'https://issuu.com/aldar/docs/aldar_cc_kliendileht_oktoober-novem' as Core.Link,
+      link: 'https://issuu.com/aldar/docs/aldar_cc_kliendileht_oktoober-novem',
       displayLink: 'issuu.com',
       snippet:
         '25 sept. 2018 ... ... (4750020050566) Filini l (4750020050580) Spaghetti Nr 7 (4750020050818) \n0.86/kg. Tatar, 1 kg. (4750020030919) 1.16/kg. KM-ga: 0.97.',
@@ -473,7 +470,7 @@ export const searchResponse: Model.SearchResponse = {
       kind: 'customsearch#result',
       title: 'KOMPLEKTEERIMISTEENUS SAARLASTELE | kojukanne.sty.ee',
       htmlTitle: 'KOMPLEKTEERIMISTEENUS SAARLASTELE | kojukanne.sty.ee',
-      link: 'https://kojukanne.sty.ee/page/5/' as Core.Link,
+      link: 'https://kojukanne.sty.ee/page/5/',
       displayLink: 'kojukanne.sty.ee',
       snippet:
         'Tatar Tartu Mill 1kg. 1.79 € sis. KM. Tatar Tartu Mill 1kg kogus. 1,79 €/kg. EAN: \n4750020030919. Lisa korvi. Lahustuv kakaojoogipulber Nesquik Opti-Start 13.5g\n.',

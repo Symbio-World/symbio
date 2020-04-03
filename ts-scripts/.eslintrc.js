@@ -55,18 +55,10 @@ module.exports = {
       {
         selector: 'variableLike',
         format: ['camelCase', 'PascalCase', 'UPPER_CASE'],
-        custom: {
-          regex: '.*(ERROR|Error|error|FAILED|Failed|failed)$',
-          match: false,
-        },
       },
       {
         selector: 'typeLike',
         format: ['PascalCase', 'UPPER_CASE'],
-        custom: {
-          regex: '.*(ERROR|Error|FAILED|Failed)$',
-          match: false,
-        },
       },
       {
         selector: 'variable',

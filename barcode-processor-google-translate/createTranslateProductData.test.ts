@@ -1,11 +1,10 @@
-import { axios } from '@symbio/ts-lib/axios'
-import { E } from '@symbio/ts-lib'
+import axios from 'axios'
 import * as fixture from '@symbio/barcode-processor-core/ProductData.fixture'
 import { createTranslateProductData } from './createTranslateProductData'
 import { GoogleTranslateConfig } from './GoogleTranslateConfig'
-import * as Model from './TranslateResponse'
+import { TranslateResponse } from './TranslateResponse'
 
-jest.mock('@symbio/ts-lib/axios')
+jest.mock('axios')
 
 describe('createTranslateProductData', () => {
   const config: GoogleTranslateConfig = {
@@ -13,7 +12,7 @@ describe('createTranslateProductData', () => {
     url: 'utl',
     target: 'target',
   }
-  const translateResponse: Model.TranslateResponse = {
+  const translateResponse: TranslateResponse = {
     data: {
       translations: [
         {
@@ -38,7 +37,7 @@ describe('createTranslateProductData', () => {
       image: '',
       brand: '',
     }
-    await createTranslateProductData({ config })(productData)()
+    await createTranslateProductData({ config })(productData)
     expect(axios.post).toHaveBeenCalledWith(
       config.url,
       {
@@ -54,9 +53,9 @@ describe('createTranslateProductData', () => {
   })
 
   it('returns translated product data', async () => {
-    const e = await createTranslateProductData({ config })(
+    const productData = await createTranslateProductData({ config })(
       fixture.productData,
-    )()
-    expect(e).toEqual(E.right(fixture.translated))
+    )
+    expect(productData).toEqual(fixture.translated)
   })
 })

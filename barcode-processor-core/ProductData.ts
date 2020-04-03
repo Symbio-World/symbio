@@ -1,63 +1,26 @@
-import { t as PD } from '@symbio/ts-lib'
+export type Barcode = string
+export type Link = string
+export type Html = string
 
-export const Barcode = PD.brand(
-  PD.string,
-  (s): s is PD.Branded<string, { readonly Barcode: unique symbol }> =>
-    /\d+/.test(s),
-  'Barcode',
-)
-export type Barcode = PD.TypeOf<typeof Barcode>
-
-export const Link = PD.brand(
-  PD.string,
-  (s): s is PD.Branded<string, { readonly Link: unique symbol }> =>
-    /^https?:\/\/.+/.test(s),
-  'Link',
-)
-export type Link = PD.TypeOf<typeof Link>
-
-export const Html = PD.brand(
-  PD.string,
-  (s): s is PD.Branded<string, { readonly Html: unique symbol }> => s.length > 0,
-  'Html',
-)
-export type Html = PD.TypeOf<typeof Html>
-
-export const ProductPage = PD.type({
+export type ProductPage = {
   link: Link,
-  html: Html,
-})
-export type ProductPage = PD.TypeOf<typeof ProductPage>
+  html: Html
+}
 
-export const ProductSearchDataOptional = PD.partial({
-  image: PD.string,
-  name: PD.string,
-  description: PD.string,
-  sku: PD.string,
-  category: PD.string,
-  brand: PD.string,
-})
-export type ProductSearchDataOptional = PD.TypeOf<
-  typeof ProductSearchDataOptional
->
-export const ProductSearchDataRequired = PD.type({
-  links: PD.nonEmptyArray(Link),
-})
-export type ProductSearchDataRequired = PD.TypeOf<
-  typeof ProductSearchDataRequired
->
-export const ProductSearchData = PD.intersection([
-  ProductSearchDataOptional,
-  ProductSearchDataRequired,
-])
-export type ProductSearchData = PD.TypeOf<typeof ProductSearchData>
+export type ProductSearchData = {
+  image?: Link,
+  name?: string,
+  description?: string,
+  sku?: string,
+  category?: string,
+  brand?: string,
+  links: Link[]
+}
 
-export const ProductPageData = PD.partial({
-  ingredients: PD.string,
-  allergens: PD.array(PD.string),
-  origin: PD.string,
-})
-export type ProductPageData = PD.TypeOf<typeof ProductPageData>
+export type ProductPageData = {
+  ingredients?: string,
+  allergens?: string[],
+  origin?: string,
+}
 
-export const ProductData = PD.union([ProductSearchData, ProductPageData])
-export type ProductData = PD.TypeOf<typeof ProductData>
+export type ProductData = ProductSearchData & ProductPageData

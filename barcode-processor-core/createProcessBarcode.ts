@@ -1,27 +1,22 @@
-import { TE, A, R, Rr, flatMapOr, F, pipe } from '@symbio/ts-lib'
-import * as PD from './ProductData'
-
-export type Failures = F.FetchFailure | F.DecodingFailure
+import * as R from 'ramda'
+import { allSettled, PromiseResolution } from '@symbio/ts-lib'
+import * as Model from './ProductData'
 
 export type SearchBarcode = (
-  barcode: PD.Barcode,
-) => TE.TaskEither<Failures, PD.ProductSearchData>
+  barcode: Model.Barcode,
+) => Promise<Model.ProductSearchData>
 
-export type FetchProductPage = (
-  link: PD.Link,
-) => TE.TaskEither<Failures, PD.ProductPage>
+export type FetchProductPage = (link: Model.Link) => Promise<Model.ProductPage>
 
 export type ScrapeProductPage = (
-  productPage: PD.ProductPage,
-) => PD.ProductPageData
+  productPage: Model.ProductPage,
+) => Model.ProductPageData
 
 export type TranslateProductData = (
-  productData: PD.ProductData,
-) => TE.TaskEither<Failures, PD.ProductData>
+  productData: Model.ProductData,
+) => Promise<Model.ProductData>
 
-export type ProcessBarcode = (
-  b: PD.Barcode,
-) => TE.TaskEither<Failures, PD.ProductData>
+export type ProcessBarcode = (b: Model.Barcode) => Promise<Model.ProductData>
 
 export type Deps = {
   searchBarcode: SearchBarcode
@@ -29,28 +24,25 @@ export type Deps = {
   scrapeProductPage: ScrapeProductPage
   translateProductData: TranslateProductData
 }
-export type CreateProcessBarcode = Rr.Reader<Deps, ProcessBarcode>
+export type CreateProcessBarcode = (deps: Deps) => ProcessBarcode
 export const createProcessBarcode: CreateProcessBarcode = ({
   searchBarcode,
   fetchProductPage,
   scrapeProductPage,
   translateProductData,
-}) => barcode => {
-  return pipe(
-    searchBarcode(barcode),
-    flatMapOr(TE.taskEither)(productSearchData => {
-      const taskEithers= productSearchData.links.map(fetchProductPage)
-      return pipe(
-        A.array.sequence(TE.taskEither)(taskEithers),
-        TE.chain(productPages => {
-          const dataFromProductPages = productPages.map(scrapeProductPage)
-          const combinedProductPageData = dataFromProductPages.reduce(
-            (acc, pageData) => R.mergeDeepLeft(acc, pageData),
-          )
-          return TE.right({ ...productSearchData, ...combinedProductPageData })
-        }),
-        TE.chain(translateProductData),
-      )
-    }),
+}) => async barcode => {
+  const productSearchData = await searchBarcode(barcode)
+  const productPageRequests = productSearchData.links.map(fetchProductPage)
+  const results = await allSettled(productPageRequests)
+  const productPages = results
+    .filter(result => result.status === 'fulfilled')
+    .map(result => (result as PromiseResolution<Model.ProductPage>).value)
+  const dataFromProductPages = productPages.map(scrapeProductPage)
+  const combinedProductPageData = dataFromProductPages.reduce((acc, pageData) =>
+    R.mergeDeepLeft(acc, pageData),
   )
+  return translateProductData({
+    ...productSearchData,
+    ...combinedProductPageData,
+  })
 }

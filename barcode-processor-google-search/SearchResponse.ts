@@ -1,31 +1,16 @@
-import { t } from '@symbio/ts-lib'
 import * as Core from '@symbio/barcode-processor-core'
 
-export const Product = Core.ProductSearchDataOptional
-export type Product = t.TypeOf<typeof Product>
+export type Product = Omit<Core.ProductSearchData, 'links'>
 
-export const Pagemap = t.intersection([
-  t.partial({
-    product: t.array(Product)
-  }),
-  t.UnknownRecord
-])
-export type Pagemap = t.TypeOf<typeof Pagemap>
+export type Pagemap = {
+  product?: Product[]
+}
 
-export const Item = t.intersection([
-  t.type({
-    link: Core.Link,
-    pagemap: Pagemap
-  }),
-  t.UnknownRecord
-])
-export type Item = t.TypeOf<typeof Item>
+export type Item = {
+  link: Core.Link
+  pagemap: Pagemap
+}
 
-
-export const SearchResponse = t.intersection([
-  t.type({
-    items: t.nonEmptyArray(Item)
-  }),
-  t.UnknownRecord
-])
-export type SearchResponse = t.TypeOf<typeof SearchResponse>
+export type SearchResponse = {
+  items: Item[]
+}
