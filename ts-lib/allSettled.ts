@@ -13,12 +13,12 @@ export function allSettled<T>(iterable: Iterable<Promise<T>>): Promise<PromiseRe
 // Types are taken from
 // https://github.com/DefinitelyTyped/DefinitelyTyped/blob/1d3c224/types/promise.allsettled/types.d.ts
 
-export interface PromiseResolution<T> {
+export type PromiseResolution<T> = {
   status: 'fulfilled';
   value: T;
 }
 
-export interface PromiseRejection<E> {
+export type PromiseRejection<E> = {
   status: 'rejected';
   reason: E;
 }

@@ -23,44 +23,21 @@ export const scrapeProductPage: Core.ScrapeProductPage = ({ link, html }) => {
 export const scrapeBarbora = (html: string) => {
   const $ = cheerio.load(html)
   return {
-    ingredients: $('dt:contains("Koostisosad")')
-      .next()
-      .text()
-      .trim(),
-    allergens: [
-      $('dt:contains("ALLERGEENID")')
-        .next()
-        .text()
-        .trim(),
-    ],
-    origin: $('dt:contains("Päritoluriik")')
-      .next()
-      .text()
-      .trim(),
+    ingredients: $('dt:contains("Koostisosad")').next().text().trim(),
+    allergens: [$('dt:contains("ALLERGEENID")').next().text().trim()],
+    origin: $('dt:contains("Päritoluriik")').next().text().trim(),
   }
 }
 
 export const scrapeSelver = (html: string) => {
   const $ = cheerio.load(html)
   return {
-    ingredients: $('h5:contains("Koostis")')
-      .next()
-      .text()
-      .trim(),
+    ingredients: $('h5:contains("Koostis")').next().text().trim(),
     allergens: [
-      $('h5:contains("Allergeenid")')
-        .next()
-        .text()
-        .trim(),
-      $('h5:contains("Hoiatused")')
-        .next()
-        .text()
-        .trim(),
+      $('h5:contains("Allergeenid")').next().text().trim(),
+      $('h5:contains("Hoiatused")').next().text().trim(),
     ],
-    origin: $('th:contains("Päritolumaa")')
-      .next()
-      .text()
-      .trim(),
+    origin: $('th:contains("Päritolumaa")').next().text().trim(),
   }
 }
 
@@ -75,16 +52,9 @@ export const scrapePrisma = (html: string) => {
 }
 
 const scrapePrismaOrigin = ($: CheerioStatic) => {
-  const byId = $('#origin')
-    .find('p')
-    .text()
+  const byId = $('#origin').find('p').text()
   if (byId !== '') return byId
-  return $('#info')
-    .find('h3')
-    .last()
-    .next()
-    .text()
-    .trim()
+  return $('#info').find('h3').last().next().text().trim()
 }
 
 const scrapePrismaAllergens = ($: CheerioStatic) => {
@@ -93,7 +63,7 @@ const scrapePrismaAllergens = ($: CheerioStatic) => {
     .eq(0)
     .find('td')
     .toArray()
-    .map(el => $(el).text())
+    .map((el) => $(el).text())
 
   return R.splitEvery(2, allergensRaw).map(
     ([label, statement]) => `${label}: ${statement}`,

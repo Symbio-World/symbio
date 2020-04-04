@@ -1,16 +1,15 @@
-import 'react-native'
 import React from 'react'
 import { render, fireEvent } from 'react-native-testing-library'
 import { Text, TouchableWithoutFeedback } from 'react-native'
-import { Modal } from './modal'
+import { Modal } from './Modal'
 
 describe('Modal', () => {
   it('renders correctly', () => {
     const { toJSON } = render(
-        <Modal>
-          <Text>test</Text>
-        </Modal>,
-      )
+      <Modal>
+        <Text>test</Text>
+      </Modal>,
+    )
     expect(toJSON()).toMatchSnapshot()
   })
 

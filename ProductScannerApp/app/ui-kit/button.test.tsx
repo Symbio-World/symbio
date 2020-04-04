@@ -1,9 +1,8 @@
-import 'react-native'
 import React from 'react'
 import { render } from 'react-native-testing-library'
-import { Button } from './button'
+import { Button } from './Button'
 
-describe('Error', () => {
+describe('Button', () => {
   it('renders correctly', () => {
     const { toJSON } = render(<Button />)
     expect(toJSON()).toMatchSnapshot()

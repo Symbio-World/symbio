@@ -3,7 +3,7 @@ import useSWR from 'swr'
 import { useAuth } from './auth'
 import { fetchPrinciples } from './principle'
 import { ScanBarcodeViewContainer } from './barcode'
-import { Loading } from './ui-kit/loading'
+import { Loading } from './ui-kit/Loading'
 import { SetupPrinciplesViewContainer } from './principle'
 
 export const Home: React.FC = () => {

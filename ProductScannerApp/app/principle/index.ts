@@ -1,7 +1,7 @@
-import { createSetupPrinciplesViewContainer } from './setup-principles-view-container'
-import { savePrinciples } from './save-principles'
+import { createSetupPrinciplesViewContainer } from './createSetupPrinciplesViewContainer'
+import { savePrinciples } from './savePrinciples'
 
-export { fetchPrinciples } from './fetch-principles'
+export { fetchPrinciples } from './fetchPrinciples'
 export const SetupPrinciplesViewContainer = createSetupPrinciplesViewContainer({
   savePrinciples,
   principles: [

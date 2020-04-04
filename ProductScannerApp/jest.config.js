@@ -9,7 +9,7 @@ module.exports = {
     },
   },
 
-  setupFilesAfterEnv: ['<rootDir>/setup-tests.js'],
+  setupFilesAfterEnv: ['<rootDir>/setupTests.js'],
   transformIgnorePatterns: [
     'node_modules/(?!(react-native' +
       '|scandit-react-native' +

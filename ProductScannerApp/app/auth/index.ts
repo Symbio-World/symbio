@@ -1,7 +1,7 @@
 import auth from '@react-native-firebase/auth'
-import { createAuthProvider } from './auth-context'
+import { createAuthProvider } from './authContext'
 
-export { useAuth, User } from './auth-context'
+export { useAuth, User } from './authContext'
 
 export const AuthProvider = createAuthProvider({
   signInAnonymously: async () => {

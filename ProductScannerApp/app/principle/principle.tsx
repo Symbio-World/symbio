@@ -21,7 +21,7 @@ export const Principle: React.FC<Props> = ({
         t.pY3,
         t.pX6,
         t.borderGreen500,
-        t.border2
+        t.border2,
       ]}
       onPress={onPress}
     >

@@ -22,7 +22,7 @@ module.exports = {
   ignorePatterns: ['node_modules/', 'build/', 'jest.config.js'],
   overrides: [
     {
-      files: ['*.test.ts'],
+      files: ['*.test.ts', '*.test.tsx'],
       rules: {
         'functional/no-expression-statement': 'off',
         'functional/functional-parameters': 'off',
@@ -40,6 +40,7 @@ module.exports = {
     'functional/no-return-void': 0,
     'functional/no-conditional-statement': 0,
     'functional/no-throw-statement': 0,
+    'functional/no-try-statement': 0,
     'import/no-default-export': 2,
     'filenames/match-regex': [2, '^[a-zA-Z.]+$', false],
     'filenames/match-exported': 2,
@@ -47,6 +48,8 @@ module.exports = {
     '@typescript-eslint/explicit-function-return-type': 0,
     '@typescript-eslint/unbound-method': 0,
     '@typescript-eslint/no-var-requires': 0,
+    '@typescript-eslint/no-empty-function': 0,
+    '@typescript-eslint/prefer-regexp-exec': 0,
     '@typescript-eslint/naming-convention': [
       'error',
       {

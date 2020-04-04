@@ -1,10 +1,10 @@
 import React from 'react'
 import { render } from 'react-native-testing-library'
-import { Error } from './Error'
+import { FeedbackView } from './FeedbackView'
 
-describe('Error', () => {
+describe('FeedbackView', () => {
   it('renders correctly', () => {
-    const { toJSON } = render(<Error />)
+    const { toJSON } = render(<FeedbackView />)
     expect(toJSON()).toMatchSnapshot()
   })
 })

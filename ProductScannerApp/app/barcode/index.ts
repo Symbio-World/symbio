@@ -1,5 +1,5 @@
-import { createScanBarcodeViewContainer } from './scan-barcode-view-container'
-import { saveBarcode } from './save-barcode'
+import { createScanBarcodeViewContainer } from './createScanBarcodeViewContainer'
+import { saveBarcode } from './saveBarcode'
 export const ScanBarcodeViewContainer = createScanBarcodeViewContainer({
-  saveBarcode
+  saveBarcode,
 })
