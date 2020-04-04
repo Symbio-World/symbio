@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { View, Image, Text, ScrollView } from 'react-native'
 import { t } from 'react-native-tailwindcss'
-import { ProductData } from '@symbio/conveyor-core'
+import { ProductData } from '@symbio/barcode-processor-core'
 import { Button } from '../ui-kit/button'
 import { Modal } from '../ui-kit/modal'
 import { FeedbackViewContainer } from '../feedback'

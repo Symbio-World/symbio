@@ -2,7 +2,8 @@ import axios from 'axios'
 import * as Core from '@symbio/barcode-processor-core'
 import { createSearchBarcode } from './createSearchBarcode'
 import { GoogleSearchConfig } from './GoogleSearchConfig'
-import * as fixture from './SearchResponse.fixture'
+import * as noProductFixture from './SearchResponse.noProduct.fixture'
+import * as noItemsFixture from './SearchResponse.noItems.fixture'
 
 jest.mock('axios')
 
@@ -27,9 +28,15 @@ describe('createSearchResponse', () => {
     })
   })
 
-  it('transforms real world response into product data', async () => {
+  it('calls onSearchResponse', async () => {
+    const onSearchResponse = jest.fn()
+    await createSearchBarcode({ config, onSearchResponse })(barcode)
+    expect(onSearchResponse).toHaveBeenCalledWith(response)
+  })
+
+  it('transforms response with no product into product data', async () => {
     ;(axios.get as jest.Mock).mockImplementation(() =>
-      Promise.resolve({ data: fixture.searchResponse }),
+      Promise.resolve({ data: noProductFixture.searchResponse }),
     )
 
     const productSearchData = await createSearchBarcode({ config })(barcode)
@@ -53,9 +60,12 @@ describe('createSearchResponse', () => {
     })
   })
 
-  it('calls onSearchResponse', async () => {
-    const onSearchResponse = jest.fn()
-    await createSearchBarcode({ config, onSearchResponse })(barcode)
-    expect(onSearchResponse).toHaveBeenCalledWith(response)
+  it('errors if search response has no items', async () => {
+    ;(axios.get as jest.Mock).mockImplementation(() =>
+      Promise.resolve({ data: noItemsFixture.searchResponse }),
+    )
+    await expect(createSearchBarcode({ config })(barcode)).rejects.toThrowError(
+      `Found no items for barcode ${barcode}`,
+    )
   })
 })

@@ -39,6 +39,7 @@ module.exports = {
     'functional/no-mixed-type': 0,
     'functional/no-return-void': 0,
     'functional/no-conditional-statement': 0,
+    'functional/no-throw-statement': 0,
     'import/no-default-export': 2,
     'filenames/match-regex': [2, '^[a-zA-Z.]+$', false],
     'filenames/match-exported': 2,
@@ -74,6 +75,11 @@ module.exports = {
       {
         selector: 'property',
         format: ['camelCase', 'PascalCase'],
+        leadingUnderscore: 'allow',
+      },
+      {
+        selector: 'enumMember',
+        format: ['UPPER_CASE'],
         leadingUnderscore: 'allow',
       },
     ],

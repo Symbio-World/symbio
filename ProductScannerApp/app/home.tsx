@@ -8,11 +8,11 @@ import { SetupPrinciplesViewContainer } from './principle'
 
 export const Home: React.FC = () => {
   const { user } = useAuth()
-  const { data: principles, isValidating, mutate } = useSWR<
+  const { data: principles, isValidating: isLoading, mutate } = useSWR<
     string[] | null
   >(user ? user.id : null, fetchPrinciples)
 
-  if (!user || (!principles && isValidating)) return <Loading />
+  if (!user || (!principles && isLoading)) return <Loading />
 
   if (!principles) return <SetupPrinciplesViewContainer onSave={mutate} />
 

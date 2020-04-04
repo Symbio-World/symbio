@@ -1,6 +1,7 @@
 import React from 'react'
 import useSWR from 'swr'
-import { FetchProductData, ProductData, NoDataFoundError } from '@symbio/conveyor-core'
+import * as R from 'ramda'
+import { ProductData, ProcessBarcode } from '@symbio/barcode-processor-core'
 import { Loading } from '../ui-kit/loading'
 import { Error } from '../ui-kit/error'
 import { ProductView } from './product-view'
@@ -11,18 +12,21 @@ type Props = {
 }
 
 type Deps = {
-  fetchProductData: FetchProductData
+  processBarcode: ProcessBarcode
 }
 
 type CreateProductViewContainer = (deps: Deps) => React.FC<Props>
 
 export const createProductViewContainer: CreateProductViewContainer = ({
-  fetchProductData,
+  processBarcode,
 }) => ({ barcode }) => {
-  const { data: product, error } = useSWR<ProductData>(barcode, fetchProductData)
+  const { data: productData, isValidating: isLoading, error } = useSWR<ProductData>(
+    barcode,
+    processBarcode,
+  )
 
-  if (error instanceof NoDataFoundError) return <ProductNotFound barcode={barcode} />
+  if (isLoading) return <Loading />
   if (error) return <Error error={error} />
-  if (!product) return <Loading />
-  return <ProductView {...product} />
+  if (!productData || R.isEmpty(productData)) return <ProductNotFound barcode={barcode} />
+  return <ProductView {...productData} />
 }

@@ -24,6 +24,7 @@ export const createSetupPrinciplesViewContainer: CreateSetupPrinciplesViewContai
       ? setSelectedPrinciples(principles.filter(t => t !== principle))
       : setSelectedPrinciples([principle, ...selectedPrinciples])
   const handleSubmit = () => {
+    console.log('saving principles', selectedPrinciples)
     savePrinciples(user!.id, selectedPrinciples)
     onSave()
   }

@@ -34,7 +34,7 @@ describe('AuthContext', () => {
     const Child = () => {
       const { user } = useAuth()
 
-      return <Text>{user?.id}</Text>
+      return <Text>{user?.id || ''}</Text>
     }
     const { getByText } = render(
       <AuthProvider>

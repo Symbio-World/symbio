@@ -2,9 +2,7 @@ import firestore from '@react-native-firebase/firestore'
 import { createStoreEvent } from '@symbio/event-store-core'
 
 export const storeEvent = createStoreEvent({
-  storeEvent: async event => {
-    await firestore()
-      .collection('events')
-      .add(event)
+  storeEvent: async (event) => {
+    await firestore().collection(event.type).add(event)
   },
 })

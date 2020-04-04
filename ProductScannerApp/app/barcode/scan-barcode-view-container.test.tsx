@@ -54,7 +54,7 @@ describe('ScanBarcodeViewContainer', () => {
     const { getByType } = render(scanBarcodeViewContainer)
     fireEvent(getByType(ScanBarcodeView), 'onScan', 'barcode')
     const scanBarcodeView = getByType(ScanBarcodeView)
-    expect(scanBarcodeView.props.active).toBe(false)
+    expect(scanBarcodeView.props.active).toEqual(false)
   })
 
   it('can dismiss modal', () => {
@@ -66,7 +66,7 @@ describe('ScanBarcodeViewContainer', () => {
     fireEvent(getByType(ScanBarcodeView), 'onScan', 'barcode')
     const modal = getByType(Modal)
     fireEvent(modal, 'onDismiss')
-    expect(queryAllByType(Modal).length).toBe(0)
+    expect(queryAllByType(Modal).length).toEqual(0)
   })
 
   it('starts scanning when modal is dismissed', () => {
@@ -79,6 +79,6 @@ describe('ScanBarcodeViewContainer', () => {
     const modal = getByType(Modal)
     fireEvent(modal, 'onDismiss')
     const scanBarcodeView = getByType(ScanBarcodeView)
-    expect(scanBarcodeView.props.active).toBe(true)
+    expect(scanBarcodeView.props.active).toEqual(true)
   })
 })

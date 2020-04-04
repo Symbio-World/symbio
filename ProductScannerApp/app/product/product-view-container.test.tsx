@@ -3,12 +3,13 @@ import React from 'react'
 import { render } from 'react-native-testing-library'
 import { ActivityIndicator } from 'react-native'
 import { createProductViewContainer } from './product-view-container'
+import { ProductNotFound } from './product-not-found'
 import { ProductView } from './product-view'
 
 describe('ProductViewContainer', () => {
   it('renders correctly', () => {
     const ProductViewContainer = createProductViewContainer({
-      fetchProductData: jest.fn(),
+      processBarcode: jest.fn(),
     })
     const { toJSON } = render(<ProductViewContainer barcode="6414893012318" />)
     expect(toJSON()).toMatchSnapshot()
@@ -16,7 +17,7 @@ describe('ProductViewContainer', () => {
 
   it('renders loading screen at the start', () => {
     const ProductViewContainer = createProductViewContainer({
-      fetchProductData: jest.fn(),
+      processBarcode: jest.fn(),
     })
     const { getByType } = render(
       <ProductViewContainer barcode="6414893012318" />,
@@ -24,17 +25,43 @@ describe('ProductViewContainer', () => {
     expect(getByType(ActivityIndicator))
   })
 
-  it('renders product card if data fetch succeeded', async () => {
+  it('calls process barcode', async () => {
     const promise = Promise.resolve({})
-    const fetchProductData = jest.fn<any, any>(() => promise)
+    const processBarcode = jest.fn<any, any>(() => promise)
     const ProductViewContainer = createProductViewContainer({
-      fetchProductData,
+      processBarcode,
+    })
+    const barcode = '6414893012311'
+    const productViewContainer = <ProductViewContainer barcode={barcode} />
+    render(productViewContainer)
+    expect(processBarcode).toHaveBeenCalledWith(barcode)
+  })
+
+  it('renders no product found if product is empty', async () => {
+    const promise = Promise.resolve({})
+    const processBarcode = jest.fn<any, any>(() => promise)
+    const ProductViewContainer = createProductViewContainer({
+      processBarcode,
     })
     const productViewContainer = (
-      <ProductViewContainer barcode="6414893012318" />
+      <ProductViewContainer barcode="6414893012312" />
     )
     const { getByType } = render(productViewContainer)
-    expect(fetchProductData).toHaveBeenCalled()
+    await promise
+    expect(getByType(ProductNotFound))
+  })
+
+  it('renders product card if data fetch succeeded', async () => {
+    const product = { name: 'Margarin' }
+    const promise = Promise.resolve(product)
+    const processBarcode = jest.fn<any, any>(() => promise)
+    const ProductViewContainer = createProductViewContainer({
+      processBarcode,
+    })
+    const productViewContainer = (
+      <ProductViewContainer barcode="6414893012313" />
+    )
+    const { getByType } = render(productViewContainer)
     await promise
     expect(getByType(ProductView))
   })

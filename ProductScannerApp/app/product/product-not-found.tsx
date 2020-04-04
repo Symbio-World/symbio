@@ -19,7 +19,7 @@ export const ProductNotFound: React.FC<Props> = ({ barcode }) => {
         </Modal>
       )}
       <Text>
-        Unfortunately we could not found any product with this barcode{' '}
+        Unfortunately we could not find any data for this barcode{' '}
         <Text>{barcode}</Text>
       </Text>
       <View style={[t.mY5]}>

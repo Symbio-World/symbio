@@ -22,6 +22,10 @@ export const createSearchBarcode: CreateSearchBarcode = ({
   const searchResponse = axiosResponse.data
   onSearchResponse?.(searchResponse)
 
+  if (!searchResponse.items) {
+    throw new Error(`Found no items for barcode ${barcode}`)
+  }
+
   const product = searchResponse.items.reduce(
     (acc, item) => ({
       ...item.pagemap.product?.[0],
