@@ -5,7 +5,7 @@
     "lint": "tsc && eslint . --ext js,jsx,ts,tsx",
     "build": "echo build",
     "watch": "react-native start --reset-cache",
-    "test": "yarn lint && jest",
+    "test": "yarn lint && jest --silent",
     "clean": "echo clean",
     "clean-all": "rm -rf node_modules/ $TMPDIR/metro* $TMPDIR/react-native* && yarn clean-pods",
     "start": "yarn ios && yarn android",

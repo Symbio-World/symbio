@@ -1,3 +1,4 @@
+/* eslint-disable no-useless-escape */
 export const link = 'https://www.foodie.fi/entry/rainbow-margariini-40--kevyt-400-g/6414893012318'
 export const html = `
 <!DOCTYPE html>

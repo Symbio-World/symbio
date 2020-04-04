@@ -3,10 +3,10 @@
   "version": "1.0.0",
   "main": "build/index.js",
   "scripts": {
-    "lint": "eslint . --ext js,jsx,ts,tsx",
+    "lint": "tsc && eslint . --ext js,jsx,ts,tsx",
     "build": "tsc",
     "watch": "tsc --watch",
-    "test": "tsc && yarn lint && jest",
+    "test": "yarn lint && jest",
     "clean": "rm -rf ./build",
     "clean-all": "yarn clean && rm -rf node_modules/"
   },

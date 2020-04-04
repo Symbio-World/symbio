@@ -1,3 +1,4 @@
+/* eslint-disable no-useless-escape */
 export const link = 'https://www.barbora.ee/toode/kiirkaerahelbed-nordic-500-g'
 export const html = `
 <!DOCTYPE html>

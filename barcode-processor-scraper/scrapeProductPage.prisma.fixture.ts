@@ -1,3 +1,4 @@
+/* eslint-disable no-useless-escape */
 export const link = 'https://www.prismamarket.ee/entry/doktorivorst-300-g/4740003003269'
 export const html = `
 

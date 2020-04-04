@@ -1,3 +1,4 @@
+/* eslint-disable no-useless-escape */
 export const link = 'https://www.selver.ee/kakaopuding-kirsikastmega-selveri-kook-160-g'
 export const html = `
 <!doctype html>

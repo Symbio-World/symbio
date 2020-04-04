@@ -7,17 +7,34 @@ const FOODIE = 'foodie'
 const SELVER = 'selver'
 const BARBORA = 'barbora'
 
-export const scrapeProductPage: Core.ScrapeProductPage = ({ link, html }) => {
-  if (link.includes(PRISMA) || link.includes(FOODIE)) {
-    return scrapePrisma(html)
+const scrapePrismaOrigin = ($: CheerioStatic) => {
+  const byId = $('#origin').find('p').text()
+  if (byId !== '') return byId
+  return $('#info').find('h3').last().next().text().trim()
+}
+
+const scrapePrismaAllergens = ($: CheerioStatic) => {
+  const allergensRaw = $('#info')
+    .find('table')
+    .eq(0)
+    .find('td')
+    .toArray()
+    .map((el) => $(el).text())
+
+  return R.splitEvery(2, allergensRaw).map(
+    ([label, statement]) => `${label}: ${statement}`,
+  )
+}
+
+
+export const scrapePrisma = (html: string) => {
+  const $ = cheerio.load(html)
+
+  return {
+    ingredients: $("[id$='ingredients']").text(),
+    allergens: scrapePrismaAllergens($),
+    origin: scrapePrismaOrigin($),
   }
-  if (link.includes(SELVER)) {
-    return scrapeSelver(html)
-  }
-  if (link.includes(BARBORA)) {
-    return scrapeBarbora(html)
-  }
-  return {}
 }
 
 export const scrapeBarbora = (html: string) => {
@@ -41,31 +58,15 @@ export const scrapeSelver = (html: string) => {
   }
 }
 
-export const scrapePrisma = (html: string) => {
-  const $ = cheerio.load(html)
-
-  return {
-    ingredients: $("[id$='ingredients']").text(),
-    allergens: scrapePrismaAllergens($),
-    origin: scrapePrismaOrigin($),
+export const scrapeProductPage: Core.ScrapeProductPage = ({ link, html }) => {
+  if (link.includes(PRISMA) || link.includes(FOODIE)) {
+    return scrapePrisma(html)
   }
-}
-
-const scrapePrismaOrigin = ($: CheerioStatic) => {
-  const byId = $('#origin').find('p').text()
-  if (byId !== '') return byId
-  return $('#info').find('h3').last().next().text().trim()
-}
-
-const scrapePrismaAllergens = ($: CheerioStatic) => {
-  const allergensRaw = $('#info')
-    .find('table')
-    .eq(0)
-    .find('td')
-    .toArray()
-    .map((el) => $(el).text())
-
-  return R.splitEvery(2, allergensRaw).map(
-    ([label, statement]) => `${label}: ${statement}`,
-  )
+  if (link.includes(SELVER)) {
+    return scrapeSelver(html)
+  }
+  if (link.includes(BARBORA)) {
+    return scrapeBarbora(html)
+  }
+  return {}
 }
