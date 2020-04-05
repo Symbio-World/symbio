@@ -6,20 +6,18 @@
     "lint": "tsc && eslint . --ext js,jsx,ts,tsx",
     "build": "tsc",
     "watch": "tsc --watch",
-    "test": "yarn lint && jest --passWithNoTests",
+    "test": "yarn lint && jest",
     "clean": "rm -rf ./build",
     "clean-all": "yarn clean && rm -rf node_modules/"
   },
   "dependencies": {
     "axios": "^0.19.2",
-    "lodash": "^4.17.15",
     "ramda": "^0.27.0",
     "rxjs": "^6.5.4"
   },
   "devDependencies": {
     "@symbio/ts-scripts": "1.0.0",
     "@types/axios": "^0.14.0",
-    "@types/lodash": "^4.14.149",
     "@types/ramda": "^0.27.0"
   }
 }

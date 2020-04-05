@@ -1,7 +1,8 @@
 import * as R from 'ramda'
-import * as _ from 'lodash'
-import { Tree, Path, PathValuePair, Value, Leaf, isPrimitive } from './common'
+import { isPrimitive } from '@symbio/ts-lib'
+import { Tree, Path, PathValuePair, Value, Leaf } from './common'
 
+// TODO move to ts-lib and use Json and DirtyJson types, rename to toPathValues and fromPathValues
 type ParseValue = (path: Path, value: Value) => PathValuePair[]
 const parseValue: ParseValue = (path, value) => {
   if (isPrimitive(value)) {
@@ -10,7 +11,7 @@ const parseValue: ParseValue = (path, value) => {
   if (R.isEmpty(value)) {
     return [{ path, value: value }]
   }
-  if (_.isArray(value) && !R.isEmpty(value)) {
+  if (R.is(Array, value) && !R.isEmpty(value)) {
     const array = value as Value[]
     const pairs = array.map((v, index) => parseValue([...path, index], v))
     return R.unnest(pairs)

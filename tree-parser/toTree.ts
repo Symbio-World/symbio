@@ -1,5 +1,4 @@
 import * as R from 'ramda'
-import * as _ from 'lodash'
 import { PathValuePair, Tree, Value } from './common'
 
 type ToValue = (pair: PathValuePair) => Value
@@ -8,7 +7,7 @@ const toValue: ToValue = ({ path, value }) => {
     return value
   }
   const [firstKey, ...rest] = path
-  if (_.isNumber(firstKey)) {
+  if (R.is(Number, firstKey)) {
     return [toValue({ path: rest, value: value })]
   }
   return { [firstKey]: toValue({ path: rest, value }) }

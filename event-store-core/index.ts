@@ -1,2 +1,2 @@
 export * from './createStoreEvent'
-export * from './EventType'
+export * from './DomainEvent'

@@ -11,6 +11,7 @@
     "clean-all": "yarn clean && rm -rf node_modules/"
   },
   "dependencies": {
+    "@symbio/barcode-processor-core": "1.0.0",
     "@symbio/ts-lib": "1.0.0"
   },
   "devDependencies": {

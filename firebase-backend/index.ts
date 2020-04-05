@@ -5,12 +5,18 @@ import { scrapeProductPage } from '@symbio/barcode-processor-scraper'
 import { createSearchBarcode } from '@symbio/barcode-processor-google-search'
 import { createTranslateProductData } from '@symbio/barcode-processor-google-translate'
 import { config } from './config'
+import {
+  EventType,
+  UserScannedBarcode,
+  barcodeProcessed,
+} from '@symbio/event-store-core'
+import { storeEvent } from './storeEvent'
 
 const processBarcode = Core.createProcessBarcode({
   searchBarcode: createSearchBarcode({
     config: config.googleSearch,
   }),
-  fetchProductPage: async link => {
+  fetchProductPage: async (link) => {
     const axiosResponse = await axios.get<Core.Html>(link)
     return { link, html: axiosResponse.data }
   },
@@ -20,11 +26,30 @@ const processBarcode = Core.createProcessBarcode({
   }),
 })
 
-export const getProduct = functions.https.onCall(async data => {
+export const processScannedBarcode = functions.firestore
+  .document(`/${EventType.USER_SCANNED_BARCODE}/{eventId}`)
+  .onCreate(async (snapshot, context) => {
+    const { barcode } = snapshot.data() as UserScannedBarcode
+    try {
+      console.log(
+        `processing started for event id ${context.params.eventId} barcode ${barcode}`,
+      )
+      const productData = await processBarcode(barcode)
+      console.log(
+        `processing barcode completed successfully with productData ${JSON.stringify(
+          productData,
+          null,
+          4,
+        )}`,
+      )
+      console.log('storing results...')
+      await storeEvent(barcodeProcessed(barcode, productData))
+    } catch (error) {
+      console.log(`processing barcode failed with error ${error.toString()}`)
+      await storeEvent(barcodeProcessed(barcode, error))
+    }
+  })
+
+export const getProduct = functions.https.onCall(async (data) => {
   return processBarcode(data.barcode)
-  try {
-    return { error: null, productData: await processBarcode(data.barcode) }
-  } catch (e) {
-    return { error: e.message, productData: null }
-  }
 })

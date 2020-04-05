@@ -10,10 +10,7 @@ admin.initializeApp({
 })
 
 export const storeEvent = createStoreEvent({
-  storeEvent: async event => {
-    await admin
-      .firestore()
-      .collection('events')
-      .add(event)
+  storeEvent: async (event) => {
+    await admin.firestore().collection(event.type).add(event)
   },
 })
