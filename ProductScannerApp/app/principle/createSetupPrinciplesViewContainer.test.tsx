@@ -41,15 +41,16 @@ describe('createSetupPrinciplesViewContainer', () => {
 
   it('deselects principles', () => {
     const savePrinciples = jest.fn()
-    const principle = 'principle'
+    const principle1 = 'principle1'
+    const principle2 = 'principle2'
     const SetupPrinciplesViewContainer = createSetupPrinciplesViewContainer({
       savePrinciples: savePrinciples,
-      principles: [principle],
+      principles: [principle1, principle2],
     })
     const setupPrinciplesViewContainer = <SetupPrinciplesViewContainer />
     const { getByText, getByType } = render(setupPrinciplesViewContainer)
-    fireEvent.press(getByText(principle))
-    fireEvent.press(getByText(principle))
+    fireEvent.press(getByText(principle1))
+    fireEvent.press(getByText(principle1))
     fireEvent.press(getByType(Button))
     expect(savePrinciples).toHaveBeenCalledWith(user.id, [])
   })

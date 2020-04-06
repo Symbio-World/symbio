@@ -20,10 +20,15 @@ export const createSetupPrinciplesViewContainer: CreateSetupPrinciplesViewContai
 
   const [selectedPrinciples, setSelectedPrinciples] = useState<string[]>([])
 
-  const onPrinciplePress = (principle: string) =>
-    selectedPrinciples.includes(principle)
-      ? setSelectedPrinciples(principles.filter((t) => t !== principle))
-      : setSelectedPrinciples([principle, ...selectedPrinciples])
+  // TODO: logic of toggling principles should be in SetupPrinciplesView
+  const onPrinciplePress = (principle: string) => {
+    if (selectedPrinciples.includes(principle)) {
+      setSelectedPrinciples(selectedPrinciples.filter((t) => t !== principle))
+    } else {
+      setSelectedPrinciples([principle, ...selectedPrinciples])
+    }
+  }
+
   const handleSubmit = () => {
     if (!user) {
       throw new Error('This should never happen, as user is in the context')

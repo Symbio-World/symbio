@@ -25,6 +25,7 @@ export const createProductViewContainer: CreateProductViewContainer = ({
   const [productData, setProductData] = useState<ProductData>()
   const [error, setError] = useState<unknown>()
 
+  // TODO move out into own hook https://youtu.be/Urv82SGIu_0?t=730
   useEffect(() => {
     const subscription = observeProductData(barcode).subscribe(
       setProductData,

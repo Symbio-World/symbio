@@ -15,7 +15,7 @@ export const observeProductData: ObserveProductData = (barcode) =>
       .onSnapshot((snapshot) => {
         if (snapshot.docs.length > 0) {
           const event = snapshot.docs[0].data()
-          subscriber.next(event as any)
+          subscriber.next(event as BarcodeProcessed)
         }
       })
     return () => unsubscribe()
