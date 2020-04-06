@@ -1,68 +1,76 @@
+import { of, throwError } from 'rxjs'
+// import { delay } from 'rxjs/operators'
 import React from 'react'
 import { render } from 'react-native-testing-library'
-import { ActivityIndicator } from 'react-native'
-import * as Core from '@symbio/barcode-processor-core'
+import { Loading } from '../ui-kit/Loading'
+import { noSearchResultsFound } from '@symbio/barcode-processor-core'
 import { createProductViewContainer } from './createProductViewContainer'
+import { ObserveProductData } from './observeProductData'
 import { ProductNotFound } from './ProductNotFound'
 import { ProductView } from './ProductView'
+import { ErrorView } from '../ui-kit/ErrorView'
 
 describe('createProductViewContainer', () => {
+  let observeProductData: ObserveProductData
+  const barcode = '6414893012318'
+
+  beforeEach(() => {
+    observeProductData = jest.fn(() => of())
+  })
+
   it('renders correctly', () => {
     const ProductViewContainer = createProductViewContainer({
-      processBarcode: jest.fn(),
+      observeProductData,
     })
-    const { toJSON } = render(<ProductViewContainer barcode="6414893012318" />)
+    const { toJSON } = render(<ProductViewContainer barcode={barcode} />)
     expect(toJSON()).toMatchSnapshot()
   })
 
   it('renders loading screen at the start', () => {
     const ProductViewContainer = createProductViewContainer({
-      processBarcode: jest.fn(),
+      observeProductData,
     })
-    const { getByType } = render(
-      <ProductViewContainer barcode="6414893012318" />,
-    )
-    expect(getByType(ActivityIndicator)).toBeDefined()
+    const { getByType } = render(<ProductViewContainer barcode={barcode} />)
+    expect(getByType(Loading)).toBeDefined()
   })
 
-  it('calls process barcode', () => {
-    const promise = Promise.resolve({ links: [] })
-    const processBarcode: Core.ProcessBarcode = jest.fn(() => promise)
+  it('calls observeProductData', () => {
     const ProductViewContainer = createProductViewContainer({
-      processBarcode,
+      observeProductData,
     })
-    const barcode = '6414893012311'
     const productViewContainer = <ProductViewContainer barcode={barcode} />
     render(productViewContainer)
-    expect(processBarcode).toHaveBeenCalledWith(barcode)
+    expect(observeProductData).toHaveBeenCalledWith(barcode)
   })
 
-  it('renders no product found if product is empty', async () => {
-    const promise = Promise.resolve({} as Core.ProductData)
-    const processBarcode: Core.ProcessBarcode = jest.fn(() => promise)
+  it('renders product view', () => {
+    const productData = { name: 'Margarin', links: [] }
+    observeProductData = jest.fn(() => of(productData))
     const ProductViewContainer = createProductViewContainer({
-      processBarcode,
+      observeProductData,
     })
-    const productViewContainer = (
-      <ProductViewContainer barcode="6414893012312" />
-    )
+    const productViewContainer = <ProductViewContainer barcode={barcode} />
     const { getByType } = render(productViewContainer)
-    await promise
-    expect(getByType(ProductNotFound)).toBeDefined()
-  })
-
-  it('renders product card if data fetch succeeded', async () => {
-    const product = { name: 'Margarin', links: [] }
-    const promise = Promise.resolve(product)
-    const processBarcode: Core.ProcessBarcode = jest.fn(() => promise)
-    const ProductViewContainer = createProductViewContainer({
-      processBarcode,
-    })
-    const productViewContainer = (
-      <ProductViewContainer barcode="6414893012313" />
-    )
-    const { getByType } = render(productViewContainer)
-    await promise
     expect(getByType(ProductView)).toBeDefined()
+  })
+
+  it('renders error', () => {
+    observeProductData = jest.fn(() => throwError('error'))
+    const ProductViewContainer = createProductViewContainer({
+      observeProductData,
+    })
+    const productViewContainer = <ProductViewContainer barcode={barcode} />
+    const { getByType } = render(productViewContainer)
+    expect(getByType(ErrorView)).toBeDefined()
+  })
+
+  it('renders product not found', () => {
+    observeProductData = jest.fn(() => throwError(noSearchResultsFound()))
+    const ProductViewContainer = createProductViewContainer({
+      observeProductData,
+    })
+    const productViewContainer = <ProductViewContainer barcode={barcode} />
+    const { getByType } = render(productViewContainer)
+    expect(getByType(ProductNotFound)).toBeDefined()
   })
 })

@@ -11,6 +11,7 @@ import {
   barcodeProcessed,
 } from '@symbio/event-store-core'
 import { storeEvent } from './storeEvent'
+import { isBarcodeProcessed } from './isBarcodeProcessed'
 
 const processBarcode = Core.createProcessBarcode({
   searchBarcode: createSearchBarcode({
@@ -30,6 +31,10 @@ export const processScannedBarcode = functions.firestore
   .document(`/${EventType.USER_SCANNED_BARCODE}/{eventId}`)
   .onCreate(async (snapshot, context) => {
     const { barcode } = snapshot.data() as UserScannedBarcode
+    if (await isBarcodeProcessed(barcode)) {
+      console.log(`barcode was already processed, skipping processing...`)
+      return
+    }
     try {
       console.log(
         `processing started for event id ${context.params.eventId} barcode ${barcode}`,
@@ -44,12 +49,25 @@ export const processScannedBarcode = functions.firestore
       )
       console.log('storing results...')
       await storeEvent(barcodeProcessed(barcode, productData))
+      console.log('results stored successfully')
     } catch (error) {
-      console.log(`processing barcode failed with error ${error.toString()}`)
+      console.log(`processing barcode failed with error ${error}`)
       await storeEvent(barcodeProcessed(barcode, error))
     }
   })
 
 export const getProduct = functions.https.onCall(async (data) => {
-  return processBarcode(data.barcode)
+  const barcode = data.barcode
+  console.log('isBarcodeProcessed?')
+  if (await isBarcodeProcessed(barcode)) {
+    console.log(`barcode was already processed, skipping processing...`)
+    return
+  }
+  try {
+    const productData = await processBarcode(barcode)
+    return barcodeProcessed(barcode, productData)
+  } catch (error) {
+    console.log(`processing barcode failed with error ${error}`)
+    return barcodeProcessed(barcode, error)
+  }
 })

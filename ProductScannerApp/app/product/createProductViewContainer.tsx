@@ -1,32 +1,44 @@
-import React from 'react'
-import useSWR from 'swr'
-import * as R from 'ramda'
-import { ProductData, ProcessBarcode } from '@symbio/barcode-processor-core'
+import React, { useState, useEffect } from 'react'
+import {
+  ProductData,
+  NO_SEARCH_RESULTS_FOUND,
+} from '@symbio/barcode-processor-core'
+import { isFailureOfType } from '@symbio/ts-lib'
+import { ErrorView } from '../ui-kit/ErrorView'
 import { Loading } from '../ui-kit/Loading'
-import { Error } from '../ui-kit/Error'
 import { ProductView } from './ProductView'
 import { ProductNotFound } from './ProductNotFound'
+import { ObserveProductData } from './observeProductData'
 
 type Props = {
   barcode: string
 }
 
 type Deps = {
-  processBarcode: ProcessBarcode
+  observeProductData: ObserveProductData
 }
 
 type CreateProductViewContainer = (deps: Deps) => React.FC<Props>
 
 export const createProductViewContainer: CreateProductViewContainer = ({
-  processBarcode,
+  observeProductData,
 }) => ({ barcode }) => {
-  const { data: productData, isValidating: isLoading, error } = useSWR<
-    ProductData
-  >(barcode, processBarcode)
+  const [productData, setProductData] = useState<ProductData>()
+  const [error, setError] = useState<unknown>()
 
-  if (isLoading) return <Loading />
-  if (error) return <Error error={error} />
-  if (!productData || R.isEmpty(productData))
+  useEffect(() => {
+    const subscription = observeProductData(barcode).subscribe(
+      setProductData,
+      setError,
+    )
+    return () => subscription.unsubscribe()
+  }, [barcode])
+
+  console.log('productData', productData)
+  console.log('error', error)
+  if (isFailureOfType(error, NO_SEARCH_RESULTS_FOUND))
     return <ProductNotFound barcode={barcode} />
+  if (error) return <ErrorView error={error} />
+  if (!productData) return <Loading />
   return <ProductView {...productData} />
 }

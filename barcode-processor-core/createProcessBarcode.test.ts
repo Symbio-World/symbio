@@ -9,21 +9,23 @@ describe('createProcessBarcode', () => {
   let deps: Program.Deps
 
   const scrapeFirstPage: Program.ScrapeProductPage = () => ({
-    ingredients: fixture.ingredients,
+    ingredients: fixture.productPageData.ingredients,
   })
-  const defaultFetchProductPage: Program.FetchProductPage = link =>
+  const defaultFetchProductPage: Program.FetchProductPage = (link) =>
     Promise.resolve({ link, html: `html from ${link}` })
 
   beforeEach(() => {
     searchBarcode = jest.fn(() =>
       Promise.resolve({
-        name: fixture.name,
-        links: fixture.links,
+        name: fixture.productSearchData.name,
+        links: fixture.productSearchData.links,
       }),
     )
     fetchProductPage = jest.fn(defaultFetchProductPage)
     scrapeProductPage = jest.fn(scrapeFirstPage)
-    translateProductData = jest.fn(() => Promise.resolve(fixture.translated))
+    translateProductData = jest.fn(() =>
+      Promise.resolve(fixture.translatedProductData),
+    )
     deps = {
       searchBarcode,
       fetchProductPage,
@@ -39,7 +41,9 @@ describe('createProcessBarcode', () => {
 
   it('fetches all product pages', async () => {
     await Program.createProcessBarcode(deps)(fixture.barcode)
-    expect(fetchProductPage).toHaveBeenCalledTimes(fixture.links.length)
+    expect(fetchProductPage).toHaveBeenCalledTimes(
+      fixture.productSearchData.links.length,
+    )
   })
 
   it('translates data', async () => {
@@ -69,7 +73,7 @@ describe('createProcessBarcode', () => {
     const productData = await Program.createProcessBarcode(deps)(
       fixture.barcode,
     )
-    expect(productData).toEqual(fixture.translated)
+    expect(productData).toEqual(fixture.translatedProductData)
   })
 
   it('handles fetch product page failure', async () => {
@@ -79,6 +83,6 @@ describe('createProcessBarcode', () => {
     const productData = await Program.createProcessBarcode(deps)(
       fixture.barcode,
     )
-    expect(productData).toEqual(fixture.translated)
+    expect(productData).toEqual(fixture.translatedProductData)
   })
 })

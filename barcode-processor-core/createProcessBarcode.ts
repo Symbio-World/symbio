@@ -30,19 +30,49 @@ export const createProcessBarcode: CreateProcessBarcode = ({
   fetchProductPage,
   scrapeProductPage,
   translateProductData,
-}) => async barcode => {
+}) => async (barcode) => {
+  console.log('initiating barcode search...')
   const productSearchData = await searchBarcode(barcode)
+  console.log(
+    `barcode search completed with ${JSON.stringify(
+      productSearchData,
+      null,
+      4,
+    )}`,
+  )
   const productPageRequests = productSearchData.links.map(fetchProductPage)
-  const results = await allSettled(productPageRequests)
-  const productPages = results
-    .filter(result => result.status === 'fulfilled')
-    .map(result => (result as PromiseResolution<Model.ProductPage>).value)
+  console.log(
+    `initiating requests to product pages...`,
+  )
+  const responses = await allSettled(productPageRequests)
+  console.log(`received ${responses.length} responses`)
+  const productPages = responses
+    .filter((result) => result.status === 'fulfilled')
+    .map((result) => (result as PromiseResolution<Model.ProductPage>).value)
+  console.log(`starting to scrape data from product pages...`)
   const dataFromProductPages = productPages.map(scrapeProductPage)
+  console.log(`data scraped: ${JSON.stringify(dataFromProductPages, null, 4)}`)
   const combinedProductPageData = dataFromProductPages.reduce((acc, pageData) =>
     R.mergeDeepLeft(acc, pageData),
   )
-  return translateProductData({
+  const productData = {
     ...productSearchData,
     ...combinedProductPageData,
-  })
+  }
+  console.log(
+    `product data before translation: ${JSON.stringify(
+      productData,
+      null,
+      4,
+    )}`,
+  )
+  const translatedProductData = await translateProductData(productData)
+  console.log(
+    `translated product data: ${JSON.stringify(
+      translatedProductData,
+      null,
+      4,
+    )}`,
+  )
+  return translatedProductData
 }

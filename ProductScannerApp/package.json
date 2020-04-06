@@ -20,10 +20,11 @@
     "@react-native-firebase/auth": "6.3.4",
     "@react-native-firebase/firestore": "6.3.4",
     "@react-native-firebase/functions": "6.3.4",
-    "axios": "0.19.2",
     "@symbio/barcode-processor-core": "1.0.0",
     "@symbio/event-store-core": "1.0.0",
     "@symbio/ts-lib": "1.0.0",
+    "add": "^2.0.6",
+    "axios": "0.19.2",
     "react": "16.13.0",
     "react-native": "0.61.5",
     "react-native-bootsplash": "2.0.5",
@@ -32,19 +33,20 @@
     "react-native-tailwindcss": "1.1.9",
     "react-native-vector-icons": "6.6.0",
     "scandit-react-native": "5.14.2",
-    "swr": "^0.1.18"
+    "swr": "^0.1.18",
+    "yarn": "^1.22.4"
   },
   "devDependencies": {
     "@babel/core": "7.8.7",
     "@babel/runtime": "7.8.7",
     "@react-native-community/eslint-config": "1.0.0",
+    "@symbio/ts-scripts": "1.0.0",
     "@types/react": "16.9.23",
     "@types/react-native": "0.61.21",
     "@types/react-native-vector-icons": "6.4.5",
     "babel-jest": "25.1.0",
     "metro-react-native-babel-preset": "0.58.0",
     "react-native-testing-library": "1.12.0",
-    "react-test-renderer": "^16.13.0",
-    "@symbio/ts-scripts": "1.0.0"
+    "react-test-renderer": "^16.13.0"
   }
 }

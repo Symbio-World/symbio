@@ -1,4 +1,4 @@
-import firestore from '@react-native-firebase/firestore'
+import { firestore } from '../firestore'
 import { EventType } from '@symbio/event-store-core'
 
 type FetchPrinciples = (userId: string) => Promise<string[] | null>

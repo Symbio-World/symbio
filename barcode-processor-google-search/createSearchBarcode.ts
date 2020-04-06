@@ -11,7 +11,7 @@ type CreateSearchBarcode = (deps: Deps) => Core.SearchBarcode
 export const createSearchBarcode: CreateSearchBarcode = ({
   config,
   onSearchResponse,
-}) => async barcode => {
+}) => async (barcode) => {
   const axiosResponse = await axios.get<SearchResponse>(config.url, {
     params: {
       key: config.key,
@@ -23,7 +23,7 @@ export const createSearchBarcode: CreateSearchBarcode = ({
   onSearchResponse?.(searchResponse)
 
   if (!searchResponse.items) {
-    throw new Error(`Found no items for barcode ${barcode}`)
+    throw Core.noSearchResultsFound(`Found no items for barcode ${barcode}`)
   }
 
   const product = searchResponse.items.reduce(
@@ -33,7 +33,7 @@ export const createSearchBarcode: CreateSearchBarcode = ({
     }),
     {},
   )
-  const links = searchResponse.items.map(i => i.link)
+  const links = searchResponse.items.map((i) => i.link)
   const productSearchData = { ...product, links }
   return productSearchData
 }

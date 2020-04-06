@@ -3,9 +3,9 @@ import { View, Text } from 'react-native'
 import { t } from 'react-native-tailwindcss'
 
 type Props = {
-  error?: Error | string
+  error?: unknown
 }
-export const Error: React.FC<Props> = () => {
+export const ErrorView: React.FC<Props> = () => {
   return (
     <View style={[t.flex1, t.justifyCenter]}>
       <Text>Something went wrong...</Text>
