@@ -88,7 +88,7 @@ https://readybytes.in/blog/how-to-deploy-a-react-native-ios-app-on-the-app-store
 
 ## Android
 - increment versions in android/app/build.gradle
-- Open Android Studio -> Generate Signed Bundle/APK -> locate
+- Open Android Studio -> Build -> Generate Signed Bundle/APK -> locate
 - Upload to Play Store
 
 Initially followed these tutorials
