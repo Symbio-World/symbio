@@ -52,7 +52,7 @@ export const processScannedBarcode = functions.firestore
       console.log('results stored successfully')
     } catch (error) {
       console.log(`processing barcode failed with error ${error}`)
-      await storeEvent(barcodeProcessed(barcode, error))
+      await storeEvent(barcodeProcessed(barcode, undefined, error))
     }
   })
 

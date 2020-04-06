@@ -19,7 +19,6 @@ type Deps = {
 }
 
 type CreateProductViewContainer = (deps: Deps) => React.FC<Props>
-
 export const createProductViewContainer: CreateProductViewContainer = ({
   observeProductData,
 }) => ({ barcode }) => {
@@ -29,13 +28,14 @@ export const createProductViewContainer: CreateProductViewContainer = ({
   useEffect(() => {
     const subscription = observeProductData(barcode).subscribe(
       setProductData,
-      setError,
+      (e) => {
+        console.log('error occured', e)
+        setError(e)
+      },
     )
     return () => subscription.unsubscribe()
   }, [barcode])
 
-  console.log('productData', productData)
-  console.log('error', error)
   if (isFailureOfType(error, NO_SEARCH_RESULTS_FOUND))
     return <ProductNotFound barcode={barcode} />
   if (error) return <ErrorView error={error} />
