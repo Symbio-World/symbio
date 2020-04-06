@@ -782,12 +782,12 @@
 			baseConfigurationReference = 0D7A55A7183420D20D5229D4 /* Pods-ProductScannerApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 6;
 				DEAD_CODE_STRIPPING = NO;
 				DEVELOPMENT_TEAM = 8XV4FNGTJR;
 				INFOPLIST_FILE = ProductScannerApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 5.0;
+				MARKETING_VERSION = 6.0;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -805,11 +805,11 @@
 			baseConfigurationReference = A32F5567FA9D65A5B5753130 /* Pods-ProductScannerApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = 8XV4FNGTJR;
 				INFOPLIST_FILE = ProductScannerApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 5.0;
+				MARKETING_VERSION = 6.0;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
