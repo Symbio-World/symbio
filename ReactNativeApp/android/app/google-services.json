@@ -10,7 +10,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:1027288529816:android:d8bf80e23df4dee9ec09ed",
         "android_client_info": {
-          "package_name": "com.productscannerapp"
+          "package_name": "club.symbio"
         }
       },
       "oauth_client": [
@@ -18,7 +18,7 @@
           "client_id": "1027288529816-2al1v42k6m39k6jtgdd34oc94b90l5fj.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.productscannerapp",
+            "package_name": "club.symbio",
             "certificate_hash": "62d1c1223fe876e5bb32ad83e912b3e9a1614e9a"
           }
         },
