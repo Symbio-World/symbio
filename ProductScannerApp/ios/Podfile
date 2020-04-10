@@ -1,8 +1,8 @@
 platform :ios, '9.0'
 require_relative '../node_modules/@react-native-community/cli-platform-ios/native_modules'
 
-target 'ProductScannerApp' do
-  # Pods for ProductScannerApp
+target 'ReactNativeApp' do
+  # Pods for ReactNativeApp
   pod 'FBLazyVector', :path => "../node_modules/react-native/Libraries/FBLazyVector"
   pod 'FBReactNativeSpec', :path => "../node_modules/react-native/Libraries/FBReactNativeSpec"
   pod 'RCTRequired', :path => "../node_modules/react-native/Libraries/RCTRequired"
@@ -36,7 +36,7 @@ target 'ProductScannerApp' do
 
 
 
-  target 'ProductScannerAppTests' do
+  target 'ReactNativeAppTests' do
     inherit! :search_paths
     # Pods for testing
   end
@@ -44,10 +44,10 @@ target 'ProductScannerApp' do
   use_native_modules!
 end
 
-target 'ProductScannerApp-tvOS' do
-  # Pods for ProductScannerApp-tvOS
+target 'ReactNativeApp-tvOS' do
+  # Pods for ReactNativeApp-tvOS
 
-  target 'ProductScannerApp-tvOSTests' do
+  target 'ReactNativeApp-tvOSTests' do
     inherit! :search_paths
     # Pods for testing
   end

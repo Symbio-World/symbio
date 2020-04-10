@@ -1,6 +1,6 @@
 {
-  "name": "@symbio/ProductScannerApp",
-  "version": "0.0.1",
+  "name": "@symbio/ReactNativeApp",
+  "version": "1.0.0",
   "scripts": {
     "lint": "tsc && eslint . --ext js,jsx,ts,tsx",
     "build": "echo build",

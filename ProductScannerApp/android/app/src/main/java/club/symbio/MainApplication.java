@@ -1,4 +1,4 @@
-package com.productscannerapp;
+package club.symbio;
 
 import android.app.Application;
 import android.content.Context;
