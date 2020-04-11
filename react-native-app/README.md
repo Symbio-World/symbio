@@ -116,3 +116,4 @@ service cloud.firestore {
   }
 }
 ```
+5. Create indexes
