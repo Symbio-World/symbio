@@ -1,3 +1,6 @@
+env.active.ts
+env.dev.ts
+env.prod.ts
 .env
 scandit-barcodescanner-ios*
 *-service-account*

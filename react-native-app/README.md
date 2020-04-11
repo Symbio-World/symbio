@@ -83,11 +83,14 @@ https://github.com/axios/axios
 
 # Deployment
 
+For both platforms run the following command first `yarn set-env-prod`
+
 ## IOS
-- increment version in
-1. Open Xcode -> Product -> Schemes -> Edit and choose Release, then close
-2. Product -> Build
-3. Product -> Archive -> Upload
+1. increment versions in Xcode
+2. Open Xcode -> Product -> Schemes -> Edit and choose Release -> close
+3. Product -> Build
+4. Product -> Archive -> Upload
+5. Open Xcode -> Product -> Schemes -> Edit and choose Debug -> close
 
 Initially followed this tutorial
 https://readybytes.in/blog/how-to-deploy-a-react-native-ios-app-on-the-app-store

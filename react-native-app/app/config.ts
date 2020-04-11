@@ -1,9 +1,6 @@
-import {
-  SCANDIT_ANDROID_API_KEY,
-  SCANDIT_IOS_API_KEY,
-} from 'react-native-dotenv'
+import { env } from '../env.active'
 
 export const scandit = {
-  androidKey: SCANDIT_ANDROID_API_KEY,
-  iosKey: SCANDIT_IOS_API_KEY,
+  androidKey: env.scanditApiKey.android,
+  iosKey: env.scanditApiKey.ios,
 }

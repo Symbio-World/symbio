@@ -11,11 +11,13 @@
     "clean-android": "cd android && ./gradlew clean && cd ../",
     "clean-ios": "cd ios && xcodebuild clean && cd ../",
     "start": "yarn ios && yarn android",
-    "android": "react-native run-android",
-    "ios": "react-native run-ios",
+    "android": "yarn set-env-dev && react-native run-android",
+    "ios": "yarn set-env-dev && react-native run-ios",
     "setup-scandit": "rm -rf scandit-barcodescanner-ios_5.14.2/ && unzip scandit-barcodescanner-ios_5.14.2.zip && mkdir node_modules/scandit-react-native/ios/ScanditBarcodeScanner/Frameworks && mv scandit-barcodescanner-ios_5.14.2/ScanditSDK/ScanditBarcodeScanner.framework node_modules/scandit-react-native/ios/ScanditBarcodeScanner/Frameworks/ScanditBarcodeScanner.framework && rm -rf scandit-barcodescanner-ios_5.14.2/",
     "install-pods": "cd ios && pod install",
-    "clean-pods": "rm -rf ios/Pods ios/Podfile.lock"
+    "clean-pods": "rm -rf ios/Pods ios/Podfile.lock",
+    "set-env-dev": "echo \"export { env } from './env.dev';\"> env.active.ts",
+    "set-env-prod": "echo \"export { env } from './env.prod';\"> env.active.ts"
   },
   "dependencies": {
     "@react-native-firebase/app": "6.3.4",
@@ -30,7 +32,6 @@
     "react": "16.13.0",
     "react-native": "0.61.5",
     "react-native-bootsplash": "2.0.5",
-    "react-native-dotenv": "0.2.0",
     "react-native-simple-toast": "^1.0.0",
     "react-native-tailwindcss": "1.1.9",
     "react-native-vector-icons": "6.6.0",
