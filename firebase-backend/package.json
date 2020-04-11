@@ -9,12 +9,15 @@
     "test": "yarn lint && jest --passWithNoTests",
     "clean": "rm -rf build .packages",
     "clean-all": "yarn clean && rm -rf node_modules/",
-    "serve": "firebase emulators:start --only functions",
+    "serve": "yarn build && firebase emulators:start --only functions",
     "shell": "firebase functions:shell",
     "start": "yarn shell",
-    "deploy": "npx @rxdi/firelink deploy --only functions",
-    "logs": "firebase functions:log",
-    "set-env": "firebase functions:config:set env=\"$(cat env.json)\""
+    "deploy-dev": "firebase use dev && yarn build && firelink deploy --only functions",
+    "deploy-prod": "firebase use prod && yarn build && firelink deploy --only functions",
+    "logs-dev": "firebase use dev && firebase functions:log",
+    "logs-prod": "firebase use prod && firebase functions:log",
+    "set-env-dev": "firebase use dev && firebase functions:config:set env=\"$(cat env.dev.json)\"",
+    "set-env-prod": "firebase use prod && firebase functions:config:set env=\"$(cat env.prod.json)\""
   },
   "main": "build/index.js",
   "fireDependencies": {
@@ -40,8 +43,9 @@
     "firebase-functions": "^3.3.0"
   },
   "devDependencies": {
+    "@rxdi/firelink": "^0.7.52",
     "@symbio/ts-scripts": "1.0.0",
-    "firebase-functions-test": "^0.1.6",
-    "firebase-tools": "^7.16.1"
+    "firebase-functions-test": "^0.2.0",
+    "firebase-tools": "^8.0.2"
   }
 }

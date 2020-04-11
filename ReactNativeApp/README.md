@@ -34,21 +34,26 @@ yarn ios
 yarn ios --device
 ```
 
-## Run on iOS device in release mode
+## Run on iOS device in production mode
 ```
 yarn ios --device --configuration Release
 ```
 
+## Run on Android device in production mode
+```
+yarn android --variant release
+```
+
 # Test
+
+Run a specific suite with
+```
+yarn test -t "<suite name>"
+```
 
 Run a specific test with
 ```
-yarn test -t "<test name>"
-```
-
-Run a specific auite with
-```
-yarn test -t "<suite name>"
+yarn test -t "<suite name> <test name>"
 ```
 
 Update snapshot tests
@@ -80,8 +85,9 @@ https://github.com/axios/axios
 
 ## IOS
 - increment version in
-1. Open Xcode -> Product -> Build
-2. Product -> Archive -> Upload
+1. Open Xcode -> Product -> Schemes -> Edit and choose Release, then close
+2. Product -> Build
+3. Product -> Archive -> Upload
 
 Initially followed this tutorial
 https://readybytes.in/blog/how-to-deploy-a-react-native-ios-app-on-the-app-store
@@ -94,3 +100,19 @@ https://readybytes.in/blog/how-to-deploy-a-react-native-ios-app-on-the-app-store
 Initially followed these tutorials
 https://reactnative.dev/docs/signed-apk-android
 https://developer.android.com/studio/publish/app-signing#sign_release
+
+# Setting up Dev/Prod
+Follow this guide
+1. https://medium.com/@gregoire.frileux/how-to-manage-multiple-environments-dev-staging-prod-for-firebase-with-react-native-app-205c7c1a5e35
+2. In Firebase -> Authentication enable Anonymous Sign-in method
+3. In Firebase -> Database create Database in production mode and in EU region
+4. In Databse -> Rules ammend the rules to the following and publish
+```
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /{document=**} {
+      allow read, write: if request.auth.uid != null;
+    }
+  }
+}
+```

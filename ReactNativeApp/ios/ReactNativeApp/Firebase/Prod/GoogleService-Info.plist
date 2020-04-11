@@ -3,23 +3,21 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>1027288529816-306pasb3l0l2dq3716m5t8sj8l9a5bhj.apps.googleusercontent.com</string>
+	<string>649738262397-i9j1s1n16t6hi09599ul9vk23ik23d5k.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.1027288529816-306pasb3l0l2dq3716m5t8sj8l9a5bhj</string>
-	<key>ANDROID_CLIENT_ID</key>
-	<string>1027288529816-2al1v42k6m39k6jtgdd34oc94b90l5fj.apps.googleusercontent.com</string>
+	<string>com.googleusercontent.apps.649738262397-i9j1s1n16t6hi09599ul9vk23ik23d5k</string>
 	<key>API_KEY</key>
-	<string>AIzaSyByucWaPMTdOZVY2mJGExFi94-L-zAi0Y4</string>
+	<string>AIzaSyAvwMcDZm-Q8le1Q0NpZXACFiJG6cfrbGw</string>
 	<key>GCM_SENDER_ID</key>
-	<string>1027288529816</string>
+	<string>649738262397</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
 	<string>club.symbio</string>
 	<key>PROJECT_ID</key>
-	<string>symbio-1583620770416</string>
+	<string>symbio-prod-6fb52</string>
 	<key>STORAGE_BUCKET</key>
-	<string>symbio-1583620770416.appspot.com</string>
+	<string>symbio-prod-6fb52.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -31,8 +29,8 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:1027288529816:ios:30a9162e66857d9eec09ed</string>
+	<string>1:649738262397:ios:40e59c2106636a4a2d5e14</string>
 	<key>DATABASE_URL</key>
-	<string>https://symbio-1583620770416.firebaseio.com</string>
+	<string>https://symbio-prod-6fb52.firebaseio.com</string>
 </dict>
 </plist>

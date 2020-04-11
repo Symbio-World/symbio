@@ -7,7 +7,9 @@
   },
   "include": [
     "*.ts",
-    "./env.json"
+    "./env.json",
+    "./env.dev.json",
+    "./env.prod.json"
   ],
   "compileOnSave": true
 }

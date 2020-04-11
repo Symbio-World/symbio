@@ -1,6 +1,6 @@
 {
   "functions": {
     "source": ".",
-    "predeploy": []
+    "predeploy": "yarn test"
   }
 }

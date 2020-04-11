@@ -38,7 +38,6 @@
 		C6458AF32414D04000416359 /* ScanditBarcodeScanner.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6458AF22414D04000416359 /* ScanditBarcodeScanner.framework */; };
 		C6458AF52414D04B00416359 /* ScanditBarcodeScanner.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C6458AF42414D04B00416359 /* ScanditBarcodeScanner.bundle */; };
 		C680F549241A66A4002B6F07 /* BootSplash.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C680F548241A66A4002B6F07 /* BootSplash.storyboard */; };
-		C680F54B241CF84A002B6F07 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C680F54A241CF849002B6F07 /* GoogleService-Info.plist */; };
 		DF90851223AF070A396B9782 /* libPods-ReactNativeApp-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BC90F4B180B184E721C3B9C /* libPods-ReactNativeApp-tvOS.a */; };
 /* End PBXBuildFile section */
 
@@ -101,8 +100,9 @@
 		C63DF1812414334300FB7E74 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		C6458AF22414D04000416359 /* ScanditBarcodeScanner.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ScanditBarcodeScanner.framework; path = "../node_modules/scandit-react-native/ios/ScanditBarcodeScanner/Frameworks/ScanditBarcodeScanner.framework"; sourceTree = "<group>"; };
 		C6458AF42414D04B00416359 /* ScanditBarcodeScanner.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = ScanditBarcodeScanner.bundle; path = "../node_modules/scandit-react-native/ios/ScanditBarcodeScanner/Frameworks/ScanditBarcodeScanner.framework/Resources/ScanditBarcodeScanner.bundle"; sourceTree = "<group>"; };
+		C675463B2440C17C00839215 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		C675463D2440C17C00839215 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C680F548241A66A4002B6F07 /* BootSplash.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = BootSplash.storyboard; path = ReactNativeApp/BootSplash.storyboard; sourceTree = "<group>"; };
-		C680F54A241CF849002B6F07 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		E70A51873F50B36A4B4C0DD3 /* Pods-ReactNativeAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReactNativeAppTests.debug.xcconfig"; path = "Target Support Files/Pods-ReactNativeAppTests/Pods-ReactNativeAppTests.debug.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		ED2971642150620600B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
@@ -190,7 +190,7 @@
 				C680F548241A66A4002B6F07 /* BootSplash.storyboard */,
 				13B07FB11A68108700A75B9A /* LaunchScreen.xib */,
 				13B07FB71A68108700A75B9A /* main.m */,
-				C680F54A241CF849002B6F07 /* GoogleService-Info.plist */,
+				C67546392440C17C00839215 /* Firebase */,
 			);
 			name = ReactNativeApp;
 			sourceTree = "<group>";
@@ -267,6 +267,31 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		C67546392440C17C00839215 /* Firebase */ = {
+			isa = PBXGroup;
+			children = (
+				C675463A2440C17C00839215 /* Prod */,
+				C675463C2440C17C00839215 /* Dev */,
+			);
+			path = Firebase;
+			sourceTree = "<group>";
+		};
+		C675463A2440C17C00839215 /* Prod */ = {
+			isa = PBXGroup;
+			children = (
+				C675463B2440C17C00839215 /* GoogleService-Info.plist */,
+			);
+			path = Prod;
+			sourceTree = "<group>";
+		};
+		C675463C2440C17C00839215 /* Dev */ = {
+			isa = PBXGroup;
+			children = (
+				C675463D2440C17C00839215 /* GoogleService-Info.plist */,
+			);
+			path = Dev;
+			sourceTree = "<group>";
+		};
 		E6CC59E39FBF30C3F895858A /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -312,6 +337,7 @@
 				FD10A7F022414F080027D42C /* Start Packager */,
 				13B07F871A680F5B00A75B9A /* Sources */,
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
+				C675463E2440C1FB00839215 /* Setup Firebase Environment GoogleService-Info.plist */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
 				8B77C1CF383BEE6470129DB0 /* [CP-User] [RNFB] Core Configuration */,
@@ -429,7 +455,6 @@
 			files = (
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
-				C680F54B241CF84A002B6F07 /* GoogleService-Info.plist in Resources */,
 				C6458AF52414D04B00416359 /* ScanditBarcodeScanner.bundle in Resources */,
 				C680F549241A66A4002B6F07 /* BootSplash.storyboard in Resources */,
 			);
@@ -628,6 +653,24 @@
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
+		};
+		C675463E2440C1FB00839215 /* Setup Firebase Environment GoogleService-Info.plist */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Setup Firebase Environment GoogleService-Info.plist";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Name of the resource we're selectively copying\nGOOGLESERVICE_INFO_PLIST=GoogleService-Info.plist\n\n# Get references to dev and prod versions of the GoogleService-Info.plist\n# NOTE: These should only live on the file system and should NOT be part of the target (since we'll be adding them to the target manually)\nGOOGLESERVICE_INFO_DEV=${PROJECT_DIR}/${TARGET_NAME}/Firebase/Dev/${GOOGLESERVICE_INFO_PLIST}\nGOOGLESERVICE_INFO_PROD=${PROJECT_DIR}/${TARGET_NAME}/Firebase/Prod/${GOOGLESERVICE_INFO_PLIST}\n\n# Make sure the dev version of GoogleService-Info.plist exists\necho \"Looking for ${GOOGLESERVICE_INFO_PLIST} in ${GOOGLESERVICE_INFO_DEV}\"\nif [ ! -f $GOOGLESERVICE_INFO_DEV ]\nthen\n    echo \"No Development GoogleService-Info.plist found. Please ensure it's in the proper directory.\"\n    exit 1\nfi\n\n# Make sure the prod version of GoogleService-Info.plist exists\necho \"Looking for ${GOOGLESERVICE_INFO_PLIST} in ${GOOGLESERVICE_INFO_PROD}\"\nif [ ! -f $GOOGLESERVICE_INFO_PROD ]\nthen\n    echo \"No Production GoogleService-Info.plist found. Please ensure it's in the proper directory.\"\n    exit 1\nfi\n\n# Get a reference to the destination location for the GoogleService-Info.plist\nPLIST_DESTINATION=${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.app\necho \"Will copy ${GOOGLESERVICE_INFO_PLIST} to final destination: ${PLIST_DESTINATION}\"\n\n# Copy over the prod GoogleService-Info.plist for Release builds\nif [ \"${CONFIGURATION}\" == \"Release\" ]\nthen\n    echo \"Using ${GOOGLESERVICE_INFO_PROD}\"\n    cp \"${GOOGLESERVICE_INFO_PROD}\" \"${PLIST_DESTINATION}\"\nelse\n    echo \"Using ${GOOGLESERVICE_INFO_DEV}\"\n    cp \"${GOOGLESERVICE_INFO_DEV}\" \"${PLIST_DESTINATION}\"\nfi\n";
 		};
 		FD10A7F022414F080027D42C /* Start Packager */ = {
 			isa = PBXShellScriptBuildPhase;

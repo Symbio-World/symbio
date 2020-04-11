@@ -461,7 +461,7 @@ PODS:
     - React-cxxreact (= 0.61.5)
     - React-jsi (= 0.61.5)
   - React-jsinspector (0.61.5)
-  - react-native-simple-toast (1.0.0):
+  - react-native-simple-toast (1.1.0):
     - React
     - Toast (~> 4.0.0)
   - React-RCTActionSheet (0.61.5):
@@ -694,7 +694,7 @@ SPEC CHECKSUMS:
   React-jsi: cb2cd74d7ccf4cffb071a46833613edc79cdf8f7
   React-jsiexecutor: d5525f9ed5f782fdbacb64b9b01a43a9323d2386
   React-jsinspector: fa0ecc501688c3c4c34f28834a76302233e29dc0
-  react-native-simple-toast: 6c376bd79b1e255a4bee90a72ead6447f96ea10d
+  react-native-simple-toast: a178d1716e968aae724af0e95576ccb001683e45
   React-RCTActionSheet: 600b4d10e3aea0913b5a92256d2719c0cdd26d76
   React-RCTAnimation: 791a87558389c80908ed06cc5dfc5e7920dfa360
   React-RCTBlob: d89293cc0236d9cb0933d85e430b0bbe81ad1d72
@@ -715,6 +715,6 @@ SPEC CHECKSUMS:
   Toast: 91b396c56ee72a5790816f40d3a94dd357abc196
   Yoga: f2a7cd4280bfe2cca5a7aed98ba0eb3d1310f18b
 
-PODFILE CHECKSUM: 7a208841c8bfb90f365e9da0a2236e91cdfee4d6
+PODFILE CHECKSUM: ba24ae62f79f3ff8acec635fb601d5cf3fa3c5ee
 
 COCOAPODS: 1.9.1

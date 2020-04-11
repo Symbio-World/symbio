@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "649738262397",
+    "firebase_url": "https://symbio-prod-6fb52.firebaseio.com",
+    "project_id": "symbio-prod-6fb52",
+    "storage_bucket": "symbio-prod-6fb52.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:649738262397:android:70ee43ef63273a282d5e14",
+        "android_client_info": {
+          "package_name": "club.symbio"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "649738262397-5lthusdgc8d1j5bjhimqef73bl2v5pu1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDj5OgmG009itmm9SEN0fKJt7-gu2juC3Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "649738262397-5lthusdgc8d1j5bjhimqef73bl2v5pu1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

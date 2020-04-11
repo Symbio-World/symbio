@@ -1,13 +1,15 @@
 {
-  "name": "@symbio/ReactNativeApp",
+  "name": "@symbio/react-native-app",
   "version": "1.0.0",
   "scripts": {
     "lint": "tsc && eslint . --ext js,jsx,ts,tsx",
     "build": "echo build",
     "watch": "react-native start --reset-cache",
     "test": "yarn lint && jest --silent",
-    "clean": "echo clean",
-    "clean-all": "rm -rf node_modules/ $TMPDIR/metro* $TMPDIR/react-native* && yarn clean-pods",
+    "clean": "yarn clean-android && yarn clean-ios",
+    "clean-all": "yarn clean && rm -rf node_modules/ $TMPDIR/metro* $TMPDIR/react-native* && yarn clean-pods",
+    "clean-android": "cd android && ./gradlew clean && cd ../",
+    "clean-ios": "cd ios && xcodebuild clean && cd ../",
     "start": "yarn ios && yarn android",
     "android": "react-native run-android",
     "ios": "react-native run-ios",

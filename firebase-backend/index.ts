@@ -27,8 +27,9 @@ const processBarcode = Core.createProcessBarcode({
   }),
 })
 
-export const processScannedBarcode = functions.firestore
-  .document(`/${EventType.USER_SCANNED_BARCODE}/{eventId}`)
+export const processScannedBarcode = functions
+  .region('europe-west1')
+  .firestore.document(`/${EventType.USER_SCANNED_BARCODE}/{eventId}`)
   .onCreate(async (snapshot, context) => {
     const { barcode } = snapshot.data() as UserScannedBarcode
     if (await isBarcodeProcessed(barcode)) {
@@ -56,18 +57,19 @@ export const processScannedBarcode = functions.firestore
     }
   })
 
-export const getProduct = functions.https.onCall(async (data) => {
-  const barcode = data.barcode
-  console.log('isBarcodeProcessed?')
-  if (await isBarcodeProcessed(barcode)) {
-    console.log(`barcode was already processed, skipping processing...`)
-    return
-  }
-  try {
-    const productData = await processBarcode(barcode)
-    return barcodeProcessed(barcode, productData)
-  } catch (error) {
-    console.log(`processing barcode failed with error ${error}`)
-    return barcodeProcessed(barcode, error)
-  }
-})
+export const testProcessScannedBarcode = functions
+  .region('europe-west1')
+  .https.onCall(async (data) => {
+    const barcode = data.barcode
+    if (await isBarcodeProcessed(barcode)) {
+      console.log(`barcode was already processed, skipping processing...`)
+      return
+    }
+    try {
+      const productData = await processBarcode(barcode)
+      return barcodeProcessed(barcode, productData)
+    } catch (error) {
+      console.log(`processing barcode failed with error ${error}`)
+      return barcodeProcessed(barcode, error)
+    }
+  })

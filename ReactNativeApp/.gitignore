@@ -4,6 +4,7 @@ scandit-barcodescanner-ios*
 *.certSigningRequest
 *.cer
 *.mobileprovision
+!./android/app/src/release/google-services.json
 
 # OSX
 #
@@ -31,7 +32,7 @@ DerivedData
 # Android/IntelliJ
 #
 build/
-release/
+release/*
 .idea
 .gradle
 local.properties
