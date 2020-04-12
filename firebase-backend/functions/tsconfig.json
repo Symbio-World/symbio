@@ -9,7 +9,7 @@
     "*.ts",
     "./env.json",
     "./env.dev.json",
-    "./env.prod.json"
+    "./env.prod.json", "functions/index.ts", "functions/isBarcodeProcessed.ts", "functions/storeEvent.ts", "functions/config.ts", "functions/admin.ts"
   ],
   "compileOnSave": true
 }

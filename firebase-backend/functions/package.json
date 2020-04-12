@@ -1,0 +1,54 @@
+{
+  "name": "@symbio/firebase-functions",
+  "private": true,
+  "version": "1.0.0",
+  "engines": {
+    "node": "8"
+  },
+  "scripts": {
+    "lint": "tsc && eslint . --ext js,jsx,ts,tsx",
+    "build": "tsc",
+    "watch": "tsc --watch",
+    "test": "yarn lint && jest --passWithNoTests",
+    "clean": "rm -rf build .packages",
+    "clean-all": "yarn clean && rm -rf node_modules/",
+    "serve": "firebase serve --only functions",
+    "shell": "firebase functions:shell",
+    "start": "yarn shell",
+    "deploy-dev": "firebase use dev && yarn set-env-dev && yarn build && firelink deploy --only functions",
+    "deploy-prod": "firebase use prod && yarn set-env-prod && yarn build && firelink deploy --only functions",
+    "logs-dev": "firebase use dev && firebase functions:log",
+    "logs-prod": "firebase use prod && firebase functions:log",
+    "set-env-dev": "firebase use dev && firebase functions:config:set env=\"$(cat env.dev.json)\"",
+    "set-env-prod": "firebase use prod && firebase functions:config:set env=\"$(cat env.prod.json)\""
+  },
+  "main": "build/index.js",
+  "fireDependencies": {
+    "@symbio/event-store-core": "../../event-store-core",
+    "@symbio/barcode-processor-core": "../../barcode-processor-core",
+    "@symbio/barcode-processor-scraper": "../../barcode-processor-scraper",
+    "@symbio/barcode-processor-google-search": "../../barcode-processor-google-search",
+    "@symbio/barcode-processor-google-translate": "../../barcode-processor-google-translate",
+    "@symbio/tree-parser": "../../tree-parser",
+    "@symbio/ts-lib": "../../ts-lib",
+    "@symbio/ts-scripts": "../../ts-scripts"
+  },
+  "fireConfig": {},
+  "dependencies": {
+    "@symbio/barcode-processor-core": "1.0.0",
+    "@symbio/barcode-processor-google-search": "1.0.0",
+    "@symbio/barcode-processor-google-translate": "1.0.0",
+    "@symbio/barcode-processor-scraper": "1.0.0",
+    "@symbio/event-store-core": "1.0.0",
+    "@symbio/tree-parser": "1.0.0",
+    "@symbio/ts-lib": "1.0.0",
+    "firebase-admin": "^8.10.0",
+    "firebase-functions": "^3.3.0"
+  },
+  "devDependencies": {
+    "@rxdi/firelink": "^0.7.52",
+    "@symbio/ts-scripts": "1.0.0",
+    "firebase-functions-test": "^0.2.0",
+    "firebase-tools": "^8.0.2"
+  }
+}
