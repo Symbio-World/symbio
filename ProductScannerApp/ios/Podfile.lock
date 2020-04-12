@@ -461,7 +461,7 @@ PODS:
     - React-cxxreact (= 0.61.5)
     - React-jsi (= 0.61.5)
   - React-jsinspector (0.61.5)
-  - react-native-simple-toast (1.0.0):
+  - react-native-simple-toast (1.1.0):
     - React
     - Toast (~> 4.0.0)
   - React-RCTActionSheet (0.61.5):
@@ -518,6 +518,8 @@ PODS:
     - Firebase/Functions (~> 6.13.0)
     - React
     - RNFBApp
+  - RNGestureHandler (1.6.1):
+    - React
   - RNVectorIcons (6.6.0):
     - React
   - scandit-react-native (5.14.2):
@@ -559,6 +561,7 @@ DEPENDENCIES:
   - "RNFBAuth (from `../node_modules/@react-native-firebase/auth`)"
   - "RNFBFirestore (from `../node_modules/@react-native-firebase/firestore`)"
   - "RNFBFunctions (from `../node_modules/@react-native-firebase/functions`)"
+  - RNGestureHandler (from `../node_modules/react-native-gesture-handler`)
   - RNVectorIcons (from `../node_modules/react-native-vector-icons`)
   - scandit-react-native (from `../node_modules/scandit-react-native`)
   - Yoga (from `../node_modules/react-native/ReactCommon/yoga`)
@@ -650,6 +653,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/@react-native-firebase/firestore"
   RNFBFunctions:
     :path: "../node_modules/@react-native-firebase/functions"
+  RNGestureHandler:
+    :path: "../node_modules/react-native-gesture-handler"
   RNVectorIcons:
     :path: "../node_modules/react-native-vector-icons"
   scandit-react-native:
@@ -694,7 +699,7 @@ SPEC CHECKSUMS:
   React-jsi: cb2cd74d7ccf4cffb071a46833613edc79cdf8f7
   React-jsiexecutor: d5525f9ed5f782fdbacb64b9b01a43a9323d2386
   React-jsinspector: fa0ecc501688c3c4c34f28834a76302233e29dc0
-  react-native-simple-toast: 6c376bd79b1e255a4bee90a72ead6447f96ea10d
+  react-native-simple-toast: a178d1716e968aae724af0e95576ccb001683e45
   React-RCTActionSheet: 600b4d10e3aea0913b5a92256d2719c0cdd26d76
   React-RCTAnimation: 791a87558389c80908ed06cc5dfc5e7920dfa360
   React-RCTBlob: d89293cc0236d9cb0933d85e430b0bbe81ad1d72
@@ -710,11 +715,12 @@ SPEC CHECKSUMS:
   RNFBAuth: ed8b865db45f7ded9dbf535e390cba2ba672aede
   RNFBFirestore: 04c1eb90463c208ee072988d463c74bec09d08c1
   RNFBFunctions: 6975565f0abcc68d9731d05b78778f003db0eca5
+  RNGestureHandler: 8f09cd560f8d533eb36da5a6c5a843af9f056b38
   RNVectorIcons: 0bb4def82230be1333ddaeee9fcba45f0b288ed4
   scandit-react-native: 7121abb4f7bff02074b67ba7a6a8b1a7147cbb25
   Toast: 91b396c56ee72a5790816f40d3a94dd357abc196
   Yoga: f2a7cd4280bfe2cca5a7aed98ba0eb3d1310f18b
 
-PODFILE CHECKSUM: 7a208841c8bfb90f365e9da0a2236e91cdfee4d6
+PODFILE CHECKSUM: 47902cb78c34bc362877e5b614dd06ac7ea668ac
 
 COCOAPODS: 1.9.1
