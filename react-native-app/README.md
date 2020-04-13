@@ -1,3 +1,8 @@
+# Setup
+
+1. Ask for `env.dev.ts` and put it near README
+2. Ask for `scandit-barcodescanner-ios_5.14.2.zip` and put it near README
+
 # Installation
 
 ## Install pod
@@ -36,12 +41,12 @@ yarn ios --device
 
 ## Run on iOS device in production mode
 ```
-yarn ios --device --configuration Release
+yarn ios-prod --device
 ```
 
 ## Run on Android device in production mode
 ```
-yarn android --variant release
+yarn android-prod
 ```
 
 # Test
