@@ -2,9 +2,6 @@
   "name": "@symbio/firebase-functions",
   "private": true,
   "version": "1.0.0",
-  "engines": {
-    "node": "8"
-  },
   "scripts": {
     "lint": "tsc && eslint . --ext js,jsx,ts,tsx",
     "build": "tsc",
