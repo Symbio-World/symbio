@@ -1,8 +1,14 @@
+import 'react-native-gesture-handler'
 import React, { useEffect } from 'react'
 import { StatusBar } from 'react-native'
 import RNBootSplash from 'react-native-bootsplash'
-import { Home } from './Home'
+import { NavigationContainer } from '@react-navigation/native'
 import { AuthProvider } from './auth'
+import { Host } from 'react-native-portalize'
+import { enableScreens } from 'react-native-screens'
+import { RootStackView } from './Navigation'
+
+enableScreens()
 
 export const App: React.FC = () => {
   useEffect(() => {
@@ -10,9 +16,13 @@ export const App: React.FC = () => {
   }, [])
 
   return (
-    <AuthProvider>
-      <StatusBar hidden />
-      <Home />
-    </AuthProvider>
+    <Host>
+      <AuthProvider>
+        <StatusBar hidden />
+        <NavigationContainer>
+          <RootStackView />
+        </NavigationContainer>
+      </AuthProvider>
+    </Host>
   )
 }
