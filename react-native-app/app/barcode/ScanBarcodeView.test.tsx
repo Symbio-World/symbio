@@ -29,14 +29,14 @@ describe('ScanBarcodeView', () => {
   it('starts scanning when active prop is true', () => {
     const startScanning = jest.fn()
     const useRef = mockUseRef({ startScanning })
-    render(<ScanBarcodeView active useRef={useRef} />)
+    render(<ScanBarcodeView isActive useRef={useRef} />)
     expect(startScanning).toHaveBeenCalled()
   })
 
   it('stops scanning when active prop is false', () => {
     const stopScanning = jest.fn()
     const useRef = mockUseRef({ stopScanning })
-    render(<ScanBarcodeView active={false} useRef={useRef} />)
+    render(<ScanBarcodeView isActive={false} useRef={useRef} />)
     expect(stopScanning).toHaveBeenCalled()
   })
 })

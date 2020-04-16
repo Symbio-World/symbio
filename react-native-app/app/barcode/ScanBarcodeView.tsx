@@ -15,14 +15,14 @@ import { Scanner, Session } from './Scanner'
 
 type Props = {
   onScan?: (barcode: string) => void
-  active?: boolean
+  isActive?: boolean
 
   // a hack to test scanner ref as createNodeMock is not working https://github.com/callstack/react-native-testing-library/issues/227
   useRef?: typeof defaultUseRef
 }
 export const ScanBarcodeView: React.FC<Props> = ({
   onScan = () => {},
-  active = true,
+  isActive = true,
   useRef = defaultUseRef,
 }) => {
   const scanner = useRef<Scanner>(null)
@@ -111,9 +111,9 @@ export const ScanBarcodeView: React.FC<Props> = ({
   })
 
   useEffect(() => {
-    if (active) startScanning()
+    if (isActive) startScanning()
     else stopScanning()
-  }, [active])
+  }, [isActive])
 
   const handleScan = (session: Session) => {
     const barcode = session.newlyRecognizedCodes[0].data

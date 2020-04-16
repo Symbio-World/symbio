@@ -1,8 +1,9 @@
+import 'react-native-gesture-handler'
 import React, { useEffect } from 'react'
 import { StatusBar } from 'react-native'
 import RNBootSplash from 'react-native-bootsplash'
-import { Home } from './Home'
 import { AuthProvider } from './auth'
+import { Navigation } from './Navigation'
 
 export const App: React.FC = () => {
   useEffect(() => {
@@ -12,7 +13,7 @@ export const App: React.FC = () => {
   return (
     <AuthProvider>
       <StatusBar hidden />
-      <Home />
+      <Navigation />
     </AuthProvider>
   )
 }

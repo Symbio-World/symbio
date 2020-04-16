@@ -1,9 +1,8 @@
-import React, { useState } from 'react'
+import * as React from 'react'
 import { View } from 'react-native'
+import { useNavigation } from '@react-navigation/native'
 import { t } from 'react-native-tailwindcss'
 import { ScanBarcodeView } from './ScanBarcodeView'
-import { ProductViewContainer } from '../product'
-import { Modal } from '../ui-kit/Modal'
 import { useAuth } from '../auth'
 
 type CreateScanBarcodeViewContainer = (deps: Deps) => React.FC<Props>
@@ -15,28 +14,29 @@ export const createScanBarcodeViewContainer: CreateScanBarcodeViewContainer = ({
   saveBarcode,
 }) => () => {
   const { user } = useAuth()
-  const [barcode, setBarcode] = useState<string>()
+  const navigation = useNavigation()
+  const [isActive, setIsActive] = React.useState<boolean>(true)
 
-  const handleDismiss = () => {
-    setBarcode(undefined)
-  }
+  React.useEffect(() => {
+    const unsubscribe = navigation.addListener('focus', () => {
+      setIsActive(true)
+    });
 
-  const handleScan = (bc: string) => {
+    return unsubscribe;
+  }, [navigation]);
+
+  const handleScan = (barcode: string) => {
     if (!user) {
       throw new Error('This should never happen, as user is in the context')
     }
-    saveBarcode(user.id, bc)
-    setBarcode(bc)
+    setIsActive(false)
+    saveBarcode(user.id, barcode)
+    navigation.navigate('ProductViewScreen', { barcode })
   }
 
   return (
     <View style={[t.flex1]}>
-      {barcode && (
-        <Modal onDismiss={handleDismiss}>
-          <ProductViewContainer barcode={barcode} />
-        </Modal>
-      )}
-      <ScanBarcodeView onScan={handleScan} active={!barcode} />
+      <ScanBarcodeView onScan={handleScan} isActive={isActive} />
     </View>
   )
 }

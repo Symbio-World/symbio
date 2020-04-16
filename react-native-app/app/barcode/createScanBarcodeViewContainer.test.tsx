@@ -4,7 +4,7 @@ import { render, fireEvent } from 'react-native-testing-library'
 import { createScanBarcodeViewContainer } from './createScanBarcodeViewContainer'
 import { ScanBarcodeView } from './ScanBarcodeView'
 import { useAuth } from '../auth'
-import { ProductViewContainer } from '../product'
+import { ProductViewScreen } from '../product'
 import { Modal } from '../ui-kit/Modal'
 
 jest.mock('../auth')
@@ -43,7 +43,7 @@ describe('createScanBarcodeViewContainer', () => {
     const scanBarcodeViewContainer = <ScanBarcodeViewContainer />
     const { getByType } = render(scanBarcodeViewContainer)
     fireEvent(getByType(ScanBarcodeView), 'onScan', 'barcode')
-    expect(getByType(ProductViewContainer)).toBeDefined()
+    expect(getByType(ProductViewScreen)).toBeDefined()
   })
 
   it('stops scanning on scan', () => {

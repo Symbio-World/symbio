@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import * as React from 'react'
 import {
   ProductData,
   NO_SEARCH_RESULTS_FOUND,
@@ -13,20 +13,18 @@ import { ObserveProductData } from './observeProductData'
 type Props = {
   barcode: string
 }
-
 type Deps = {
   observeProductData: ObserveProductData
 }
-
 type CreateProductViewContainer = (deps: Deps) => React.FC<Props>
 export const createProductViewContainer: CreateProductViewContainer = ({
   observeProductData,
 }) => ({ barcode }) => {
-  const [productData, setProductData] = useState<ProductData>()
-  const [error, setError] = useState<unknown>()
+  const [productData, setProductData] = React.useState<ProductData>()
+  const [error, setError] = React.useState<unknown>()
 
   // TODO move out into own hook https://youtu.be/Urv82SGIu_0?t=730
-  useEffect(() => {
+  React.useEffect(() => {
     const subscription = observeProductData(barcode).subscribe(
       setProductData,
       (e) => {

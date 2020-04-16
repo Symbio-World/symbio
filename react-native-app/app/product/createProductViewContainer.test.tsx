@@ -1,6 +1,6 @@
 import { of, throwError } from 'rxjs'
 // import { delay } from 'rxjs/operators'
-import React from 'react'
+import * as React from 'react'
 import { render } from 'react-native-testing-library'
 import { Loading } from '../ui-kit/Loading'
 import { noSearchResultsFound } from '@symbio/barcode-processor-core'
