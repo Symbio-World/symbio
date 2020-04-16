@@ -1,11 +1,11 @@
 import * as React from 'react'
 import { NavigationContainer } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
-import { ScanBarcodeViewContainer } from './barcode'
+import { ScanBarcodeScreen } from './barcode'
 import { ProductViewScreen } from './product'
 
 export type RootStackParamList = {
-  ScanBarcodeViewContainer: {}
+  ScanBarcodeScreen: {}
   ProductViewScreen: { barcode: string }
 }
 
@@ -14,10 +14,10 @@ const RootStack = createStackNavigator<RootStackParamList>()
 export const Navigation = () => {
   return (
     <NavigationContainer>
-      <RootStack.Navigator initialRouteName="ScanBarcodeViewContainer">
+      <RootStack.Navigator initialRouteName="ScanBarcodeScreen">
         <RootStack.Screen
-          name="ScanBarcodeViewContainer"
-          component={ScanBarcodeViewContainer}
+          name="ScanBarcodeScreen"
+          component={ScanBarcodeScreen}
         />
         <RootStack.Screen
           name="ProductViewScreen"

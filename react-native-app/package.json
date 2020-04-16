@@ -18,8 +18,8 @@
     "setup-scandit": "rm -rf scandit-barcodescanner-ios_5.14.2/ && unzip scandit-barcodescanner-ios_5.14.2.zip && mkdir node_modules/scandit-react-native/ios/ScanditBarcodeScanner/Frameworks && mv scandit-barcodescanner-ios_5.14.2/ScanditSDK/ScanditBarcodeScanner.framework node_modules/scandit-react-native/ios/ScanditBarcodeScanner/Frameworks/ScanditBarcodeScanner.framework && rm -rf scandit-barcodescanner-ios_5.14.2/",
     "install-pods": "cd ios && pod install",
     "clean-pods": "rm -rf ios/Pods ios/Podfile.lock",
-    "set-env-dev": "echo \"export { env } from './env.dev';\"> env.active.ts",
-    "set-env-prod": "echo \"export { env } from './env.prod';\"> env.active.ts"
+    "set-env-dev": "echo \"export { env } from './env.dev'\"> env.active.ts",
+    "set-env-prod": "echo \"export { env } from './env.prod'\"> env.active.ts"
   },
   "dependencies": {
     "@react-native-community/masked-view": "^0.1.9",
