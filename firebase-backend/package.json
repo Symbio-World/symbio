@@ -2,49 +2,27 @@
   "name": "@symbio/firebase-backend",
   "private": true,
   "version": "1.0.0",
-  "engines": {
-    "node": "8"
-  },
   "scripts": {
-    "lint": "tsc && eslint . --ext js,jsx,ts,tsx",
-    "build": "tsc",
-    "watch": "tsc --watch",
-    "test": "yarn lint && jest --passWithNoTests",
-    "clean": "rm -rf build .packages",
+    "lint": "echo lint",
+    "build": "echo build",
+    "watch": "echo watch",
+    "test": "echo test",
+    "clean": "echo clean",
     "clean-all": "yarn clean && rm -rf node_modules/",
-    "serve": "firebase emulators:start --only functions",
-    "shell": "firebase functions:shell",
-    "start": "yarn shell",
-    "deploy": "npx @rxdi/firelink deploy --only functions",
-    "logs": "firebase functions:log",
-    "set-env": "firebase functions:config:set env=\"$(cat env.json)\""
-  },
-  "main": "build/index.js",
-  "fireDependencies": {
-    "@symbio/event-store-core": "../event-store-core",
-    "@symbio/barcode-processor-core": "../barcode-processor-core",
-    "@symbio/barcode-processor-scraper": "../barcode-processor-scraper",
-    "@symbio/barcode-processor-google-search": "../barcode-processor-google-search",
-    "@symbio/barcode-processor-google-translate": "../barcode-processor-google-translate",
-    "@symbio/tree-parser": "../tree-parser",
-    "@symbio/ts-lib": "../ts-lib",
-    "@symbio/ts-scripts": "../ts-scripts"
-  },
-  "fireConfig": {},
-  "dependencies": {
-    "@symbio/barcode-processor-core": "1.0.0",
-    "@symbio/barcode-processor-google-search": "1.0.0",
-    "@symbio/barcode-processor-google-translate": "1.0.0",
-    "@symbio/barcode-processor-scraper": "1.0.0",
-    "@symbio/event-store-core": "1.0.0",
-    "@symbio/tree-parser": "1.0.0",
-    "@symbio/ts-lib": "1.0.0",
-    "firebase-admin": "^8.10.0",
-    "firebase-functions": "^3.3.0"
+    "serve-hosting": "firebase serve --only hosting",
+    "serve-functions": "firebase serve --only functions",
+    "deploy-hosting-dev": "firebase use dev && firebase deploy --only hosting",
+    "deploy-functions-dev": "cd functions && yarn deploy-dev",
+    "deploy-firestore-rules-dev": "firebase use dev && firebase deploy --only firestore:rules",
+    "deploy-firestore-indexes-dev": "firebase use dev && firebase deploy --only firestore:indexes",
+    "deploy-firestore-dev": "firebase use dev && firebase deploy --only firestore",
+    "deploy-hosting-prod": "firebase use prod && firebase deploy --only hosting",
+    "deploy-functions-prod": "cd functions && yarn deploy-prod",
+    "deploy-firestore-rules-prod": "firebase use prod && firebase deploy --only firestore:rules",
+    "deploy-firestore-indexes-prod": "firebase use prod && firebase deploy --only firestore:indexes",
+    "deploy-firestore-prod": "firebase use prod && firebase deploy --only firestore"
   },
   "devDependencies": {
-    "@symbio/ts-scripts": "1.0.0",
-    "firebase-functions-test": "^0.1.6",
-    "firebase-tools": "^7.16.1"
+    "firebase-tools": "^8.0.2"
   }
 }

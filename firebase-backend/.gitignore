@@ -1,8 +1,3 @@
-service-account.json
-env.json
-build/
-.packages/
-
 # Logs
 logs
 *.log
