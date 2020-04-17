@@ -5,51 +5,96 @@ import { ScanBarcodeScreen } from './barcode'
 import { ProductScreen } from './product'
 import { FeedbackScreen } from './feedback'
 import { SetupPrinciplesScreen } from './principle'
+import {
+  cardStackScreenOptions,
+  modalCardStackScreenOptions,
+} from './NavigationConfig'
+import { createSwipableModal } from './ui-kit/SwipableModal'
 
 export type RootStackParamList = {
-  ScanBarcodeScreen: {}
-  ProductScreen: { barcode: string }
-  FeedbackScreen: { title: string }
+  Main: {}
+  Modals: {}
 
   // move it to modal stack https://reactnavigation.org/docs/modal
   SetupPrinciplesScreen: {}
 }
 
+export type MainStackParamList = {
+  ScanBarcodeScreen: {}
+
+  // move it to modal stack https://reactnavigation.org/docs/modal
+  SetupPrinciplesScreen: {}
+}
+
+export type ModalStackParamList = {
+  ProductScreen: { barcode: string }
+  FeedbackScreen: { title: string }
+}
+
 const RootStack = createStackNavigator<RootStackParamList>()
+const MainStack = createStackNavigator<MainStackParamList>()
+const ModalStack = createStackNavigator<ModalStackParamList>()
+
+const ModalStackComponent = () => {
+  return (
+    <ModalStack.Navigator
+      mode="modal"
+      headerMode="none"
+      {...modalCardStackScreenOptions}
+    >
+      <ModalStack.Screen
+        name="ProductScreen"
+        component={createSwipableModal(ProductScreen)}
+        options={{
+          gestureEnabled: false,
+          headerShown: false,
+          cardShadowEnabled: true,
+        }}
+      />
+      <ModalStack.Screen
+        name="FeedbackScreen"
+        component={createSwipableModal(FeedbackScreen)}
+        options={{
+          gestureEnabled: false,
+          headerShown: false,
+          cardShadowEnabled: true,
+        }}
+      />
+    </ModalStack.Navigator>
+  )
+}
+
+const MainStackComponent = () => {
+  return (
+    <MainStack.Navigator headerMode="none" initialRouteName="ScanBarcodeScreen">
+      <MainStack.Screen
+        name="ScanBarcodeScreen"
+        component={ScanBarcodeScreen}
+      />
+    </MainStack.Navigator>
+  )
+}
 
 export const Navigation = () => {
   return (
     <NavigationContainer>
       <RootStack.Navigator
-        initialRouteName="ScanBarcodeScreen"
+        headerMode="none"
+        mode="modal"
+        initialRouteName="Main"
+        {...cardStackScreenOptions}
       >
         <RootStack.Screen
-          name="ScanBarcodeScreen"
-          component={ScanBarcodeScreen}
-          options={{
-            headerShown: false,
-          }}
-        />
-        <RootStack.Screen
-          name="ProductScreen"
-          component={ProductScreen}
+          name="Main"
+          component={MainStackComponent}
           options={{
             title: '',
           }}
         />
         <RootStack.Screen
-          name="FeedbackScreen"
-          component={FeedbackScreen}
-          options={{
-            title: '',
-          }}
-        />
-        <RootStack.Screen
-          name="SetupPrinciplesScreen"
-          component={SetupPrinciplesScreen}
-          options={{
-            headerShown: false,
-          }}
+          name="Modals"
+          component={ModalStackComponent}
+          options={{ headerShown: false }}
         />
       </RootStack.Navigator>
     </NavigationContainer>
