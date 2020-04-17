@@ -29,7 +29,11 @@ const MainStack = createStackNavigator<MainModalStackParamList>()
 const ModalStack = createStackNavigator<RootModalStackParamList>()
 
 const ModalStackComponent = () => (
-  <ModalStack.Navigator headerMode="none" {...modalCardStackScreenOptions}>
+  <ModalStack.Navigator
+    mode="modal"
+    headerMode="none"
+    {...modalCardStackScreenOptions}
+  >
     <ModalStack.Screen
       name="Test"
       component={Test}
@@ -62,6 +66,7 @@ const MainStackComponent = () => (
 export const RootStackView = () => {
   return (
     <RootStack.Navigator
+      mode="modal"
       headerMode="none"
       initialRouteName="Main"
       {...cardStackScreenOptions}

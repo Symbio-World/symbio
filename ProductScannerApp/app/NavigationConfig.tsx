@@ -1,8 +1,12 @@
 import {
   TransitionSpecs,
   HeaderStyleInterpolators,
+  StackNavigationOptions,
 } from '@react-navigation/stack'
-import { TransitionPreset } from '@react-navigation/stack/lib/typescript/src/types'
+import {
+  TransitionPreset,
+  StackNavigationProp,
+} from '@react-navigation/stack/lib/typescript/src/types'
 import { t } from 'react-native-tailwindcss'
 
 export const cardStackTransition: TransitionPreset = {
@@ -50,7 +54,6 @@ export const cardStackTransition: TransitionPreset = {
   },
 }
 export const modalCardStackScreenOptions = {
-  mode: 'modal',
   cardOverlayEnabled: true,
   screenOptions: {
     cardStyle: [t.bgTransparent],
@@ -59,7 +62,6 @@ export const modalCardStackScreenOptions = {
 }
 
 export const cardStackScreenOptions = {
-  mode: 'modal',
   cardOverlayEnabled: true,
   screenOptions: {
     cardStyle: [t.bgTransparent],
