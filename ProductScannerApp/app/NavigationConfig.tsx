@@ -12,7 +12,7 @@ export const cardStackTransition: TransitionPreset = {
     close: TransitionSpecs.TransitionIOSSpec,
   },
   headerStyleInterpolator: HeaderStyleInterpolators.forFade,
-  cardStyleInterpolator: ({ current, layouts }) => {
+  cardStyleInterpolator: ({ current, next, layouts }) => {
     return {
       cardStyle: {
         transform: [
@@ -23,10 +23,20 @@ export const cardStackTransition: TransitionPreset = {
             }),
           },
           {
-            rotate: current.progress.interpolate({
-              inputRange: [0, 1],
-              outputRange: [-1, 0],
-            }),
+            scale: next
+              ? next.progress.interpolate({
+                  inputRange: [0, 1],
+                  outputRange: [1, 0.95],
+                })
+              : 1,
+          },
+          {
+            translateY: next
+              ? next.progress.interpolate({
+                  inputRange: [0, 1],
+                  outputRange: [0, -30],
+                })
+              : 1,
           },
         ],
       },
@@ -39,11 +49,19 @@ export const cardStackTransition: TransitionPreset = {
     }
   },
 }
-export const cardStackScreenOptions = {
+export const modalCardStackScreenOptions = {
   mode: 'modal',
   cardOverlayEnabled: true,
   screenOptions: {
     cardStyle: [t.bgTransparent],
     ...cardStackTransition,
+  },
+}
+
+export const cardStackScreenOptions = {
+  mode: 'modal',
+  cardOverlayEnabled: true,
+  screenOptions: {
+    cardStyle: [t.bgTransparent],
   },
 }
