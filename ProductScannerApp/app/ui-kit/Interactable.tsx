@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { ViewStyle } from 'react-native'
+import { ViewStyle, RecursiveArray, RegisteredStyle } from 'react-native'
 import { spring, snapPoint } from 'react-native-redash'
 import { PanGestureHandler, State } from 'react-native-gesture-handler'
 import Animated from 'react-native-reanimated'
@@ -38,7 +38,14 @@ type InteractableProps = {
   y: Animated.Value<number>
   snapPoints: SnapPoint[]
   onSnap: (e: { nativeEvent: { x: number } }) => void
-  style: ViewStyle
+  style: RecursiveArray<
+    | false
+    | Animated.AnimateStyle<ViewStyle>
+    | RegisteredStyle<Animated.AnimateStyle<ViewStyle>>
+    | {} // TODO: fix style error for AbsoluteFill
+    | null
+    | undefined
+  >
 }
 
 export const Interactable: React.FC<InteractableProps> = ({
