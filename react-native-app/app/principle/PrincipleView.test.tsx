@@ -1,16 +1,16 @@
 import React from 'react'
 import { render, fireEvent } from 'react-native-testing-library'
 import { TouchableOpacity } from 'react-native'
-import { Principle } from './Principle'
+import { PrincipleView } from './PrincipleView'
 
-describe('Principle', () => {
+describe('PrincipleView', () => {
   it('renders correctly', () => {
-    const { toJSON } = render(<Principle title="Test" />)
+    const { toJSON } = render(<PrincipleView title="Test" />)
     expect(toJSON()).toMatchSnapshot()
   })
 
   it('can be selected', () => {
-    const { toJSON } = render(<Principle title="Test" selected />)
+    const { toJSON } = render(<PrincipleView title="Test" selected />)
 
     expect(toJSON()).toMatchSnapshot()
   })
@@ -18,7 +18,7 @@ describe('Principle', () => {
   it('calls onPress', () => {
     const handlePress = jest.fn()
     const { getByType } = render(
-      <Principle title="Test" onPress={handlePress} />,
+      <PrincipleView title="Test" onPress={handlePress} />,
     )
     fireEvent.press(getByType(TouchableOpacity))
     expect(handlePress).toHaveBeenCalled()

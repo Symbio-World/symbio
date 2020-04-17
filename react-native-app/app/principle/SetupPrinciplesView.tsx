@@ -1,21 +1,33 @@
-import React from 'react'
+import * as React from 'react'
 import { ScrollView, View, Text } from 'react-native'
 import { t } from 'react-native-tailwindcss'
-import { Principle } from './Principle'
+import { PrincipleView } from './PrincipleView'
 import { Button } from '../ui-kit/Button'
 
 type Props = {
   principles?: string[]
-  selectedPrinciples?: string[]
-  onPrinciplePress?: (principle: string) => void
-  onSubmit?: () => void
+  onSubmit?: (selectedPrinciples: string[]) => void
 }
 export const SetupPrinciplesView: React.FC<Props> = ({
   principles = [],
-  selectedPrinciples = [],
-  onPrinciplePress = () => {},
   onSubmit = () => {},
 }) => {
+  const [selectedPrinciples, setSelectedPrinciples] = React.useState<string[]>(
+    [],
+  )
+
+  const onPrinciplePress = (principle: string) => {
+    if (selectedPrinciples.includes(principle)) {
+      setSelectedPrinciples(selectedPrinciples.filter((p) => p !== principle))
+    } else {
+      setSelectedPrinciples([...selectedPrinciples, principle])
+    }
+  }
+
+  const handleSubmit = () => {
+    onSubmit(selectedPrinciples)
+  }
+
   return (
     <View style={[t.m5]}>
       <ScrollView>
@@ -28,7 +40,7 @@ export const SetupPrinciplesView: React.FC<Props> = ({
           <Text style={[t.fontBold]}>What is important to you?</Text>
           <View style={[t.flexRow, t.flexWrap, t.mY4]}>
             {principles.map((p) => (
-              <Principle
+              <PrincipleView
                 key={p}
                 title={p}
                 onPress={() => onPrinciplePress(p)}
@@ -40,7 +52,7 @@ export const SetupPrinciplesView: React.FC<Props> = ({
         <View style={[t.h24]} />
       </ScrollView>
       <View style={[t.absolute, t.bottom0, t.wFull, t.bgWhite]}>
-        <Button onPress={onSubmit} title="Get Started" />
+        <Button onPress={handleSubmit} title="Get Started" />
       </View>
     </View>
   )

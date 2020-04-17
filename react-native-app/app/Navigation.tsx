@@ -8,6 +8,9 @@ export type RootStackParamList = {
   ScanBarcodeScreen: {}
   ProductScreen: { barcode: string }
   FeedbackScreen: { title: string }
+
+  // move it to modal stack https://reactnavigation.org/docs/modal
+  SetupPrinciplesScreen: {}
 }
 
 const RootStack = createStackNavigator<RootStackParamList>()

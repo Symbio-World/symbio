@@ -7,7 +7,7 @@ type Props = {
   selected?: boolean
   onPress?: () => void
 }
-export const Principle: React.FC<Props> = ({
+export const PrincipleView: React.FC<Props> = ({
   title,
   onPress = () => {},
   selected = false,
