@@ -1,5 +1,5 @@
 import 'react-native'
-import React from 'react'
+import * as React from 'react'
 import { render, fireEvent } from 'react-native-testing-library'
 import { useIsFocused } from '@react-navigation/native'
 import { ScanBarcodeScreen } from './ScanBarcodeScreen'

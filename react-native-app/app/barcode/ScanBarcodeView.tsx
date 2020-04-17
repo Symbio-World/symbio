@@ -1,4 +1,4 @@
-import React, { useRef as defaultUseRef, useEffect } from 'react'
+import * as React from 'react'
 import {
   AppState,
   AppStateStatus,
@@ -18,12 +18,12 @@ type Props = {
   isActive?: boolean
 
   // a hack to test scanner ref as createNodeMock is not working https://github.com/callstack/react-native-testing-library/issues/227
-  useRef?: typeof defaultUseRef
+  useRef?: typeof React.useRef
 }
 export const ScanBarcodeView: React.FC<Props> = ({
   onScan = () => {},
   isActive = true,
-  useRef = defaultUseRef,
+  useRef = React.useRef,
 }) => {
   const scanner = useRef<Scanner>(null)
 
@@ -102,7 +102,7 @@ export const ScanBarcodeView: React.FC<Props> = ({
     }
   }
 
-  useEffect(() => {
+  React.useEffect(() => {
     AppState.addEventListener('change', handleAppStateChange)
     checkForCameraPermission()
     return () => {
@@ -110,7 +110,7 @@ export const ScanBarcodeView: React.FC<Props> = ({
     }
   })
 
-  useEffect(() => {
+  React.useEffect(() => {
     if (isActive) startScanning()
     else stopScanning()
   }, [isActive])

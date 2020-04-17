@@ -1,4 +1,4 @@
-import React from 'react'
+import * as React from 'react'
 import { FeedbackView } from './FeedbackView'
 import { useAuth } from '../auth'
 import { saveFeedback } from './saveFeedback'

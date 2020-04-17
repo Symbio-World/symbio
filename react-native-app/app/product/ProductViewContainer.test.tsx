@@ -50,8 +50,8 @@ describe('ProductViewContainer', () => {
         onFeedbackPress={handleFeedbackPress}
       />,
     )
-    fireEvent(getByType(ProductView), 'onFeedbackPress', 'title').toBeDefined()
-    expect(handleFeedbackPress).toHaveBeenCalledWith("Tell us what's missing")
+    fireEvent(getByType(ProductView), 'onFeedbackPress', 'title')
+    expect(handleFeedbackPress).toHaveBeenCalledWith('title')
   })
 
   it('renders error', () => {

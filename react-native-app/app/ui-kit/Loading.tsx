@@ -1,4 +1,4 @@
-import React from 'react'
+import * as React from 'react'
 import { View, ActivityIndicator } from 'react-native'
 import { t, color } from 'react-native-tailwindcss'
 

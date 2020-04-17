@@ -1,4 +1,4 @@
-import React from 'react'
+import * as React from 'react'
 import { Modal as RNModal, View, TouchableWithoutFeedback } from 'react-native'
 import Icon from 'react-native-vector-icons/MaterialIcons'
 import { t, color } from 'react-native-tailwindcss'

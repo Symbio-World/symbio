@@ -1,4 +1,4 @@
-import React from 'react'
+import * as React from 'react'
 import { render, fireEvent } from 'react-native-testing-library'
 import { Text, TouchableWithoutFeedback } from 'react-native'
 import { Modal } from './Modal'

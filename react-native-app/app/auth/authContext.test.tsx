@@ -1,4 +1,4 @@
-import React from 'react'
+import * as React from 'react'
 import { Text } from 'react-native'
 import { render } from 'react-native-testing-library'
 import { createAuthProvider, useAuth, SignInAnonymously } from './authContext'

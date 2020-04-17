@@ -1,4 +1,4 @@
-import React from 'react'
+import * as React from 'react'
 import { StackNavigationProp } from '@react-navigation/stack'
 import { SetupPrinciplesViewContainer } from './SetupPrinciplesViewContainer'
 import { RootStackParamList } from '../Navigation'

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import * as React from 'react'
 import { View, Text, TextInput } from 'react-native'
 import { t } from 'react-native-tailwindcss'
 import Toast from 'react-native-simple-toast'
@@ -12,7 +12,7 @@ export const FeedbackView: React.FC<Props> = ({
   title = '',
   onSubmit = () => {},
 }) => {
-  const [text, setText] = useState<string>('')
+  const [text, setText] = React.useState<string>('')
   const handlePress = () => {
     onSubmit(text)
     Toast.show('Feedback successfully sent')

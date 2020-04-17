@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import * as React from 'react'
 import useSWR from 'swr'
 
 export type User = {
@@ -28,4 +28,4 @@ export const createAuthProvider: CreateAuthProvider = ({
   )
 }
 
-export const useAuth = (): AuthContext => useContext(authContext)
+export const useAuth = (): AuthContext => React.useContext(authContext)

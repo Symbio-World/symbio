@@ -1,4 +1,4 @@
-import React from 'react'
+import * as React from 'react'
 import { SetupPrinciplesView } from './SetupPrinciplesView'
 import { useAuth } from '../auth'
 import { savePrinciples } from './savePrinciples'

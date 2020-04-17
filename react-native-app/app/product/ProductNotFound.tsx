@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import * as React from 'react'
 import { View, Text, Linking } from 'react-native'
 import { t } from 'react-native-tailwindcss'
 import { Button } from '../ui-kit/Button'
@@ -8,7 +8,7 @@ type Props = {
   barcode?: string
 }
 export const ProductNotFound: React.FC<Props> = ({ barcode }) => {
-  const [isPressed, setPressed] = useState<boolean>(false)
+  const [isPressed, setPressed] = React.useState<boolean>(false)
   return (
     <View style={[t.flex1, t.justifyCenter, t.m5]}>
       {isPressed && (

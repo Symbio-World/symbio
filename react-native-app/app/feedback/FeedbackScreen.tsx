@@ -1,4 +1,4 @@
-import React from 'react'
+import * as React from 'react'
 import { RouteProp } from '@react-navigation/native'
 import { FeedbackViewContainer } from './FeedbackViewContainer'
 import { RootStackParamList } from '../Navigation'

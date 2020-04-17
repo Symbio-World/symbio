@@ -1,12 +1,12 @@
 import 'react-native-gesture-handler'
-import React, { useEffect } from 'react'
+import * as React from 'react'
 import { StatusBar } from 'react-native'
 import RNBootSplash from 'react-native-bootsplash'
 import { AuthProvider } from './auth'
 import { Navigation } from './Navigation'
 
 export const App: React.FC = () => {
-  useEffect(() => {
+  React.useEffect(() => {
     RNBootSplash.hide({ duration: 100 })
   }, [])
 
