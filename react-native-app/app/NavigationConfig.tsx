@@ -6,7 +6,6 @@ import { TransitionPreset } from '@react-navigation/stack/lib/typescript/src/typ
 import { t } from 'react-native-tailwindcss'
 
 export const cardStackTransition: TransitionPreset = {
-  gestureDirection: 'horizontal',
   transitionSpec: {
     open: TransitionSpecs.TransitionIOSSpec,
     close: TransitionSpecs.TransitionIOSSpec,
