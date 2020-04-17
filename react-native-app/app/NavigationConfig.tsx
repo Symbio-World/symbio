@@ -1,12 +1,8 @@
 import {
   TransitionSpecs,
   HeaderStyleInterpolators,
-  StackNavigationOptions,
 } from '@react-navigation/stack'
-import {
-  TransitionPreset,
-  StackNavigationProp,
-} from '@react-navigation/stack/lib/typescript/src/types'
+import { TransitionPreset } from '@react-navigation/stack/lib/typescript/src/types'
 import { t } from 'react-native-tailwindcss'
 
 export const cardStackTransition: TransitionPreset = {
