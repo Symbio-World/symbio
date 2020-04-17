@@ -1,6 +1,6 @@
 import 'react-native'
 import React from 'react'
-import { render } from 'react-native-testing-library'
+import { render, fireEvent } from 'react-native-testing-library'
 import { useIsFocused } from '@react-navigation/native'
 import { ScanBarcodeScreen } from './ScanBarcodeScreen'
 import { ScanBarcodeViewContainer } from './ScanBarcodeViewContainer'
@@ -27,5 +27,14 @@ describe('ScanBarcodeScreen', () => {
     const { getByType } = render(<ScanBarcodeScreen navigation={navigation} />)
     const scanBarcodeViewContainer = getByType(ScanBarcodeViewContainer)
     expect(scanBarcodeViewContainer.props.isActive).toEqual(isFocused)
+  })
+
+  it('navigates out on save', () => {
+    const barcode = 'barcode'
+    const { getByType } = render(<ScanBarcodeScreen navigation={navigation} />)
+    fireEvent(getByType(ScanBarcodeViewContainer), 'onScan', barcode)
+    expect(navigation.navigate).toHaveBeenCalledWith('ProductScreen', {
+      barcode,
+    })
   })
 })

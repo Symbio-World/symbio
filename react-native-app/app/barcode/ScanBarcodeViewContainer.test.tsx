@@ -29,13 +29,13 @@ describe('ScanBarcodeViewContainer', () => {
     expect(saveBarcode).toHaveBeenCalledWith(user.id, barcode)
   })
 
-  it('navigates to product view on scan', () => {
+  it('triggers onScan callback', () => {
     const barcode = 'barcode'
-    const navigateToProduct = jest.fn()
+    const handleScan = jest.fn()
     const { getByType } = render(
-      <ScanBarcodeViewContainer navigateToProduct={navigateToProduct} />,
+      <ScanBarcodeViewContainer onScan={handleScan} />,
     )
     fireEvent(getByType(ScanBarcodeView), 'onScan', barcode)
-    expect(navigateToProduct).toHaveBeenCalledWith(barcode)
+    expect(handleScan).toHaveBeenCalledWith(barcode)
   })
 })

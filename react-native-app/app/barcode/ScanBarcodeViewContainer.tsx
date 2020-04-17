@@ -5,11 +5,11 @@ import { saveBarcode } from './saveBarcode'
 
 type Props = {
   isActive?: boolean
-  navigateToProduct?: (barcode: string) => void
+  onScan?: (barcode: string) => void
 }
 export const ScanBarcodeViewContainer: React.FC<Props> = ({
   isActive = true,
-  navigateToProduct = () => {},
+  onScan = () => {},
 }) => {
   const { user } = useAuth()
 
@@ -18,7 +18,7 @@ export const ScanBarcodeViewContainer: React.FC<Props> = ({
       throw new Error('This should never happen, as user is in the context')
     }
     saveBarcode(user.id, barcode)
-    navigateToProduct(barcode)
+    onScan(barcode)
   }
 
   return <ScanBarcodeView onScan={handleScan} isActive={isActive} />

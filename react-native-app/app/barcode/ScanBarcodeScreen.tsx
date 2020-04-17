@@ -10,13 +10,13 @@ type Props = {
 export const ScanBarcodeScreen: React.FC<Props> = ({ navigation }) => {
   const isFocused = useIsFocused()
 
-  const navigateToProduct = (barcode: string) => {
+  const handleScan = (barcode: string) => {
     navigation.navigate('ProductScreen', { barcode })
   }
 
   return (
     <ScanBarcodeViewContainer
-      navigateToProduct={navigateToProduct}
+      onScan={handleScan}
       isActive={isFocused}
     />
   )
