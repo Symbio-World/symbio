@@ -2,7 +2,9 @@ import * as React from 'react'
 import { NavigationContainer } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
 import { ScanBarcodeScreen } from './barcode'
-import { ProductViewScreen } from './product'
+import { ProductScreen } from './product'
+import { FeedbackScreen } from './feedback'
+import { SetupPrinciplesScreen } from './principle'
 
 export type RootStackParamList = {
   ScanBarcodeScreen: {}
@@ -24,8 +26,22 @@ export const Navigation = () => {
           component={ScanBarcodeScreen}
         />
         <RootStack.Screen
-          name="ProductViewScreen"
-          component={ProductViewScreen}
+          name="ProductScreen"
+          component={ProductScreen}
+          options={{
+            headerShown: true,
+          }}
+        />
+        <RootStack.Screen
+          name="FeedbackScreen"
+          component={FeedbackScreen}
+          options={{
+            headerShown: true,
+          }}
+        />
+        <RootStack.Screen
+          name="SetupPrinciplesScreen"
+          component={SetupPrinciplesScreen}
           options={{
             headerShown: true,
           }}

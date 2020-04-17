@@ -29,7 +29,7 @@ describe('ScanBarcodeScreen', () => {
     expect(scanBarcodeViewContainer.props.isActive).toEqual(isFocused)
   })
 
-  it('navigates out on save', () => {
+  it('navigates out onScan', () => {
     const barcode = 'barcode'
     const { getByType } = render(<ScanBarcodeScreen navigation={navigation} />)
     fireEvent(getByType(ScanBarcodeViewContainer), 'onScan', barcode)

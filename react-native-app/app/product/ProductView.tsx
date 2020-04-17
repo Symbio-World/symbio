@@ -1,47 +1,43 @@
-import React, { useState } from 'react'
+import * as React from 'react'
 import { View, Image, Text, ScrollView } from 'react-native'
 import { t } from 'react-native-tailwindcss'
 import { ProductData } from '@symbio/barcode-processor-core'
 import { Button } from '../ui-kit/Button'
-import { Modal } from '../ui-kit/Modal'
-import { FeedbackScreen } from '../feedback'
 
-type Props = Omit<ProductData, 'links'>
-
-export const ProductView: React.FC<Props> = (props) => {
-  const [isPressed, setPressed] = useState<boolean>(false)
+type Props = Omit<ProductData, 'links'> & {
+  onFeedbackPress?: (title: string) => void
+}
+export const ProductView: React.FC<Props> = ({
+  image = '',
+  name = '',
+  description = '',
+  ingredients = '',
+  allergens = [],
+  origin = '',
+  onFeedbackPress = () => {},
+}) => {
   return (
     <ScrollView style={[t.bgWhite, t.flex1]}>
-      {isPressed && (
-        <Modal onDismiss={() => setPressed(false)}>
-          <FeedbackScreen
-            title="What is missing?"
-            onSave={() => setPressed(false)}
-          />
-        </Modal>
-      )}
       <Image
         style={[t.h56, t.bgGray200]}
-        source={{ uri: props.image }}
+        source={{ uri: image }}
         resizeMode="contain"
       />
       <View style={[t.p8]}>
-        <Text style={[t.textLg, t.mB8]}>{props.name}</Text>
-        <Text>{props.description}</Text>
+        <Text style={[t.textLg, t.mB8]}>{name}</Text>
+        <Text>{description}</Text>
         <Text style={[t.fontBold, t.mT8]}>Ingredients</Text>
-        <Text>{props.ingredients ? props.ingredients : '-'}</Text>
+        <Text>{ingredients ? ingredients : '-'}</Text>
         <Text style={[t.fontBold, t.mT8]}>Allergens</Text>
-        {props.allergens ? (
-          props.allergens.map((a) => <Text>{a}</Text>)
-        ) : (
-          <Text>'-'</Text>
-        )}
+        {allergens.map((a) => (
+          <Text>{a}</Text>
+        ))}
         <Text style={[t.fontBold, t.mT8]}>Origin</Text>
-        <Text>{props.origin}</Text>
+        <Text>{origin}</Text>
         <View style={[t.mT5]}>
           <Button
             title="Tell us what's missing"
-            onPress={() => setPressed(true)}
+            onPress={() => onFeedbackPress("Tell us what's missing")}
           />
         </View>
       </View>

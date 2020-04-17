@@ -16,7 +16,7 @@ describe('SetupPrinciplesScreen', () => {
     expect(toJSON()).toMatchSnapshot()
   })
 
-  it('navigates out on save', () => {
+  it('navigates out onSave', () => {
     const { getByType } = render(
       <SetupPrinciplesScreen navigation={navigation} />,
     )

@@ -6,7 +6,7 @@ type Props = {
   onPress?: () => void
   title?: string
 }
-export const Button: React.FC<Props> = ({ onPress = () => {}, title }) => {
+export const Button: React.FC<Props> = ({ onPress = () => {}, title = '' }) => {
   return (
     <TouchableOpacity
       style={[

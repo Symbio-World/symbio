@@ -8,18 +8,16 @@ import { ErrorView } from '../ui-kit/ErrorView'
 import { Loading } from '../ui-kit/Loading'
 import { ProductView } from './ProductView'
 import { ProductNotFound } from './ProductNotFound'
-import { ObserveProductData } from './observeProductData'
+import { observeProductData } from './observeProductData'
 
 type Props = {
   barcode: string
+  onFeedbackPress?: (title: string) => void
 }
-type Deps = {
-  observeProductData: ObserveProductData
-}
-type CreateProductViewContainer = (deps: Deps) => React.FC<Props>
-export const createProductViewContainer: CreateProductViewContainer = ({
-  observeProductData,
-}) => ({ barcode }) => {
+export const ProductViewContainer: React.FC<Props> = ({
+  barcode,
+  onFeedbackPress = () => {},
+}) => {
   const [productData, setProductData] = React.useState<ProductData>()
   const [error, setError] = React.useState<unknown>()
 
@@ -39,5 +37,5 @@ export const createProductViewContainer: CreateProductViewContainer = ({
     return <ProductNotFound barcode={barcode} />
   if (error) return <ErrorView error={error} />
   if (!productData) return <Loading />
-  return <ProductView {...productData} />
+  return <ProductView {...productData} onFeedbackPress={onFeedbackPress} />
 }

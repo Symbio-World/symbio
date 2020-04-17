@@ -5,7 +5,7 @@ import { Barcode, ProductData } from '@symbio/barcode-processor-core'
 import { firestore } from '../firestore'
 
 // TODO test this
-export type ObserveProductData = (barcode: Barcode) => Observable<ProductData>
+type ObserveProductData = (barcode: Barcode) => Observable<ProductData>
 export const observeProductData: ObserveProductData = (barcode) =>
   new Observable<BarcodeProcessed>((subscriber) => {
     const unsubscribe = firestore()

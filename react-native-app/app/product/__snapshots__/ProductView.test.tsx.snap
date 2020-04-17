@@ -18,7 +18,7 @@ exports[`ProductView renders correctly 1`] = `
       resizeMode="contain"
       source={
         Object {
-          "uri": undefined,
+          "uri": "",
         }
       }
       style={
@@ -52,8 +52,12 @@ exports[`ProductView renders correctly 1`] = `
             },
           ]
         }
-      />
-      <Text />
+      >
+        
+      </Text>
+      <Text>
+        
+      </Text>
       <Text
         style={
           Array [
@@ -85,9 +89,6 @@ exports[`ProductView renders correctly 1`] = `
       >
         Allergens
       </Text>
-      <Text>
-        '-'
-      </Text>
       <Text
         style={
           Array [
@@ -102,7 +103,9 @@ exports[`ProductView renders correctly 1`] = `
       >
         Origin
       </Text>
-      <Text />
+      <Text>
+        
+      </Text>
       <View
         style={
           Array [
