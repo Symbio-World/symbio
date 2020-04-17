@@ -1,20 +1,16 @@
-export type Barcode = string
-export type Link = string
-export type Html = string
-
 export type ProductPage = {
-  link: Link,
-  html: Html
+  link: string,
+  html: string
 }
 
 export type ProductSearchData = {
-  image?: Link,
+  image?: string,
   name?: string,
   description?: string,
   sku?: string,
   category?: string,
   brand?: string,
-  links: Link[]
+  links: string[]
 }
 
 export type ProductPageData = {

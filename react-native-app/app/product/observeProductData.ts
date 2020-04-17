@@ -1,11 +1,11 @@
 import { Observable } from 'rxjs'
 import { map } from 'rxjs/operators'
 import { EventType, BarcodeProcessed } from '@symbio/event-store-core'
-import { Barcode, ProductData } from '@symbio/barcode-processor-core'
+import { ProductData } from '@symbio/barcode-processor-core'
 import { firestore } from '../firestore'
 
 // TODO test this
-type ObserveProductData = (barcode: Barcode) => Observable<ProductData>
+type ObserveProductData = (barcode: string) => Observable<ProductData>
 export const observeProductData: ObserveProductData = (barcode) =>
   new Observable<BarcodeProcessed>((subscriber) => {
     const unsubscribe = firestore()

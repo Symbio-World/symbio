@@ -3,10 +3,10 @@ import { allSettled, PromiseResolution } from '@symbio/ts-lib'
 import * as Model from './ProductData'
 
 export type SearchBarcode = (
-  barcode: Model.Barcode,
+  barcode: string,
 ) => Promise<Model.ProductSearchData>
 
-export type FetchProductPage = (link: Model.Link) => Promise<Model.ProductPage>
+export type FetchProductPage = (link: string) => Promise<Model.ProductPage>
 
 export type ScrapeProductPage = (
   productPage: Model.ProductPage,
@@ -16,7 +16,7 @@ export type TranslateProductData = (
   productData: Model.ProductData,
 ) => Promise<Model.ProductData>
 
-export type ProcessBarcode = (b: Model.Barcode) => Promise<Model.ProductData>
+export type ProcessBarcode = (b: string) => Promise<Model.ProductData>
 
 export type Deps = {
   searchBarcode: SearchBarcode
@@ -41,9 +41,7 @@ export const createProcessBarcode: CreateProcessBarcode = ({
     )}`,
   )
   const productPageRequests = productSearchData.links.map(fetchProductPage)
-  console.log(
-    `initiating requests to product pages...`,
-  )
+  console.log(`initiating requests to product pages...`)
   const responses = await allSettled(productPageRequests)
   console.log(`received ${responses.length} responses`)
   const productPages = responses
@@ -60,11 +58,7 @@ export const createProcessBarcode: CreateProcessBarcode = ({
     ...combinedProductPageData,
   }
   console.log(
-    `product data before translation: ${JSON.stringify(
-      productData,
-      null,
-      4,
-    )}`,
+    `product data before translation: ${JSON.stringify(productData, null, 4)}`,
   )
   const translatedProductData = await translateProductData(productData)
   console.log(

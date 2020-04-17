@@ -18,7 +18,7 @@ const processBarcode = Core.createProcessBarcode({
     config: config.googleSearch,
   }),
   fetchProductPage: async (link) => {
-    const axiosResponse = await axios.get<Core.Html>(link)
+    const axiosResponse = await axios.get<string>(link)
     return { link, html: axiosResponse.data }
   },
   scrapeProductPage,

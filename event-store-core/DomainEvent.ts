@@ -1,4 +1,4 @@
-import { ProductData, Barcode } from '@symbio/barcode-processor-core'
+import { ProductData } from '@symbio/barcode-processor-core'
 import { Failure } from '@symbio/ts-lib'
 
 export enum EventType {
@@ -11,11 +11,11 @@ export enum EventType {
 export type UserScannedBarcode = {
   type: EventType.USER_SCANNED_BARCODE
   userId: string
-  barcode: Barcode
+  barcode: string
 }
 export const userScannedBarcode = (
   userId: string,
-  barcode: Barcode,
+  barcode: string,
 ): UserScannedBarcode => ({
   type: EventType.USER_SCANNED_BARCODE,
   userId,
@@ -52,7 +52,7 @@ export const userLeftFeedback = (
 
 export type BarcodeProcessed = {
   type: EventType.BARCODE_PROCESSED
-  barcode: Barcode
+  barcode: string
   productData?: ProductData
   error?: string | Failure
 }
