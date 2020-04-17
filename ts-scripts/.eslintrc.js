@@ -28,7 +28,7 @@ module.exports = {
         'functional/functional-parameters': 'off',
         'functional/no-let': 'off',
         'functional/no-throw-statement': 'off',
-        '@lwc/lwc/no-async-await': 'off',
+        '@typescript-eslint/no-explicit-any': 'off'
       },
     },
   ],

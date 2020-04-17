@@ -8,13 +8,14 @@ describe('FeedbackView', () => {
   it('renders correctly', () => {
     const { toJSON } = render(<FeedbackView />)
     expect(toJSON()).toMatchSnapshot()
-  }),
-    it('triggers onSubmit', () => {
-      const feedback = 'feedback'
-      const handleSubmit = jest.fn()
-      const { getByType } = render(<FeedbackView onSubmit={handleSubmit} />)
-      fireEvent.changeText(getByType(TextInput), feedback)
-      fireEvent.press(getByType(Button))
-      expect(handleSubmit).toHaveBeenCalledWith(feedback)
-    })
+  })
+
+  it('triggers onSubmit', () => {
+    const feedback = 'feedback'
+    const handleSubmit = jest.fn()
+    const { getByType } = render(<FeedbackView onSubmit={handleSubmit} />)
+    fireEvent.changeText(getByType(TextInput), feedback)
+    fireEvent.press(getByType(Button))
+    expect(handleSubmit).toHaveBeenCalledWith(feedback)
+  })
 })
