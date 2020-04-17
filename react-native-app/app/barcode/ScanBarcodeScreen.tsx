@@ -11,7 +11,7 @@ export const ScanBarcodeScreen: React.FC<Props> = ({ navigation }) => {
   const isFocused = useIsFocused()
 
   const navigateToProduct = (barcode: string) => {
-    navigation.navigate('ProductViewScreen', { barcode })
+    navigation.navigate('ProductScreen', { barcode })
   }
 
   return (

@@ -9,7 +9,7 @@ type Props = {
   onSubmit?: (feedback: string) => void
 }
 export const FeedbackView: React.FC<Props> = ({
-  title,
+  title = '',
   onSubmit = () => {},
 }) => {
   const [text, setText] = useState<string>('')

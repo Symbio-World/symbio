@@ -4,7 +4,7 @@ import { t } from 'react-native-tailwindcss'
 import { ProductData } from '@symbio/barcode-processor-core'
 import { Button } from '../ui-kit/Button'
 import { Modal } from '../ui-kit/Modal'
-import { FeedbackViewContainer } from '../feedback'
+import { FeedbackScreen } from '../feedback'
 
 type Props = Omit<ProductData, 'links'>
 
@@ -14,7 +14,7 @@ export const ProductView: React.FC<Props> = (props) => {
     <ScrollView style={[t.bgWhite, t.flex1]}>
       {isPressed && (
         <Modal onDismiss={() => setPressed(false)}>
-          <FeedbackViewContainer
+          <FeedbackScreen
             title="What is missing?"
             onSave={() => setPressed(false)}
           />

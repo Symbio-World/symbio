@@ -6,7 +6,8 @@ import { ProductViewScreen } from './product'
 
 export type RootStackParamList = {
   ScanBarcodeScreen: {}
-  ProductViewScreen: { barcode: string }
+  ProductScreen: { barcode: string }
+  FeedbackScreen: { title: string }
 }
 
 const RootStack = createStackNavigator<RootStackParamList>()

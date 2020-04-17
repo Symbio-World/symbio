@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`createFeedbackViewContainer renders correctly 1`] = `
+exports[`FeedbackViewContainer renders correctly 1`] = `
 <View
   style={
     Array [
@@ -32,7 +32,7 @@ exports[`createFeedbackViewContainer renders correctly 1`] = `
     }
   >
     💬
-    Test
+    
   </Text>
   <View
     style={
