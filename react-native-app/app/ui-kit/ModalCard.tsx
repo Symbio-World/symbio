@@ -15,7 +15,9 @@ export const ModalCard: React.FC<ModalCardProps> = ({ children }) => {
         t.justifyCenter,
       ]}
     >
-      <View style={[t.w10_12, t.bgWhite, t.roundedLg, t.shadowXl]}>
+      <View
+        style={[t.w11_12, t.bgWhite, t.roundedLg, t.shadowXl, t.overflowHidden]}
+      >
         {children}
       </View>
     </View>
