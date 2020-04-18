@@ -63,8 +63,9 @@ describe('createSearchResponse', () => {
     ;(axios.get as jest.Mock).mockImplementation(() =>
       Promise.resolve({ data: noItemsFixture.searchResponse }),
     )
-    await expect(createSearchBarcode({ config })(barcode)).rejects.toThrowError(
-      `Found no items for barcode ${barcode}`,
-    )
+    await expect(createSearchBarcode({ config })(barcode)).rejects.toEqual({
+      message: `Found no items for barcode ${barcode}`,
+      name: 'NO_SEARCH_RESULTS_FOUND',
+    })
   })
 })
