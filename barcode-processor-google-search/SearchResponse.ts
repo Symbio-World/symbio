@@ -7,7 +7,7 @@ export type Pagemap = {
 }
 
 export type Item = {
-  link: Core.Link
+  link: string
   pagemap: Pagemap
 }
 
