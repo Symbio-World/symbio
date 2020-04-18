@@ -1,3 +1,7 @@
+android/app/*.keystore
+fastlane/*.json
+fastlane/report.xml
+android/gradle.properties.bak
 env.dev.ts
 env.prod.ts
 .env

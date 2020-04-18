@@ -1,0 +1,19 @@
+fastlane_version '2.145.0'
+
+before_all do
+  ensure_git_branch
+  # ensure_git_status_clean
+  git_pull
+end
+
+platform :ios do
+   # iOS Lanes
+end
+
+platform :android do
+  desc "Submit a new Beta Build to Google Play"
+  lane :internal do
+    gradle(task: 'bundle', build_type: 'release', project_dir: 'android/')
+    supply(track: 'internal', release_status: 'draft',)
+  end
+end
