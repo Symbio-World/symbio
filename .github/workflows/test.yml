@@ -1,15 +1,8 @@
 name: Test
-
-on: [push, pull_request] # Run on Push and Pull Requests
-
+on: [push]
 jobs:
   build:
     runs-on: ubuntu-latest
-
-    strategy:
-      matrix:
-        node-version: [10.x]
-
     steps:
       - uses: actions/checkout@v1
       - uses: bahmutov/npm-install@v1

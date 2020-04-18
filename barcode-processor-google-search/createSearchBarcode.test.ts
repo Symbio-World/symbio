@@ -1,5 +1,4 @@
 import axios from 'axios'
-import * as Core from '@symbio/barcode-processor-core'
 import { createSearchBarcode } from './createSearchBarcode'
 import { GoogleSearchConfig } from './GoogleSearchConfig'
 import * as noProductFixture from './SearchResponse.noProduct.fixture'
@@ -9,7 +8,7 @@ jest.mock('axios')
 
 describe('createSearchResponse', () => {
   const config: GoogleSearchConfig = { cx: '', key: '', url: '' }
-  const barcode = '1233432' as Core.Barcode
+  const barcode = '1233432'
   const product = { image: 'https://image.com' }
   const link = 'http://link.com'
   const response = { items: [{ link, pagemap: { product: [product] } }] }
