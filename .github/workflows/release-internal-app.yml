@@ -37,7 +37,7 @@ jobs:
         working-directory: react-native-app
       - uses: ad-m/github-push-action@master
         with:
-          github_token: ${{ secrets.REPO_CI_TOKEN }}
+          github_token: ${{ secrets.DEVOPS_TOKEN }}
   # deploy-android-internal:
   #   needs: increment-versions
   #   name: Deploy Android internal
