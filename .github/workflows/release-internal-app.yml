@@ -2,7 +2,7 @@ name: Release internal app
 on:
   push:
     tags:
-      - internal
+      - internal*
 jobs:
   # test:
   #   runs-on: ubuntu-latest
