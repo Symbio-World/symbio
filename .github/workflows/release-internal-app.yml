@@ -27,14 +27,13 @@ jobs:
           git status
           git --no-pager diff
         working-directory: react-native-app
-      - name: Push changes to master
-        run: |
+      - run: |
           git config --global user.email "symbio.devops@gmail.com"
           git config --global user.name "symbio-devops"
           git config -l
-          git android/gradle.properties ios/Runner/Info.plist
-          git commit -m "Version Bump[ci skip]"
+      - run: git android/gradle.properties ios/Runner/Info.plist
         working-directory: react-native-app
+      - run: git commit -m "Version Bump[ci skip]"
       - uses: ad-m/github-push-action@master
         with:
           github_token: ${{ secrets.DEVOPS_TOKEN }}
