@@ -37,14 +37,15 @@ jobs:
       - uses: ad-m/github-push-action@master
         with:
           github_token: ${{ secrets.DEVOPS_TOKEN }}
-  # deploy-android-internal:
-  #   needs: increment-versions
-  #   name: Deploy Android internal
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - uses: actions/checkout@v2
-  #     - run: cd react-native-app && yarn set-env-prod
-  #     - uses: maierj/fastlane-action@v1.4.0
-  #       with:
-  #         lane: "internal"
-  #         subdirectory: 'react-native-app'
+  deploy-android-internal:
+    needs: increment-versions
+    name: Deploy Android internal
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: yarn set-env-prod
+        working-directory: react-native-app
+      - uses: maierj/fastlane-action@v1.4.0
+        with:
+          lane: "internal"
+          subdirectory: 'react-native-app'
