@@ -47,6 +47,7 @@ jobs:
         run: echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf && sudo sysctl -p
       - run: yarn set-env-prod
         working-directory: react-native-app
+      - run: sdkmanager 'ndk;20.0.5594570'
       - run: yarn build
       - uses: maierj/fastlane-action@v1.4.0
         with:
