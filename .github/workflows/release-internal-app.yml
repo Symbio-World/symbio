@@ -17,6 +17,7 @@ jobs:
       - uses: actions/checkout@v1
   #     - uses: bahmutov/npm-install@v1
       - run: echo "${{secrets.TEST_TOKEN}}" | base64 -d > test.json
+      - run: cat test.json
       - run: git status
 
   # increment-versions:
