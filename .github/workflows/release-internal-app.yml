@@ -11,42 +11,50 @@ jobs:
   #     - uses: bahmutov/npm-install@v1
   #     - run: yarn test
 
-  increment-versions:
-    # needs: test
-    name: Increment Android and Ios versions
-    runs-on: macos-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-      - name: Increment versions
-        run: |
-          bash ./scripts/increment_android_version_code.sh
-          bash ./scripts/increment_android_version_name.sh
-          bash ./scripts/update_ios_version_code.sh $(bash ./scripts/get_android_version_code.sh)
-          bash ./scripts/update_ios_version_name.sh $(bash ./scripts/get_android_version_name.sh)
-          git status
-          git --no-pager diff
-        working-directory: react-native-app
-      - run: |
-          git config --global user.email "symbio.devops@gmail.com"
-          git config --global user.name "symbio-devops"
-          git config -l
-      - run: git add android/gradle.properties ios/Symbio/Info.plist
-        working-directory: react-native-app
-      - run: git commit -m "Version Bump[ci skip]"
-      - uses: ad-m/github-push-action@master
-        with:
-          github_token: ${{ secrets.DEVOPS_TOKEN }}
-
-  deploy-android-internal:
-    needs: increment-versions
-    name: Deploy Android internal
+  test:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - run: yarn set-env-prod
-        working-directory: react-native-app
-      - uses: maierj/fastlane-action@v1.4.0
-        with:
-          lane: "android internal"
-          subdirectory: 'react-native-app'
+  #     - uses: actions/checkout@v1
+  #     - uses: bahmutov/npm-install@v1
+      - run: echo ${{secrets.TEST_TOKEN}}
+
+  # increment-versions:
+  #   # needs: test
+  #   name: Increment Android and Ios versions
+  #   runs-on: macos-latest
+  #   steps:
+  #     - name: Checkout
+  #       uses: actions/checkout@v2
+  #     - name: Increment versions
+  #       run: |
+  #         bash ./scripts/increment_android_version_code.sh
+  #         bash ./scripts/increment_android_version_name.sh
+  #         bash ./scripts/update_ios_version_code.sh $(bash ./scripts/get_android_version_code.sh)
+  #         bash ./scripts/update_ios_version_name.sh $(bash ./scripts/get_android_version_name.sh)
+  #         git status
+  #         git --no-pager diff
+  #       working-directory: react-native-app
+  #     - run: |
+  #         git config --global user.email "symbio.devops@gmail.com"
+  #         git config --global user.name "symbio-devops"
+  #         git config -l
+  #     - run: git add android/gradle.properties ios/Symbio/Info.plist
+  #       working-directory: react-native-app
+  #     - run: git commit -m "Version Bump[ci skip]"
+  #     - uses: ad-m/github-push-action@master
+  #       with:
+  #         github_token: ${{ secrets.DEVOPS_TOKEN }}
+
+  # deploy-android-internal:
+  #   needs: increment-versions
+  #   name: Deploy Android internal
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@v2
+  #     - run: echo ${{secrets.GOOGLE_PLAY_ENCODED_KEYSTORE}} | base64 -d > react-native-app/android/app/google-play.json
+  #     - run: yarn set-env-prod
+  #       working-directory: react-native-app
+  #     - uses: maierj/fastlane-action@v1.4.0
+  #       with:
+  #         lane: "android internal"
+  #         subdirectory: "react-native-app"
