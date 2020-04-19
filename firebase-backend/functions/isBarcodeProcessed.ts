@@ -1,8 +1,7 @@
 import { EventType } from '@symbio/event-store-core'
-import { Barcode } from '@symbio/barcode-processor-core'
 import { admin } from './admin'
 
-export const isBarcodeProcessed = async (barcode: Barcode) => {
+export const isBarcodeProcessed = async (barcode: string) => {
   const snapshot = await admin
     .firestore()
     .collection(EventType.BARCODE_PROCESSED)
