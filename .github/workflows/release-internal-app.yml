@@ -4,15 +4,15 @@ on:
     tags:
       - internal
 jobs:
-  test:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v1
-      - uses: bahmutov/npm-install@v1
-      - run: yarn test
+  # test:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@v1
+  #     - uses: bahmutov/npm-install@v1
+  #     - run: yarn test
 
   increment-versions:
-    needs: test
+    # needs: test
     name: Increment Android and Ios versions
     runs-on: ubuntu-latest
     steps:
@@ -25,8 +25,8 @@ jobs:
           ./script/increment_android_version_name.sh
           ./script/update_ios_version_code.sh $(./script/get_android_version_code.sh)
           ./script/update_ios_version_name.sh $(./script/get_android_version_name.sh)
-      - run: cd react-native-app && git status
-      - run: cd react-native-app && git --no-pager diff
+      - run: git status
+      - run: git --no-pager diff
   #     - name: Push changes to master
   #       run: |
   #         git config --global user.email "symbio.devops@gmail.com"
