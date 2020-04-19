@@ -7,6 +7,9 @@ jobs:
     steps:
       - uses: actions/checkout@v1
       - uses: bahmutov/npm-install@v1
-      - run: node --version
-      - run: npm --version
+      - name: Log versions
+        run: |
+          node --version
+          npm --version
+          yarn --version
       - run: yarn test
