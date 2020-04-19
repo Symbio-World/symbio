@@ -4,7 +4,8 @@ buildscript {
     ext {
         buildToolsVersion = "28.0.3"
         minSdkVersion = 16
-        compileSdkVersion = 28
+        // ci fix https://github.com/gradle/gradle/issues/12440#issuecomment-606188282
+        compileSdkVersion = 29
         targetSdkVersion = 28
     }
     repositories {
