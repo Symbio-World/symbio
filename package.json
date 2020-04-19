@@ -14,7 +14,7 @@
     "lint": "yarn wsrun lint",
     "build": "yarn wsrun build",
     "watch": "yarn wsrun watch",
-    "test": "yarn workspaces run test",
+    "test": "yarn wsrun test",
     "clean": "yarn wsrun clean",
     "clean-all": "yarn workspaces run clean-all && yarn clean:node_modules && yarn clean:yarn-error && rm yarn.lock && watchman watch-del-all && yarn cache clean -f",
     "clean:node_modules": "find . -name 'node_modules' -type d -prune -exec rm -rf '{}' +",
