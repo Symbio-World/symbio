@@ -53,6 +53,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - uses: bahmutov/npm-install@v1
       - name: Recreate Google Play upload key
         run: echo "${{secrets.GOOGLE_PLAY_ENCODED_KEYSTORE}}" | base64 -d > react-native-app/android/app/google-play-upload-key.keystore
       - name: Recreate Service Account json file
