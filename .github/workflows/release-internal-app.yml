@@ -31,7 +31,7 @@ jobs:
           git config --global user.email "symbio.devops@gmail.com"
           git config --global user.name "symbio-devops"
           git config -l
-      - run: git android/gradle.properties ios/Symbio/Info.plist
+      - run: git add android/gradle.properties ios/Symbio/Info.plist
         working-directory: react-native-app
       - run: git commit -m "Version Bump[ci skip]"
       - uses: ad-m/github-push-action@master
