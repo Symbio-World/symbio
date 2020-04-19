@@ -58,12 +58,13 @@ jobs:
         run: echo "${{secrets.GOOGLE_PLAY_ENCODED_KEYSTORE}}" | base64 -d > react-native-app/android/app/google-play-upload-key.keystore
       - name: Recreate Service Account json file
         run: echo "${{secrets.GOOGLE_PLAY_SERVICE_ACCOUNT_JSON}}" | base64 -d > react-native-app/fastlane/google-play.json
-      - name: Recreate env.prod.ts
+      - name: Recreate production environment
         run: echo "${{secrets.REACT_NATIVE_APP_ENV_PROD}}" | base64 -d > react-native-app/env.prod.ts
       - name: Setup kernel for react native, increase watchers
         run: echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf && sudo sysctl -p
       - run: yarn set-env-prod
         working-directory: react-native-app
+      - run: yarn build
       - uses: maierj/fastlane-action@v1.4.0
         with:
           lane: "android internal"
