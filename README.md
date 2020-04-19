@@ -16,7 +16,7 @@ yarn
 
 ## NVM
 
-Preferred node version is in .npmrc. 
+Preferred node version is in .nvmrc. 
 Install nvm https://github.com/nvm-sh/nvm and run
 ```
 nvm use
