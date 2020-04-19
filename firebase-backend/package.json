@@ -23,6 +23,6 @@
     "deploy-firestore-prod": "firebase use prod && firebase deploy --only firestore"
   },
   "devDependencies": {
-    "firebase-tools": "^8.0.2"
+    "firebase-tools": "8.0.2"
   }
 }

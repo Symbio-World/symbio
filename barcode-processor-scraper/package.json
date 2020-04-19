@@ -11,13 +11,13 @@
     "clean-all": "yarn clean && rm -rf node_modules/"
   },
   "dependencies": {
-    "cheerio": "^1.0.0-rc.3",
+    "cheerio": "1.0.0-rc.3",
     "@symbio/ts-lib": "1.0.0",
 
     "@symbio/barcode-processor-core": "1.0.0"
   },
   "devDependencies": {
-    "@types/cheerio": "^0.22.17",
+    "@types/cheerio": "0.22.17",
     "@symbio/ts-scripts": "1.0.0"
   }
 }

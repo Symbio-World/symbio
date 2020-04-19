@@ -11,13 +11,13 @@
     "clean-all": "yarn clean && rm -rf node_modules/"
   },
   "dependencies": {
-    "axios": "^0.19.2",
-    "ramda": "^0.27.0",
-    "rxjs": "^6.5.4"
+    "axios": "0.19.2",
+    "ramda": "0.27.0",
+    "rxjs": "6.5.4"
   },
   "devDependencies": {
     "@symbio/ts-scripts": "1.0.0",
-    "@types/axios": "^0.14.0",
-    "@types/ramda": "^0.27.0"
+    "@types/axios": "0.14.0",
+    "@types/ramda": "0.27.0"
   }
 }
