@@ -1,1 +1,6 @@
-export { env } from './env.dev'
+export const env = {
+  scanditApiKey: {
+    android: 'string',
+    ios: 'string',
+  },
+}
