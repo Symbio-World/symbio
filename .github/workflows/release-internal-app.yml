@@ -10,6 +10,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+        with:
+          fetch-depth: '0'
       - name: Increment versions
         run: |
           bash ./scripts/increment_android_version_code.sh
@@ -29,6 +31,7 @@ jobs:
       - uses: ad-m/github-push-action@master
         with:
           github_token: ${{ secrets.DEVOPS_TOKEN }}
+      - run: echo 'new version successfully pushed'
 
   deploy-android-internal:
     needs: increment-versions
