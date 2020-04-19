@@ -24,19 +24,17 @@ jobs:
           bash ./scripts/increment_android_version_name.sh
           bash ./scripts/update_ios_version_code.sh $(bash ./scripts/get_android_version_code.sh)
           bash ./scripts/update_ios_version_name.sh $(bash ./scripts/get_android_version_name.sh)
-        working-directory: react-native-app
-      - run: git status
-      - run: git --no-pager diff
-  #     - name: Push changes to master
-  #       run: |
-  #         git config --global user.email "symbio.devops@gmail.com"
-  #         git config --global user.name "symbio-devops"
-  #         git config -l
-  #         git add android/gradle.properties ios/Runner/Info.plist
-  #         git commit -m "Version Bump[ci skip]"
-  #     - uses: ad-m/github-push-action@master
-  #       with:
-  #         github_token: ${{ secrets.REPO_CI_TOKEN }}
+          git --no-pager diff
+      - name: Push changes to master
+        run: |
+          git config --global user.email "symbio.devops@gmail.com"
+          git config --global user.name "symbio-devops"
+          git config -l
+          git add android/gradle.properties ios/Runner/Info.plist
+          git commit -m "Version Bump[ci skip]"
+      - uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.REPO_CI_TOKEN }}
   # deploy-android-internal:
   #   needs: increment-versions
   #   name: Deploy Android internal
