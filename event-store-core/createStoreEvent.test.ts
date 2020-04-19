@@ -1,5 +1,5 @@
 import { createStoreEvent, StoreEvent, Now } from './createStoreEvent'
-import { userScannedBarcode, barcodeProcessed } from './DomainEvent'
+import { userScannedBarcode, barcodeProcessed, EventType } from './DomainEvent'
 import { ProductData } from '@symbio/barcode-processor-core'
 
 describe('createStoreEvent', () => {
@@ -27,13 +27,16 @@ describe('createStoreEvent', () => {
       ingredients: undefined,
       name: undefined,
     }
-    const event = barcodeProcessed('barcode', productData, undefined)
+    const barcode = 'barcode'
+    const event = barcodeProcessed(barcode, productData, undefined)
     await createStoreEvent({ storeEvent, now })(event)
     expect(storeEvent).toHaveBeenCalledWith({
+      barcode,
       productData: {
         links: [],
       },
-      timestamp: 1585933810891,
+      timestamp,
+      type: EventType.BARCODE_PROCESSED,
     })
   })
 })
