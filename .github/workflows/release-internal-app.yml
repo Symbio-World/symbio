@@ -20,11 +20,11 @@ jobs:
         uses: actions/checkout@v2
       - name: Increment versions
         run: |
-          cd react-native-app
           ./script/increment_android_version_code.sh
           ./script/increment_android_version_name.sh
           ./script/update_ios_version_code.sh $(./script/get_android_version_code.sh)
           ./script/update_ios_version_name.sh $(./script/get_android_version_name.sh)
+        working-directory: react-native-app
       - run: git status
       - run: git --no-pager diff
   #     - name: Push changes to master
@@ -37,7 +37,6 @@ jobs:
   #     - uses: ad-m/github-push-action@master
   #       with:
   #         github_token: ${{ secrets.REPO_CI_TOKEN }}
-
   # deploy-android-internal:
   #   needs: increment-versions
   #   name: Deploy Android internal
