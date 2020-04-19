@@ -130,6 +130,7 @@ android {
     defaultConfig {
         applicationId "club.symbio"
         minSdkVersion rootProject.ext.minSdkVersion
+        ndkVersion "21.0.6113669"
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode project.property('version.code') as Integer
         versionName project.property('version.name')
