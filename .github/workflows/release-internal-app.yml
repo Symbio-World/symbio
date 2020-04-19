@@ -24,14 +24,17 @@ jobs:
           bash ./scripts/increment_android_version_name.sh
           bash ./scripts/update_ios_version_code.sh $(bash ./scripts/get_android_version_code.sh)
           bash ./scripts/update_ios_version_name.sh $(bash ./scripts/get_android_version_name.sh)
+          git status
           git --no-pager diff
+        working-directory: react-native-app
       - name: Push changes to master
         run: |
           git config --global user.email "symbio.devops@gmail.com"
           git config --global user.name "symbio-devops"
           git config -l
-          git add android/gradle.properties ios/Runner/Info.plist
+          git android/gradle.properties ios/Runner/Info.plist
           git commit -m "Version Bump[ci skip]"
+        working-directory: react-native-app
       - uses: ad-m/github-push-action@master
         with:
           github_token: ${{ secrets.REPO_CI_TOKEN }}
