@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { Platform, View, Text, TextInput } from 'react-native'
+import { View, Text, TextInput } from 'react-native'
 import { t } from 'react-native-tailwindcss'
 import Toast from 'react-native-simple-toast'
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
