@@ -76,6 +76,9 @@ Firebase provides
 - analytics
 - database
 
+## Navigation
+https://reactnavigation.org/docs/params/
+
 ## Testing with React Native testing library
 https://callstack.github.io/react-native-testing-library/docs/api
 
