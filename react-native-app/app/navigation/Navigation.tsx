@@ -1,15 +1,14 @@
 import * as React from 'react'
 import { NavigationContainer } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
-import { ScanBarcodeScreen } from './barcode'
-import { ProductScreen } from './product'
-import { FeedbackScreen } from './feedback'
-import { SetupPrinciplesScreen } from './principle'
+import { ScanBarcodeScreen } from '../barcode'
+import { ProductScreen } from '../product'
+import { FeedbackScreen } from '../feedback'
 import {
   cardStackScreenOptions,
   modalCardStackScreenOptions,
 } from './NavigationConfig'
-import { createSwipableModal } from './ui-kit/SwipableModal'
+import { createSwipableModal } from './createSwipableModal'
 
 export type RootStackParamList = {
   Main: {}

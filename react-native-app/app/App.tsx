@@ -3,7 +3,10 @@ import * as React from 'react'
 import { StatusBar } from 'react-native'
 import RNBootSplash from 'react-native-bootsplash'
 import { AuthProvider } from './auth'
-import { Navigation } from './Navigation'
+import { Navigation } from './navigation/Navigation'
+import { enableScreens } from 'react-native-screens'
+
+enableScreens()
 
 export const App: React.FC = () => {
   React.useEffect(() => {

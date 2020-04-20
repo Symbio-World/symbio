@@ -3,7 +3,7 @@ import { Dimensions, View, StyleSheet } from 'react-native'
 import { t } from 'react-native-tailwindcss'
 import Animated from 'react-native-reanimated'
 
-import { Interactable } from './Interactable'
+import { Interactable } from '../navigation/Interactable'
 import { ModalCard } from './ModalCard'
 
 const { Value, interpolate, concat, Extrapolate } = Animated
@@ -54,21 +54,4 @@ export const SwipableModal: React.FC<SwipableModalProps> = ({
       </Interactable>
     </View>
   )
-}
-
-export const createSwipableModal = (WrapperCompponent) => {
-  return (props) => {
-    const handleSnap = () => {
-      props.navigation.goBack()
-    }
-
-    // TODO: change height 90% to move dynamic style
-    return (
-      <SwipableModal onSnap={handleSnap}>
-        <View style={{ height: '90%' }}>
-          <WrapperCompponent {...props} />
-        </View>
-      </SwipableModal>
-    )
-  }
 }
