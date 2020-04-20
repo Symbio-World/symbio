@@ -1,4 +1,4 @@
-package club.symbio;
+package club.symbio.app;
 
 import android.app.Application;
 import android.content.Context;

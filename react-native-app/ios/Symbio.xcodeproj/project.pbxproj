@@ -836,7 +836,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = club.symbio;
+				PRODUCT_BUNDLE_IDENTIFIER = club.symbio.app;
 				PRODUCT_NAME = Symbio;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -858,7 +858,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = club.symbio;
+				PRODUCT_BUNDLE_IDENTIFIER = club.symbio.app;
 				PRODUCT_NAME = Symbio;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";

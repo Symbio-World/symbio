@@ -1,2 +1,2 @@
 json_key_file "./fastlane/google-play.json"
-package_name "club.symbio"
+package_name "club.symbio.app"

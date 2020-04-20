@@ -128,7 +128,7 @@ android {
     }
 
     defaultConfig {
-        applicationId "club.symbio"
+        applicationId "club.symbio.app"
         minSdkVersion rootProject.ext.minSdkVersion
         ndkVersion "21.0.6113669"
         targetSdkVersion rootProject.ext.targetSdkVersion
