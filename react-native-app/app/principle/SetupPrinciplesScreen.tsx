@@ -1,14 +1,16 @@
 import * as React from 'react'
+import { RouteProp } from '@react-navigation/native'
 import { StackNavigationProp } from '@react-navigation/stack'
 import { SetupPrinciplesViewContainer } from './SetupPrinciplesViewContainer'
-import { RootStackParamList } from '../Navigation'
+import { ModalStackParamList } from '../navigation/Navigation'
 
 type Props = {
-  navigation: StackNavigationProp<RootStackParamList, 'SetupPrinciplesScreen'>
+  navigation: StackNavigationProp<ModalStackParamList, 'SetupPrinciplesScreen'>
+  route: RouteProp<ModalStackParamList, 'SetupPrinciplesScreen'>
 }
 export const SetupPrinciplesScreen: React.FC<Props> = ({ navigation }) => {
   const handleSave = () => {
-    navigation.navigate('ScanBarcodeScreen')
+    navigation.navigate('Main', { screen: 'ScanBarcodeScreen' })
   }
 
   return <SetupPrinciplesViewContainer onSave={handleSave} />

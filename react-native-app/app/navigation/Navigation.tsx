@@ -1,33 +1,35 @@
 import * as React from 'react'
-import { NavigationContainer } from '@react-navigation/native'
+import { NavigationContainer, ParamListBase } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
 import { ScanBarcodeScreen } from '../barcode'
 import { ProductScreen } from '../product'
 import { FeedbackScreen } from '../feedback'
+import { SetupPrinciplesScreen } from '../principle'
 import {
   cardStackScreenOptions,
   modalCardStackScreenOptions,
 } from './NavigationConfig'
 import { createSwipableModal } from './createSwipableModal'
 
+type SubNavigator<T extends ParamListBase> = {
+  [K in keyof T]: { screen: K; params?: T[K] }
+}[keyof T]
+
 export type RootStackParamList = {
   Main: {}
   Modals: {}
-
-  // move it to modal stack https://reactnavigation.org/docs/modal
-  SetupPrinciplesScreen: {}
 }
 
 export type MainStackParamList = {
   ScanBarcodeScreen: {}
-
-  // move it to modal stack https://reactnavigation.org/docs/modal
-  SetupPrinciplesScreen: {}
+  Modals: SubNavigator<ModalStackParamList>
 }
 
 export type ModalStackParamList = {
   ProductScreen: { barcode: string }
   FeedbackScreen: { title: string }
+  SetupPrinciplesScreen: {}
+  Main: SubNavigator<MainStackParamList>
 }
 
 const RootStack = createStackNavigator<RootStackParamList>()
@@ -53,6 +55,15 @@ const ModalStackComponent = () => {
       <ModalStack.Screen
         name="FeedbackScreen"
         component={createSwipableModal(FeedbackScreen)}
+        options={{
+          gestureEnabled: false,
+          headerShown: false,
+          cardShadowEnabled: true,
+        }}
+      />
+      <ModalStack.Screen
+        name="SetupPrinciplesScreen"
+        component={createSwipableModal(SetupPrinciplesScreen)}
         options={{
           gestureEnabled: false,
           headerShown: false,

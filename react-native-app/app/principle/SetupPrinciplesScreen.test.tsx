@@ -7,18 +7,21 @@ import { SetupPrinciplesViewContainer } from './SetupPrinciplesViewContainer'
 jest.mock('@react-navigation/native')
 
 describe('SetupPrinciplesScreen', () => {
+  const route: any = {}
   const navigation: any = {
     navigate: jest.fn(),
   }
 
   it('renders correctly', () => {
-    const { toJSON } = render(<SetupPrinciplesScreen navigation={navigation} />)
+    const { toJSON } = render(
+      <SetupPrinciplesScreen route={route} navigation={navigation} />,
+    )
     expect(toJSON()).toMatchSnapshot()
   })
 
   it('navigates out onSave', () => {
     const { getByType } = render(
-      <SetupPrinciplesScreen navigation={navigation} />,
+      <SetupPrinciplesScreen route={route} navigation={navigation} />,
     )
     fireEvent(getByType(SetupPrinciplesViewContainer), 'onSave')
     expect(navigation.navigate).toHaveBeenCalledWith('ScanBarcodeScreen')

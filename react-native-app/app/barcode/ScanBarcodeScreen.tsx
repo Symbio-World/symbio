@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { useIsFocused } from '@react-navigation/native'
 import { StackNavigationProp } from '@react-navigation/stack'
-import { MainStackParamList } from '../Navigation'
+import { MainStackParamList } from '../navigation/Navigation'
 import { ScanBarcodeViewContainer } from './ScanBarcodeViewContainer'
 
 type Props = {

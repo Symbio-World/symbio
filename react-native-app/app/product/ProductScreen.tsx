@@ -2,7 +2,7 @@ import * as React from 'react'
 import { RouteProp } from '@react-navigation/native'
 import { StackNavigationProp } from '@react-navigation/stack'
 import { ProductViewContainer } from './ProductViewContainer'
-import { ModalStackParamList } from '../Navigation'
+import { ModalStackParamList } from '../navigation/Navigation'
 
 type Props = {
   navigation: StackNavigationProp<ModalStackParamList, 'ProductScreen'>
@@ -12,10 +12,7 @@ export const ProductScreen: React.FC<Props> = ({ route, navigation }) => {
   const { barcode } = route.params
 
   const handleFeedbackPress = (title: string) => {
-    navigation.navigate('Modals', {
-      screen: 'FeedbackScreen',
-      params: { title },
-    })
+    navigation.navigate('FeedbackScreen', { title })
   }
 
   return (
