@@ -463,7 +463,7 @@ PODS:
   - React-jsinspector (0.61.5)
   - react-native-safe-area-context (0.7.3):
     - React
-  - react-native-simple-toast (1.1.1):
+  - react-native-simple-toast (1.0.0):
     - React
     - Toast (~> 4.0.0)
   - React-RCTActionSheet (0.61.5):
@@ -720,7 +720,7 @@ SPEC CHECKSUMS:
   React-jsiexecutor: d5525f9ed5f782fdbacb64b9b01a43a9323d2386
   React-jsinspector: fa0ecc501688c3c4c34f28834a76302233e29dc0
   react-native-safe-area-context: e200d4433aba6b7e60b52da5f37af11f7a0b0392
-  react-native-simple-toast: 1378177b9d7dcf73c1fd73231cfc134108682621
+  react-native-simple-toast: 6c376bd79b1e255a4bee90a72ead6447f96ea10d
   React-RCTActionSheet: 600b4d10e3aea0913b5a92256d2719c0cdd26d76
   React-RCTAnimation: 791a87558389c80908ed06cc5dfc5e7920dfa360
   React-RCTBlob: d89293cc0236d9cb0933d85e430b0bbe81ad1d72
