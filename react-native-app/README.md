@@ -1,7 +1,6 @@
 # Setup
 
 1. Ask for `env.dev.ts` and put it near README
-2. Ask for `scandit-barcodescanner-ios_5.14.2.zip` and put it near README
 
 # Installation
 
