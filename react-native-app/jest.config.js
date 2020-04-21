@@ -20,6 +20,8 @@ module.exports = {
       '|react-native-vector-icons' +
       '|react-native-simple-toast' +
       '|@react-native-firebase' +
+      '|react-native-keyboard-aware-scroll-view' +
+      '|react-native-iphone-x-helper' +
       ')/)',
   ],
 }
