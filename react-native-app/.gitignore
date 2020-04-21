@@ -5,7 +5,6 @@ android/gradle.properties.bak
 env.dev.ts
 env.prod.ts
 .env
-scandit-barcodescanner-ios*
 *-service-account*
 *.certSigningRequest
 *.cer

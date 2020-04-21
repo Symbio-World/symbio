@@ -21,6 +21,12 @@ platform :ios do
     build_app(scheme: 'Symbio', workspace:'./ios/Symbio.xcworkspace', export_method: 'app-store')
     upload_to_testflight(skip_waiting_for_build_processing: true)
   end
+
+  lane :local do
+    match(type: 'appstore')
+    build_app(scheme: 'Symbio', workspace:'./ios/Symbio.xcworkspace', export_method: 'app-store')
+    upload_to_testflight(skip_waiting_for_build_processing: true)
+  end
 end
 
 platform :android do
