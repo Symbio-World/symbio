@@ -62,6 +62,11 @@ jobs:
       # - run: git clone git@github.com:Symbio-World/certificates.git
       #   env:
       #     GITHUB_API_TOKEN: ${{ secrets.DEVOPS_TOKEN }}
+      - run: yarn build
+      - run: yarn setup-scandit
+        working-directory: react-native-app
+      - run: yarn install-pods
+        working-directory: react-native-app
       - run: fastlane ios internal
         working-directory: react-native-app
         env:
