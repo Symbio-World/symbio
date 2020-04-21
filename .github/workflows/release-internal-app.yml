@@ -59,6 +59,7 @@ jobs:
     runs-on: macos-latest
     steps:
       - uses: actions/checkout@v2
+      - run: git clone git@github.com:Symbio-World/certificates.git
       - uses: maierj/fastlane-action@v1.4.0
         with:
           lane: "ios internal"
