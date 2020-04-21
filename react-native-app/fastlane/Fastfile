@@ -1,6 +1,20 @@
 platform :ios do
+  private_lane :setup_project do
+    create_keychain(
+      name: "actiontest_keychain",
+      password: "password",
+      default_keychain: true,
+      unlock: true,
+      timeout: 3600,
+      lock_when_sleeps: false
+    )
   lane :internal do
-    match(type: 'appstore')
+    create_keychain
+    match(
+      type: 'appstore',
+      keychain_name: "actiontest_keychain",
+      keychain_password: "password"
+    )
     build_app(scheme: 'Symbio', workspace:'./ios/Symbio.xcworkspace', export_method: 'app-store')
     upload_to_testflight(skip_waiting_for_build_processing: true)
   end
