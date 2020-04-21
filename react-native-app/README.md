@@ -89,28 +89,23 @@ To speed up writing styles use Tailwind css https://tvke.github.io/react-native-
 Use `axios` instead of default `fetch`
 https://github.com/axios/axios
 
-# Deployment
+# Releasing app to stores
 
-For both platforms run the following command first `yarn set-env-prod`
+```
+yarn build # build or watch code in root directory before starting release process
+cd react-native-app
 
-## IOS
-1. increment versions in Xcode
-2. Open Xcode -> Product -> Schemes -> Edit and choose Release -> close
-3. Product -> Build
-4. Product -> Archive -> Upload
-5. Open Xcode -> Product -> Schemes -> Edit and choose Debug -> close
+yarn set-env-prod
+yarn increment-version
+fastlane ios internal
+fastlane android internal
+```
 
-Initially followed this tutorial
-https://readybytes.in/blog/how-to-deploy-a-react-native-ios-app-on-the-app-store
-
-## Android
-- increment versions in android/app/build.gradle
-- Open Android Studio -> Build -> Generate Signed Bundle/APK -> locate
-- Upload to Play Store
-
-Initially followed these tutorials
-https://reactnative.dev/docs/signed-apk-android
-https://developer.android.com/studio/publish/app-signing#sign_release
+Using git tag
+```
+git tag internal... # tag needs to start with internal
+git push origin internal...
+```
 
 # Setting up Dev/Prod
 Follow this guide
