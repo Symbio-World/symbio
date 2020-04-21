@@ -7,7 +7,6 @@ import {
   PermissionsAndroid,
   BackHandler,
   Text,
-  TouchableOpacity,
 } from 'react-native'
 import { BarcodePicker } from 'scandit-react-native'
 import { t } from 'react-native-tailwindcss'
@@ -123,9 +122,6 @@ export const ScanBarcodeView: React.FC<Props> = ({
 
   return (
     <View style={[t.flex1]}>
-      <TouchableOpacity style={[t.h16]} onPress={() => onScan('4605246006272')}>
-        <Text>Trigger barcode</Text>
-      </TouchableOpacity>
       <BarcodePicker
         onScan={handleScan}
         scanSettings={settings}
