@@ -19,7 +19,8 @@
     "install-pods": "cd ios && pod install",
     "clean-pods": "rm -rf ios/Pods ios/Podfile.lock",
     "set-env-dev": "echo \"export { env } from './env.dev'\"> env.active.ts",
-    "set-env-prod": "echo \"export { env } from './env.prod'\"> env.active.ts"
+    "set-env-prod": "echo \"export { env } from './env.prod'\"> env.active.ts",
+    "increment-version": "bash ./scripts/increment_version.sh"
   },
   "dependencies": {
     "@react-native-community/masked-view": "0.1.9",

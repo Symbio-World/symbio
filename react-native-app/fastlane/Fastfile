@@ -11,7 +11,7 @@ platform :ios do
     match(
       type: 'appstore',
       git_basic_authorization: Base64.strict_encode64("symbio-devops:#{ENV['PERSONAL_ACCESS_TOKEN']}"),
-      git_url: "https://github.com/Symbio-World/certificates.git"
+      git_url: "https://github.com/Symbio-World/certificates.git",
       readonly: is_ci,
       keychain_name: "actiontest_keychain",
       keychain_password: "meow"
