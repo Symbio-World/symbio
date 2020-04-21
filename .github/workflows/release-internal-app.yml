@@ -64,6 +64,7 @@ jobs:
       - name: Recreate production environment
         run: echo "${{secrets.REACT_NATIVE_APP_ENV_PROD}}" | base64 -d > react-native-app/env.prod.ts
       - run: yarn set-env-prod
+        working-directory: react-native-app
       - run: yarn build
       - run: yarn setup-scandit
         working-directory: react-native-app
