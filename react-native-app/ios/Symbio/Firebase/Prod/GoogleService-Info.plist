@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>649738262397-i9j1s1n16t6hi09599ul9vk23ik23d5k.apps.googleusercontent.com</string>
+	<string>649738262397-nt7mecbkr77c4nd2cub00ipbsduarhlr.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.649738262397-i9j1s1n16t6hi09599ul9vk23ik23d5k</string>
+	<string>com.googleusercontent.apps.649738262397-nt7mecbkr77c4nd2cub00ipbsduarhlr</string>
 	<key>API_KEY</key>
 	<string>AIzaSyAvwMcDZm-Q8le1Q0NpZXACFiJG6cfrbGw</string>
 	<key>GCM_SENDER_ID</key>
@@ -13,7 +13,7 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>club.symbio</string>
+	<string>club.symbio.app</string>
 	<key>PROJECT_ID</key>
 	<string>symbio-prod-6fb52</string>
 	<key>STORAGE_BUCKET</key>
@@ -29,7 +29,7 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:649738262397:ios:40e59c2106636a4a2d5e14</string>
+	<string>1:649738262397:ios:78de89026dbe615e2d5e14</string>
 	<key>DATABASE_URL</key>
 	<string>https://symbio-prod-6fb52.firebaseio.com</string>
 </dict>

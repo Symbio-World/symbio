@@ -1,11 +1,14 @@
 fastlane_version '2.145.0'
 
 platform :ios do
-   # iOS Lanes
+  lane :internal do
+    match(type: 'appstore')
+    build_app(scheme: 'Symbio', workspace:'./ios/Symbio.xcworkspace', export_method: 'app-store')
+    upload_to_testflight(skip_waiting_for_build_processing: true)
+  end
 end
 
 platform :android do
-  desc "Submit a new Beta Build to Google Play"
   lane :internal do
     gradle(task: 'bundle', build_type: 'release', project_dir: 'android/')
     supply(track: 'internal', release_status: 'draft',)

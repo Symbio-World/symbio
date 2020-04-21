@@ -1,4 +1,4 @@
-package club.symbio;
+package club.symbio.app;
 
 import android.os.Bundle; // <- add this necessary import
 

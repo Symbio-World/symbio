@@ -8,9 +8,9 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:265278480244:android:a7858d05d09079437e1621",
+        "mobilesdk_app_id": "1:265278480244:android:160efca95363dca97e1621",
         "android_client_info": {
-          "package_name": "club.symbio"
+          "package_name": "club.symbio.app"
         }
       },
       "oauth_client": [
@@ -30,6 +30,13 @@
             {
               "client_id": "265278480244-gdoab2jpn2vqg193kq2j4faa307fodah.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "265278480244-vhcq3r8rk7pg8h9v3tducql0lmb06eok.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "club.symbio.app"
+              }
             }
           ]
         }

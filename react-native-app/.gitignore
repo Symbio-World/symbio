@@ -12,6 +12,11 @@ scandit-barcodescanner-ios*
 *.mobileprovision
 !./android/app/src/release/google-services.json
 
+## App packaging
+*.ipa
+*.dSYM.zip
+*.dSYM
+
 # OSX
 #
 .DS_Store

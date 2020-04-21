@@ -8,8 +8,7 @@ jobs:
     name: Increment Android and Ios versions
     runs-on: macos-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v2
+      - uses: actions/checkout@v2
       - name: Increment versions
         run: |
           bash ./scripts/increment_android_version_code.sh
@@ -30,26 +29,40 @@ jobs:
         with:
           github_token: ${{ secrets.DEVOPS_TOKEN }}
       - run: echo 'new version successfully pushed'
+  # deploy-android-internal:
+  #   needs: increment-versions
+  #   name: Deploy Android internal
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@v2
+  #     - uses: bahmutov/npm-install@v1
+  #     - name: Recreate Google Play upload key
+  #       run: echo "${{secrets.GOOGLE_PLAY_ENCODED_KEYSTORE}}" | base64 -d > react-native-app/android/app/google-play-upload-key.keystore
+  #     - name: Recreate Service Account json file
+  #       run: echo "${{secrets.GOOGLE_PLAY_SERVICE_ACCOUNT_JSON}}" | base64 -d > react-native-app/fastlane/google-play.json
+  #     - name: Recreate production environment
+  #       run: echo "${{secrets.REACT_NATIVE_APP_ENV_PROD}}" | base64 -d > react-native-app/env.prod.ts
+  #     - name: Setup kernel for react native, increase watchers
+  #       run: echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf && sudo sysctl -p
+  #     - run: yarn set-env-prod
+  #       working-directory: react-native-app
+  #     - run: yarn build
+  #     - uses: maierj/fastlane-action@v1.4.0
+  #       with:
+  #         lane: "android internal"
+  #         subdirectory: "react-native-app"
+  #         bundle-install-path: 'vendor/bundle'
 
-  deploy-android-internal:
+  deploy-ios-internal:
     needs: increment-versions
-    name: Deploy Android internal
-    runs-on: ubuntu-latest
+    name: Deploy iOS internal
+    runs-on: macos-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: bahmutov/npm-install@v1
-      - name: Recreate Google Play upload key
-        run: echo "${{secrets.GOOGLE_PLAY_ENCODED_KEYSTORE}}" | base64 -d > react-native-app/android/app/google-play-upload-key.keystore
-      - name: Recreate Service Account json file
-        run: echo "${{secrets.GOOGLE_PLAY_SERVICE_ACCOUNT_JSON}}" | base64 -d > react-native-app/fastlane/google-play.json
-      - name: Recreate production environment
-        run: echo "${{secrets.REACT_NATIVE_APP_ENV_PROD}}" | base64 -d > react-native-app/env.prod.ts
-      - name: Setup kernel for react native, increase watchers
-        run: echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf && sudo sysctl -p
-      - run: yarn set-env-prod
-        working-directory: react-native-app
-      - run: yarn build
       - uses: maierj/fastlane-action@v1.4.0
         with:
           lane: "android internal"
           subdirectory: "react-native-app"
+          bundle-install-path: "vendor/bundle"
+        env:
+          GITHUB_API_TOKEN: ${{ secrets.DEVOPS_TOKEN }}
