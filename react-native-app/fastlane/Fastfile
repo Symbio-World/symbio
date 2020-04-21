@@ -1,5 +1,5 @@
 platform :ios do
-  private_lane :setup_project do
+  lane :setup do
     create_keychain(
       name: "actiontest_keychain",
       password: "meow",
@@ -10,7 +10,6 @@ platform :ios do
     )
   end
   lane :internal do
-    setup_project
     match(
       type: 'appstore',
       readonly: is_ci,
