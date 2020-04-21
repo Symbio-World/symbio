@@ -66,6 +66,7 @@ jobs:
       #   env:
       #     GITHUB_API_TOKEN: ${{ secrets.DEVOPS_TOKEN }}
       - run: fastlane setup --verbose
+        working-directory: react-native-app
       - uses: maierj/fastlane-action@v1.4.0
         with:
           lane: "ios internal"
