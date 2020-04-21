@@ -8,6 +8,7 @@ platform :ios do
       timeout: 3600,
       lock_when_sleeps: false
     )
+  end
   lane :internal do
     create_keychain
     match(
