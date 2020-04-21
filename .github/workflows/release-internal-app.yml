@@ -67,6 +67,17 @@ jobs:
       #     GITHUB_API_TOKEN: ${{ secrets.DEVOPS_TOKEN }}
       - uses: maierj/fastlane-action@v1.4.0
         with:
+          lane: "match appstore"
+          subdirectory: "react-native-app"
+          bundle-install-path: "vendor/bundle"
+        env:
+          GITHUB_API_TOKEN: ${{ secrets.DEVOPS_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.DEVOPS_TOKEN }}
+          MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }}
+          FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD: ${{ secrets.FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD }}
+          FASTLANE_PASSWORD: ${{ secrets.FASTLANE_PASSWORD }}
+      - uses: maierj/fastlane-action@v1.4.0
+        with:
           lane: "ios internal"
           subdirectory: "react-native-app"
           bundle-install-path: "vendor/bundle"
