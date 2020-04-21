@@ -3,7 +3,7 @@ platform :ios do
     delete_keychain(name: "actiontest_keychain")
     create_keychain(
       name: "actiontest_keychain",
-      password: "meow",
+      password: ENV["MATCH_PASSWORD"],
       default_keychain: true,
       unlock: true,
       timeout: 3600,
@@ -15,7 +15,7 @@ platform :ios do
     match(
       type: 'appstore',
       keychain_name: "actiontest_keychain",
-      keychain_password: "meow"
+      keychain_password: ENV["MATCH_PASSWORD"]
     )
     build_app(scheme: 'Symbio', workspace:'./ios/Symbio.xcworkspace', export_method: 'app-store')
     upload_to_testflight(skip_waiting_for_build_processing: true)
