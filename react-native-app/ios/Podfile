@@ -36,6 +36,8 @@ target 'Symbio' do
 
 
 
+  pod 'RNScreens', :path => '../node_modules/react-native-screens'
+
   target 'SymbioTests' do
     inherit! :search_paths
     # Pods for testing
