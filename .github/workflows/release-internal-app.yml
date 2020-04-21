@@ -4,31 +4,31 @@ on:
     tags:
       - internal*
 jobs:
-  increment-versions:
-    name: Increment Android and Ios versions
-    runs-on: macos-latest
-    steps:
-      - uses: actions/checkout@v2
-      - name: Increment versions
-        run: |
-          bash ./scripts/increment_android_version_code.sh
-          bash ./scripts/increment_android_version_name.sh
-          bash ./scripts/update_ios_version_code.sh $(bash ./scripts/get_android_version_code.sh)
-          bash ./scripts/update_ios_version_name.sh $(bash ./scripts/get_android_version_name.sh)
-          git status
-          git --no-pager diff
-        working-directory: react-native-app
-      - run: |
-          git config --global user.email "symbio.devops@gmail.com"
-          git config --global user.name "symbio-devops"
-          git config -l
-      - run: git add android/gradle.properties ios/Symbio/Info.plist
-        working-directory: react-native-app
-      - run: git commit -m "Version Bump[ci skip]"
-      - uses: ad-m/github-push-action@master
-        with:
-          github_token: ${{ secrets.DEVOPS_TOKEN }}
-      - run: echo 'new version successfully pushed'
+  # increment-versions:
+  #   name: Increment Android and Ios versions
+  #   runs-on: macos-latest
+  #   steps:
+  #     - uses: actions/checkout@v2
+  #     - name: Increment versions
+  #       run: |
+  #         bash ./scripts/increment_android_version_code.sh
+  #         bash ./scripts/increment_android_version_name.sh
+  #         bash ./scripts/update_ios_version_code.sh $(bash ./scripts/get_android_version_code.sh)
+  #         bash ./scripts/update_ios_version_name.sh $(bash ./scripts/get_android_version_name.sh)
+  #         git status
+  #         git --no-pager diff
+  #       working-directory: react-native-app
+  #     - run: |
+  #         git config --global user.email "symbio.devops@gmail.com"
+  #         git config --global user.name "symbio-devops"
+  #         git config -l
+  #     - run: git add android/gradle.properties ios/Symbio/Info.plist
+  #       working-directory: react-native-app
+  #     - run: git commit -m "Version Bump[ci skip]"
+  #     - uses: ad-m/github-push-action@master
+  #       with:
+  #         github_token: ${{ secrets.DEVOPS_TOKEN }}
+  #     - run: echo 'new version successfully pushed'
   # deploy-android-internal:
   #   needs: increment-versions
   #   name: Deploy Android internal
@@ -54,7 +54,7 @@ jobs:
   #         bundle-install-path: 'vendor/bundle'
 
   deploy-ios-internal:
-    needs: increment-versions
+    # needs: increment-versions
     name: Deploy iOS internal
     runs-on: macos-latest
     steps:
@@ -65,17 +65,7 @@ jobs:
       # - run: git clone git@github.com:Symbio-World/certificates.git
       #   env:
       #     GITHUB_API_TOKEN: ${{ secrets.DEVOPS_TOKEN }}
-      - uses: maierj/fastlane-action@v1.4.0
-        with:
-          lane: "match appstore"
-          subdirectory: "react-native-app"
-          bundle-install-path: "vendor/bundle"
-        env:
-          GITHUB_API_TOKEN: ${{ secrets.DEVOPS_TOKEN }}
-          GITHUB_TOKEN: ${{ secrets.DEVOPS_TOKEN }}
-          MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }}
-          FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD: ${{ secrets.FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD }}
-          FASTLANE_PASSWORD: ${{ secrets.FASTLANE_PASSWORD }}
+      - run: fastlane setup --verbose
       - uses: maierj/fastlane-action@v1.4.0
         with:
           lane: "ios internal"
