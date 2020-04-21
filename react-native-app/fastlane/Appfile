@@ -1,2 +1,9 @@
+# Android
 json_key_file "./fastlane/google-play.json"
 package_name "club.symbio.app"
+
+# IOS
+app_identifier "club.symbio.app"
+apple_id "almas.akchabayev@gmail.com"
+team_name "Almas Akchabayev"
+team_id "8XV4FNGTJR"
