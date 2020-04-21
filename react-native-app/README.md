@@ -101,7 +101,7 @@ fastlane ios internal
 fastlane android internal
 ```
 
-Using git tag
+Using git tag - need to be fixed: fails for ios due to 2FA problems...
 ```
 git tag internal... # tag needs to start with internal
 git push origin internal...
