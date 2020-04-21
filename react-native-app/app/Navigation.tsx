@@ -20,30 +20,35 @@ const RootStack = createStackNavigator<RootStackParamList>()
 export const Navigation = () => {
   return (
     <NavigationContainer>
-      <RootStack.Navigator initialRouteName="ScanBarcodeScreen">
+      <RootStack.Navigator
+        initialRouteName="ScanBarcodeScreen"
+      >
         <RootStack.Screen
           name="ScanBarcodeScreen"
           component={ScanBarcodeScreen}
+          options={{
+            headerShown: false,
+          }}
         />
         <RootStack.Screen
           name="ProductScreen"
           component={ProductScreen}
           options={{
-            headerShown: true,
+            title: '',
           }}
         />
         <RootStack.Screen
           name="FeedbackScreen"
           component={FeedbackScreen}
           options={{
-            headerShown: true,
+            title: '',
           }}
         />
         <RootStack.Screen
           name="SetupPrinciplesScreen"
           component={SetupPrinciplesScreen}
           options={{
-            headerShown: true,
+            headerShown: false,
           }}
         />
       </RootStack.Navigator>

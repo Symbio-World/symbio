@@ -34,12 +34,12 @@ export const ProductView: React.FC<Props> = ({
         ))}
         <Text style={[t.fontBold, t.mT8]}>Origin</Text>
         <Text>{origin}</Text>
-        <View style={[t.mT5]}>
+        {/* <View style={[t.mT5]}>
           <Button
             title="Tell us what's missing"
             onPress={() => onFeedbackPress("Tell us what's missing")}
           />
-        </View>
+        </View> */}
       </View>
     </ScrollView>
   )
