@@ -1,6 +1,5 @@
 platform :ios do
   private_lane :setup_project do
-    delete_keychain(name: "actiontest_keychain")
     create_keychain(
       name: "actiontest_keychain",
       password: "meow",
