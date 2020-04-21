@@ -29,6 +29,7 @@ jobs:
   #       with:
   #         github_token: ${{ secrets.DEVOPS_TOKEN }}
   #     - run: echo 'new version successfully pushed'
+
   # deploy-android-internal:
   #   needs: increment-versions
   #   name: Deploy Android internal
@@ -60,6 +61,9 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: bahmutov/npm-install@v1
+      - name: Recreate production environment
+        run: echo "${{secrets.REACT_NATIVE_APP_ENV_PROD}}" | base64 -d > react-native-app/env.prod.ts
+      - run: yarn set-env-prod
       - run: yarn build
       - run: yarn setup-scandit
         working-directory: react-native-app
@@ -72,6 +76,7 @@ jobs:
           MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }}
           FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD: ${{ secrets.FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD }}
           FASTLANE_PASSWORD: ${{ secrets.FASTLANE_PASSWORD }}
+          FASTLANE_SESSION: ${{ secrets.FASTLANE_SESSION }}
       # - uses: maierj/fastlane-action@v1.4.0
       #   with:
       #     lane: "ios internal"
