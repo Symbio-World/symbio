@@ -33,8 +33,9 @@ describe('ScanBarcodeScreen', () => {
     const barcode = 'barcode'
     const { getByType } = render(<ScanBarcodeScreen navigation={navigation} />)
     fireEvent(getByType(ScanBarcodeViewContainer), 'onScan', barcode)
-    expect(navigation.navigate).toHaveBeenCalledWith('ProductScreen', {
-      barcode,
+    expect(navigation.navigate).toHaveBeenCalledWith('Modals', {
+      screen: 'ProductScreen',
+      params: { barcode },
     })
   })
 })

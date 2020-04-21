@@ -10,6 +10,28 @@ exports[`ScanBarcodeViewContainer renders correctly 1`] = `
     ]
   }
 >
+  <View
+    accessible={true}
+    focusable={true}
+    isTVSelectable={true}
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Object {
+        "height": 64,
+        "opacity": 1,
+      }
+    }
+  >
+    <Text>
+      Trigger barcode
+    </Text>
+  </View>
   <BarcodePicker
     onBarcodeFrameAvailable={[Function]}
     onChangeTrackedCodes={[Function]}

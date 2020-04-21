@@ -24,6 +24,8 @@ describe('SetupPrinciplesScreen', () => {
       <SetupPrinciplesScreen route={route} navigation={navigation} />,
     )
     fireEvent(getByType(SetupPrinciplesViewContainer), 'onSave')
-    expect(navigation.navigate).toHaveBeenCalledWith('ScanBarcodeScreen')
+    expect(navigation.navigate).toHaveBeenCalledWith('Main', {
+      screen: 'ScanBarcodeScreen',
+    })
   })
 })
