@@ -61,7 +61,7 @@ jobs:
       - uses: actions/checkout@v2
       - uses: maierj/fastlane-action@v1.4.0
         with:
-          lane: "android internal"
+          lane: "ios internal"
           subdirectory: "react-native-app"
           bundle-install-path: "vendor/bundle"
         env:
