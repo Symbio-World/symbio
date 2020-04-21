@@ -1,5 +1,5 @@
 platform :ios do
-  private_lane :setup_project do
+  lane :ci_internal do
     create_keychain(
       name: "actiontest_keychain",
       password: "meow",
@@ -8,9 +8,6 @@ platform :ios do
       timeout: 3600,
       lock_when_sleeps: false
     )
-  end
-  lane :internal do
-    setup_project
     match(
       type: 'appstore',
       git_basic_authorization: Base64.strict_encode64("symbio-devops:#{ENV['PERSONAL_ACCESS_TOKEN']}"),
@@ -22,7 +19,7 @@ platform :ios do
     upload_to_testflight(skip_waiting_for_build_processing: true)
   end
 
-  lane :local do
+  lane :internal do
     match(type: 'appstore')
     build_app(scheme: 'Symbio', workspace:'./ios/Symbio.xcworkspace', export_method: 'app-store')
     upload_to_testflight(skip_waiting_for_build_processing: true)

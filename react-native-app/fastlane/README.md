@@ -16,6 +16,11 @@ or alternatively using `brew cask install fastlane`
 
 # Available Actions
 ## iOS
+### ios ci_internal
+```
+fastlane ios ci_internal
+```
+
 ### ios internal
 ```
 fastlane ios internal
