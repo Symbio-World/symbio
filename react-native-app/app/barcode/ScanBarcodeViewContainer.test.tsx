@@ -10,6 +10,9 @@ jest.mock('../auth')
 jest.mock('./saveBarcode')
 
 describe('ScanBarcodeViewContainer', () => {
+  const navigation: any = {
+    navigate: jest.fn(),
+  }
   const user = { id: 'id' }
 
   beforeEach(() => {
@@ -18,13 +21,17 @@ describe('ScanBarcodeViewContainer', () => {
   })
 
   it('renders correctly', () => {
-    const { toJSON } = render(<ScanBarcodeViewContainer />)
+    const { toJSON } = render(
+      <ScanBarcodeViewContainer navigation={navigation} />,
+    )
     expect(toJSON()).toMatchSnapshot()
   })
 
   it('saves barcode', () => {
     const barcode = 'barcode'
-    const { getByType } = render(<ScanBarcodeViewContainer />)
+    const { getByType } = render(
+      <ScanBarcodeViewContainer navigation={navigation} />,
+    )
     fireEvent(getByType(ScanBarcodeView), 'onScan', barcode)
     expect(saveBarcode).toHaveBeenCalledWith(user.id, barcode)
   })
@@ -33,7 +40,7 @@ describe('ScanBarcodeViewContainer', () => {
     const barcode = 'barcode'
     const handleScan = jest.fn()
     const { getByType } = render(
-      <ScanBarcodeViewContainer onScan={handleScan} />,
+      <ScanBarcodeViewContainer navigation={navigation} onScan={handleScan} />,
     )
     fireEvent(getByType(ScanBarcodeView), 'onScan', barcode)
     expect(handleScan).toHaveBeenCalledWith(barcode)

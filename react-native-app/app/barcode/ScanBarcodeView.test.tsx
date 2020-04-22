@@ -11,8 +11,12 @@ const mockUseRef = (obj: unknown) => () =>
   })
 
 describe('ScanBarcodeView', () => {
+  const navigation: any = {
+    navigate: jest.fn(),
+  }
+
   it('renders correctly', () => {
-    const { toJSON } = render(<ScanBarcodeView />)
+    const { toJSON } = render(<ScanBarcodeView navigation={navigation} />)
     expect(toJSON()).toMatchSnapshot()
   })
 
@@ -20,23 +24,13 @@ describe('ScanBarcodeView', () => {
     const handleScan = jest.fn()
     const useRef = mockUseRef({ startScanning: jest.fn() })
     const { getByType } = render(
-      <ScanBarcodeView onScan={handleScan} useRef={useRef} />,
+      <ScanBarcodeView
+        onScan={handleScan}
+        useRef={useRef}
+        navigation={navigation}
+      />,
     )
     fireEvent(getByType(BarcodePicker), 'onScan', fixture.session)
     expect(handleScan).toHaveBeenCalledWith(fixture.barcode)
-  })
-
-  it('starts scanning when active prop is true', () => {
-    const startScanning = jest.fn()
-    const useRef = mockUseRef({ startScanning })
-    render(<ScanBarcodeView isActive useRef={useRef} />)
-    expect(startScanning).toHaveBeenCalled()
-  })
-
-  it('stops scanning when active prop is false', () => {
-    const stopScanning = jest.fn()
-    const useRef = mockUseRef({ stopScanning })
-    render(<ScanBarcodeView isActive={false} useRef={useRef} />)
-    expect(stopScanning).toHaveBeenCalled()
   })
 })

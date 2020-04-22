@@ -4,8 +4,13 @@ import { StackNavigationProp } from '@react-navigation/stack'
 import { MainStackParamList } from '../navigation/Navigation'
 import { ScanBarcodeViewContainer } from './ScanBarcodeViewContainer'
 
+export type ScanBarcodeScreenNavigationType = StackNavigationProp<
+  MainStackParamList,
+  'ScanBarcodeScreen'
+>
+
 type Props = {
-  navigation: StackNavigationProp<MainStackParamList, 'ScanBarcodeScreen'>
+  navigation: ScanBarcodeScreenNavigationType
 }
 export const ScanBarcodeScreen: React.FC<Props> = ({ navigation }) => {
   const isFocused = useIsFocused()
@@ -17,5 +22,11 @@ export const ScanBarcodeScreen: React.FC<Props> = ({ navigation }) => {
     })
   }
 
-  return <ScanBarcodeViewContainer onScan={handleScan} isActive={isFocused} />
+  return (
+    <ScanBarcodeViewContainer
+      onScan={handleScan}
+      isActive={isFocused}
+      navigation={navigation}
+    />
+  )
 }

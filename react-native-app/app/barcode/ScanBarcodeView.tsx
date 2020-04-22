@@ -7,11 +7,13 @@ import {
   PermissionsAndroid,
   BackHandler,
   Text,
+  TouchableOpacity,
 } from 'react-native'
 import { BarcodePicker } from 'scandit-react-native'
 import { t } from 'react-native-tailwindcss'
 import { settings } from './ScanBarcodeViewSettings'
 import { Scanner, Session } from './Scanner'
+import { ScanBarcodeScreenNavigationType } from './ScanBarcodeScreen'
 
 type Props = {
   onScan?: (barcode: string) => void
@@ -19,13 +21,17 @@ type Props = {
 
   // a hack to test scanner ref as createNodeMock is not working https://github.com/callstack/react-native-testing-library/issues/227
   useRef?: typeof React.useRef
+  navigation: ScanBarcodeScreenNavigationType
 }
+
 export const ScanBarcodeView: React.FC<Props> = ({
   onScan = () => {},
   isActive = true,
   useRef = React.useRef,
+  navigation,
 }) => {
   const scanner = useRef<Scanner>(null)
+  const [isScannerInitialize, setScannerInit] = React.useState(false)
 
   const isAndroidMarshmallowOrNewer = () => {
     return Platform.OS === 'android' && Platform.Version >= 23
@@ -49,14 +55,22 @@ export const ScanBarcodeView: React.FC<Props> = ({
   const startScanning = () => {
     try {
       scanner.current?.startScanning()
+      setScannerInit(true)
     } catch (e) {
       console.log('try-catch introduced so that simple render tests pass')
     }
   }
 
-  const stopScanning = () => {
+  const resumeScanning = () => {
     try {
-      scanner.current?.stopScanning()
+      scanner.current?.resumeScanning()
+    } catch (e) {
+      console.log('try-catch introduced so that simple render tests pass')
+    }
+  }
+  const pauseScanning = () => {
+    try {
+      scanner.current?.pauseScanning()
     } catch (e) {
       console.log('try-catch introduced so that simple render tests pass')
     }
@@ -96,24 +110,32 @@ export const ScanBarcodeView: React.FC<Props> = ({
 
   const handleAppStateChange = (nextAppState: AppStateStatus) => {
     if (nextAppState.match(/inactive|background/)) {
-      stopScanning()
+      pauseScanning()
     } else {
       checkForCameraPermission()
     }
   }
 
+  /* eslint-disable react-hooks/exhaustive-deps */
   React.useEffect(() => {
     AppState.addEventListener('change', handleAppStateChange)
     checkForCameraPermission()
     return () => {
       AppState.removeEventListener('change', handleAppStateChange)
     }
-  })
+  }, [navigation])
+  /* eslint-enable react-hooks/exhaustive-deps */
 
+  /* eslint-disable react-hooks/exhaustive-deps */
   React.useEffect(() => {
-    if (isActive) startScanning()
-    else stopScanning()
+    if (!isScannerInitialize) return
+    if (isActive) {
+      resumeScanning()
+      return
+    }
+    pauseScanning()
   }, [isActive])
+  /* eslint-enable react-hooks/exhaustive-deps */
 
   const handleScan = (session: Session) => {
     const barcode = session.newlyRecognizedCodes[0].data
@@ -122,12 +144,16 @@ export const ScanBarcodeView: React.FC<Props> = ({
 
   return (
     <View style={[t.flex1]}>
+      <TouchableOpacity style={[t.h32]} onPress={() => onScan('4605246006272')}>
+        <Text>Trigger barcode</Text>
+      </TouchableOpacity>
       <BarcodePicker
         onScan={handleScan}
         scanSettings={settings}
         ref={scanner}
         style={[t.flex1]}
       />
+
       <View
         style={[
           t.absolute,
