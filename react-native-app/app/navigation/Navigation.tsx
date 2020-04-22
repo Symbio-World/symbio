@@ -12,7 +12,7 @@ import {
 import { createSwipableModal } from './createSwipableModal'
 
 type SubNavigator<T extends ParamListBase> = {
-  [K in keyof T]: { screen: K; params?: T[K] }
+  [K in keyof T]: { screen?: K; params?: T[K] }
 }[keyof T]
 
 export type RootStackParamList = {
