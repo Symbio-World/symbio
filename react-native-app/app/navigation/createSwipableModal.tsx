@@ -63,9 +63,7 @@ type CreateSwipableModal = <Props extends NavigationProps>(
   WrapperCompponent: React.FC<Props>,
 ) => React.FC<Props>
 
-/* eslint-disable @typescript-eslint/naming-convention */
-export const createSwipableModal: CreateSwipableModal = (WrapperCompponent) => {
-  /* eslint-enable @typescript-eslint/naming-convention */
+export const createSwipableModal: CreateSwipableModal = (Component) => {
   return (props) => {
     const handleSnap = ({
       nativeEvent: { x },
@@ -80,7 +78,7 @@ export const createSwipableModal: CreateSwipableModal = (WrapperCompponent) => {
     return (
       <SwipableModal onSnap={handleSnap}>
         <View style={[t.hFull]}>
-          <WrapperCompponent {...props} />
+          <Component {...props} />
         </View>
       </SwipableModal>
     )
