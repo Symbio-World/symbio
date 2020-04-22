@@ -10,7 +10,7 @@ type Props = {
 }
 export const SetupPrinciplesScreen: React.FC<Props> = ({ navigation }) => {
   const handleSave = () => {
-    navigation.navigate('Main', { screen: 'ScanBarcodeScreen' })
+    navigation.replace('Main', { screen: 'ScanBarcodeScreen' })
   }
 
   return <SetupPrinciplesViewContainer onSave={handleSave} />
