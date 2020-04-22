@@ -77,10 +77,9 @@ export const createSwipableModal: CreateSwipableModal = (WrapperCompponent) => {
       }
     }
 
-    const containerStyle = { height: '90%' }
     return (
       <SwipableModal onSnap={handleSnap}>
-        <View style={containerStyle}>
+        <View style={[t.hFull]}>
           <WrapperCompponent {...props} />
         </View>
       </SwipableModal>
