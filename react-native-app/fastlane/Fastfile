@@ -30,6 +30,6 @@ end
 platform :android do
   lane :internal do
     gradle(task: 'bundle', build_type: 'release', project_dir: 'android/')
-    supply(track: 'internal', release_status: 'draft',)
+    supply(track: 'internal')
   end
 end
