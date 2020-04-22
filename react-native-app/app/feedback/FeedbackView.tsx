@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { View, Text, TextInput } from 'react-native'
+import { View, Text, TextInput, Keyboard } from 'react-native'
 import { t } from 'react-native-tailwindcss'
 import Toast from 'react-native-simple-toast'
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
@@ -17,6 +17,7 @@ export const FeedbackView: React.FC<Props> = ({
   const [text, setText] = React.useState<string>('')
   const handlePress = () => {
     onSubmit(text)
+    Keyboard.dismiss()
     Toast.show('Feedback successfully sent')
   }
   return (
@@ -31,7 +32,9 @@ export const FeedbackView: React.FC<Props> = ({
           multiline={true}
           numberOfLines={4}
           onChangeText={setText}
+          onSubmitEditing={handlePress}
           value={text}
+          returnKeyType="send"
           autoFocus
         />
       </View>
