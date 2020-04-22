@@ -67,7 +67,11 @@ type CreateSwipableModal = <Props extends NavigationProps>(
 export const createSwipableModal: CreateSwipableModal = (WrapperCompponent) => {
   /* eslint-enable @typescript-eslint/naming-convention */
   return (props) => {
-    const handleSnap = ({ nativeEvent: { x } }) => {
+    const handleSnap = ({
+      nativeEvent: { x },
+    }: {
+      nativeEvent: { x: number }
+    }) => {
       if (x !== 0) {
         props.navigation.goBack()
       }
