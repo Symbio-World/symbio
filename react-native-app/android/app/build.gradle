@@ -190,7 +190,6 @@ android {
 }
 
 dependencies {
-    implementation project(':react-native-screens')
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation "com.facebook.react:react-native:+"  // From node_modules
 
