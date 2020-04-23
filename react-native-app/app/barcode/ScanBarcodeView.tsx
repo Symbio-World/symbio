@@ -23,6 +23,55 @@ type Props = {
   navigation: ScanBarcodeScreenNavigationType
 }
 
+const isAndroidMarshmallowOrNewer = () => {
+  return Platform.OS === 'android' && Platform.Version >= 23
+}
+
+const hasCameraPermission = () =>
+  isAndroidMarshmallowOrNewer()
+    ? PermissionsAndroid.check(PermissionsAndroid.PERMISSIONS.CAMERA)
+        .then((isGranted) => isGranted)
+        .catch(() => false)
+    : Promise.resolve(true)
+
+const requestCameraPermission = () => {
+  return new Promise((resolve, reject) => {
+    if (isAndroidMarshmallowOrNewer()) {
+      PermissionsAndroid.request(PermissionsAndroid.PERMISSIONS.CAMERA)
+        .then((granted) => {
+          if (granted === PermissionsAndroid.RESULTS.GRANTED) {
+            console.log('Android Camera Permission has been granted.')
+            return resolve()
+          }
+          console.log(
+            'Android Camera Permission has been denied - the app will shut itself down.',
+          )
+          return reject()
+        })
+        .catch((err) => {
+          console.warn(err)
+          reject()
+        })
+      return
+    }
+    resolve()
+  })
+}
+
+const checkForCameraPermission = () => {
+  return new Promise((resolve, reject) => {
+    hasCameraPermission()
+      .then((hasPermission) => {
+        if (hasPermission) {
+          resolve()
+          return
+        }
+        requestCameraPermission().then(resolve).catch(reject)
+      })
+      .catch(reject)
+  })
+}
+
 export const ScanBarcodeView: React.FC<Props> = ({
   onScan = () => {},
   isActive = true,
@@ -31,25 +80,6 @@ export const ScanBarcodeView: React.FC<Props> = ({
 }) => {
   const scanner = useRef<Scanner>(null)
   const [isScannerInitialize, setScannerInit] = React.useState(false)
-
-  const isAndroidMarshmallowOrNewer = () => {
-    return Platform.OS === 'android' && Platform.Version >= 23
-  }
-
-  const hasCameraPermission = async () => {
-    if (isAndroidMarshmallowOrNewer()) {
-      const isGranted = await PermissionsAndroid.check(
-        PermissionsAndroid.PERMISSIONS.CAMERA,
-      )
-      return isGranted
-    } else {
-      return true
-    }
-  }
-
-  const cameraPermissionDenied = () => {
-    BackHandler.exitApp()
-  }
 
   const startScanning = () => {
     try {
@@ -75,57 +105,24 @@ export const ScanBarcodeView: React.FC<Props> = ({
     }
   }
 
-  const requestCameraPermission = async () => {
-    if (isAndroidMarshmallowOrNewer()) {
-      try {
-        const granted = await PermissionsAndroid.request(
-          PermissionsAndroid.PERMISSIONS.CAMERA,
-        )
-        if (granted === PermissionsAndroid.RESULTS.GRANTED) {
-          console.log('Android Camera Permission has been granted.')
-          startScanning()
-        } else {
-          console.log(
-            'Android Camera Permission has been denied - the app will shut itself down.',
-          )
-          cameraPermissionDenied()
-        }
-      } catch (err) {
-        console.warn(err)
-      }
-    } else {
-      startScanning()
-    }
-  }
-
-  const checkForCameraPermission = async () => {
-    const hasPermission = await hasCameraPermission()
-    if (hasPermission) {
-      startScanning()
-    } else {
-      await requestCameraPermission()
-    }
-  }
-
-  const handleAppStateChange = (nextAppState: AppStateStatus) => {
-    if (nextAppState.match(/inactive|background/)) {
-      pauseScanning()
-    } else {
-      checkForCameraPermission()
-    }
-  }
-
-  /* eslint-disable react-hooks/exhaustive-deps */
   React.useEffect(() => {
+    const handleAppStateChange = (nextAppState: AppStateStatus) => {
+      if (nextAppState.match(/inactive|background/)) {
+        pauseScanning()
+      } else {
+        checkForCameraPermission()
+          .then(startScanning)
+          .catch(BackHandler.exitApp)
+      }
+    }
+
     AppState.addEventListener('change', handleAppStateChange)
-    checkForCameraPermission()
+    checkForCameraPermission().then(startScanning).catch(BackHandler.exitApp)
     return () => {
       AppState.removeEventListener('change', handleAppStateChange)
     }
   }, [navigation])
-  /* eslint-enable react-hooks/exhaustive-deps */
 
-  /* eslint-disable react-hooks/exhaustive-deps */
   React.useEffect(() => {
     if (!isScannerInitialize) return
     if (isActive) {
@@ -133,8 +130,7 @@ export const ScanBarcodeView: React.FC<Props> = ({
       return
     }
     pauseScanning()
-  }, [isActive])
-  /* eslint-enable react-hooks/exhaustive-deps */
+  }, [isActive, isScannerInitialize])
 
   const handleScan = (session: Session) => {
     const barcode = session.newlyRecognizedCodes[0].data
