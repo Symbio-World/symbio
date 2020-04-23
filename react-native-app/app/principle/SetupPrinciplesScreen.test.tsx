@@ -9,7 +9,7 @@ jest.mock('@react-navigation/native')
 describe('SetupPrinciplesScreen', () => {
   const route: any = {}
   const navigation: any = {
-    navigate: jest.fn(),
+    replace: jest.fn(),
   }
 
   it('renders correctly', () => {
@@ -24,8 +24,6 @@ describe('SetupPrinciplesScreen', () => {
       <SetupPrinciplesScreen route={route} navigation={navigation} />,
     )
     fireEvent(getByType(SetupPrinciplesViewContainer), 'onSave')
-    expect(navigation.navigate).toHaveBeenCalledWith('Main', {
-      screen: 'ScanBarcodeScreen',
-    })
+    expect(navigation.replace).toHaveBeenCalledWith('Main', {})
   })
 })
