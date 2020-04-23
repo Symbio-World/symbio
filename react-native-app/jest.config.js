@@ -25,6 +25,10 @@ module.exports = {
       '|react-native-reanimated' +
       '|react-native-redash' +
       '|react-native-gesture-handler' +
+      '|react-native-iphone-x-helper' +
+      '|react-native-screens' +
+      '|@react-native-community' +
+      '|@react-navigation' +
       ')/)',
   ],
 }
