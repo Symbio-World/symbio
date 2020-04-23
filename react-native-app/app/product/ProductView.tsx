@@ -2,7 +2,7 @@ import * as React from 'react'
 import { View, Image, Text, ScrollView } from 'react-native'
 import { t } from 'react-native-tailwindcss'
 import { ProductData } from '@symbio/barcode-processor-core'
-import { Button } from '../ui-kit/Button'
+// import { Button } from '../ui-kit/Button'
 
 type Props = Omit<ProductData, 'links'> & {
   onFeedbackPress?: (title: string) => void
