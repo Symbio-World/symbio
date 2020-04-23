@@ -1,0 +1,61 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ModalCard renders correctly 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "backgroundColor": "rgba(0,0,0,0)",
+      },
+      Object {
+        "width": "100%",
+      },
+      Object {
+        "height": "100%",
+      },
+      Object {
+        "alignItems": "center",
+      },
+      Object {
+        "justifyContent": "center",
+      },
+    ]
+  }
+>
+  <View
+    style={
+      Array [
+        Object {
+          "width": "91.666667%",
+        },
+        Object {
+          "height": "90%",
+        },
+        Object {
+          "backgroundColor": "#fff",
+        },
+        Object {
+          "borderRadius": 8,
+        },
+        Object {
+          "elevation": 12.5,
+          "shadowColor": "rgba(0, 0, 0, 0.1)",
+          "shadowOffset": Object {
+            "height": 20,
+            "width": 0,
+          },
+          "shadowOpacity": 1,
+          "shadowRadius": 25,
+        },
+        Object {
+          "overflow": "hidden",
+        },
+      ]
+    }
+  >
+    <Text>
+      Test
+    </Text>
+  </View>
+</View>
+`;
