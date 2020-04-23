@@ -14,7 +14,7 @@ export const ProductView: React.FC<Props> = ({
   ingredients = '',
   allergens = [],
   origin = '',
-  onFeedbackPress = () => {},
+  // onFeedbackPress = () => {},
 }) => {
   return (
     <ScrollView style={[t.bgWhite, t.flex1]}>
