@@ -1,13 +1,15 @@
 import * as React from 'react'
-import { View, Text, TextInput } from 'react-native'
+import { View, Text, TextInput, Keyboard } from 'react-native'
 import { t } from 'react-native-tailwindcss'
 import Toast from 'react-native-simple-toast'
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 import { Button } from '../ui-kit/Button'
 
 type Props = {
   title?: string
   onSubmit?: (feedback: string) => void
 }
+
 export const FeedbackView: React.FC<Props> = ({
   title = '',
   onSubmit = () => {},
@@ -15,21 +17,28 @@ export const FeedbackView: React.FC<Props> = ({
   const [text, setText] = React.useState<string>('')
   const handlePress = () => {
     onSubmit(text)
+    Keyboard.dismiss()
     Toast.show('Feedback successfully sent')
   }
   return (
-    <View style={[t.flex1, t.mY16, t.mX5]}>
+    <KeyboardAwareScrollView
+      contentContainerStyle={[t.flex1, t.mY16, t.mX5]}
+      enableOnAndroid
+      enableAutomaticScroll
+    >
       <Text style={[t.text2xl, t.fontBold, t.mY4]}>💬{title}</Text>
       <View style={[t.flex1]}>
         <TextInput
           multiline={true}
           numberOfLines={4}
           onChangeText={setText}
+          onSubmitEditing={handlePress}
           value={text}
+          returnKeyType="send"
           autoFocus
         />
       </View>
       <Button title="Submit feedback" onPress={handlePress} />
-    </View>
+    </KeyboardAwareScrollView>
   )
 }
