@@ -48,6 +48,36 @@
   </head>
 
   <body>
+    <!-- Setup Facebook start -->
+    <div id="fb-root"></div>
+    <script>
+      window.fbAsyncInit = function () {
+        FB.init({
+          xfbml: true,
+          version: "v6.0",
+        });
+      };
+
+      (function (d, s, id) {
+        var js,
+          fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s);
+        js.id = id;
+        js.src = "https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js";
+        fjs.parentNode.insertBefore(js, fjs);
+      })(document, "script", "facebook-jssdk");
+    </script>
+
+    <!-- Your customer chat code -->
+    <div
+      class="fb-customerchat"
+      attribution="setup_tool"
+      page_id="104714497871674"
+      theme_color="#B35340"
+    ></div>
+    <!-- Setup Facebook end -->
+
     <!-- preloader area start -->
     <div id="preloader">
       <div class="spinner"></div>
@@ -202,8 +232,12 @@
             ></textarea>
             <input type="submit" id="send" value="Send" />
           </form>
-          <div id="contact-us-success" style="display:none;">Your message sent successfully</div>
-          <div id="contact-us-failure" style="display:none; color: red">Please fill in all the fields</div>
+          <div id="contact-us-success" style="display: none;">
+            Your message sent successfully
+          </div>
+          <div id="contact-us-failure" style="display: none; color: red;">
+            Please fill in all the fields
+          </div>
         </div>
       </section>
     </div>
