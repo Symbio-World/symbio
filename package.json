@@ -11,7 +11,7 @@
     ]
   },
   "scripts": {
-    "lint": "yarn wsrun lint",
+    "lint": "npmPkgJsonLint . && yarn wsrun lint",
     "build": "yarn wsrun build",
     "watch": "yarn wsrun watch",
     "test": "yarn wsrun test",
@@ -26,6 +26,7 @@
     ]
   },
   "devDependencies": {
+    "npm-package-json-lint": "^5.1.0",
     "wsrun": "^5.0.2"
   }
 }

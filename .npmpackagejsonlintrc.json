@@ -1,0 +1,15 @@
+{
+  "rules": {
+    "prefer-scripts": [
+      "error",
+      [
+        "lint",
+        "build",
+        "watch",
+        "test",
+        "clean",
+        "clean-all"
+      ]
+    ]
+  }
+}
