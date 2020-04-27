@@ -70,7 +70,8 @@ export const createSwipableModal: CreateSwipableModal = (Component) => {
     }: {
       nativeEvent: { x: number }
     }) => {
-      if (x !== 0) {
+      const isDefaulPosition = x === 0
+      if (!isDefaulPosition) {
         props.navigation.goBack()
       }
     }
