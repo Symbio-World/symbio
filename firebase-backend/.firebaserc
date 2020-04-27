@@ -2,7 +2,6 @@
   "projects": {
     "default": "symbio-dev-f9798",
     "dev": "symbio-dev-f9798",
-    "prod": "symbio-prod-6fb52",
-    "local": "symbio-1583620770416"
+    "prod": "symbio-prod-6fb52"
   }
 }
