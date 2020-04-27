@@ -19,7 +19,11 @@ type SwipableModalProps = {
   onSnap: (e: { nativeEvent: { x: number } }) => void
 }
 
-const SwipableModal: React.FC<SwipableModalProps> = ({ children, onSnap }) => {
+// test require this component for identifing by type
+export const SwipableModal: React.FC<SwipableModalProps> = ({
+  children,
+  onSnap,
+}) => {
   const x = new Value(0)
   const y = new Value(0)
   const rotateZ = concat(
