@@ -22,11 +22,5 @@ export const ScanBarcodeScreen: React.FC<Props> = ({ navigation }) => {
     })
   }
 
-  return (
-    <ScanBarcodeViewContainer
-      onScan={handleScan}
-      isActive={isFocused}
-      navigation={navigation}
-    />
-  )
+  return <ScanBarcodeViewContainer onScan={handleScan} isActive={isFocused} />
 }

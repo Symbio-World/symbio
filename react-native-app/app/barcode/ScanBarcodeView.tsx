@@ -12,7 +12,7 @@ import { BarcodePicker } from 'scandit-react-native'
 import { t } from 'react-native-tailwindcss'
 import { settings } from './ScanBarcodeViewSettings'
 import { Scanner, Session } from './Scanner'
-import { ScanBarcodeScreenNavigationType } from './ScanBarcodeScreen'
+import { useNavigation } from '@react-navigation/native'
 
 type Props = {
   onScan?: (barcode: string) => void
@@ -20,7 +20,6 @@ type Props = {
 
   // a hack to test scanner ref as createNodeMock is not working https://github.com/callstack/react-native-testing-library/issues/227
   useRef?: typeof React.useRef
-  navigation: ScanBarcodeScreenNavigationType
 }
 
 const isAndroidMarshmallowOrNewer = () => {
@@ -76,8 +75,8 @@ export const ScanBarcodeView: React.FC<Props> = ({
   onScan = () => {},
   isActive = true,
   useRef = React.useRef,
-  navigation,
 }) => {
+  const navigation = useNavigation()
   const scanner = useRef<Scanner>(null)
   const [isScannerInitialize, setScannerInit] = React.useState(false)
 

@@ -2,17 +2,14 @@ import * as React from 'react'
 import { useAuth } from '../auth'
 import { ScanBarcodeView } from './ScanBarcodeView'
 import { saveBarcode } from './saveBarcode'
-import { ScanBarcodeScreenNavigationType } from './ScanBarcodeScreen'
 
 type Props = {
   isActive?: boolean
   onScan?: (barcode: string) => void
-  navigation: ScanBarcodeScreenNavigationType
 }
 export const ScanBarcodeViewContainer: React.FC<Props> = ({
   isActive = true,
   onScan = () => {},
-  navigation,
 }) => {
   const { user } = useAuth()
 
@@ -24,11 +21,5 @@ export const ScanBarcodeViewContainer: React.FC<Props> = ({
     onScan(barcode)
   }
 
-  return (
-    <ScanBarcodeView
-      onScan={handleScan}
-      isActive={isActive}
-      navigation={navigation}
-    />
-  )
+  return <ScanBarcodeView onScan={handleScan} isActive={isActive} />
 }
