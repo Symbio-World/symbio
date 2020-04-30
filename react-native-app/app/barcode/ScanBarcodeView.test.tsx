@@ -42,6 +42,16 @@ describe('ScanBarcodeView', () => {
     expect(startScanning).toHaveBeenCalled()
   })
 
+  it('stop scanning when component unmount', async () => {
+    const stopScanning = jest.fn()
+    const useRef = mockUseRef({ stopScanning })
+    const scanBarcodeView = <ScanBarcodeView isActive useRef={useRef} />
+    const { unmount } = render(scanBarcodeView)
+    unmount(scanBarcodeView)
+    await flushMicrotasksQueue()
+    expect(stopScanning).toHaveBeenCalled()
+  })
+
   it('pause scanning when active prop is false', async () => {
     const startScanning = jest.fn()
     const pauseScanning = jest.fn()
