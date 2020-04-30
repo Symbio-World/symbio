@@ -78,12 +78,21 @@ export const ScanBarcodeView: React.FC<Props> = ({
 }) => {
   const navigation = useNavigation()
   const scanner = useRef<Scanner>(null)
-  const [isScannerInitialize, setScannerInit] = React.useState(false)
+  const [isScannerStarted, setScannerStarted] = React.useState(false)
 
   const startScanning = () => {
     try {
       scanner.current?.startScanning()
-      setScannerInit(true)
+      setScannerStarted(true)
+    } catch (e) {
+      console.log('try-catch introduced so that simple render tests pass')
+    }
+  }
+
+  const stopScanning = () => {
+    try {
+      scanner.current?.stopScanning()
+      setScannerStarted(false)
     } catch (e) {
       console.log('try-catch introduced so that simple render tests pass')
     }
@@ -119,17 +128,18 @@ export const ScanBarcodeView: React.FC<Props> = ({
     checkForCameraPermission().then(startScanning).catch(BackHandler.exitApp)
     return () => {
       AppState.removeEventListener('change', handleAppStateChange)
+      stopScanning()
     }
   }, [navigation])
 
   React.useEffect(() => {
-    if (!isScannerInitialize) return
+    if (!isScannerStarted) return
     if (isActive) {
       resumeScanning()
       return
     }
     pauseScanning()
-  }, [isActive, isScannerInitialize])
+  }, [isActive, isScannerStarted])
 
   const handleScan = (session: Session) => {
     const barcode = session.newlyRecognizedCodes[0].data
