@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Interactable renders correctly 1`] = `
+<View
+  collapsable={false}
+  onGestureHandlerEvent={[Function]}
+  onGestureHandlerStateChange={[Function]}
+  style={
+    Array [
+      Object {
+        "bottom": 0,
+        "left": 0,
+        "position": "absolute",
+        "right": 0,
+        "top": 0,
+      },
+      Object {
+        "transform": Array [
+          Object {
+            "translateX": Object {
+              "setValue": [Function],
+            },
+          },
+          Object {
+            "translateY": Object {
+              "setValue": [Function],
+            },
+          },
+          Object {
+            "rotateZ": "undefinedrad",
+          },
+        ],
+      },
+    ]
+  }
+>
+  <Text>
+    Text
+  </Text>
+</View>
+`;

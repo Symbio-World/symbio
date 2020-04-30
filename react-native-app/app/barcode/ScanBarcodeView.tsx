@@ -12,6 +12,7 @@ import { BarcodePicker } from 'scandit-react-native'
 import { t } from 'react-native-tailwindcss'
 import { settings } from './ScanBarcodeViewSettings'
 import { Scanner, Session } from './Scanner'
+import { useNavigation } from '@react-navigation/native'
 
 type Props = {
   onScan?: (barcode: string) => void
@@ -20,35 +21,69 @@ type Props = {
   // a hack to test scanner ref as createNodeMock is not working https://github.com/callstack/react-native-testing-library/issues/227
   useRef?: typeof React.useRef
 }
+
+const isAndroidMarshmallowOrNewer = () => {
+  return Platform.OS === 'android' && Platform.Version >= 23
+}
+
+const hasCameraPermission = () =>
+  isAndroidMarshmallowOrNewer()
+    ? PermissionsAndroid.check(PermissionsAndroid.PERMISSIONS.CAMERA)
+        .then((isGranted) => isGranted)
+        .catch(() => false)
+    : Promise.resolve(true)
+
+const requestCameraPermission = () => {
+  return new Promise((resolve, reject) => {
+    if (isAndroidMarshmallowOrNewer()) {
+      PermissionsAndroid.request(PermissionsAndroid.PERMISSIONS.CAMERA)
+        .then((granted) => {
+          if (granted === PermissionsAndroid.RESULTS.GRANTED) {
+            console.log('Android Camera Permission has been granted.')
+            return resolve()
+          }
+          console.log(
+            'Android Camera Permission has been denied - the app will shut itself down.',
+          )
+          return reject()
+        })
+        .catch((err) => {
+          console.warn(err)
+          reject()
+        })
+      return
+    }
+    resolve()
+  })
+}
+
+const checkForCameraPermission = () => {
+  return new Promise((resolve, reject) => {
+    hasCameraPermission()
+      .then((hasPermission) => {
+        if (hasPermission) {
+          resolve()
+          return
+        }
+        requestCameraPermission().then(resolve).catch(reject)
+      })
+      .catch(reject)
+  })
+}
+
 export const ScanBarcodeView: React.FC<Props> = ({
   onScan = () => {},
   isActive = true,
   useRef = React.useRef,
 }) => {
+  const navigation = useNavigation()
   const scanner = useRef<Scanner>(null)
-
-  const isAndroidMarshmallowOrNewer = () => {
-    return Platform.OS === 'android' && Platform.Version >= 23
-  }
-
-  const hasCameraPermission = async () => {
-    if (isAndroidMarshmallowOrNewer()) {
-      const isGranted = await PermissionsAndroid.check(
-        PermissionsAndroid.PERMISSIONS.CAMERA,
-      )
-      return isGranted
-    } else {
-      return true
-    }
-  }
-
-  const cameraPermissionDenied = () => {
-    BackHandler.exitApp()
-  }
+  const [isScannerStarted, setScannerStarted] = React.useState(false)
 
   const startScanning = () => {
     try {
       scanner.current?.startScanning()
+      setScannerStarted(true)
     } catch (e) {
       console.log('try-catch introduced so that simple render tests pass')
     }
@@ -57,63 +92,56 @@ export const ScanBarcodeView: React.FC<Props> = ({
   const stopScanning = () => {
     try {
       scanner.current?.stopScanning()
+      setScannerStarted(false)
     } catch (e) {
       console.log('try-catch introduced so that simple render tests pass')
     }
   }
 
-  const requestCameraPermission = async () => {
-    if (isAndroidMarshmallowOrNewer()) {
-      try {
-        const granted = await PermissionsAndroid.request(
-          PermissionsAndroid.PERMISSIONS.CAMERA,
-        )
-        if (granted === PermissionsAndroid.RESULTS.GRANTED) {
-          console.log('Android Camera Permission has been granted.')
-          startScanning()
-        } else {
-          console.log(
-            'Android Camera Permission has been denied - the app will shut itself down.',
-          )
-          cameraPermissionDenied()
-        }
-      } catch (err) {
-        console.warn(err)
-      }
-    } else {
-      startScanning()
+  const resumeScanning = () => {
+    try {
+      scanner.current?.resumeScanning()
+    } catch (e) {
+      console.log('try-catch introduced so that simple render tests pass')
     }
   }
-
-  const checkForCameraPermission = async () => {
-    const hasPermission = await hasCameraPermission()
-    if (hasPermission) {
-      startScanning()
-    } else {
-      await requestCameraPermission()
-    }
-  }
-
-  const handleAppStateChange = (nextAppState: AppStateStatus) => {
-    if (nextAppState.match(/inactive|background/)) {
-      stopScanning()
-    } else {
-      checkForCameraPermission()
+  const pauseScanning = () => {
+    try {
+      scanner.current?.pauseScanning()
+    } catch (e) {
+      console.log('try-catch introduced so that simple render tests pass')
     }
   }
 
   React.useEffect(() => {
+    const handleAppStateChange = (nextAppState: AppStateStatus) => {
+      if (nextAppState.match(/inactive|background/)) {
+        pauseScanning()
+      } else {
+        checkForCameraPermission()
+          .then(startScanning)
+          .catch(BackHandler.exitApp)
+      }
+    }
+
     AppState.addEventListener('change', handleAppStateChange)
-    checkForCameraPermission()
+    checkForCameraPermission().then(startScanning).catch(BackHandler.exitApp)
     return () => {
       AppState.removeEventListener('change', handleAppStateChange)
+      stopScanning()
     }
-  })
+  }, [navigation])
 
+  /* eslint-disable react-hooks/exhaustive-deps */
   React.useEffect(() => {
-    if (isActive) startScanning()
-    else stopScanning()
+    if (!isScannerStarted) return
+    if (isActive) {
+      resumeScanning()
+      return
+    }
+    pauseScanning()
   }, [isActive])
+  /* eslint-enable react-hooks/exhaustive-deps */
 
   const handleScan = (session: Session) => {
     const barcode = session.newlyRecognizedCodes[0].data
@@ -128,6 +156,7 @@ export const ScanBarcodeView: React.FC<Props> = ({
         ref={scanner}
         style={[t.flex1]}
       />
+
       <View
         style={[
           t.absolute,

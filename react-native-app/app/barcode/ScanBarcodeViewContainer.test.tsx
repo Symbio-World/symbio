@@ -9,6 +9,10 @@ import { saveBarcode } from './saveBarcode'
 jest.mock('../auth')
 jest.mock('./saveBarcode')
 
+jest.mock('@react-navigation/native', () => ({
+  useNavigation: () => jest.fn(),
+}))
+
 describe('ScanBarcodeViewContainer', () => {
   const user = { id: 'id' }
 

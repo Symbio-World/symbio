@@ -5,6 +5,7 @@ import { FeedbackViewContainer } from './FeedbackViewContainer'
 
 describe('FeedbackScreen', () => {
   const title = 'title'
+  const navigation: any = {}
   const route: any = {
     params: {
       title,
@@ -12,12 +13,16 @@ describe('FeedbackScreen', () => {
   }
 
   it('renders correctly', () => {
-    const { toJSON } = render(<FeedbackScreen route={route} />)
+    const { toJSON } = render(
+      <FeedbackScreen route={route} navigation={navigation} />,
+    )
     expect(toJSON()).toMatchSnapshot()
   })
 
   it('passes title prop', () => {
-    const { getByType } = render(<FeedbackScreen route={route} />)
+    const { getByType } = render(
+      <FeedbackScreen route={route} navigation={navigation} />,
+    )
     expect(getByType(FeedbackViewContainer).props.title).toEqual(title)
   })
 })

@@ -9,7 +9,7 @@ module.exports = {
     },
   },
 
-  setupFilesAfterEnv: ['<rootDir>/setupTests.js'],
+  setupFilesAfterEnv: ['<rootDir>/setupTests.js', './node_modules/react-native-gesture-handler/jestSetup'],
   transformIgnorePatterns: [
     'node_modules/(?!(react-native' +
       '|scandit-react-native' +
@@ -22,6 +22,13 @@ module.exports = {
       '|@react-native-firebase' +
       '|react-native-keyboard-aware-scroll-view' +
       '|react-native-iphone-x-helper' +
+      '|react-native-reanimated' +
+      '|react-native-redash' +
+      '|react-native-gesture-handler' +
+      '|react-native-iphone-x-helper' +
+      '|react-native-screens' +
+      '|@react-native-community' +
+      '|@react-navigation' +
       ')/)',
   ],
 }
