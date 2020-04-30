@@ -9,7 +9,7 @@ import { ScanBarcodeView } from './ScanBarcodeView'
 import * as fixture from './ScanBarcodeView.fixture'
 
 jest.mock('@react-navigation/native', () => ({
-  useNavigation: () => jest.fn(),
+  useNavigation: () => {},
 }))
 
 const mockUseRef = (obj: unknown) => () =>
@@ -74,8 +74,8 @@ describe('ScanBarcodeView', () => {
     await flushMicrotasksQueue()
     update(<ScanBarcodeView isActive useRef={useRef} />)
     await flushMicrotasksQueue()
-    expect(startScanning).toHaveBeenCalled()
-    expect(pauseScanning).toHaveBeenCalled()
-    expect(resumeScanning).toHaveBeenCalled()
+    expect(startScanning).toHaveBeenCalledTimes(1)
+    expect(pauseScanning).toHaveBeenCalledTimes(1)
+    expect(resumeScanning).toHaveBeenCalledTimes(1)
   })
 })

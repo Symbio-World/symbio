@@ -132,6 +132,7 @@ export const ScanBarcodeView: React.FC<Props> = ({
     }
   }, [navigation])
 
+  /* eslint-disable react-hooks/exhaustive-deps */
   React.useEffect(() => {
     if (!isScannerStarted) return
     if (isActive) {
@@ -139,7 +140,8 @@ export const ScanBarcodeView: React.FC<Props> = ({
       return
     }
     pauseScanning()
-  }, [isActive, isScannerStarted])
+  }, [isActive])
+  /* eslint-enable react-hooks/exhaustive-deps */
 
   const handleScan = (session: Session) => {
     const barcode = session.newlyRecognizedCodes[0].data
