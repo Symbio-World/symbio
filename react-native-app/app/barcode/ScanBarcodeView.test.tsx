@@ -19,17 +19,19 @@ const mockUseRef = (obj: unknown) => () =>
   })
 
 describe('ScanBarcodeView', () => {
-  it('renders correctly', () => {
+  it('renders correctly', async () => {
     const { toJSON } = render(<ScanBarcodeView />)
+    await flushMicrotasksQueue()
     expect(toJSON()).toMatchSnapshot()
   })
 
-  it('triggers onScan prop', () => {
+  it('triggers onScan prop', async () => {
     const handleScan = jest.fn()
     const useRef = mockUseRef({ startScanning: jest.fn() })
     const { getByType } = render(
       <ScanBarcodeView onScan={handleScan} useRef={useRef} />,
     )
+    await flushMicrotasksQueue()
     fireEvent(getByType(BarcodePicker), 'onScan', fixture.session)
     expect(handleScan).toHaveBeenCalledWith(fixture.barcode)
   })
@@ -46,7 +48,9 @@ describe('ScanBarcodeView', () => {
     const stopScanning = jest.fn()
     const useRef = mockUseRef({ stopScanning })
     const scanBarcodeView = <ScanBarcodeView isActive useRef={useRef} />
+    await flushMicrotasksQueue()
     const { unmount } = render(scanBarcodeView)
+    await flushMicrotasksQueue()
     unmount(scanBarcodeView)
     await flushMicrotasksQueue()
     expect(stopScanning).toHaveBeenCalled()
