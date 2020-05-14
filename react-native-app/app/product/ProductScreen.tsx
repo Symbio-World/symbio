@@ -19,6 +19,7 @@ export const ProductScreen: React.FC<Props> = ({ route, navigation }) => {
     <ProductViewContainer
       barcode={barcode}
       onFeedbackPress={handleFeedbackPress}
+      onBackButtonPress={navigation.goBack}
     />
   )
 }
