@@ -14,6 +14,8 @@ declare module 'react-native-tailwindcss' {
     allergies: {}
   }
 
-  export type TailwindStyles = DefaultTailwindStyles & CustomColors & {}
-  export type TailwindColors = DefaultTailwindColors & CustomColors & {}
+  /* eslint-disable functional/prefer-type-literal */
+  export interface TailwindStyles extends DefaultTailwindStyles, CustomColors {}
+  export interface TailwindColors extends DefaultTailwindColors, CustomColors {}
+  /* eslint-enable */
 }
