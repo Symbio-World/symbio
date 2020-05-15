@@ -6,7 +6,8 @@ import {
 export {}
 
 declare module 'react-native-tailwindcss' {
-  type CustomColors = {
+  /* eslint-disable functional/prefer-type-literal */
+  interface CustomColors {
     textPrimary: {}
     borderPrimary: {}
     bgPrimary: {}
@@ -14,7 +15,6 @@ declare module 'react-native-tailwindcss' {
     allergies: {}
   }
 
-  /* eslint-disable functional/prefer-type-literal */
   export interface TailwindStyles extends DefaultTailwindStyles, CustomColors {}
   export interface TailwindColors extends DefaultTailwindColors, CustomColors {}
   /* eslint-enable */
