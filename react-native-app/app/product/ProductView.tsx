@@ -44,6 +44,7 @@ export const ProductView: React.FC<Props> = ({
             onPress={() => onFeedbackPress("Tell us what's missing")}
           />
         </View> */}
+          <View style={[t.h40]} />
         </View>
       </ScrollView>
       <View style={[t.absolute, t.bottom0, t.wFull, t.itemsCenter, t.pB5]}>
