@@ -50,7 +50,7 @@ export const Button: React.FC<Props> = ({
       ]}
       onPress={onPress}
     >
-      {icon ? <Icon style={[t.mR2]} iconType={icon} /> : null}
+      {icon ? <Icon style={[t.mR2]} icon={icon} /> : null}
       <Text style={[t.textCenter, t.text2xl, t.textWhite, ...innerStyle]}>
         {title}
       </Text>

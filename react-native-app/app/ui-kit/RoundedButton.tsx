@@ -52,7 +52,7 @@ export const RoundedButton: React.FC<Props> = ({
             {innerTitle}
           </Text>
         ) : null}
-        {icon ? <Icon iconType={icon} /> : null}
+        {icon ? <Icon icon={icon} /> : null}
       </View>
       <View>
         {outerTitle ? (

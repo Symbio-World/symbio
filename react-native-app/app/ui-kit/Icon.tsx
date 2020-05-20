@@ -8,7 +8,7 @@ import flashlight from '../../assets/svg/flashlight.svg'
 import historyicon from '../../assets/svg/history.svg'
 
 type Props = SvgProps & {
-  iconType: Icons
+  icon: Icons
 }
 
 export enum Icons {
@@ -27,8 +27,8 @@ const IconsMap = {
   [Icons.HISTORYICON]: historyicon,
 }
 
-export const Icon: React.FC<Props> = ({ iconType, ...otherProps }) => {
-  const IconComponent = IconsMap[iconType]
+export const Icon: React.FC<Props> = ({ icon, ...otherProps }) => {
+  const IconComponent = IconsMap[icon]
   if (!IconComponent) throw new Error('No icon found')
   return <IconComponent {...otherProps} />
 }

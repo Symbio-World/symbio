@@ -4,7 +4,7 @@ import { Icon, Icons } from './Icon'
 
 describe('Icon', () => {
   it('renders correctly', () => {
-    const { toJSON } = render(<Icon iconType={Icons.DISK} />)
+    const { toJSON } = render(<Icon icon={Icons.DISK} />)
     expect(toJSON()).toMatchSnapshot()
   })
 })
