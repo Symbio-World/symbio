@@ -1,6 +1,7 @@
 import * as React from 'react'
 import { render } from 'react-native-testing-library'
-import { RoundedButton, RoundedButtonStyle } from './RoundedButton'
+import { RoundedButton } from './RoundedButton'
+import { ButtonStyle } from './Button'
 
 describe('RoundedButton', () => {
   it('renders correctly', () => {
@@ -9,19 +10,19 @@ describe('RoundedButton', () => {
   })
   it('render transparent', () => {
     const { toJSON } = render(
-      <RoundedButton buttonStyleType={RoundedButtonStyle.TRANSPARENT} />,
+      <RoundedButton buttonStyleType={ButtonStyle.TRANSPARENT} />,
     )
     expect(toJSON()).toMatchSnapshot()
   })
   it('render fill', () => {
     const { toJSON } = render(
-      <RoundedButton buttonStyleType={RoundedButtonStyle.FILL} />,
+      <RoundedButton buttonStyleType={ButtonStyle.FILL} />,
     )
     expect(toJSON()).toMatchSnapshot()
   })
   it('render outline', () => {
     const { toJSON } = render(
-      <RoundedButton buttonStyleType={RoundedButtonStyle.OUTLINE} />,
+      <RoundedButton buttonStyleType={ButtonStyle.OUTLINE} />,
     )
     expect(toJSON()).toMatchSnapshot()
   })
