@@ -109,6 +109,304 @@ exports[`createSwipableModal renders correctly 1`] = `
               Test
             </Text>
           </View>
+          <View
+            style={
+              Array [
+                Object {
+                  "position": "absolute",
+                },
+                Object {
+                  "bottom": 0,
+                },
+                Object {
+                  "width": "100%",
+                },
+                Object {
+                  "alignItems": "center",
+                },
+                Object {
+                  "paddingBottom": 20,
+                },
+              ]
+            }
+          >
+            <View
+              accessible={true}
+              focusable={true}
+              isTVSelectable={true}
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                Object {
+                  "opacity": 1,
+                }
+              }
+            >
+              <View
+                style={
+                  Array [
+                    Object {
+                      "backgroundColor": "#fff",
+                    },
+                    Object {
+                      "borderWidth": 2,
+                    },
+                    Object {
+                      "borderColor": "#B35340",
+                    },
+                    Object {
+                      "alignItems": "center",
+                    },
+                    Object {
+                      "justifyContent": "center",
+                    },
+                    Object {
+                      "width": 80,
+                    },
+                    Object {
+                      "height": 80,
+                    },
+                    Object {
+                      "borderRadius": 9999,
+                    },
+                  ]
+                }
+              >
+                <SvgMock />
+              </View>
+              <View>
+                <Text
+                  style={
+                    Array [
+                      Object {
+                        "textAlign": "center",
+                      },
+                      Object {
+                        "fontSize": 24,
+                      },
+                      Object {
+                        "color": "#B35340",
+                      },
+                    ]
+                  }
+                >
+                  Close
+                </Text>
+              </View>
+            </View>
+          </View>
+        </View>
+      </View>
+    </View>
+  </View>
+</View>
+`;
+
+exports[`createSwipableModal renders correctly without close button 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "flex": 1,
+      },
+    ]
+  }
+>
+  <View
+    collapsable={false}
+    onGestureHandlerEvent={[Function]}
+    onGestureHandlerStateChange={[Function]}
+    style={
+      Array [
+        Object {
+          "bottom": 0,
+          "left": 0,
+          "position": "absolute",
+          "right": 0,
+          "top": 0,
+        },
+        Object {
+          "transform": Array [
+            Object {
+              "translateX": Object {
+                "setValue": [Function],
+              },
+            },
+            Object {
+              "translateY": Object {
+                "setValue": [Function],
+              },
+            },
+            Object {
+              "rotateZ": "undefinedrad",
+            },
+          ],
+        },
+      ]
+    }
+  >
+    <View
+      style={
+        Array [
+          Object {
+            "backgroundColor": "rgba(0,0,0,0)",
+          },
+          Object {
+            "width": "100%",
+          },
+          Object {
+            "height": "100%",
+          },
+          Object {
+            "alignItems": "center",
+          },
+          Object {
+            "justifyContent": "center",
+          },
+        ]
+      }
+    >
+      <View
+        style={
+          Array [
+            Object {
+              "width": "91.666667%",
+            },
+            Object {
+              "height": "90%",
+            },
+            Object {
+              "backgroundColor": "#fff",
+            },
+            Object {
+              "borderRadius": 8,
+            },
+            Object {
+              "elevation": 12.5,
+              "shadowColor": "rgba(0, 0, 0, 0.1)",
+              "shadowOffset": Object {
+                "height": 20,
+                "width": 0,
+              },
+              "shadowOpacity": 1,
+              "shadowRadius": 25,
+            },
+            Object {
+              "overflow": "hidden",
+            },
+          ]
+        }
+      >
+        <View
+          style={
+            Array [
+              Object {
+                "height": "100%",
+              },
+            ]
+          }
+        >
+          <View>
+            <Text>
+              Test
+            </Text>
+          </View>
+          <View
+            style={
+              Array [
+                Object {
+                  "position": "absolute",
+                },
+                Object {
+                  "bottom": 0,
+                },
+                Object {
+                  "width": "100%",
+                },
+                Object {
+                  "alignItems": "center",
+                },
+                Object {
+                  "paddingBottom": 20,
+                },
+              ]
+            }
+          >
+            <View
+              accessible={true}
+              focusable={true}
+              isTVSelectable={true}
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                Object {
+                  "opacity": 1,
+                }
+              }
+            >
+              <View
+                style={
+                  Array [
+                    Object {
+                      "backgroundColor": "#fff",
+                    },
+                    Object {
+                      "borderWidth": 2,
+                    },
+                    Object {
+                      "borderColor": "#B35340",
+                    },
+                    Object {
+                      "alignItems": "center",
+                    },
+                    Object {
+                      "justifyContent": "center",
+                    },
+                    Object {
+                      "width": 80,
+                    },
+                    Object {
+                      "height": 80,
+                    },
+                    Object {
+                      "borderRadius": 9999,
+                    },
+                  ]
+                }
+              >
+                <SvgMock />
+              </View>
+              <View>
+                <Text
+                  style={
+                    Array [
+                      Object {
+                        "textAlign": "center",
+                      },
+                      Object {
+                        "fontSize": 24,
+                      },
+                      Object {
+                        "color": "#B35340",
+                      },
+                    ]
+                  }
+                >
+                  Close
+                </Text>
+              </View>
+            </View>
+          </View>
         </View>
       </View>
     </View>

@@ -11,7 +11,6 @@ import { ModalStackParamList, SwipableModalRouteProps } from './Navigation'
 import { RoundedButton } from '../ui-kit/RoundedButton'
 import { ButtonStyle } from '../ui-kit/Button'
 import { IconsEnum } from '../ui-kit/Icon'
-import { RouteProp } from '@react-navigation/native'
 
 const { Value, interpolate, concat, Extrapolate } = Animated
 const { width, height } = Dimensions.get('window')
