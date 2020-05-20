@@ -2,6 +2,7 @@ import { of, throwError } from 'rxjs'
 import * as React from 'react'
 import { render, fireEvent } from 'react-native-testing-library'
 import { Loading } from '../ui-kit/Loading'
+import { Timeout } from '../ui-kit/Timeout'
 import { noSearchResultsFound } from '@symbio/barcode-processor-core'
 import { ProductViewContainer } from './ProductViewContainer'
 import { ProductNotFound } from './ProductNotFound'
@@ -23,9 +24,11 @@ describe('ProductViewContainer', () => {
     expect(toJSON()).toMatchSnapshot()
   })
 
-  it('renders loading screen at the start', () => {
+  it('renders loading screen for some time then shows no product view', () => {
     const { getByType } = render(<ProductViewContainer barcode={barcode} />)
     expect(getByType(Loading)).toBeDefined()
+    fireEvent(getByType(Timeout), 'onTimeout')
+    expect(getByType(ProductNotFound)).toBeDefined()
   })
 
   it('calls observeProductData', () => {

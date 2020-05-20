@@ -2,10 +2,12 @@ import * as React from 'react'
 import {
   ProductData,
   NO_SEARCH_RESULTS_FOUND,
+  noSearchResultsFound,
 } from '@symbio/barcode-processor-core'
 import { isFailureOfType } from '@symbio/ts-lib'
 import { ErrorView } from '../ui-kit/ErrorView'
 import { Loading } from '../ui-kit/Loading'
+import { Timeout } from '../ui-kit/Timeout'
 import { ProductView } from './ProductView'
 import { ProductNotFound } from './ProductNotFound'
 import { observeProductData } from './observeProductData'
@@ -35,10 +37,20 @@ export const ProductViewContainer: React.FC<Props> = ({
     return () => subscription.unsubscribe()
   }, [barcode])
 
+  const handleTimeout = () => {
+    setError(noSearchResultsFound)
+  }
+
   if (isFailureOfType(error, NO_SEARCH_RESULTS_FOUND))
     return <ProductNotFound barcode={barcode} />
   if (error) return <ErrorView error={error} />
-  if (!productData) return <Loading />
+  if (!productData) {
+    return (
+      <Timeout durationInSeconds={5000} onTimeout={handleTimeout}>
+        <Loading />
+      </Timeout>
+    )
+  }
   return (
     <ProductView
       {...productData}
