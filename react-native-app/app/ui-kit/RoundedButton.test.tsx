@@ -10,20 +10,16 @@ describe('RoundedButton', () => {
   })
   it('render transparent', () => {
     const { toJSON } = render(
-      <RoundedButton buttonStyleType={ButtonStyle.TRANSPARENT} />,
+      <RoundedButton variant={ButtonStyle.TRANSPARENT} />,
     )
     expect(toJSON()).toMatchSnapshot()
   })
   it('render fill', () => {
-    const { toJSON } = render(
-      <RoundedButton buttonStyleType={ButtonStyle.FILL} />,
-    )
+    const { toJSON } = render(<RoundedButton variant={ButtonStyle.FILL} />)
     expect(toJSON()).toMatchSnapshot()
   })
   it('render outline', () => {
-    const { toJSON } = render(
-      <RoundedButton buttonStyleType={ButtonStyle.OUTLINE} />,
-    )
+    const { toJSON } = render(<RoundedButton variant={ButtonStyle.OUTLINE} />)
     expect(toJSON()).toMatchSnapshot()
   })
 })

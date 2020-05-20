@@ -10,7 +10,7 @@ type Props = {
   innerTitle?: string
   outerTitle?: string
   icon?: IconsEnum
-  buttonStyleType?: ButtonStyle
+  variant?: ButtonStyle
 }
 
 const ButtonBaseStyle = {
@@ -29,11 +29,11 @@ export const RoundedButton: React.FC<Props> = ({
   onPress = () => {},
   innerTitle = '',
   outerTitle = '',
-  buttonStyleType = ButtonStyle.FILL,
+  variant = ButtonStyle.FILL,
   icon = null,
 }) => {
-  const buttonStyle = ButtonBaseStyle[buttonStyleType]
-  const innerStyle = InnerTitleBaseStyle[buttonStyleType]
+  const buttonStyle = ButtonBaseStyle[variant]
+  const innerStyle = InnerTitleBaseStyle[variant]
 
   return (
     <TouchableOpacity onPress={onPress}>

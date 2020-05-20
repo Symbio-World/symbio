@@ -8,17 +8,15 @@ describe('Button', () => {
     expect(toJSON()).toMatchSnapshot()
   })
   it('render transparent', () => {
-    const { toJSON } = render(
-      <Button buttonStyleType={ButtonStyle.TRANSPARENT} />,
-    )
+    const { toJSON } = render(<Button variant={ButtonStyle.TRANSPARENT} />)
     expect(toJSON()).toMatchSnapshot()
   })
   it('render fill', () => {
-    const { toJSON } = render(<Button buttonStyleType={ButtonStyle.FILL} />)
+    const { toJSON } = render(<Button variant={ButtonStyle.FILL} />)
     expect(toJSON()).toMatchSnapshot()
   })
   it('render outline', () => {
-    const { toJSON } = render(<Button buttonStyleType={ButtonStyle.OUTLINE} />)
+    const { toJSON } = render(<Button variant={ButtonStyle.OUTLINE} />)
     expect(toJSON()).toMatchSnapshot()
   })
 })

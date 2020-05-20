@@ -96,7 +96,7 @@ export const createSwipableModal: CreateSwipableModal = (Component) => {
               <RoundedButton
                 onPress={props.navigation.goBack}
                 outerTitle="Close"
-                buttonStyleType={ButtonStyle.OUTLINE}
+                variant={ButtonStyle.OUTLINE}
                 icon={IconsEnum.CROSS}
               />
             </View>

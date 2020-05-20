@@ -14,7 +14,7 @@ type Props = {
   onPress?: () => void
   title?: string
   icon?: IconsEnum
-  buttonStyleType?: ButtonStyle
+  variant?: ButtonStyle
 }
 
 const ButtonBaseStyle = {
@@ -32,11 +32,11 @@ const InnerTitleBaseStyle = {
 export const Button: React.FC<Props> = ({
   onPress = () => {},
   title = '',
-  buttonStyleType = ButtonStyle.FILL,
+  variant = ButtonStyle.FILL,
   icon = null,
 }) => {
-  const buttonStyle = ButtonBaseStyle[buttonStyleType]
-  const innerStyle = [InnerTitleBaseStyle[buttonStyleType]]
+  const buttonStyle = ButtonBaseStyle[variant]
+  const innerStyle = [InnerTitleBaseStyle[variant]]
   return (
     <TouchableOpacity
       style={[
