@@ -2,7 +2,7 @@ import * as React from 'react'
 import { TouchableOpacity, Text } from 'react-native'
 import { t } from 'react-native-tailwindcss'
 
-import { Icon, IconsEnum } from './Icon'
+import { Icon, Icons } from './Icon'
 
 export enum ButtonStyle {
   FILL,
@@ -13,7 +13,7 @@ export enum ButtonStyle {
 type Props = {
   onPress?: () => void
   title?: string
-  icon?: IconsEnum
+  icon?: Icons
   variant?: ButtonStyle
 }
 

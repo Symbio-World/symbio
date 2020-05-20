@@ -10,7 +10,7 @@ import { ModalCard } from './ModalCard'
 import { ModalStackParamList, SwipableModalRouteProps } from './Navigation'
 import { RoundedButton } from '../ui-kit/RoundedButton'
 import { ButtonStyle } from '../ui-kit/Button'
-import { IconsEnum } from '../ui-kit/Icon'
+import { Icons } from '../ui-kit/Icon'
 
 const { Value, interpolate, concat, Extrapolate } = Animated
 const { width, height } = Dimensions.get('window')
@@ -97,7 +97,7 @@ export const createSwipableModal: CreateSwipableModal = (Component) => {
                 onPress={props.navigation.goBack}
                 outerTitle="Close"
                 variant={ButtonStyle.OUTLINE}
-                icon={IconsEnum.CROSS}
+                icon={Icons.CROSS}
               />
             </View>
           )}

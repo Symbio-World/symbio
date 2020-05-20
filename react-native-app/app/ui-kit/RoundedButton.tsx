@@ -2,14 +2,14 @@ import * as React from 'react'
 import { TouchableOpacity, Text, View } from 'react-native'
 import { t } from 'react-native-tailwindcss'
 
-import { Icon, IconsEnum } from './Icon'
+import { Icon, Icons } from './Icon'
 import { ButtonStyle } from './Button'
 
 type Props = {
   onPress?: () => void
   innerTitle?: string
   outerTitle?: string
-  icon?: IconsEnum
+  icon?: Icons
   variant?: ButtonStyle
 }
 
