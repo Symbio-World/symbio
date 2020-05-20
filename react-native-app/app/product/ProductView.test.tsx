@@ -5,10 +5,7 @@ import { ProductView } from './ProductView'
 
 describe('ProductView', () => {
   it('renders correctly', () => {
-    const onBackButtonPress = jest.fn()
-    const { toJSON } = render(
-      <ProductView onBackButtonPress={onBackButtonPress} />,
-    )
+    const { toJSON } = render(<ProductView />)
     expect(toJSON()).toMatchSnapshot()
   })
 
