@@ -46,6 +46,200 @@ exports[`RoundedButton render fill 1`] = `
 </View>
 `;
 
+exports[`RoundedButton render inner title 1`] = `
+<View
+  accessible={true}
+  focusable={true}
+  isTVSelectable={true}
+  onClick={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    Object {
+      "opacity": 1,
+    }
+  }
+>
+  <View
+    style={
+      Array [
+        Object {
+          "backgroundColor": "#B35340",
+        },
+        Object {
+          "alignItems": "center",
+        },
+        Object {
+          "justifyContent": "center",
+        },
+        Object {
+          "width": 80,
+        },
+        Object {
+          "height": 80,
+        },
+        Object {
+          "borderRadius": 9999,
+        },
+      ]
+    }
+  >
+    <Text
+      style={
+        Array [
+          Object {
+            "textAlign": "center",
+          },
+          Object {
+            "fontSize": 24,
+          },
+          Object {
+            "color": "#fff",
+          },
+        ]
+      }
+    >
+      Button Test
+    </Text>
+  </View>
+  <View />
+</View>
+`;
+
+exports[`RoundedButton render outer title 1`] = `
+<View
+  accessible={true}
+  focusable={true}
+  isTVSelectable={true}
+  onClick={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    Object {
+      "opacity": 1,
+    }
+  }
+>
+  <View
+    style={
+      Array [
+        Object {
+          "backgroundColor": "#B35340",
+        },
+        Object {
+          "alignItems": "center",
+        },
+        Object {
+          "justifyContent": "center",
+        },
+        Object {
+          "width": 80,
+        },
+        Object {
+          "height": 80,
+        },
+        Object {
+          "borderRadius": 9999,
+        },
+      ]
+    }
+  />
+  <View>
+    <Text
+      style={
+        Array [
+          Object {
+            "textAlign": "center",
+          },
+          Object {
+            "fontSize": 24,
+          },
+          Object {
+            "color": "#B35340",
+          },
+        ]
+      }
+    >
+      Button Test
+    </Text>
+  </View>
+</View>
+`;
+
+exports[`RoundedButton render outer title and icon 1`] = `
+<View
+  accessible={true}
+  focusable={true}
+  isTVSelectable={true}
+  onClick={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    Object {
+      "opacity": 1,
+    }
+  }
+>
+  <View
+    style={
+      Array [
+        Object {
+          "backgroundColor": "#B35340",
+        },
+        Object {
+          "alignItems": "center",
+        },
+        Object {
+          "justifyContent": "center",
+        },
+        Object {
+          "width": 80,
+        },
+        Object {
+          "height": 80,
+        },
+        Object {
+          "borderRadius": 9999,
+        },
+      ]
+    }
+  >
+    <SvgMock />
+  </View>
+  <View>
+    <Text
+      style={
+        Array [
+          Object {
+            "textAlign": "center",
+          },
+          Object {
+            "fontSize": 24,
+          },
+          Object {
+            "color": "#B35340",
+          },
+        ]
+      }
+    >
+      Close
+    </Text>
+  </View>
+</View>
+`;
+
 exports[`RoundedButton render outline 1`] = `
 <View
   accessible={true}
