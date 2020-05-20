@@ -43,13 +43,14 @@ exports[`ProductNotFound renders correctly 1`] = `
       onStartShouldSetResponder={[Function]}
       style={
         Object {
-          "backgroundColor": "#48bb78",
+          "alignItems": "center",
+          "backgroundColor": "#B35340",
           "borderRadius": 4,
           "display": "flex",
+          "flexDirection": "row",
           "justifyContent": "center",
           "opacity": 1,
           "padding": 16,
-          "textAlignVertical": "center",
         }
       }
     >
@@ -65,6 +66,11 @@ exports[`ProductNotFound renders correctly 1`] = `
             Object {
               "color": "#fff",
             },
+            Array [
+              Object {
+                "color": "#fff",
+              },
+            ],
           ]
         }
       >
@@ -85,13 +91,14 @@ exports[`ProductNotFound renders correctly 1`] = `
     onStartShouldSetResponder={[Function]}
     style={
       Object {
-        "backgroundColor": "#48bb78",
+        "alignItems": "center",
+        "backgroundColor": "#B35340",
         "borderRadius": 4,
         "display": "flex",
+        "flexDirection": "row",
         "justifyContent": "center",
         "opacity": 1,
         "padding": 16,
-        "textAlignVertical": "center",
       }
     }
   >
@@ -107,6 +114,11 @@ exports[`ProductNotFound renders correctly 1`] = `
           Object {
             "color": "#fff",
           },
+          Array [
+            Object {
+              "color": "#fff",
+            },
+          ],
         ]
       }
     >

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Button render fill 1`] = `
+exports[`RoundedButton render fill 1`] = `
 <View
   accessible={true}
   focusable={true}
@@ -14,43 +14,39 @@ exports[`Button render fill 1`] = `
   onStartShouldSetResponder={[Function]}
   style={
     Object {
-      "alignItems": "center",
-      "backgroundColor": "#B35340",
-      "borderRadius": 4,
-      "display": "flex",
-      "flexDirection": "row",
-      "justifyContent": "center",
       "opacity": 1,
-      "padding": 16,
     }
   }
 >
-  <Text
+  <View
     style={
       Array [
         Object {
-          "textAlign": "center",
+          "backgroundColor": "#B35340",
         },
         Object {
-          "fontSize": 24,
+          "alignItems": "center",
         },
         Object {
-          "color": "#fff",
+          "justifyContent": "center",
         },
-        Array [
-          Object {
-            "color": "#fff",
-          },
-        ],
+        Object {
+          "width": 80,
+        },
+        Object {
+          "height": 80,
+        },
+        Object {
+          "borderRadius": 9999,
+        },
       ]
     }
-  >
-    
-  </Text>
+  />
+  <View />
 </View>
 `;
 
-exports[`Button render outline 1`] = `
+exports[`RoundedButton render outline 1`] = `
 <View
   accessible={true}
   focusable={true}
@@ -64,45 +60,45 @@ exports[`Button render outline 1`] = `
   onStartShouldSetResponder={[Function]}
   style={
     Object {
-      "alignItems": "center",
-      "backgroundColor": "#fff",
-      "borderColor": "#B35340",
-      "borderRadius": 4,
-      "borderWidth": 2,
-      "display": "flex",
-      "flexDirection": "row",
-      "justifyContent": "center",
       "opacity": 1,
-      "padding": 16,
     }
   }
 >
-  <Text
+  <View
     style={
       Array [
         Object {
-          "textAlign": "center",
+          "backgroundColor": "#fff",
         },
         Object {
-          "fontSize": 24,
+          "borderWidth": 2,
         },
         Object {
-          "color": "#fff",
+          "borderColor": "#B35340",
         },
-        Array [
-          Object {
-            "color": "#B35340",
-          },
-        ],
+        Object {
+          "alignItems": "center",
+        },
+        Object {
+          "justifyContent": "center",
+        },
+        Object {
+          "width": 80,
+        },
+        Object {
+          "height": 80,
+        },
+        Object {
+          "borderRadius": 9999,
+        },
       ]
     }
-  >
-    
-  </Text>
+  />
+  <View />
 </View>
 `;
 
-exports[`Button render transparent 1`] = `
+exports[`RoundedButton render transparent 1`] = `
 <View
   accessible={true}
   focusable={true}
@@ -116,43 +112,39 @@ exports[`Button render transparent 1`] = `
   onStartShouldSetResponder={[Function]}
   style={
     Object {
-      "alignItems": "center",
-      "backgroundColor": "rgba(0,0,0,0)",
-      "borderRadius": 4,
-      "display": "flex",
-      "flexDirection": "row",
-      "justifyContent": "center",
       "opacity": 1,
-      "padding": 16,
     }
   }
 >
-  <Text
+  <View
     style={
       Array [
         Object {
-          "textAlign": "center",
+          "backgroundColor": "rgba(0,0,0,0)",
         },
         Object {
-          "fontSize": 24,
+          "alignItems": "center",
         },
         Object {
-          "color": "#fff",
+          "justifyContent": "center",
         },
-        Array [
-          Object {
-            "color": "#B35340",
-          },
-        ],
+        Object {
+          "width": 80,
+        },
+        Object {
+          "height": 80,
+        },
+        Object {
+          "borderRadius": 9999,
+        },
       ]
     }
-  >
-    
-  </Text>
+  />
+  <View />
 </View>
 `;
 
-exports[`Button renders correctly 1`] = `
+exports[`RoundedButton renders correctly 1`] = `
 <View
   accessible={true}
   focusable={true}
@@ -166,38 +158,34 @@ exports[`Button renders correctly 1`] = `
   onStartShouldSetResponder={[Function]}
   style={
     Object {
-      "alignItems": "center",
-      "backgroundColor": "#B35340",
-      "borderRadius": 4,
-      "display": "flex",
-      "flexDirection": "row",
-      "justifyContent": "center",
       "opacity": 1,
-      "padding": 16,
     }
   }
 >
-  <Text
+  <View
     style={
       Array [
         Object {
-          "textAlign": "center",
+          "backgroundColor": "#B35340",
         },
         Object {
-          "fontSize": 24,
+          "alignItems": "center",
         },
         Object {
-          "color": "#fff",
+          "justifyContent": "center",
         },
-        Array [
-          Object {
-            "color": "#fff",
-          },
-        ],
+        Object {
+          "width": 80,
+        },
+        Object {
+          "height": 80,
+        },
+        Object {
+          "borderRadius": 9999,
+        },
       ]
     }
-  >
-    
-  </Text>
+  />
+  <View />
 </View>
 `;

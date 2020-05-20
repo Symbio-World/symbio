@@ -1,112 +1,222 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`ProductView renders correctly 1`] = `
-<RCTScrollView
+<View
   style={
     Array [
-      Object {
-        "backgroundColor": "#fff",
-      },
       Object {
         "flex": 1,
       },
     ]
   }
 >
-  <View>
-    <Image
-      resizeMode="contain"
-      source={
+  <RCTScrollView
+    style={
+      Array [
         Object {
-          "uri": "",
+          "backgroundColor": "#fff",
+        },
+        Object {
+          "flex": 1,
+        },
+      ]
+    }
+  >
+    <View>
+      <Image
+        resizeMode="contain"
+        source={
+          Object {
+            "uri": "",
+          }
         }
-      }
-      style={
-        Array [
-          Object {
-            "height": 224,
-          },
-          Object {
-            "backgroundColor": "#edf2f7",
-          },
-        ]
-      }
-    />
+        style={
+          Array [
+            Object {
+              "height": 224,
+            },
+            Object {
+              "backgroundColor": "#edf2f7",
+            },
+          ]
+        }
+      />
+      <View
+        style={
+          Array [
+            Object {
+              "padding": 32,
+            },
+          ]
+        }
+      >
+        <Text
+          style={
+            Array [
+              Object {
+                "fontSize": 18,
+              },
+              Object {
+                "marginBottom": 32,
+              },
+            ]
+          }
+        >
+          
+        </Text>
+        <Text>
+          
+        </Text>
+        <Text
+          style={
+            Array [
+              Object {
+                "fontWeight": "bold",
+              },
+              Object {
+                "marginTop": 32,
+              },
+            ]
+          }
+        >
+          Ingredients
+        </Text>
+        <Text>
+          -
+        </Text>
+        <Text
+          style={
+            Array [
+              Object {
+                "fontWeight": "bold",
+              },
+              Object {
+                "marginTop": 32,
+              },
+            ]
+          }
+        >
+          Allergens
+        </Text>
+        <Text
+          style={
+            Array [
+              Object {
+                "fontWeight": "bold",
+              },
+              Object {
+                "marginTop": 32,
+              },
+            ]
+          }
+        >
+          Origin
+        </Text>
+        <Text>
+          
+        </Text>
+        <View
+          style={
+            Array [
+              Object {
+                "height": 160,
+              },
+            ]
+          }
+        />
+      </View>
+    </View>
+  </RCTScrollView>
+  <View
+    style={
+      Array [
+        Object {
+          "position": "absolute",
+        },
+        Object {
+          "bottom": 0,
+        },
+        Object {
+          "width": "100%",
+        },
+        Object {
+          "alignItems": "center",
+        },
+        Object {
+          "paddingBottom": 20,
+        },
+      ]
+    }
+  >
     <View
+      accessible={true}
+      focusable={true}
+      isTVSelectable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
       style={
-        Array [
-          Object {
-            "padding": 32,
-          },
-        ]
+        Object {
+          "opacity": 1,
+        }
       }
     >
-      <Text
+      <View
         style={
           Array [
             Object {
-              "fontSize": 18,
+              "backgroundColor": "#fff",
             },
             Object {
-              "marginBottom": 32,
+              "borderWidth": 2,
+            },
+            Object {
+              "borderColor": "#B35340",
+            },
+            Object {
+              "alignItems": "center",
+            },
+            Object {
+              "justifyContent": "center",
+            },
+            Object {
+              "width": 80,
+            },
+            Object {
+              "height": 80,
+            },
+            Object {
+              "borderRadius": 9999,
             },
           ]
         }
       >
-        
-      </Text>
-      <Text>
-        
-      </Text>
-      <Text
-        style={
-          Array [
-            Object {
-              "fontWeight": "bold",
-            },
-            Object {
-              "marginTop": 32,
-            },
-          ]
-        }
-      >
-        Ingredients
-      </Text>
-      <Text>
-        -
-      </Text>
-      <Text
-        style={
-          Array [
-            Object {
-              "fontWeight": "bold",
-            },
-            Object {
-              "marginTop": 32,
-            },
-          ]
-        }
-      >
-        Allergens
-      </Text>
-      <Text
-        style={
-          Array [
-            Object {
-              "fontWeight": "bold",
-            },
-            Object {
-              "marginTop": 32,
-            },
-          ]
-        }
-      >
-        Origin
-      </Text>
-      <Text>
-        
-      </Text>
+        <SvgMock />
+      </View>
+      <View>
+        <Text
+          style={
+            Array [
+              Object {
+                "textAlign": "center",
+              },
+              Object {
+                "fontSize": 24,
+              },
+              Object {
+                "color": "#B35340",
+              },
+            ]
+          }
+        >
+          Close
+        </Text>
+      </View>
     </View>
   </View>
-</RCTScrollView>
+</View>
 `;
