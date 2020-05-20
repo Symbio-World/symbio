@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { render } from 'react-native-testing-library'
+import { render, fireEvent } from 'react-native-testing-library'
 import { Button, ButtonStyle } from './Button'
 
 describe('Button', () => {
@@ -18,5 +18,15 @@ describe('Button', () => {
   it('render outline', () => {
     const { toJSON } = render(<Button variant={ButtonStyle.OUTLINE} />)
     expect(toJSON()).toMatchSnapshot()
+  })
+  it('render title', () => {
+    const { toJSON } = render(<Button title={'Button Test'} />)
+    expect(toJSON()).toMatchSnapshot()
+  })
+  it('simulate button click', () => {
+    const handlePress = jest.fn()
+    const { getByType } = render(<Button onPress={handlePress} />)
+    fireEvent(getByType(Button), 'onPress')
+    expect(handlePress).toBeCalled()
   })
 })
