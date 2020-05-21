@@ -1,9 +1,5 @@
 import * as React from 'react'
-import {
-  ProductData,
-  NO_SEARCH_RESULTS_FOUND,
-  noSearchResultsFound,
-} from '@symbio/barcode-processor-core'
+import { NO_SEARCH_RESULTS_FOUND } from '@symbio/barcode-processor-core'
 import { isFailureOfType } from '@symbio/ts-lib'
 import { ErrorView } from '../ui-kit/ErrorView'
 import { Loading } from '../ui-kit/Loading'
@@ -11,6 +7,7 @@ import { Timeout } from '../ui-kit/Timeout'
 import { ProductView } from './ProductView'
 import { ProductNotFound } from './ProductNotFound'
 import { observeProductData } from './observeProductData'
+import { useObservable } from '../lib/useObservable'
 
 type Props = {
   barcode: string
@@ -22,26 +19,17 @@ export const ProductViewContainer: React.FC<Props> = ({
   onFeedbackPress = () => {},
   onCloseButtonPress,
 }) => {
-  const [productData, setProductData] = React.useState<ProductData>()
-  const [error, setError] = React.useState<unknown>()
-
-  // TODO move out into own hook https://youtu.be/Urv82SGIu_0?t=730
-  React.useEffect(() => {
-    const subscription = observeProductData(barcode).subscribe(
-      setProductData,
-      (e) => {
-        console.log('error occured', e)
-        setError(e)
-      },
-    )
-    return () => subscription.unsubscribe()
-  }, [barcode])
+  const { data: productData, error } = useObservable(
+    barcode,
+    observeProductData,
+  )
+  const [hasTimedOut, setHasTimedOut] = React.useState(false)
 
   const handleTimeout = () => {
-    setError(noSearchResultsFound)
+    setHasTimedOut(true)
   }
 
-  if (isFailureOfType(error, NO_SEARCH_RESULTS_FOUND))
+  if (isFailureOfType(error, NO_SEARCH_RESULTS_FOUND) || hasTimedOut)
     return <ProductNotFound barcode={barcode} />
   if (error) return <ErrorView error={error} />
   if (!productData) {
