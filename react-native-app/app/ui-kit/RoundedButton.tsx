@@ -42,21 +42,24 @@ export const RoundedButton: React.FC<Props> = ({
           ...buttonStyle,
           t.itemsCenter,
           t.justifyCenter,
-          t.w20,
-          t.h20,
+          t.w16,
+          t.h16,
           t.roundedFull,
+          t.p1,
         ]}
       >
         {innerTitle ? (
-          <Text style={[t.textCenter, t.text2xl, ...innerStyle]}>
+          <Text style={[t.textCenter, t.textXl, ...innerStyle]}>
             {innerTitle}
           </Text>
         ) : null}
-        {icon ? <Icon icon={icon} /> : null}
+        <View style={[t.w5, t.h5]}>
+          {icon ? <Icon width={'100%'} height={'100%'} icon={icon} /> : null}
+        </View>
       </View>
       <View>
         {outerTitle ? (
-          <Text style={[t.textCenter, t.text2xl, t.textPrimary]}>
+          <Text style={[t.textCenter, t.textXl, t.textPrimary]}>
             {outerTitle}
           </Text>
         ) : null}
