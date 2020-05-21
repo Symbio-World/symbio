@@ -2,31 +2,17 @@ import * as React from 'react'
 import { of, throwError } from 'rxjs'
 import { Text } from 'react-native'
 import { render } from 'react-native-testing-library'
-import { DataObserver } from './DataObserver'
+import { ObservableView } from './ObservableView'
 import { ErrorView } from '../ui-kit/ErrorView'
 
 jest.useFakeTimers()
 
-describe('DataObserver', () => {
-  it('calls observableCreator with arg', () => {
-    const testArg = 'arg'
-    const observableCreator = jest.fn(() => of('data'))
-    render(
-      <DataObserver
-        arg={testArg}
-        observableCreator={observableCreator}
-        renderSuccess={(data) => <Text>{data}</Text>}
-      />,
-    )
-    expect(observableCreator).toHaveBeenCalledWith(testArg)
-  })
-
+describe('ObservableView', () => {
   it('renders success case', () => {
     const testData = 'data'
     const { getByText } = render(
-      <DataObserver
-        arg="arg"
-        observableCreator={() => of(testData)}
+      <ObservableView
+        observable={of(testData)}
         renderSuccess={(data) => <Text>{data}</Text>}
       />,
     )
@@ -36,9 +22,8 @@ describe('DataObserver', () => {
   it('renders default error', () => {
     const testError = 'error'
     const { getByType } = render(
-      <DataObserver
-        arg="arg"
-        observableCreator={() => throwError(testError)}
+      <ObservableView
+        observable={throwError(testError)}
         renderSuccess={(data) => <Text>{data}</Text>}
       />,
     )
@@ -51,9 +36,8 @@ describe('DataObserver', () => {
     const testError = 'error'
     const CustomErrorView = ({ error }: any) => <Text>{error}</Text>
     const { getByType } = render(
-      <DataObserver
-        arg="arg"
-        observableCreator={() => throwError(testError)}
+      <ObservableView
+        observable={throwError(testError)}
         renderSuccess={(data) => <Text>{data}</Text>}
         renderError={(e) => <CustomErrorView error={e} />}
       />,
@@ -65,9 +49,8 @@ describe('DataObserver', () => {
 
   it('renders default timeout', () => {
     const { getByType } = render(
-      <DataObserver
-        arg="arg"
-        observableCreator={() => of()}
+      <ObservableView
+        observable={of()}
         renderSuccess={(data) => <Text>{data}</Text>}
       />,
     )
@@ -82,9 +65,8 @@ describe('DataObserver', () => {
   it('renders custom timeout', () => {
     const CustomTimeoutView = () => <Text>timeout</Text>
     const { getByType } = render(
-      <DataObserver
-        arg="arg"
-        observableCreator={() => of()}
+      <ObservableView
+        observable={of()}
         renderSuccess={(data) => <Text>{data}</Text>}
         renderTimeout={() => <CustomTimeoutView />}
       />,

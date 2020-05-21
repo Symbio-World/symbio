@@ -5,7 +5,7 @@ import { ErrorView } from '../ui-kit/ErrorView'
 import { ProductView } from './ProductView'
 import { ProductNotFound } from './ProductNotFound'
 import { observeProductData } from './observeProductData'
-import { DataObserver } from '../lib/DataObserver'
+import { ObservableView } from '../lib/ObservableView'
 
 type Props = {
   barcode: string
@@ -18,9 +18,8 @@ export const ProductViewContainer: React.FC<Props> = ({
   onCloseButtonPress,
 }) => {
   return (
-    <DataObserver
-      arg={barcode}
-      observableCreator={observeProductData}
+    <ObservableView
+      observable={observeProductData(barcode)}
       renderSuccess={(productData) => (
         <ProductView
           {...productData}
