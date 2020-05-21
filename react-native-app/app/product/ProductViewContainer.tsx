@@ -2,12 +2,10 @@ import * as React from 'react'
 import { NO_SEARCH_RESULTS_FOUND } from '@symbio/barcode-processor-core'
 import { isFailureOfType } from '@symbio/ts-lib'
 import { ErrorView } from '../ui-kit/ErrorView'
-import { Loading } from '../ui-kit/Loading'
-import { Timeout } from '../ui-kit/Timeout'
 import { ProductView } from './ProductView'
 import { ProductNotFound } from './ProductNotFound'
 import { observeProductData } from './observeProductData'
-import { useObservable } from '../lib/useObservable'
+import { DataObserver } from '../lib/DataObserver'
 
 type Props = {
   barcode: string
@@ -19,31 +17,25 @@ export const ProductViewContainer: React.FC<Props> = ({
   onFeedbackPress = () => {},
   onCloseButtonPress,
 }) => {
-  const { data: productData, error } = useObservable(
-    barcode,
-    observeProductData,
-  )
-  const [hasTimedOut, setHasTimedOut] = React.useState(false)
-
-  const handleTimeout = () => {
-    setHasTimedOut(true)
-  }
-
-  if (isFailureOfType(error, NO_SEARCH_RESULTS_FOUND) || hasTimedOut)
-    return <ProductNotFound barcode={barcode} />
-  if (error) return <ErrorView error={error} />
-  if (!productData) {
-    return (
-      <Timeout durationInSeconds={5000} onTimeout={handleTimeout}>
-        <Loading />
-      </Timeout>
-    )
-  }
   return (
-    <ProductView
-      {...productData}
-      onCloseButtonPress={onCloseButtonPress}
-      onFeedbackPress={onFeedbackPress}
+    <DataObserver
+      arg={barcode}
+      observableCreator={observeProductData}
+      renderSuccess={(productData) => (
+        <ProductView
+          {...productData}
+          onCloseButtonPress={onCloseButtonPress}
+          onFeedbackPress={onFeedbackPress}
+        />
+      )}
+      renderError={(error) =>
+        isFailureOfType(error, NO_SEARCH_RESULTS_FOUND) ? (
+          <ProductNotFound barcode={barcode} />
+        ) : (
+          <ErrorView error={error} />
+        )
+      }
+      renderTimeout={() => <ProductNotFound barcode={barcode} />}
     />
   )
 }
