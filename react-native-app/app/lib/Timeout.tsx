@@ -3,7 +3,7 @@ import * as React from 'react'
 type Props = {
   durationInSeconds: number
   onTimeout: () => void
-  children: React.ReactElement | null
+  children: React.ReactElement
 }
 export const Timeout: React.FC<Props> = ({
   durationInSeconds,
