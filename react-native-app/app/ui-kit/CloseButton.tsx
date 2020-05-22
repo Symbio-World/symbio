@@ -11,7 +11,7 @@ type CloseButtonProps = {
 export const CloseButton: React.FC<CloseButtonProps> = ({ onPress }) => (
   <RoundedButton
     onPress={onPress}
-    outerTitle="Close"
+    outerTitle="close"
     variant={ButtonStyle.OUTLINE}
     icon={Icons.CROSS}
   />

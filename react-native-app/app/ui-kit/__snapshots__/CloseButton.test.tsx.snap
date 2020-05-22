@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Button renders correctly 1`] = `
+exports[`CloseButton renders correctly 1`] = `
 <View
   accessible={true}
   focusable={true}
@@ -85,7 +85,7 @@ exports[`Button renders correctly 1`] = `
         ]
       }
     >
-      Close
+      close
     </Text>
   </View>
 </View>

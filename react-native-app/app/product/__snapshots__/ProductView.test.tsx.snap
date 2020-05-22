@@ -232,7 +232,7 @@ exports[`ProductView renders correctly 1`] = `
             ]
           }
         >
-          Close
+          close
         </Text>
       </View>
     </View>
