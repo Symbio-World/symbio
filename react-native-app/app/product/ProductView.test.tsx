@@ -1,12 +1,25 @@
 import * as React from 'react'
-import { render /*, fireEvent */ } from 'react-native-testing-library'
+import {
+  render /*, fireEvent */,
+  fireEvent,
+} from 'react-native-testing-library'
 import { ProductView } from './ProductView'
+import { CloseButton } from '../ui-kit/CloseButton'
 // import { Button } from '../ui-kit/Button'
 
 describe('ProductView', () => {
   it('renders correctly', () => {
     const { toJSON } = render(<ProductView />)
     expect(toJSON()).toMatchSnapshot()
+  })
+
+  it('calls onPress', () => {
+    const handleCloseButtonPress = jest.fn()
+    const { getByType } = render(
+      <ProductView onCloseButtonPress={handleCloseButtonPress} />,
+    )
+    fireEvent.press(getByType(CloseButton))
+    expect(handleCloseButtonPress).toHaveBeenCalled()
   })
 
   //   TODO: return when onFeedbackPress used
