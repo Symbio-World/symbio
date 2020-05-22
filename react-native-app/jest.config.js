@@ -8,7 +8,9 @@ module.exports = {
       babelConfig: true,
     },
   },
-
+  moduleNameMapper: {
+    "\\.svg": "<rootDir>/__mocks__/svgMock.js"
+  },
   setupFilesAfterEnv: ['<rootDir>/setupTests.js', './node_modules/react-native-gesture-handler/jestSetup'],
   transformIgnorePatterns: [
     'node_modules/(?!(react-native' +

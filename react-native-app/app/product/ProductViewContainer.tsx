@@ -13,10 +13,12 @@ import { observeProductData } from './observeProductData'
 type Props = {
   barcode: string
   onFeedbackPress?: (title: string) => void
+  onCloseButtonPress?: () => void
 }
 export const ProductViewContainer: React.FC<Props> = ({
   barcode,
   onFeedbackPress = () => {},
+  onCloseButtonPress,
 }) => {
   const [productData, setProductData] = React.useState<ProductData>()
   const [error, setError] = React.useState<unknown>()
@@ -37,5 +39,11 @@ export const ProductViewContainer: React.FC<Props> = ({
     return <ProductNotFound barcode={barcode} />
   if (error) return <ErrorView error={error} />
   if (!productData) return <Loading />
-  return <ProductView {...productData} onFeedbackPress={onFeedbackPress} />
+  return (
+    <ProductView
+      {...productData}
+      onCloseButtonPress={onCloseButtonPress}
+      onFeedbackPress={onFeedbackPress}
+    />
+  )
 }

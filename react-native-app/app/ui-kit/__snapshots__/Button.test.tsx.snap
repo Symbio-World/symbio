@@ -14,13 +14,14 @@ exports[`Button renders correctly 1`] = `
   onStartShouldSetResponder={[Function]}
   style={
     Object {
-      "backgroundColor": "#48bb78",
+      "alignItems": "center",
+      "backgroundColor": "#B35340",
       "borderRadius": 4,
       "display": "flex",
+      "flexDirection": "row",
       "justifyContent": "center",
       "opacity": 1,
       "padding": 16,
-      "textAlignVertical": "center",
     }
   }
 >
@@ -36,6 +37,213 @@ exports[`Button renders correctly 1`] = `
         Object {
           "color": "#fff",
         },
+        Array [
+          Object {
+            "color": "#fff",
+          },
+        ],
+      ]
+    }
+  >
+    
+  </Text>
+</View>
+`;
+
+exports[`Button renders fill variant 1`] = `
+<View
+  accessible={true}
+  focusable={true}
+  isTVSelectable={true}
+  onClick={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    Object {
+      "alignItems": "center",
+      "backgroundColor": "#B35340",
+      "borderRadius": 4,
+      "display": "flex",
+      "flexDirection": "row",
+      "justifyContent": "center",
+      "opacity": 1,
+      "padding": 16,
+    }
+  }
+>
+  <Text
+    style={
+      Array [
+        Object {
+          "textAlign": "center",
+        },
+        Object {
+          "fontSize": 24,
+        },
+        Object {
+          "color": "#fff",
+        },
+        Array [
+          Object {
+            "color": "#fff",
+          },
+        ],
+      ]
+    }
+  >
+    
+  </Text>
+</View>
+`;
+
+exports[`Button renders outline variant 1`] = `
+<View
+  accessible={true}
+  focusable={true}
+  isTVSelectable={true}
+  onClick={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    Object {
+      "alignItems": "center",
+      "backgroundColor": "#fff",
+      "borderColor": "#B35340",
+      "borderRadius": 4,
+      "borderWidth": 2,
+      "display": "flex",
+      "flexDirection": "row",
+      "justifyContent": "center",
+      "opacity": 1,
+      "padding": 16,
+    }
+  }
+>
+  <Text
+    style={
+      Array [
+        Object {
+          "textAlign": "center",
+        },
+        Object {
+          "fontSize": 24,
+        },
+        Object {
+          "color": "#fff",
+        },
+        Array [
+          Object {
+            "color": "#B35340",
+          },
+        ],
+      ]
+    }
+  >
+    
+  </Text>
+</View>
+`;
+
+exports[`Button renders title 1`] = `
+<View
+  accessible={true}
+  focusable={true}
+  isTVSelectable={true}
+  onClick={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    Object {
+      "alignItems": "center",
+      "backgroundColor": "#B35340",
+      "borderRadius": 4,
+      "display": "flex",
+      "flexDirection": "row",
+      "justifyContent": "center",
+      "opacity": 1,
+      "padding": 16,
+    }
+  }
+>
+  <Text
+    style={
+      Array [
+        Object {
+          "textAlign": "center",
+        },
+        Object {
+          "fontSize": 24,
+        },
+        Object {
+          "color": "#fff",
+        },
+        Array [
+          Object {
+            "color": "#fff",
+          },
+        ],
+      ]
+    }
+  >
+    Button Test
+  </Text>
+</View>
+`;
+
+exports[`Button renders transparent variant 1`] = `
+<View
+  accessible={true}
+  focusable={true}
+  isTVSelectable={true}
+  onClick={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    Object {
+      "alignItems": "center",
+      "backgroundColor": "rgba(0,0,0,0)",
+      "borderRadius": 4,
+      "display": "flex",
+      "flexDirection": "row",
+      "justifyContent": "center",
+      "opacity": 1,
+      "padding": 16,
+    }
+  }
+>
+  <Text
+    style={
+      Array [
+        Object {
+          "textAlign": "center",
+        },
+        Object {
+          "fontSize": 24,
+        },
+        Object {
+          "color": "#fff",
+        },
+        Array [
+          Object {
+            "color": "#B35340",
+          },
+        ],
       ]
     }
   >
