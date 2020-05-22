@@ -8,6 +8,7 @@ import { ProductViewContainer } from './ProductViewContainer'
 import { ProductNotFound } from './ProductNotFound'
 import { ProductView } from './ProductView'
 import { ErrorView } from '../ui-kit/ErrorView'
+import { TimeoutView } from '../ui-kit/TimeoutView'
 import { observeProductData } from './observeProductData'
 
 jest.mock('./observeProductData')
@@ -24,11 +25,11 @@ describe('ProductViewContainer', () => {
     expect(toJSON()).toMatchSnapshot()
   })
 
-  it('renders loading screen for some time then shows no product view', () => {
+  it('renders loading screen for some time then renders timeout view', () => {
     const { getByType } = render(<ProductViewContainer barcode={barcode} />)
     expect(getByType(Loading)).toBeDefined()
     fireEvent(getByType(Timeout), 'onTimeout')
-    expect(getByType(ProductNotFound)).toBeDefined()
+    expect(getByType(TimeoutView)).toBeDefined()
   })
 
   it('calls observeProductData', () => {

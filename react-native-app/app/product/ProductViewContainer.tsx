@@ -34,7 +34,6 @@ export const ProductViewContainer: React.FC<Props> = ({
           <ErrorView error={error} />
         )
       }
-      renderTimeout={() => <ProductNotFound barcode={barcode} />}
     />
   )
 }

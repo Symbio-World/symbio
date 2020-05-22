@@ -4,6 +4,7 @@ import { Text } from 'react-native'
 import { render } from 'react-native-testing-library'
 import { ObservableView } from './ObservableView'
 import { ErrorView } from '../ui-kit/ErrorView'
+import { TimeoutView } from '../ui-kit/TimeoutView'
 
 jest.useFakeTimers()
 
@@ -57,9 +58,7 @@ describe('ObservableView', () => {
 
     jest.runAllTimers()
 
-    const errorView = getByType(ErrorView)
-    expect(errorView).toBeDefined()
-    expect(errorView.props.error).toEqual('request has timed out')
+    expect(getByType(TimeoutView)).toBeDefined()
   })
 
   it('renders custom timeout', () => {
