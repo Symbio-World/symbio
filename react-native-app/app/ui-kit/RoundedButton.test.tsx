@@ -9,35 +9,35 @@ describe('RoundedButton', () => {
     const { toJSON } = render(<RoundedButton />)
     expect(toJSON()).toMatchSnapshot()
   })
-  it('render transparent', () => {
+  it('renders transparent variant', () => {
     const { toJSON } = render(
       <RoundedButton variant={ButtonStyle.TRANSPARENT} />,
     )
     expect(toJSON()).toMatchSnapshot()
   })
-  it('render fill', () => {
+  it('renders fill variant', () => {
     const { toJSON } = render(<RoundedButton variant={ButtonStyle.FILL} />)
     expect(toJSON()).toMatchSnapshot()
   })
-  it('render outline', () => {
+  it('renders outline variant', () => {
     const { toJSON } = render(<RoundedButton variant={ButtonStyle.OUTLINE} />)
     expect(toJSON()).toMatchSnapshot()
   })
-  it('render inner title', () => {
+  it('renders inner title', () => {
     const { toJSON } = render(<RoundedButton innerTitle={'Button Test'} />)
     expect(toJSON()).toMatchSnapshot()
   })
-  it('render outer title', () => {
+  it('renders outer title', () => {
     const { toJSON } = render(<RoundedButton outerTitle={'Button Test'} />)
     expect(toJSON()).toMatchSnapshot()
   })
-  it('render outer title and icon', () => {
+  it('renders outer title and icon', () => {
     const { toJSON } = render(
       <RoundedButton outerTitle={'Close'} icon={Icons.CROSS} />,
     )
     expect(toJSON()).toMatchSnapshot()
   })
-  it('simulate button click', () => {
+  it('calls onPress', () => {
     const handlePress = jest.fn()
     const { getByType } = render(<RoundedButton onPress={handlePress} />)
     fireEvent(getByType(RoundedButton), 'onPress')
