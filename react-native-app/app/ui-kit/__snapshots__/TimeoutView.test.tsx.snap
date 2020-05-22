@@ -13,10 +13,21 @@ exports[`TimeoutView renders correctly 1`] = `
       Object {
         "textAlignVertical": "center",
       },
+      Object {
+        "padding": 32,
+      },
     ]
   }
 >
-  <Text>
+  <Text
+    style={
+      Array [
+        Object {
+          "marginBottom": 8,
+        },
+      ]
+    }
+  >
     It took to long to receive information, please check your network connection and retry
   </Text>
   <View

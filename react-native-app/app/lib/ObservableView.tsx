@@ -30,12 +30,12 @@ export const ObservableView: React.FC<Props> = ({
   if (hasTimedOut)
     return renderTimeout({ onRetry: () => setHasTimedOut(false) })
   if (error) return renderError(error)
-  // if (!data) {
+  if (!data) {
     return (
       <Timeout durationInSeconds={timeoutDuration} onTimeout={handleTimeout}>
         <Loading />
       </Timeout>
     )
-  // }
+  }
   return renderSuccess(data)
 }
