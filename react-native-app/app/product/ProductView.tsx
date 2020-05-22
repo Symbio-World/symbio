@@ -2,9 +2,11 @@ import * as React from 'react'
 import { View, Image, Text, ScrollView } from 'react-native'
 import { t } from 'react-native-tailwindcss'
 import { ProductData } from '@symbio/barcode-processor-core'
+import { CloseButtonView } from '../ui-kit/ModalActions/CloseButtonView'
 
 type Props = Omit<ProductData, 'links'> & {
   onFeedbackPress?: (title: string) => void
+  onCloseButtonPress?: () => void
 }
 
 export const ProductView: React.FC<Props> = ({
@@ -14,6 +16,7 @@ export const ProductView: React.FC<Props> = ({
   ingredients = '',
   allergens = [],
   origin = '',
+  onCloseButtonPress,
   // onFeedbackPress = () => {},
 }) => {
   return (
@@ -41,9 +44,9 @@ export const ProductView: React.FC<Props> = ({
             onPress={() => onFeedbackPress("Tell us what's missing")}
           />
         </View> */}
-          <View style={[t.h40]} />
         </View>
       </ScrollView>
+      <CloseButtonView onPress={onCloseButtonPress} />
     </View>
   )
 }

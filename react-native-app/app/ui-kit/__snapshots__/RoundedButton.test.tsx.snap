@@ -31,17 +31,33 @@ exports[`RoundedButton render fill 1`] = `
           "justifyContent": "center",
         },
         Object {
-          "width": 80,
+          "width": 64,
         },
         Object {
-          "height": 80,
+          "height": 64,
         },
         Object {
           "borderRadius": 9999,
         },
+        Object {
+          "padding": 4,
+        },
       ]
     }
-  />
+  >
+    <View
+      style={
+        Array [
+          Object {
+            "width": 20,
+          },
+          Object {
+            "height": 20,
+          },
+        ]
+      }
+    />
+  </View>
   <View />
 </View>
 `;
@@ -77,13 +93,16 @@ exports[`RoundedButton render inner title 1`] = `
           "justifyContent": "center",
         },
         Object {
-          "width": 80,
+          "width": 64,
         },
         Object {
-          "height": 80,
+          "height": 64,
         },
         Object {
           "borderRadius": 9999,
+        },
+        Object {
+          "padding": 4,
         },
       ]
     }
@@ -95,7 +114,7 @@ exports[`RoundedButton render inner title 1`] = `
             "textAlign": "center",
           },
           Object {
-            "fontSize": 24,
+            "fontSize": 20,
           },
           Object {
             "color": "#fff",
@@ -105,6 +124,18 @@ exports[`RoundedButton render inner title 1`] = `
     >
       Button Test
     </Text>
+    <View
+      style={
+        Array [
+          Object {
+            "width": 20,
+          },
+          Object {
+            "height": 20,
+          },
+        ]
+      }
+    />
   </View>
   <View />
 </View>
@@ -141,17 +172,33 @@ exports[`RoundedButton render outer title 1`] = `
           "justifyContent": "center",
         },
         Object {
-          "width": 80,
+          "width": 64,
         },
         Object {
-          "height": 80,
+          "height": 64,
         },
         Object {
           "borderRadius": 9999,
         },
+        Object {
+          "padding": 4,
+        },
       ]
     }
-  />
+  >
+    <View
+      style={
+        Array [
+          Object {
+            "width": 20,
+          },
+          Object {
+            "height": 20,
+          },
+        ]
+      }
+    />
+  </View>
   <View>
     <Text
       style={
@@ -160,7 +207,7 @@ exports[`RoundedButton render outer title 1`] = `
             "textAlign": "center",
           },
           Object {
-            "fontSize": 24,
+            "fontSize": 20,
           },
           Object {
             "color": "#B35340",
@@ -205,18 +252,37 @@ exports[`RoundedButton render outer title and icon 1`] = `
           "justifyContent": "center",
         },
         Object {
-          "width": 80,
+          "width": 64,
         },
         Object {
-          "height": 80,
+          "height": 64,
         },
         Object {
           "borderRadius": 9999,
         },
+        Object {
+          "padding": 4,
+        },
       ]
     }
   >
-    <SvgMock />
+    <View
+      style={
+        Array [
+          Object {
+            "width": 20,
+          },
+          Object {
+            "height": 20,
+          },
+        ]
+      }
+    >
+      <SvgMock
+        height="100%"
+        width="100%"
+      />
+    </View>
   </View>
   <View>
     <Text
@@ -226,7 +292,7 @@ exports[`RoundedButton render outer title and icon 1`] = `
             "textAlign": "center",
           },
           Object {
-            "fontSize": 24,
+            "fontSize": 20,
           },
           Object {
             "color": "#B35340",
@@ -277,17 +343,33 @@ exports[`RoundedButton render outline 1`] = `
           "justifyContent": "center",
         },
         Object {
-          "width": 80,
+          "width": 64,
         },
         Object {
-          "height": 80,
+          "height": 64,
         },
         Object {
           "borderRadius": 9999,
         },
+        Object {
+          "padding": 4,
+        },
       ]
     }
-  />
+  >
+    <View
+      style={
+        Array [
+          Object {
+            "width": 20,
+          },
+          Object {
+            "height": 20,
+          },
+        ]
+      }
+    />
+  </View>
   <View />
 </View>
 `;
@@ -323,17 +405,33 @@ exports[`RoundedButton render transparent 1`] = `
           "justifyContent": "center",
         },
         Object {
-          "width": 80,
+          "width": 64,
         },
         Object {
-          "height": 80,
+          "height": 64,
         },
         Object {
           "borderRadius": 9999,
         },
+        Object {
+          "padding": 4,
+        },
       ]
     }
-  />
+  >
+    <View
+      style={
+        Array [
+          Object {
+            "width": 20,
+          },
+          Object {
+            "height": 20,
+          },
+        ]
+      }
+    />
+  </View>
   <View />
 </View>
 `;
@@ -369,17 +467,33 @@ exports[`RoundedButton renders correctly 1`] = `
           "justifyContent": "center",
         },
         Object {
-          "width": 80,
+          "width": 64,
         },
         Object {
-          "height": 80,
+          "height": 64,
         },
         Object {
           "borderRadius": 9999,
         },
+        Object {
+          "padding": 4,
+        },
       ]
     }
-  />
+  >
+    <View
+      style={
+        Array [
+          Object {
+            "width": 20,
+          },
+          Object {
+            "height": 20,
+          },
+        ]
+      }
+    />
+  </View>
   <View />
 </View>
 `;

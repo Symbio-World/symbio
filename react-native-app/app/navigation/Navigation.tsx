@@ -15,10 +15,6 @@ type SubNavigator<T extends ParamListBase> = {
   [K in keyof T]: { screen?: K; params?: T[K] }
 }[keyof T]
 
-export type SwipableModalRouteProps = {
-  shouldHideCloseButton?: boolean
-}
-
 export type RootStackParamList = {
   Main: {}
   Modals: {}
@@ -30,9 +26,9 @@ export type MainStackParamList = {
 }
 
 export type ModalStackParamList = {
-  ProductScreen: SwipableModalRouteProps & { barcode: string }
-  FeedbackScreen: SwipableModalRouteProps & { title: string }
-  SetupPrinciplesScreen: SwipableModalRouteProps & {}
+  ProductScreen: { barcode: string }
+  FeedbackScreen: { title: string }
+  SetupPrinciplesScreen: {}
   Main: SubNavigator<MainStackParamList>
 }
 

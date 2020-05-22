@@ -7,10 +7,7 @@ import Animated from 'react-native-reanimated'
 import { Interactable } from '../navigation/Interactable'
 import { ModalCard } from './ModalCard'
 
-import { ModalStackParamList, SwipableModalRouteProps } from './Navigation'
-import { RoundedButton } from '../ui-kit/RoundedButton'
-import { ButtonStyle } from '../ui-kit/Button'
-import { Icons } from '../ui-kit/Icon'
+import { ModalStackParamList } from './Navigation'
 
 const { Value, interpolate, concat, Extrapolate } = Animated
 const { width, height } = Dimensions.get('window')
@@ -64,7 +61,6 @@ export const SwipableModal: React.FC<SwipableModalProps> = ({
 }
 type NavigationProps = {
   navigation: StackNavigationProp<ModalStackParamList>
-  route: { params: SwipableModalRouteProps }
 }
 
 type CreateSwipableModal = <Props extends NavigationProps>(
@@ -73,7 +69,6 @@ type CreateSwipableModal = <Props extends NavigationProps>(
 
 export const createSwipableModal: CreateSwipableModal = (Component) => {
   return (props) => {
-    const { shouldHideCloseButton } = props.route.params
     const handleSnap = ({
       nativeEvent: { x },
     }: {
@@ -89,18 +84,6 @@ export const createSwipableModal: CreateSwipableModal = (Component) => {
       <SwipableModal onSnap={handleSnap}>
         <View style={[t.hFull]}>
           <Component {...props} />
-          {shouldHideCloseButton ? null : (
-            <View
-              style={[t.absolute, t.bottom0, t.wFull, t.itemsCenter, t.pB5]}
-            >
-              <RoundedButton
-                onPress={props.navigation.goBack}
-                outerTitle="Close"
-                variant={ButtonStyle.OUTLINE}
-                icon={Icons.CROSS}
-              />
-            </View>
-          )}
         </View>
       </SwipableModal>
     )

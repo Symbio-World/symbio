@@ -12,35 +12,18 @@ describe('createSwipableModal', () => {
   const navigation: any = {
     goBack: jest.fn(),
   }
-  const route: any = {
-    params: { shouldHideCloseButton: false },
-  }
   const SwipableModalComp = createSwipableModal(() => (
     <View>
       <Text>Test</Text>
     </View>
   ))
   it('renders correctly', () => {
-    const { toJSON } = render(
-      <SwipableModalComp route={route} navigation={navigation} />,
-    )
-    expect(toJSON()).toMatchSnapshot()
-  })
-
-  it('renders correctly without close button', () => {
-    const { toJSON } = render(
-      <SwipableModalComp
-        route={{ params: { shouldHideCloseButton: false } }}
-        navigation={navigation}
-      />,
-    )
+    const { toJSON } = render(<SwipableModalComp navigation={navigation} />)
     expect(toJSON()).toMatchSnapshot()
   })
 
   it('do nothing on default position', () => {
-    const { getByType } = render(
-      <SwipableModalComp route={route} navigation={navigation} />,
-    )
+    const { getByType } = render(<SwipableModalComp navigation={navigation} />)
     const eventData = {
       nativeEvent: {
         x: 0,
@@ -51,9 +34,7 @@ describe('createSwipableModal', () => {
   })
 
   it('call go back on snap', () => {
-    const { getByType } = render(
-      <SwipableModalComp route={route} navigation={navigation} />,
-    )
+    const { getByType } = render(<SwipableModalComp navigation={navigation} />)
     const eventData = {
       nativeEvent: {
         x: 2,
