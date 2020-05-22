@@ -1,14 +1,11 @@
 import * as React from 'react'
-import {
-  ProductData,
-  NO_SEARCH_RESULTS_FOUND,
-} from '@symbio/barcode-processor-core'
+import { NO_SEARCH_RESULTS_FOUND } from '@symbio/barcode-processor-core'
 import { isFailureOfType } from '@symbio/ts-lib'
 import { ErrorView } from '../ui-kit/ErrorView'
-import { Loading } from '../ui-kit/Loading'
 import { ProductView } from './ProductView'
 import { ProductNotFound } from './ProductNotFound'
 import { observeProductData } from './observeProductData'
+import { ObservableView } from '../lib/ObservableView'
 
 type Props = {
   barcode: string
@@ -20,30 +17,23 @@ export const ProductViewContainer: React.FC<Props> = ({
   onFeedbackPress = () => {},
   onCloseButtonPress,
 }) => {
-  const [productData, setProductData] = React.useState<ProductData>()
-  const [error, setError] = React.useState<unknown>()
-
-  // TODO move out into own hook https://youtu.be/Urv82SGIu_0?t=730
-  React.useEffect(() => {
-    const subscription = observeProductData(barcode).subscribe(
-      setProductData,
-      (e) => {
-        console.log('error occured', e)
-        setError(e)
-      },
-    )
-    return () => subscription.unsubscribe()
-  }, [barcode])
-
-  if (isFailureOfType(error, NO_SEARCH_RESULTS_FOUND))
-    return <ProductNotFound barcode={barcode} />
-  if (error) return <ErrorView error={error} />
-  if (!productData) return <Loading />
   return (
-    <ProductView
-      {...productData}
-      onCloseButtonPress={onCloseButtonPress}
-      onFeedbackPress={onFeedbackPress}
+    <ObservableView
+      observable={observeProductData(barcode)}
+      renderSuccess={(productData) => (
+        <ProductView
+          {...productData}
+          onCloseButtonPress={onCloseButtonPress}
+          onFeedbackPress={onFeedbackPress}
+        />
+      )}
+      renderError={(error) =>
+        isFailureOfType(error, NO_SEARCH_RESULTS_FOUND) ? (
+          <ProductNotFound barcode={barcode} />
+        ) : (
+          <ErrorView error={error} />
+        )
+      }
     />
   )
 }

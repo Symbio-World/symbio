@@ -2,11 +2,13 @@ import { of, throwError } from 'rxjs'
 import * as React from 'react'
 import { render, fireEvent } from 'react-native-testing-library'
 import { Loading } from '../ui-kit/Loading'
+import { Timeout } from '../lib/Timeout'
 import { noSearchResultsFound } from '@symbio/barcode-processor-core'
 import { ProductViewContainer } from './ProductViewContainer'
 import { ProductNotFound } from './ProductNotFound'
 import { ProductView } from './ProductView'
 import { ErrorView } from '../ui-kit/ErrorView'
+import { TimeoutView } from '../ui-kit/TimeoutView'
 import { observeProductData } from './observeProductData'
 
 jest.mock('./observeProductData')
@@ -23,9 +25,11 @@ describe('ProductViewContainer', () => {
     expect(toJSON()).toMatchSnapshot()
   })
 
-  it('renders loading screen at the start', () => {
+  it('renders loading screen for some time then renders timeout view', () => {
     const { getByType } = render(<ProductViewContainer barcode={barcode} />)
     expect(getByType(Loading)).toBeDefined()
+    fireEvent(getByType(Timeout), 'onTimeout')
+    expect(getByType(TimeoutView)).toBeDefined()
   })
 
   it('calls observeProductData', () => {
