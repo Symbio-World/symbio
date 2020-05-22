@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Button render fill 1`] = `
+exports[`Button renders correctly 1`] = `
 <View
   accessible={true}
   focusable={true}
@@ -50,7 +50,57 @@ exports[`Button render fill 1`] = `
 </View>
 `;
 
-exports[`Button render outline 1`] = `
+exports[`Button renders fill variant 1`] = `
+<View
+  accessible={true}
+  focusable={true}
+  isTVSelectable={true}
+  onClick={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    Object {
+      "alignItems": "center",
+      "backgroundColor": "#B35340",
+      "borderRadius": 4,
+      "display": "flex",
+      "flexDirection": "row",
+      "justifyContent": "center",
+      "opacity": 1,
+      "padding": 16,
+    }
+  }
+>
+  <Text
+    style={
+      Array [
+        Object {
+          "textAlign": "center",
+        },
+        Object {
+          "fontSize": 24,
+        },
+        Object {
+          "color": "#fff",
+        },
+        Array [
+          Object {
+            "color": "#fff",
+          },
+        ],
+      ]
+    }
+  >
+    
+  </Text>
+</View>
+`;
+
+exports[`Button renders outline variant 1`] = `
 <View
   accessible={true}
   focusable={true}
@@ -102,7 +152,7 @@ exports[`Button render outline 1`] = `
 </View>
 `;
 
-exports[`Button render title 1`] = `
+exports[`Button renders title 1`] = `
 <View
   accessible={true}
   focusable={true}
@@ -152,7 +202,7 @@ exports[`Button render title 1`] = `
 </View>
 `;
 
-exports[`Button render transparent 1`] = `
+exports[`Button renders transparent variant 1`] = `
 <View
   accessible={true}
   focusable={true}
@@ -192,56 +242,6 @@ exports[`Button render transparent 1`] = `
         Array [
           Object {
             "color": "#B35340",
-          },
-        ],
-      ]
-    }
-  >
-    
-  </Text>
-</View>
-`;
-
-exports[`Button renders correctly 1`] = `
-<View
-  accessible={true}
-  focusable={true}
-  isTVSelectable={true}
-  onClick={[Function]}
-  onResponderGrant={[Function]}
-  onResponderMove={[Function]}
-  onResponderRelease={[Function]}
-  onResponderTerminate={[Function]}
-  onResponderTerminationRequest={[Function]}
-  onStartShouldSetResponder={[Function]}
-  style={
-    Object {
-      "alignItems": "center",
-      "backgroundColor": "#B35340",
-      "borderRadius": 4,
-      "display": "flex",
-      "flexDirection": "row",
-      "justifyContent": "center",
-      "opacity": 1,
-      "padding": 16,
-    }
-  }
->
-  <Text
-    style={
-      Array [
-        Object {
-          "textAlign": "center",
-        },
-        Object {
-          "fontSize": 24,
-        },
-        Object {
-          "color": "#fff",
-        },
-        Array [
-          Object {
-            "color": "#fff",
           },
         ],
       ]
