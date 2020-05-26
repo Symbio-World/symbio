@@ -3,7 +3,10 @@ import * as React from 'react'
 import { render, fireEvent } from 'react-native-testing-library'
 import { Loading } from '../ui-kit/Loading'
 import { Timeout } from '../lib/Timeout'
-import { noSearchResultsFound } from '@symbio/barcode-processor-core'
+import {
+  noSearchResultsFound,
+  noUsefulInfoFound,
+} from '@symbio/barcode-processor-core'
 import { ProductViewContainer } from './ProductViewContainer'
 import { ProductNotFound } from './ProductNotFound'
 import { ProductView } from './ProductView'
@@ -66,9 +69,17 @@ describe('ProductViewContainer', () => {
     expect(getByType(ErrorView)).toBeDefined()
   })
 
-  it('renders product not found', () => {
+  it('renders product not found on noSearchResultsFound', () => {
     ;(observeProductData as jest.Mock).mockImplementation(() =>
       throwError(noSearchResultsFound(barcode)),
+    )
+    const { getByType } = render(<ProductViewContainer barcode={barcode} />)
+    expect(getByType(ProductNotFound)).toBeDefined()
+  })
+
+  it('renders product not found on noUsefulInfoFound', () => {
+    ;(observeProductData as jest.Mock).mockImplementation(() =>
+      throwError(noUsefulInfoFound(barcode, { links: [] })),
     )
     const { getByType } = render(<ProductViewContainer barcode={barcode} />)
     expect(getByType(ProductNotFound)).toBeDefined()
