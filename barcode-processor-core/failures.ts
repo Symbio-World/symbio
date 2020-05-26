@@ -12,5 +12,5 @@ export const NO_USEFUL_INFO_FOUND = 'NO_USEFUL_INFO_FOUND'
 export type NO_USEFUL_INFO_FOUND = typeof NO_USEFUL_INFO_FOUND
 export const noUsefulInfoFound = (barcode: string, productData: ProductData) =>
   createFailure(NO_USEFUL_INFO_FOUND)(
-    `No useful information found for barcode ${barcode}. The information found is as follows: ${productData}`,
+    `No useful information found for barcode ${barcode}. The information found is as follows: ${JSON.stringify(productData)}`,
   )
