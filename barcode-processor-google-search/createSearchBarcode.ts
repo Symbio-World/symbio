@@ -23,7 +23,7 @@ export const createSearchBarcode: CreateSearchBarcode = ({
   onSearchResponse?.(searchResponse)
 
   if (!searchResponse.items) {
-    throw Core.noSearchResultsFound(`Found no items for barcode ${barcode}`)
+    throw Core.noSearchResultsFound(barcode)
   }
 
   const product = searchResponse.items.reduce(

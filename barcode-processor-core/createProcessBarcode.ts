@@ -1,6 +1,7 @@
 import * as R from 'ramda'
 import { allSettled, PromiseResolution } from '@symbio/ts-lib'
 import * as Model from './ProductData'
+import { noUsefulInfoFound } from './failures'
 
 export type SearchBarcode = (
   barcode: string,
@@ -57,9 +58,15 @@ export const createProcessBarcode: CreateProcessBarcode = ({
     ...productSearchData,
     ...combinedProductPageData,
   }
+
   console.log(
     `product data before translation: ${JSON.stringify(productData, null, 4)}`,
   )
+
+  if (R.isEmpty(R.omit(['links'], productData))) {
+    throw noUsefulInfoFound(barcode, productData)
+  }
+
   const translatedProductData = await translateProductData(productData)
   console.log(
     `translated product data: ${JSON.stringify(

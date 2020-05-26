@@ -68,7 +68,7 @@ describe('ProductViewContainer', () => {
 
   it('renders product not found', () => {
     ;(observeProductData as jest.Mock).mockImplementation(() =>
-      throwError(noSearchResultsFound()),
+      throwError(noSearchResultsFound(barcode)),
     )
     const { getByType } = render(<ProductViewContainer barcode={barcode} />)
     expect(getByType(ProductNotFound)).toBeDefined()

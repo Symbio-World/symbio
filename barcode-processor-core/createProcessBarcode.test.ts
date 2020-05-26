@@ -1,5 +1,6 @@
 import * as Program from './createProcessBarcode'
 import * as fixture from './ProductData.fixture'
+import { noUsefulInfoFound } from './failures'
 
 describe('createProcessBarcode', () => {
   let searchBarcode: Program.SearchBarcode
@@ -15,12 +16,7 @@ describe('createProcessBarcode', () => {
     Promise.resolve({ link, html: `html from ${link}` })
 
   beforeEach(() => {
-    searchBarcode = jest.fn(() =>
-      Promise.resolve({
-        name: fixture.productSearchData.name,
-        links: fixture.productSearchData.links,
-      }),
-    )
+    searchBarcode = jest.fn(() => Promise.resolve(fixture.productSearchData))
     fetchProductPage = jest.fn(defaultFetchProductPage)
     scrapeProductPage = jest.fn(scrapeFirstPage)
     translateProductData = jest.fn(() =>
@@ -84,5 +80,21 @@ describe('createProcessBarcode', () => {
       fixture.barcode,
     )
     expect(productData).toEqual(fixture.translatedProductData)
+  })
+
+  it('throws noUsefulInfoFound error if productData only contains links', async () => {
+    const onlyLinksProductData = {
+      links: ['http://link1.com', 'http://link2.com'],
+    }
+    ;(searchBarcode as jest.Mock).mockImplementationOnce(() =>
+      Promise.resolve(onlyLinksProductData),
+    )
+    ;(scrapeProductPage as jest.Mock).mockImplementation(() => ({}))
+    ;(translateProductData as jest.Mock).mockImplementationOnce(() =>
+      Promise.reject('should fail before this step'),
+    )
+    await expect(Program.createProcessBarcode(deps)(
+      fixture.barcode,
+    )).rejects.toEqual(noUsefulInfoFound(fixture.barcode, onlyLinksProductData))
   })
 })
