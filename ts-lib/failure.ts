@@ -1,4 +1,5 @@
 import * as R from 'ramda'
+import { Json } from './Json'
 
 export const normalizeErrorMessage = (e: unknown): string => {
   if (R.is(String, e)) {
@@ -15,12 +16,15 @@ export const normalizeErrorMessage = (e: unknown): string => {
 export type Failure = {
   name: string
   message?: string
+  metadata?: Json
 }
 export const createFailure = <Name extends string>(name: Name) => (
   e?: unknown,
+  metadata?: Json
 ): Failure => ({
   name,
   message: e && normalizeErrorMessage(e),
+  metadata
 })
 
 export type IsFailureOfType = (e: unknown, name: string) => boolean
