@@ -46,7 +46,7 @@ export const ProductView: React.FC<Props> = ({
         </View> */}
         </View>
       </ScrollView>
-      <CloseButtonView onPress={onCloseButtonPress} />
+      <CloseButtonView onClose={onCloseButtonPress} />
     </View>
   )
 }

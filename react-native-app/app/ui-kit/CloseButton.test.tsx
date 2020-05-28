@@ -4,8 +4,8 @@ import { CloseButton } from './CloseButton'
 
 describe('CloseButton', () => {
   it('renders correctly', () => {
-    const handlePress = jest.fn()
-    const { toJSON } = render(<CloseButton onPress={handlePress} />)
+    const handleClose = jest.fn()
+    const { toJSON } = render(<CloseButton onClose={handleClose} />)
     expect(toJSON()).toMatchSnapshot()
   })
 })

@@ -6,9 +6,9 @@ import { CloseButtonView } from './CloseButtonView'
 
 type Props = {
   error?: unknown
-  onPress?: () => void
+  onClose?: () => void
 }
-export const ErrorView: React.FC<Props> = ({ onPress = () => {} }) => {
+export const ErrorView: React.FC<Props> = ({ onClose = () => {} }) => {
   return (
     <View style={[t.flex1]}>
       <Icon icon={Icons.FATAL_ERROR} />
@@ -18,7 +18,7 @@ export const ErrorView: React.FC<Props> = ({ onPress = () => {} }) => {
       <Text style={[t.textCenter, t.textBlack, t.text3xl, t.mX12]}>
         Something went wrong... You can tell us what happened or try again later
       </Text>
-      <CloseButtonView onPress={onPress} />
+      <CloseButtonView onClose={onClose} />
     </View>
   )
 }
