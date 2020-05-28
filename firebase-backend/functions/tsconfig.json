@@ -2,14 +2,14 @@
   "extends": "@symbio/ts-scripts/tsconfig.json",
   "compilerOptions": {
     "outDir": "./build",
-    "sourceMap": true,
     "target": "es2017"
   },
   "include": [
     "*.ts",
+    "migrations/*.ts",
     "./env.json",
     "./env.dev.json",
-    "./env.prod.json", "functions/index.ts", "functions/isBarcodeProcessed.ts", "functions/storeEvent.ts", "functions/config.ts", "functions/admin.ts"
+    "./env.prod.json"
   ],
   "compileOnSave": true
 }

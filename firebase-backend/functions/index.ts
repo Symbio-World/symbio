@@ -13,7 +13,7 @@ import {
 import { storeEvent } from './storeEvent'
 import { isBarcodeProcessed } from './isBarcodeProcessed'
 
-const processBarcode = Core.createProcessBarcode({
+export const processBarcode = Core.createProcessBarcode({
   searchBarcode: createSearchBarcode({
     config: config.googleSearch,
   }),
@@ -70,6 +70,6 @@ export const testProcessScannedBarcode = functions
       return barcodeProcessed(barcode, productData)
     } catch (error) {
       console.log(`processing barcode failed with error ${error}`)
-      return barcodeProcessed(barcode, error)
+      return barcodeProcessed(barcode, undefined, error)
     }
   })
