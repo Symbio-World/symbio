@@ -19,14 +19,14 @@ const processBarcodeWithError = async (
 }
 
 export const migrate = async () => {
-  let snapshot = await admin
+  const snapshot = await admin
     .firestore()
     .collection(EventType.BARCODE_PROCESSED)
     .get()
 
   let count = 0
 
-  for (let doc of snapshot.docs) {
+  for (const doc of snapshot.docs) {
     const { productData, error, barcode } = doc.data() as BarcodeProcessed
     if (
       productData &&
