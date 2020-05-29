@@ -18,6 +18,16 @@ const processBarcodeWithError = async (
   }
 }
 
+const shouldEventBeReprocessed = ({ productData, error }: BarcodeProcessed) =>
+  productData &&
+  !productData.name &&
+  !productData.description &&
+  !productData.image &&
+  !productData.ingredients &&
+  (!productData.allergens || productData.allergens.length === 0) &&
+  !productData.origin &&
+  !error
+
 export const migrate = async () => {
   const snapshot = await admin
     .firestore()
@@ -25,22 +35,12 @@ export const migrate = async () => {
     .get()
 
   let count = 0
-
   for (const doc of snapshot.docs) {
-    const { productData, error, barcode } = doc.data() as BarcodeProcessed
-    if (
-      productData &&
-      !productData.name &&
-      !productData.description &&
-      !productData.image &&
-      !productData.ingredients &&
-      (!productData.allergens || productData.allergens.length === 0) &&
-      !productData.origin &&
-      !error
-    ) {
+    const event = doc.data() as BarcodeProcessed
+    if (shouldEventBeReprocessed(event)) {
       count++
       const updatedEvent = removeUndefined(
-        await processBarcodeWithError(barcode),
+        await processBarcodeWithError(event.barcode),
       )
       doc.ref.set(updatedEvent)
     }
