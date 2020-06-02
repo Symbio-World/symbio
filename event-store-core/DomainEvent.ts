@@ -56,11 +56,11 @@ export type BarcodeProcessed = {
   productData?: ProductData
   error?: string | Failure
 }
-export const barcodeProcessed = (
-  barcode: string,
-  productData?: ProductData,
-  error?: string | Failure,
-): BarcodeProcessed => ({
+export const barcodeProcessed = ({
+  barcode,
+  productData,
+  error,
+}: Omit<BarcodeProcessed, 'type'>): BarcodeProcessed => ({
   type: EventType.BARCODE_PROCESSED,
   barcode,
   productData,

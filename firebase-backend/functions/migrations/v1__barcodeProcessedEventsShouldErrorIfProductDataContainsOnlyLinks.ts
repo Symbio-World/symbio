@@ -12,9 +12,9 @@ const processBarcodeWithError = async (
 ): Promise<BarcodeProcessed> => {
   try {
     const productData = await processBarcode(barcode)
-    return barcodeProcessed(barcode, productData)
+    return barcodeProcessed({ barcode, productData })
   } catch (error) {
-    return barcodeProcessed(barcode, undefined, error)
+    return barcodeProcessed({ barcode, error })
   }
 }
 
