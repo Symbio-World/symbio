@@ -48,11 +48,16 @@ export const createProcessBarcode: CreateProcessBarcode = ({
   const productPages = responses
     .filter((result) => result.status === 'fulfilled')
     .map((result) => (result as PromiseResolution<Model.ProductPage>).value)
-  console.log(`starting to scrape data from product pages...`)
+  console.log(
+    `starting to scrape data from product pages: ${JSON.stringify(
+      productPages,
+    )}`,
+  )
   const dataFromProductPages = productPages.map(scrapeProductPage)
   console.log(`data scraped: ${JSON.stringify(dataFromProductPages, null, 4)}`)
-  const combinedProductPageData = dataFromProductPages.reduce((acc, pageData) =>
-    R.mergeDeepLeft(acc, pageData),
+  const combinedProductPageData = dataFromProductPages.reduce(
+    (acc, pageData) => R.mergeDeepLeft(acc, pageData),
+    {},
   )
   const productData = {
     ...productSearchData,

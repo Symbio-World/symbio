@@ -93,8 +93,24 @@ describe('createProcessBarcode', () => {
     ;(translateProductData as jest.Mock).mockImplementationOnce(() =>
       Promise.reject('should fail before this step'),
     )
-    await expect(Program.createProcessBarcode(deps)(
-      fixture.barcode,
-    )).rejects.toEqual(noUsefulInfoFound(fixture.barcode, onlyLinksProductData))
+    await expect(
+      Program.createProcessBarcode(deps)(fixture.barcode),
+    ).rejects.toEqual(noUsefulInfoFound(fixture.barcode, onlyLinksProductData))
+  })
+
+  it('handles no product pages', async () => {
+    ;(fetchProductPage as jest.Mock).mockImplementation(() =>
+      Promise.reject(),
+    )
+    ;(scrapeProductPage as jest.Mock).mockImplementation(() => {})
+    const translatedProductData = {
+      name: 'Margarin',
+      links: fixture.productData.links,
+    }
+    ;(translateProductData as jest.Mock).mockImplementationOnce(
+      () => translatedProductData,
+    )
+    const productData = await Program.createProcessBarcode(deps)(fixture.barcode)
+    expect(productData).toEqual(translatedProductData)
   })
 })
