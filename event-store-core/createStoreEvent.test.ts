@@ -28,7 +28,7 @@ describe('createStoreEvent', () => {
       name: undefined,
     }
     const barcode = 'barcode'
-    const event = barcodeProcessed(barcode, productData, undefined)
+    const event = barcodeProcessed({ barcode, productData })
     await createStoreEvent({ storeEvent, now })(event)
     expect(storeEvent).toHaveBeenCalledWith({
       barcode,
