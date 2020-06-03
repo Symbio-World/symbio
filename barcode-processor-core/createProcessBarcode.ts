@@ -49,9 +49,7 @@ export const createProcessBarcode: CreateProcessBarcode = ({
     .filter((result) => result.status === 'fulfilled')
     .map((result) => (result as PromiseResolution<Model.ProductPage>).value)
   console.log(
-    `starting to scrape data from product pages: ${JSON.stringify(
-      productPages,
-    )}`,
+    `starting to scrape data from ${productPages.length} product pages`,
   )
   const dataFromProductPages = productPages.map(scrapeProductPage)
   console.log(`data scraped: ${JSON.stringify(dataFromProductPages, null, 4)}`)
