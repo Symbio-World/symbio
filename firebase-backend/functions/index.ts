@@ -52,7 +52,7 @@ export const processScannedBarcode = functions
       await storeEvent(barcodeProcessed({ barcode, productData }))
       console.log('results stored successfully')
     } catch (error) {
-      console.log(`processing barcode failed with error ${error}`)
+      console.log(`processing barcode failed with error ${error.toString()}`)
       await storeEvent(barcodeProcessed({ barcode, error }))
     }
   })
@@ -69,7 +69,7 @@ export const testProcessScannedBarcode = functions
       const productData = await processBarcode(barcode)
       return barcodeProcessed({ barcode, productData })
     } catch (error) {
-      console.log(`processing barcode failed with error ${error}`)
+      console.log(`processing barcode failed with error ${error.toString()}`)
       return barcodeProcessed({ barcode, error })
     }
   })
