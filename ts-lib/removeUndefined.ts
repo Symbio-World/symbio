@@ -1,8 +1,8 @@
 import * as R from 'ramda'
 import { isPrimitive } from './isPrimitive'
-import { DirtyJson } from './Json'
+import { DirtyJsonMap } from './JsonMap'
 
-export const removeUndefined = (obj: DirtyJson): any =>
+export const removeUndefined = (obj: DirtyJsonMap): any =>
   Object.entries(obj).reduce((acc, [key, val]) => {
     if (val === undefined) {
       return acc
@@ -10,7 +10,7 @@ export const removeUndefined = (obj: DirtyJson): any =>
     if (!isPrimitive(val) && !R.is(Array, val)) {
       return {
         ...acc,
-        [key]: removeUndefined(val as DirtyJson),
+        [key]: removeUndefined(val as DirtyJsonMap),
       }
     }
     return {
