@@ -78,52 +78,5 @@ exports[`ProductNotFound renders correctly 1`] = `
       </Text>
     </View>
   </View>
-  <View
-    accessible={true}
-    focusable={true}
-    isTVSelectable={true}
-    onClick={[Function]}
-    onResponderGrant={[Function]}
-    onResponderMove={[Function]}
-    onResponderRelease={[Function]}
-    onResponderTerminate={[Function]}
-    onResponderTerminationRequest={[Function]}
-    onStartShouldSetResponder={[Function]}
-    style={
-      Object {
-        "alignItems": "center",
-        "backgroundColor": "#B35340",
-        "borderRadius": 4,
-        "display": "flex",
-        "flexDirection": "row",
-        "justifyContent": "center",
-        "opacity": 1,
-        "padding": 16,
-      }
-    }
-  >
-    <Text
-      style={
-        Array [
-          Object {
-            "textAlign": "center",
-          },
-          Object {
-            "fontSize": 24,
-          },
-          Object {
-            "color": "#fff",
-          },
-          Array [
-            Object {
-              "color": "#fff",
-            },
-          ],
-        ]
-      }
-    >
-      Add Manually
-    </Text>
-  </View>
 </View>
 `;

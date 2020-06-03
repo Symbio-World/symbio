@@ -15,5 +15,6 @@ export type Config = {
 
 export const config: Config =
   process.env.NODE_ENV === 'production'
-    ? functions.config().env
+    ? functions.config().env || require('./env.prod.json')
     : require('./env.dev.json')
+

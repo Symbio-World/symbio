@@ -1,7 +1,5 @@
-service-account.json
 service-account.dev.json
 service-account.prod.json
-env.json
 env.dev.json
 env.prod.json
 build/

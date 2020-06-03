@@ -15,12 +15,15 @@ export const normalizeErrorMessage = (e: unknown): string => {
 export type Failure = {
   name: string
   message?: string
+  metadata?: any
 }
 export const createFailure = <Name extends string>(name: Name) => (
   e?: unknown,
+  metadata?: any
 ): Failure => ({
   name,
   message: e && normalizeErrorMessage(e),
+  metadata
 })
 
 export type IsFailureOfType = (e: unknown, name: string) => boolean

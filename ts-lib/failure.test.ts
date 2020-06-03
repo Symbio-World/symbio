@@ -11,6 +11,16 @@ describe('failure', () => {
     })
   })
 
+  it('constructs failure with message and metadata', () => {
+    const message = 'message'
+    const metadata = { hello: 'world' }
+    expect(testFailure(message, metadata)).toEqual({
+      name: TEST_FAILURE,
+      message,
+      metadata
+    })
+  })
+
   it('handles string error', () => {
     const error = 'error'
     expect(testFailure(error)).toEqual({

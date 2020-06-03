@@ -1,4 +1,5 @@
 import axios from 'axios'
+import * as Core from '@symbio/barcode-processor-core'
 import { createSearchBarcode } from './createSearchBarcode'
 import { GoogleSearchConfig } from './GoogleSearchConfig'
 import * as noProductFixture from './SearchResponse.noProduct.fixture'
@@ -63,9 +64,8 @@ describe('createSearchResponse', () => {
     ;(axios.get as jest.Mock).mockImplementation(() =>
       Promise.resolve({ data: noItemsFixture.searchResponse }),
     )
-    await expect(createSearchBarcode({ config })(barcode)).rejects.toEqual({
-      message: `Found no items for barcode ${barcode}`,
-      name: 'NO_SEARCH_RESULTS_FOUND',
-    })
+    await expect(createSearchBarcode({ config })(barcode)).rejects.toEqual(
+      Core.noSearchResultsFound(barcode),
+    )
   })
 })

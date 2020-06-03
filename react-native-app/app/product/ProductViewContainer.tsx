@@ -1,11 +1,18 @@
 import * as React from 'react'
-import { NO_SEARCH_RESULTS_FOUND } from '@symbio/barcode-processor-core'
+import {
+  NO_SEARCH_RESULTS_FOUND,
+  NO_USEFUL_INFO_FOUND,
+} from '@symbio/barcode-processor-core'
 import { isFailureOfType } from '@symbio/ts-lib'
 import { ErrorView } from '../ui-kit/ErrorView'
 import { ProductView } from './ProductView'
 import { ProductNotFound } from './ProductNotFound'
 import { observeProductData } from './observeProductData'
 import { ObservableView } from '../lib/ObservableView'
+
+const isProductNotFound = (error: unknown) =>
+  isFailureOfType(error, NO_SEARCH_RESULTS_FOUND) ||
+  isFailureOfType(error, NO_USEFUL_INFO_FOUND)
 
 type Props = {
   barcode: string
@@ -28,7 +35,7 @@ export const ProductViewContainer: React.FC<Props> = ({
         />
       )}
       renderError={(error) =>
-        isFailureOfType(error, NO_SEARCH_RESULTS_FOUND) ? (
+        isProductNotFound(error) ? (
           <ProductNotFound barcode={barcode} />
         ) : (
           <ErrorView error={error} onClose={onCloseButtonPress} />

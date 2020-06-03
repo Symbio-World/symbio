@@ -13,7 +13,7 @@ import {
 import { storeEvent } from './storeEvent'
 import { isBarcodeProcessed } from './isBarcodeProcessed'
 
-const processBarcode = Core.createProcessBarcode({
+export const processBarcode = Core.createProcessBarcode({
   searchBarcode: createSearchBarcode({
     config: config.googleSearch,
   }),
@@ -49,11 +49,11 @@ export const processScannedBarcode = functions
         )}`,
       )
       console.log('storing results...')
-      await storeEvent(barcodeProcessed(barcode, productData))
+      await storeEvent(barcodeProcessed({ barcode, productData }))
       console.log('results stored successfully')
     } catch (error) {
-      console.log(`processing barcode failed with error ${error}`)
-      await storeEvent(barcodeProcessed(barcode, undefined, error))
+      console.log(`processing barcode failed with error ${error.toString()}`)
+      await storeEvent(barcodeProcessed({ barcode, error }))
     }
   })
 
@@ -67,9 +67,9 @@ export const testProcessScannedBarcode = functions
     }
     try {
       const productData = await processBarcode(barcode)
-      return barcodeProcessed(barcode, productData)
+      return barcodeProcessed({ barcode, productData })
     } catch (error) {
-      console.log(`processing barcode failed with error ${error}`)
-      return barcodeProcessed(barcode, error)
+      console.log(`processing barcode failed with error ${error.toString()}`)
+      return barcodeProcessed({ barcode, error })
     }
   })

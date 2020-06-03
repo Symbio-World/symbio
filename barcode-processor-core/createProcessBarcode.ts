@@ -1,6 +1,7 @@
 import * as R from 'ramda'
 import { allSettled, PromiseResolution } from '@symbio/ts-lib'
 import * as Model from './ProductData'
+import { noUsefulInfoFound } from './failures'
 
 export type SearchBarcode = (
   barcode: string,
@@ -47,19 +48,28 @@ export const createProcessBarcode: CreateProcessBarcode = ({
   const productPages = responses
     .filter((result) => result.status === 'fulfilled')
     .map((result) => (result as PromiseResolution<Model.ProductPage>).value)
-  console.log(`starting to scrape data from product pages...`)
+  console.log(
+    `starting to scrape data from ${productPages.length} product pages`,
+  )
   const dataFromProductPages = productPages.map(scrapeProductPage)
   console.log(`data scraped: ${JSON.stringify(dataFromProductPages, null, 4)}`)
-  const combinedProductPageData = dataFromProductPages.reduce((acc, pageData) =>
-    R.mergeDeepLeft(acc, pageData),
+  const combinedProductPageData = dataFromProductPages.reduce(
+    (acc, pageData) => R.mergeDeepLeft(acc, pageData),
+    {},
   )
   const productData = {
     ...productSearchData,
     ...combinedProductPageData,
   }
+
   console.log(
     `product data before translation: ${JSON.stringify(productData, null, 4)}`,
   )
+
+  if (R.isEmpty(R.omit(['links'], productData))) {
+    throw noUsefulInfoFound(barcode, productData)
+  }
+
   const translatedProductData = await translateProductData(productData)
   console.log(
     `translated product data: ${JSON.stringify(

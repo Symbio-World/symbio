@@ -20,7 +20,9 @@
     "deploy-functions-prod": "cd functions && yarn deploy-prod",
     "deploy-firestore-rules-prod": "firebase use prod && firebase deploy --only firestore:rules",
     "deploy-firestore-indexes-prod": "firebase use prod && firebase deploy --only firestore:indexes",
-    "deploy-firestore-prod": "firebase use prod && firebase deploy --only firestore"
+    "deploy-firestore-prod": "firebase use prod && firebase deploy --only firestore",
+    "migrate-dev": "cd functions && yarn migrate-dev",
+    "migrate-prod": "cd functions && yarn migrate-prod"
   },
   "devDependencies": {
     "firebase-tools": "8.0.2"
