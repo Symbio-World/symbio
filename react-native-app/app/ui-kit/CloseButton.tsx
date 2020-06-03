@@ -5,12 +5,12 @@ import { ButtonStyle } from './Button'
 import { Icons } from './Icon'
 
 type CloseButtonProps = {
-  onPress?: () => void
+  onClose?: () => void
 }
 
-export const CloseButton: React.FC<CloseButtonProps> = ({ onPress }) => (
+export const CloseButton: React.FC<CloseButtonProps> = ({ onClose }) => (
   <RoundedButton
-    onPress={onPress}
+    onPress={onClose}
     outerTitle="close"
     variant={ButtonStyle.OUTLINE}
     icon={Icons.CROSS}

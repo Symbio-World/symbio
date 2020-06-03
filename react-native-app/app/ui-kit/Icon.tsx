@@ -6,6 +6,7 @@ import cross from '../../assets/svg/cross.svg'
 import disk from '../../assets/svg/disk.svg'
 import flashlight from '../../assets/svg/flashlight.svg'
 import historyicon from '../../assets/svg/history.svg'
+import fatalError from '../../assets/svg/fogg-fatal-error.svg'
 
 type Props = SvgProps & {
   icon: Icons
@@ -17,6 +18,7 @@ export enum Icons {
   DISK = 'DISK',
   FLASHLIGHT = 'FLASHLIGHT',
   HISTORYICON = 'HISTORYICON',
+  FATAL_ERROR = 'FATAL_ERROR',
 }
 
 const IconsMap = {
@@ -25,6 +27,7 @@ const IconsMap = {
   [Icons.DISK]: disk,
   [Icons.FLASHLIGHT]: flashlight,
   [Icons.HISTORYICON]: historyicon,
+  [Icons.FATAL_ERROR]: fatalError,
 }
 
 export const Icon: React.FC<Props> = ({ icon, ...otherProps }) => {

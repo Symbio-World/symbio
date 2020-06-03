@@ -18,7 +18,7 @@ describe('ProductView', () => {
     const { getByType } = render(
       <ProductView onCloseButtonPress={handleCloseButtonPress} />,
     )
-    fireEvent.press(getByType(CloseButton))
+    fireEvent(getByType(CloseButton), 'onClose')
     expect(handleCloseButtonPress).toHaveBeenCalled()
   })
 

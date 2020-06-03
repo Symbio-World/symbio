@@ -31,7 +31,7 @@ export const ProductViewContainer: React.FC<Props> = ({
         isFailureOfType(error, NO_SEARCH_RESULTS_FOUND) ? (
           <ProductNotFound barcode={barcode} />
         ) : (
-          <ErrorView error={error} />
+          <ErrorView error={error} onClose={onCloseButtonPress} />
         )
       }
     />
