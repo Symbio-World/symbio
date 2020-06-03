@@ -31,6 +31,7 @@ module.exports = {
       '|react-native-screens' +
       '|@react-native-community' +
       '|@react-navigation' +
+      '|react-native-responsive-fontsize' +
       ')/)',
   ],
 }
