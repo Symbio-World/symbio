@@ -1,4 +1,3 @@
-import * as functions from 'firebase-functions'
 import { GoogleSearchConfig } from '@symbio/barcode-processor-google-search'
 import { GoogleTranslateConfig } from '@symbio/barcode-processor-google-translate'
 
@@ -15,5 +14,5 @@ export type Config = {
 
 export const config: Config =
   process.env.NODE_ENV === 'production'
-    ? functions.config().env
+    ? require('./env.prod.json')
     : require('./env.dev.json')

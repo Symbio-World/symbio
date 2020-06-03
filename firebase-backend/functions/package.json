@@ -19,7 +19,7 @@
     "set-env-dev": "firebase use dev && firebase functions:config:set env=\"$(cat env.dev.json)\"",
     "set-env-prod": "firebase use prod && firebase functions:config:set env=\"$(cat env.prod.json)\"",
     "migrate-dev": "firebase use dev && GOOGLE_APPLICATION_CREDENTIALS=./service-account.dev.json fireway migrate --path ./build/migrations",
-    "migrate-prod": "firebase use prod && GOOGLE_APPLICATION_CREDENTIALS=./service-account.prod.json fireway migrate --path ./build/migrations"
+    "migrate-prod": "firebase use prod && NODE_ENV=production GOOGLE_APPLICATION_CREDENTIALS=./service-account.prod.json fireway migrate --path ./build/migrations"
   },
   "main": "build/index.js",
   "fireDependencies": {
