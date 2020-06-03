@@ -6,6 +6,7 @@ export enum EventType {
   USER_SELECTED_PRINCIPLES = 'USER_SELECTED_PRINCIPLES',
   USER_LEFT_FEEDBACK = 'USER_LEFT_FEEDBACK',
   BARCODE_PROCESSED = 'BARCODE_PROCESSED',
+  BARCODE_PROCESSED_EVENT_ARCHIVED = 'BARCODE_PROCESSED_EVENT_ARCHIVED',
 }
 
 export type UserScannedBarcode = {
@@ -67,8 +68,26 @@ export const barcodeProcessed = ({
   error,
 })
 
+export enum ArchiveReason {
+  PRODUCT_DATA_CONTAINS_ONLY_LINKS = 'PRODUCT_DATA_CONTAINS_ONLY_LINKS'
+}
+export type BarcodeProcessedEventArchived = {
+  type: EventType.BARCODE_PROCESSED_EVENT_ARCHIVED
+  barcodeProcessed: BarcodeProcessed
+  archiveReason: ArchiveReason
+}
+export const barcodeProcessedEventArchived = (
+  barcodeProcessed: BarcodeProcessed,
+  archiveReason: ArchiveReason,
+): BarcodeProcessedEventArchived => ({
+  type: EventType.BARCODE_PROCESSED_EVENT_ARCHIVED,
+  barcodeProcessed,
+  archiveReason,
+})
+
 export type DomainEvent =
   | UserScannedBarcode
   | UserSelectedPrinciples
   | UserLeftFeedback
   | BarcodeProcessed
+  | BarcodeProcessedEventArchived
