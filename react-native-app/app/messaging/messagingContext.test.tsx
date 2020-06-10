@@ -14,15 +14,21 @@ import { ObservableView } from '../lib/ObservableView'
 
 describe('messagingContext', () => {
   let requestPermission: RequestPermission
+  const token = 'token'
   let observeTokens: ObserveTokens
+  const message = { notification: { body: 'body', title: 'title' } }
   let observeMessages: ObserveMessages
 
   beforeEach(() => {
     requestPermission = jest.fn(() =>
       Promise.resolve(AuthorizationStatus.AUTHORIZED),
     )
-    observeTokens = jest.fn(() => of())
-    observeMessages = jest.fn(() => of())
+    observeTokens = jest.fn(() => of(token))
+    observeMessages = jest.fn(() => of(message))
+  })
+
+  afterEach(() => {
+    cleanup()
   })
 
   it('renders correctly', () => {
@@ -51,6 +57,64 @@ describe('messagingContext', () => {
       </MessagingProvider>,
     )
     expect(requestPermission).toHaveBeenCalled()
+  })
+
+  it('tokens can be consumed', async () => {
+    const MessagingProvider = createMessagingProvider({
+      requestPermission,
+      observeTokens,
+      observeMessages,
+    })
+    const Child = () => {
+      const { token$ } = useMessaging()
+
+      return (
+        <ObservableView
+          observable={token$}
+          renderSuccess={(token: string) => <Text>{token}</Text>}
+        />
+      )
+    }
+    const { getByText } = render(
+      <MessagingProvider>
+        <Child />
+      </MessagingProvider>,
+    )
+
+    await waitForElement(() => getByText(token))
+    expect(getByText(token)).toBeDefined()
+  })
+
+  it('messages can be consumed', async () => {
+    const MessagingProvider = createMessagingProvider({
+      requestPermission,
+      observeTokens,
+      observeMessages,
+    })
+    const Child = () => {
+      const { message$ } = useMessaging()
+
+      return (
+        <ObservableView
+          observable={message$}
+          renderSuccess={(m: RemoteMessage) => (
+            <>
+              <Text>{m.notification?.title}</Text>
+              <Text>{m.notification?.body}</Text>
+            </>
+          )}
+        />
+      )
+    }
+    const { getByText } = render(
+      <MessagingProvider>
+        <Child />
+      </MessagingProvider>,
+    )
+
+    await waitForElement(() => getByText(message.notification.title))
+    expect(getByText(message.notification.title)).toBeDefined()
+    expect(getByText(message.notification.body)).toBeDefined()
   })
 
   it('calls observeTokens and observeMessages if permission is granted', async () => {
@@ -90,69 +154,6 @@ describe('messagingContext', () => {
     expect(observeMessages).toHaveBeenCalledTimes(0)
   })
 
-  it('tokens can be consumed', async () => {
-    const token = 'token'
-    observeTokens = jest.fn(() => of(token))
-    const MessagingProvider = createMessagingProvider({
-      requestPermission,
-      observeTokens,
-      observeMessages,
-    })
-    const Child = () => {
-      const { token$ } = useMessaging()
-
-      return (
-        <ObservableView
-          observable={token$}
-          renderSuccess={(token?: string) => <Text>{token}</Text>}
-        />
-      )
-    }
-    const { getByText } = render(
-      <MessagingProvider>
-        <Child />
-      </MessagingProvider>,
-    )
-
-    await waitForElement(() => getByText(token))
-    expect(getByText(token)).toBeDefined()
-  })
-
-  it('messages can be consumed', async () => {
-    const message = { notification: { body: 'body', title: 'title' } }
-    observeMessages = jest.fn(() => of(message))
-
-    const MessagingProvider = createMessagingProvider({
-      requestPermission,
-      observeTokens,
-      observeMessages,
-    })
-    const Child = () => {
-      const { message$ } = useMessaging()
-
-      return (
-        <ObservableView
-          observable={message$}
-          renderSuccess={(m?: RemoteMessage) => (
-            <>
-              <Text>{m?.notification?.title}</Text>
-              <Text>{m?.notification?.body}</Text>
-            </>
-          )}
-        />
-      )
-    }
-    const { getByText } = render(
-      <MessagingProvider>
-        <Child />
-      </MessagingProvider>,
-    )
-
-    await waitForElement(() => getByText(message.notification.title))
-    expect(getByText(message.notification.title)).toBeDefined()
-    expect(getByText(message.notification.body)).toBeDefined()
-  })
-
   it('unsubscribes from observeTokens and observeMessages on unmount', async () => {
     const token$Subscription = {
       unsubscribe: jest.fn(),
@@ -186,4 +187,6 @@ describe('messagingContext', () => {
     expect(token$Subscription.unsubscribe).toHaveBeenCalledTimes(1)
     expect(message$Subscription.unsubscribe).toHaveBeenCalledTimes(1)
   })
+
+
 })

@@ -1,15 +1,17 @@
 import * as React from 'react'
-import { Observable, BehaviorSubject } from 'rxjs'
+import { Observable, ReplaySubject } from 'rxjs'
 import { RemoteMessage, AuthorizationStatus } from './types'
+// import { useAuth } from '../auth'
+// import { saveToken } from './saveToken'
 
 type MessagingContext = {
   authorizationStatus?: AuthorizationStatus
-  token$: Observable<string | undefined>
-  message$: Observable<RemoteMessage | undefined>
+  token$: Observable<string>
+  message$: Observable<RemoteMessage>
 }
 
-const token$ = new BehaviorSubject<string | undefined>(undefined)
-const message$ = new BehaviorSubject<RemoteMessage | undefined>(undefined)
+const token$ = new ReplaySubject<string>(1)
+const message$ = new ReplaySubject<RemoteMessage>(1)
 const messagingContext = React.createContext<MessagingContext>({
   token$,
   message$,
@@ -32,13 +34,13 @@ export const createMessagingProvider: CreateMessagingProvider = ({
   observeTokens,
   observeMessages,
 }) => ({ children }: Props) => {
+  // const { user } = useAuth()
   const [authorizationStatus, setAuthorizationStatus] = React.useState<
     AuthorizationStatus
   >()
 
   React.useEffect(() => {
     requestPermission().then((authStatus) => {
-      console.log('Authorization status: ', authStatus)
       setAuthorizationStatus(authStatus)
     })
   }, [])
@@ -54,6 +56,16 @@ export const createMessagingProvider: CreateMessagingProvider = ({
       }
     }
   }, [authorizationStatus])
+
+  // // @ts-ignore
+  // React.useEffect(() => {
+  //   if (user) {
+  //     const subscription = token$.subscribe((token) =>
+  //       saveToken(user.id, token),
+  //     )
+  //     return () => subscription.unsubscribe()
+  //   }
+  // }, [user])
 
   return (
     <messagingContext.Provider
