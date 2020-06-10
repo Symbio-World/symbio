@@ -5,7 +5,7 @@ import { AuthorizationStatus } from './types'
 jest.mock('@react-native-firebase/messaging')
 
 describe('requestPermission', () => {
-  let messagingRequestPermission = jest.fn(() =>
+  const messagingRequestPermission = jest.fn(() =>
     Promise.resolve(AuthorizationStatus.AUTHORIZED),
   )
 

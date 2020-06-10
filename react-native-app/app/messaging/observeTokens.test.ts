@@ -5,10 +5,10 @@ import { observeTokens } from './observeTokens'
 jest.mock('@react-native-firebase/messaging')
 
 describe('observeTokens', () => {
-  let initialToken = 'initialToken'
-  let getToken = jest.fn(() => Promise.resolve(initialToken))
-  let refreshedToken = 'refreshedToken'
-  let onTokenRefresh = jest.fn((handler) => handler(refreshedToken))
+  const initialToken = 'initialToken'
+  const getToken = jest.fn(() => Promise.resolve(initialToken))
+  const refreshedToken = 'refreshedToken'
+  const onTokenRefresh = jest.fn((handler) => handler(refreshedToken))
 
   beforeEach(() => {
     ;((messaging as unknown) as jest.Mock).mockImplementation(() => ({

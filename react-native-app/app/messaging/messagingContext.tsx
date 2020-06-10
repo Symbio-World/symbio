@@ -45,7 +45,6 @@ export const createMessagingProvider: CreateMessagingProvider = ({
     })
   }, [])
 
-  // @ts-ignore
   React.useEffect(() => {
     if (authorizationStatus) {
       const observeTokensSubscription = observeTokens().subscribe(token$)
@@ -55,16 +54,17 @@ export const createMessagingProvider: CreateMessagingProvider = ({
         observeMessagesSubscription.unsubscribe()
       }
     }
+    return
   }, [authorizationStatus])
 
-  // @ts-ignore
   React.useEffect(() => {
     if (user) {
-      const subscription = token$.subscribe((token) =>
-        saveToken(user.id, token),
-      )
+      const subscription = token$.subscribe((token) => {
+        saveToken(user.id, token)
+      })
       return () => subscription.unsubscribe()
     }
+    return
   }, [user])
 
   return (

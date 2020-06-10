@@ -79,7 +79,7 @@ describe('messagingContext', () => {
       return (
         <ObservableView
           observable={token$}
-          renderSuccess={(token: string) => <Text>{token}</Text>}
+          renderSuccess={(t: string) => <Text>{t}</Text>}
         />
       )
     }

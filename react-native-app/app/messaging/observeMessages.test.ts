@@ -6,22 +6,22 @@ import { RemoteMessage } from './types'
 jest.mock('@react-native-firebase/messaging')
 
 describe('observeMessages', () => {
-  let initialNotification: RemoteMessage = {
+  const initialNotification: RemoteMessage = {
     notification: { body: 'initialNotification' },
   }
-  let getInitialNotification = jest.fn(() =>
+  const getInitialNotification = jest.fn(() =>
     Promise.resolve(initialNotification),
   )
 
-  let notificationFromOnMessage: RemoteMessage = {
+  const notificationFromOnMessage: RemoteMessage = {
     notification: { body: 'notificationFromOnMessage' },
   }
-  let onMessage = jest.fn((handler) => handler(notificationFromOnMessage))
+  const onMessage = jest.fn((handler) => handler(notificationFromOnMessage))
 
-  let notificationFromOnNotificationOpenedApp: RemoteMessage = {
+  const notificationFromOnNotificationOpenedApp: RemoteMessage = {
     notification: { body: 'notificationFromOnNotificationOpenedApp' },
   }
-  let onNotificationOpenedApp = jest.fn((handler) =>
+  const onNotificationOpenedApp = jest.fn((handler) =>
     handler(notificationFromOnNotificationOpenedApp),
   )
 
