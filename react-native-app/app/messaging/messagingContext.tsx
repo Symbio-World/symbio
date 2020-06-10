@@ -11,7 +11,9 @@ type MessagingContext = {
 }
 
 const token$ = new ReplaySubject<string>(1)
+token$.subscribe((t) => console.log('token', t))
 const message$ = new ReplaySubject<RemoteMessage>(1)
+message$.subscribe((m) => console.log('message', m))
 const messagingContext = React.createContext<MessagingContext>({
   token$,
   message$,
