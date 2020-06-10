@@ -53,4 +53,25 @@ describe('useObservable', () => {
     cleanup()
     expect(subscription.unsubscribe).toHaveBeenCalledTimes(1)
   })
+
+  it('unsubscribes from observable when passed another observable', () => {
+    const subscription = {
+      unsubscribe: jest.fn(),
+    }
+    const observable1 = ({
+      subscribe: () => subscription,
+    } as unknown) as Observable<string>
+    const observable2 = of('')
+    const Component: React.FC<{ observable: Observable<string> }> = ({
+      observable,
+    }) => {
+      const { data } = useObservable(observable)
+      return <Text>{data}</Text>
+    }
+
+    const { update } = render(<Component observable={observable1} />)
+    update(<Component observable={observable2} />)
+
+    expect(subscription.unsubscribe).toHaveBeenCalledTimes(1)
+  })
 })
