@@ -11,6 +11,11 @@ import {
 } from './messagingContext'
 import { AuthorizationStatus, RemoteMessage } from './types'
 import { ObservableView } from '../lib/ObservableView'
+import { useAuth } from '../auth'
+import { saveToken } from './saveToken'
+
+jest.mock('../auth')
+jest.mock('./saveToken')
 
 describe('messagingContext', () => {
   let requestPermission: RequestPermission
@@ -18,6 +23,7 @@ describe('messagingContext', () => {
   let observeTokens: ObserveTokens
   const message = { notification: { body: 'body', title: 'title' } }
   let observeMessages: ObserveMessages
+  const user = { id: 'id' }
 
   beforeEach(() => {
     requestPermission = jest.fn(() =>
@@ -25,6 +31,8 @@ describe('messagingContext', () => {
     )
     observeTokens = jest.fn(() => of(token))
     observeMessages = jest.fn(() => of(message))
+    ;(useAuth as jest.Mock).mockImplementation(() => ({ user }))
+    ;(saveToken as jest.Mock).mockImplementation(() => Promise.resolve())
   })
 
   afterEach(() => {
@@ -188,5 +196,37 @@ describe('messagingContext', () => {
     expect(message$Subscription.unsubscribe).toHaveBeenCalledTimes(1)
   })
 
+  it('saves token', async () => {
+    const MessagingProvider = createMessagingProvider({
+      requestPermission,
+      observeTokens,
+      observeMessages,
+    })
+    const { getByText } = render(
+      <MessagingProvider>
+        <Text>Test</Text>
+      </MessagingProvider>,
+    )
 
+    await waitForElement(() => getByText('Test'))
+    expect(saveToken).toHaveBeenCalledWith(user.id, token)
+  })
+
+  it('does not save token if there is no user', async () => {
+    ;(useAuth as jest.Mock).mockImplementation(() => ({ user: undefined }))
+
+    const MessagingProvider = createMessagingProvider({
+      requestPermission,
+      observeTokens,
+      observeMessages,
+    })
+    const { getByText } = render(
+      <MessagingProvider>
+        <Text>Test</Text>
+      </MessagingProvider>,
+    )
+
+    await waitForElement(() => getByText('Test'))
+    expect(saveToken).toHaveBeenCalledTimes(0)
+  })
 })

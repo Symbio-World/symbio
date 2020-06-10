@@ -1,8 +1,8 @@
 import * as React from 'react'
 import { Observable, ReplaySubject } from 'rxjs'
 import { RemoteMessage, AuthorizationStatus } from './types'
-// import { useAuth } from '../auth'
-// import { saveToken } from './saveToken'
+import { useAuth } from '../auth'
+import { saveToken } from './saveToken'
 
 type MessagingContext = {
   authorizationStatus?: AuthorizationStatus
@@ -34,7 +34,7 @@ export const createMessagingProvider: CreateMessagingProvider = ({
   observeTokens,
   observeMessages,
 }) => ({ children }: Props) => {
-  // const { user } = useAuth()
+  const { user } = useAuth()
   const [authorizationStatus, setAuthorizationStatus] = React.useState<
     AuthorizationStatus
   >()
@@ -57,15 +57,15 @@ export const createMessagingProvider: CreateMessagingProvider = ({
     }
   }, [authorizationStatus])
 
-  // // @ts-ignore
-  // React.useEffect(() => {
-  //   if (user) {
-  //     const subscription = token$.subscribe((token) =>
-  //       saveToken(user.id, token),
-  //     )
-  //     return () => subscription.unsubscribe()
-  //   }
-  // }, [user])
+  // @ts-ignore
+  React.useEffect(() => {
+    if (user) {
+      const subscription = token$.subscribe((token) =>
+        saveToken(user.id, token),
+      )
+      return () => subscription.unsubscribe()
+    }
+  }, [user])
 
   return (
     <messagingContext.Provider
