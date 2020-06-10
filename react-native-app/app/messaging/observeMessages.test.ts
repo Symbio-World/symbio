@@ -1,5 +1,5 @@
 import messaging from '@react-native-firebase/messaging'
-import { take } from 'rxjs/operators'
+import { take, takeLast } from 'rxjs/operators'
 import { observeMessages } from './observeMessages'
 import { RemoteMessage } from './types'
 
@@ -55,7 +55,7 @@ describe('observeMessages', () => {
 
   it('gets notification from onNotificationOpenedApp', (done) => {
     const token$ = observeMessages()
-    token$.pipe(take(2)).subscribe({
+    token$.pipe(takeLast(0)).subscribe({
       next: (t) => {
         expect(t).toEqual(notificationFromOnNotificationOpenedApp)
       },
