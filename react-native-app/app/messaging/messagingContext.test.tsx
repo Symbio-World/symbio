@@ -37,6 +37,7 @@ describe('messagingContext', () => {
 
   afterEach(() => {
     cleanup()
+    jest.clearAllMocks()
   })
 
   it('renders correctly', () => {
