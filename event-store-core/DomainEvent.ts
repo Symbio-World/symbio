@@ -7,6 +7,7 @@ export enum EventType {
   USER_LEFT_FEEDBACK = 'USER_LEFT_FEEDBACK',
   BARCODE_PROCESSED = 'BARCODE_PROCESSED',
   BARCODE_PROCESSED_EVENT_ARCHIVED = 'BARCODE_PROCESSED_EVENT_ARCHIVED',
+  NOTIFICATION_TOKEN_GENERATED = 'NOTIFICATION_TOKEN_GENERATED',
 }
 
 export type UserScannedBarcode = {
@@ -69,7 +70,7 @@ export const barcodeProcessed = ({
 })
 
 export enum ArchiveReason {
-  PRODUCT_DATA_CONTAINS_ONLY_LINKS = 'PRODUCT_DATA_CONTAINS_ONLY_LINKS'
+  PRODUCT_DATA_CONTAINS_ONLY_LINKS = 'PRODUCT_DATA_CONTAINS_ONLY_LINKS',
 }
 export type BarcodeProcessedEventArchived = {
   type: EventType.BARCODE_PROCESSED_EVENT_ARCHIVED
@@ -85,9 +86,24 @@ export const barcodeProcessedEventArchived = (
   archiveReason,
 })
 
+export type NotificationTokenGenerated = {
+  type: EventType.NOTIFICATION_TOKEN_GENERATED
+  userId: string
+  token: string
+}
+export const notificationTokenGenerated = ({
+  userId,
+  token,
+}: Omit<NotificationTokenGenerated, 'type'>): NotificationTokenGenerated => ({
+  type: EventType.NOTIFICATION_TOKEN_GENERATED,
+  userId,
+  token,
+})
+
 export type DomainEvent =
   | UserScannedBarcode
   | UserSelectedPrinciples
   | UserLeftFeedback
   | BarcodeProcessed
   | BarcodeProcessedEventArchived
+  | NotificationTokenGenerated
