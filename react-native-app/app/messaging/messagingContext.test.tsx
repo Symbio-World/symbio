@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { Text } from 'react-native'
-import { of } from 'rxjs'
-import { render, waitForElement } from 'react-native-testing-library'
+import { of, Observable } from 'rxjs'
+import { render, waitForElement, cleanup } from 'react-native-testing-library'
 import {
   createMessagingProvider,
   useMessaging,
@@ -87,7 +87,7 @@ describe('messagingContext', () => {
 
     await waitForElement(() => getByText('Test'))
     expect(observeTokens).toHaveBeenCalledTimes(0)
-    expect(observeTokens).toHaveBeenCalledTimes(0)
+    expect(observeMessages).toHaveBeenCalledTimes(0)
   })
 
   it('tokens can be consumed', async () => {
@@ -153,5 +153,37 @@ describe('messagingContext', () => {
     expect(getByText(message.notification.body)).toBeDefined()
   })
 
-  // TODO: test unsubscribe
+  it('unsubscribes from observeTokens and observeMessages on unmount', async () => {
+    const token$Subscription = {
+      unsubscribe: jest.fn(),
+    }
+    const token$ = ({
+      subscribe: () => token$Subscription,
+    } as unknown) as Observable<string>
+    observeTokens = jest.fn(() => token$)
+
+    const message$Subscription = {
+      unsubscribe: jest.fn(),
+    }
+    const message$ = ({
+      subscribe: () => message$Subscription,
+    } as unknown) as Observable<RemoteMessage>
+    observeMessages = jest.fn(() => message$)
+
+    const MessagingProvider = createMessagingProvider({
+      requestPermission,
+      observeTokens,
+      observeMessages,
+    })
+    const { getByText } = render(
+      <MessagingProvider>
+        <Text>Test</Text>
+      </MessagingProvider>,
+    )
+
+    await waitForElement(() => getByText('Test'))
+    cleanup()
+    expect(token$Subscription.unsubscribe).toHaveBeenCalledTimes(1)
+    expect(message$Subscription.unsubscribe).toHaveBeenCalledTimes(1)
+  })
 })
