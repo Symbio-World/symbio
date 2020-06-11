@@ -5,13 +5,19 @@ import { RFPercentage } from 'react-native-responsive-fontsize'
 
 import { Icon, Icons } from './Icon'
 import { CloseButtonView } from './CloseButtonView'
+import { saveError } from '../error-handler/saveError'
 
 type Props = {
-  error?: unknown
+  error?: Error
   onClose?: () => void
 }
 
-export const ErrorView: React.FC<Props> = ({ onClose = () => {} }) => {
+export const ErrorView: React.FC<Props> = ({ onClose = () => {}, error }) => {
+  React.useEffect(() => {
+    if (error) {
+      saveError(error.message)
+    }
+  })
   return (
     <View style={[t.flex1]}>
       <Icon icon={Icons.FATAL_ERROR} />

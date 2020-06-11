@@ -21,17 +21,10 @@ exports[`ErrorView renders correctly 1`] = `
           "color": "#000",
         },
         Object {
-<<<<<<< HEAD
           "marginBottom": 40,
         },
         Object {
           "fontSize": 93,
-=======
-          "fontSize": 48,
-        },
-        Object {
-          "marginBottom": 40,
->>>>>>> feat(ErrorView): design view
         },
       ]
     }
@@ -48,17 +41,10 @@ exports[`ErrorView renders correctly 1`] = `
           "color": "#000",
         },
         Object {
-<<<<<<< HEAD
           "marginHorizontal": 48,
         },
         Object {
           "fontSize": 53,
-=======
-          "fontSize": 30,
-        },
-        Object {
-          "marginHorizontal": 48,
->>>>>>> feat(ErrorView): design view
         },
       ]
     }
