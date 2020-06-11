@@ -38,6 +38,7 @@
     "react": "16.13.0",
     "react-native": "0.61.5",
     "react-native-bootsplash": "2.0.5",
+    "react-native-device-info": "^5.6.1",
     "react-native-exception-handler": "^2.10.8",
     "react-native-gesture-handler": "1.6.1",
     "react-native-keyboard-aware-scroll-view": "^0.9.1",
