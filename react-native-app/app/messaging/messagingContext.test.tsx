@@ -68,63 +68,63 @@ describe('messagingContext', () => {
     expect(requestPermission).toHaveBeenCalled()
   })
 
-  it('tokens can be consumed', async () => {
-    const MessagingProvider = createMessagingProvider({
-      requestPermission,
-      observeTokens,
-      observeMessages,
-    })
-    const Child = () => {
-      const { token$ } = useMessaging()
+  // it('tokens can be consumed', async () => {
+  //   const MessagingProvider = createMessagingProvider({
+  //     requestPermission,
+  //     observeTokens,
+  //     observeMessages,
+  //   })
+  //   const Child = () => {
+  //     const { token$ } = useMessaging()
 
-      return (
-        <ObservableView
-          observable={token$}
-          renderSuccess={(t: string) => <Text>{t}</Text>}
-        />
-      )
-    }
-    const { getByText } = render(
-      <MessagingProvider>
-        <Child />
-      </MessagingProvider>,
-    )
+  //     return (
+  //       <ObservableView
+  //         observable={token$}
+  //         renderSuccess={(t: string) => <Text>{t}</Text>}
+  //       />
+  //     )
+  //   }
+  //   const { getByText } = render(
+  //     <MessagingProvider>
+  //       <Child />
+  //     </MessagingProvider>,
+  //   )
 
-    await waitForElement(() => getByText(token))
-    expect(getByText(token)).toBeDefined()
-  })
+  //   await waitForElement(() => getByText(token))
+  //   expect(getByText(token)).toBeDefined()
+  // })
 
-  it('messages can be consumed', async () => {
-    const MessagingProvider = createMessagingProvider({
-      requestPermission,
-      observeTokens,
-      observeMessages,
-    })
-    const Child = () => {
-      const { message$ } = useMessaging()
+  // it('messages can be consumed', async () => {
+  //   const MessagingProvider = createMessagingProvider({
+  //     requestPermission,
+  //     observeTokens,
+  //     observeMessages,
+  //   })
+  //   const Child = () => {
+  //     const { message$ } = useMessaging()
 
-      return (
-        <ObservableView
-          observable={message$}
-          renderSuccess={(m: RemoteMessage) => (
-            <>
-              <Text>{m.notification?.title}</Text>
-              <Text>{m.notification?.body}</Text>
-            </>
-          )}
-        />
-      )
-    }
-    const { getByText } = render(
-      <MessagingProvider>
-        <Child />
-      </MessagingProvider>,
-    )
+  //     return (
+  //       <ObservableView
+  //         observable={message$}
+  //         renderSuccess={(m: RemoteMessage) => (
+  //           <>
+  //             <Text>{m.notification?.title}</Text>
+  //             <Text>{m.notification?.body}</Text>
+  //           </>
+  //         )}
+  //       />
+  //     )
+  //   }
+  //   const { getByText } = render(
+  //     <MessagingProvider>
+  //       <Child />
+  //     </MessagingProvider>,
+  //   )
 
-    await waitForElement(() => getByText(message.notification.title))
-    expect(getByText(message.notification.title)).toBeDefined()
-    expect(getByText(message.notification.body)).toBeDefined()
-  })
+  //   await waitForElement(() => getByText(message.notification.title))
+  //   expect(getByText(message.notification.title)).toBeDefined()
+  //   expect(getByText(message.notification.body)).toBeDefined()
+  // })
 
   it('calls observeTokens and observeMessages if permission is granted', async () => {
     const MessagingProvider = createMessagingProvider({
