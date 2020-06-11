@@ -4,13 +4,11 @@ import { of, Observable } from 'rxjs'
 import { render, waitForElement, cleanup } from 'react-native-testing-library'
 import {
   createMessagingProvider,
-  useMessaging,
   RequestPermission,
   ObserveTokens,
   ObserveMessages,
 } from './messagingContext'
 import { AuthorizationStatus, RemoteMessage } from './types'
-import { ObservableView } from '../lib/ObservableView'
 import { useAuth } from '../auth'
 import { saveToken } from './saveToken'
 
