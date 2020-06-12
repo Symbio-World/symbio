@@ -10,7 +10,7 @@ setJSExceptionHandler((error: Error, isFatal: boolean) => {
     Alert.alert(
       'Unexpected error occurred',
       `
-          Sorry, ${isFatal ? 'fatal:' : ''} error happen by name ${error.name}.
+          Sorry, the following error occurred: ${error.name}.
           Our team already looking into issue.
           We will need to restart the app.
           `,
