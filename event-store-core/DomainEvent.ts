@@ -8,20 +8,20 @@ export enum EventType {
   BARCODE_PROCESSED = 'BARCODE_PROCESSED',
   BARCODE_PROCESSED_EVENT_ARCHIVED = 'BARCODE_PROCESSED_EVENT_ARCHIVED',
   NOTIFICATION_TOKEN_GENERATED = 'NOTIFICATION_TOKEN_GENERATED',
-  FRONTEND_ERROR = 'FRONTEND_ERROR',
+  FRONTEND_ERROR_OCCURED = 'FRONTEND_ERROR_OCCURED',
 }
 
-export type FRONTEND_ERROR = {
+export type FRONTEND_ERROR_OCCURED = {
   message: string
   deviceData: string
-  type: EventType.FRONTEND_ERROR
+  type: EventType.FRONTEND_ERROR_OCCURED
 }
 
 export const frontendError = (
   message: string,
   deviceData: string,
-): FRONTEND_ERROR => ({
-  type: EventType.FRONTEND_ERROR,
+): FRONTEND_ERROR_OCCURED => ({
+  type: EventType.FRONTEND_ERROR_OCCURED,
   message,
   deviceData,
 })
@@ -123,4 +123,4 @@ export type DomainEvent =
   | BarcodeProcessed
   | BarcodeProcessedEventArchived
   | NotificationTokenGenerated
-  | FRONTEND_ERROR
+  | FRONTEND_ERROR_OCCURED
