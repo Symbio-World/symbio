@@ -60,5 +60,5 @@ export const saveError: SaveError = (message) =>
   getDeviceInfo()
     .then((info: string) => storeEvent(frontendError(message, info)))
     .catch((e: Error) =>
-      console.warn('Error handler handle error =)', e.message),
+      console.warn('Error during saving error =) ', e.message),
     )
