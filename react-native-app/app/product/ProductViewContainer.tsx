@@ -4,7 +4,7 @@ import {
   NO_USEFUL_INFO_FOUND,
 } from '@symbio/barcode-processor-core'
 import { isFailureOfType } from '@symbio/ts-lib'
-import { ErrorView } from '../ui-kit/ErrorView'
+import { ErrorViewContainer } from '../error-handler/ErrorViewContainer'
 import { ProductView } from './ProductView'
 import { ProductNotFound } from './ProductNotFound'
 import { observeProductData } from './observeProductData'
@@ -38,7 +38,7 @@ export const ProductViewContainer: React.FC<Props> = ({
         isProductNotFound(error) ? (
           <ProductNotFound barcode={barcode} />
         ) : (
-          <ErrorView error={error} onClose={onCloseButtonPress} />
+          <ErrorViewContainer error={error} onClose={onCloseButtonPress} />
         )
       }
     />

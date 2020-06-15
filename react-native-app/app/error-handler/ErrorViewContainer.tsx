@@ -3,8 +3,8 @@ import { View, Text } from 'react-native'
 import { t } from 'react-native-tailwindcss'
 import { RFPercentage } from 'react-native-responsive-fontsize'
 
-import { Icon, Icons } from './Icon'
-import { CloseButtonView } from './CloseButtonView'
+import { Icon, Icons } from '../ui-kit/Icon'
+import { CloseButtonView } from '../ui-kit/CloseButtonView'
 import { saveError } from '../error-handler/saveError'
 
 type Props = {
@@ -12,7 +12,10 @@ type Props = {
   onClose?: () => void
 }
 
-export const ErrorView: React.FC<Props> = ({ onClose = () => {}, error }) => {
+export const ErrorViewContainer: React.FC<Props> = ({
+  onClose = () => {},
+  error,
+}) => {
   React.useEffect(() => {
     if (error) {
       saveError(error.message)
