@@ -18,6 +18,6 @@ describe('ErrorViewContainer', () => {
   it('test with error', () => {
     const error = new Error('Some error')
     render(<ErrorViewContainer error={error} />)
-    expect(saveError).toHaveBeenCalledWith(error.message)
+    expect(saveError).toHaveBeenCalledWith(error)
   })
 })

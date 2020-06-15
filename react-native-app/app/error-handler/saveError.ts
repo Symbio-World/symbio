@@ -1,9 +1,13 @@
-import { frontendError } from '@symbio/event-store-core'
+import {
+  frontendError,
+  DeviceInfo as DeviceInfoType,
+} from '@symbio/event-store-core'
 import DeviceInfo from 'react-native-device-info'
 import { storeEvent } from '../event'
 import { Platform } from 'react-native'
+import { serializeError } from 'serialize-error'
 
-type SaveError = (message: string) => Promise<void>
+type SaveError = (error: Error) => Promise<void>
 
 const getGeneralInfo = async () => {
   const [brand, bundleId, deviceType, deviceName] = await Promise.all([
@@ -20,7 +24,7 @@ const getIOSLogs = async () => {
   const info = {
     ...generalInfo,
   }
-  return JSON.stringify(info)
+  return info
 }
 
 const getAndroidLogs = async () => {
@@ -47,7 +51,7 @@ const getAndroidLogs = async () => {
     firstTimeInstallTime,
     lastUpdateTime,
   }
-  return JSON.stringify(info)
+  return info
 }
 
 export const getDeviceInfo = Platform.select({
@@ -56,9 +60,12 @@ export const getDeviceInfo = Platform.select({
   default: getIOSLogs,
 })
 
-export const saveError: SaveError = (message) =>
+export const saveError: SaveError = (error: Error) =>
   getDeviceInfo()
-    .then((info: string) => storeEvent(frontendError(message, info)))
+    .then((info: DeviceInfoType) => {
+      const errorSerilazed = serializeError(error)
+      storeEvent(frontendError(errorSerilazed, info))
+    })
     .catch((e: Error) =>
       console.warn('Error during saving error =) ', e.message),
     )

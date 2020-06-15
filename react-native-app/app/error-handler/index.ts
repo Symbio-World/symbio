@@ -6,7 +6,7 @@ import { saveError } from './saveError'
 
 setJSExceptionHandler((error: Error, isFatal: boolean) => {
   if (isFatal) {
-    saveError(error.message)
+    saveError(error)
     Alert.alert(
       'Unexpected error occurred',
       `
@@ -24,4 +24,4 @@ setJSExceptionHandler((error: Error, isFatal: boolean) => {
       ],
     )
   }
-})
+}, true)

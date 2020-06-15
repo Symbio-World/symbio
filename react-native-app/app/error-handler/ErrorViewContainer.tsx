@@ -18,7 +18,7 @@ export const ErrorViewContainer: React.FC<Props> = ({
 }) => {
   React.useEffect(() => {
     if (error) {
-      saveError(error.message)
+      saveError(error)
     }
   })
   return (
