@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { Text } from 'react-native'
-import { of, Observable } from 'rxjs'
-import { render, waitForElement, cleanup } from 'react-native-testing-library'
+import { of } from 'rxjs'
+import { render, waitForElement } from 'react-native-testing-library'
 import {
   createMessagingProvider,
   useMessaging,
@@ -9,8 +9,7 @@ import {
   ObserveTokens,
   ObserveMessages,
 } from './messagingContext'
-import { AuthorizationStatus, RemoteMessage } from './types'
-import { ObservableView } from '../lib/ObservableView'
+import { AuthorizationStatus } from './types'
 import { useAuth } from '../auth'
 import { saveToken } from './saveToken'
 
@@ -36,7 +35,6 @@ describe('messagingContext', () => {
   })
 
   afterEach(() => {
-    cleanup()
     jest.clearAllMocks()
   })
 
@@ -68,21 +66,15 @@ describe('messagingContext', () => {
     expect(requestPermission).toHaveBeenCalled()
   })
 
-  it('tokens can be consumed', async () => {
+  it('token can be consumed', async () => {
     const MessagingProvider = createMessagingProvider({
       requestPermission,
       observeTokens,
       observeMessages,
     })
     const Child = () => {
-      const { token$ } = useMessaging()
-
-      return (
-        <ObservableView
-          observable={token$}
-          renderSuccess={(t: string) => <Text>{t}</Text>}
-        />
-      )
+      const { token: t } = useMessaging()
+      return <Text>{t}</Text>
     }
     const { getByText } = render(
       <MessagingProvider>
@@ -94,25 +86,20 @@ describe('messagingContext', () => {
     expect(getByText(token)).toBeDefined()
   })
 
-  it('messages can be consumed', async () => {
+  it('message can be consumed', async () => {
     const MessagingProvider = createMessagingProvider({
       requestPermission,
       observeTokens,
       observeMessages,
     })
     const Child = () => {
-      const { message$ } = useMessaging()
+      const { message: m } = useMessaging()
 
       return (
-        <ObservableView
-          observable={message$}
-          renderSuccess={(m: RemoteMessage) => (
-            <>
-              <Text>{m.notification?.title}</Text>
-              <Text>{m.notification?.body}</Text>
-            </>
-          )}
-        />
+        <>
+          <Text>{m?.notification?.title}</Text>
+          <Text>{m?.notification?.body}</Text>
+        </>
       )
     }
     const { getByText } = render(
@@ -161,40 +148,6 @@ describe('messagingContext', () => {
     await waitForElement(() => getByText('Test'))
     expect(observeTokens).toHaveBeenCalledTimes(0)
     expect(observeMessages).toHaveBeenCalledTimes(0)
-  })
-
-  it('unsubscribes from observeTokens and observeMessages on unmount', async () => {
-    const token$Subscription = {
-      unsubscribe: jest.fn(),
-    }
-    const token$ = ({
-      subscribe: () => token$Subscription,
-    } as unknown) as Observable<string>
-    observeTokens = jest.fn(() => token$)
-
-    const message$Subscription = {
-      unsubscribe: jest.fn(),
-    }
-    const message$ = ({
-      subscribe: () => message$Subscription,
-    } as unknown) as Observable<RemoteMessage>
-    observeMessages = jest.fn(() => message$)
-
-    const MessagingProvider = createMessagingProvider({
-      requestPermission,
-      observeTokens,
-      observeMessages,
-    })
-    const { getByText } = render(
-      <MessagingProvider>
-        <Text>Test</Text>
-      </MessagingProvider>,
-    )
-
-    await waitForElement(() => getByText('Test'))
-    cleanup()
-    expect(token$Subscription.unsubscribe).toHaveBeenCalledTimes(1)
-    expect(message$Subscription.unsubscribe).toHaveBeenCalledTimes(1)
   })
 
   it('saves token', async () => {

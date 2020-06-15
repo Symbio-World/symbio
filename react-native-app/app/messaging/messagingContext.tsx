@@ -1,21 +1,19 @@
 import * as React from 'react'
-import { Observable, ReplaySubject } from 'rxjs'
+import { Observable } from 'rxjs'
 import { RemoteMessage, AuthorizationStatus } from './types'
 import { useAuth } from '../auth'
 import { saveToken } from './saveToken'
+import { usePermission } from './usePermission'
+import { useToken } from './useToken'
+import { useMessage } from './useMessage'
 
 type MessagingContext = {
   authorizationStatus?: AuthorizationStatus
-  token$: Observable<string>
-  message$: Observable<RemoteMessage>
+  token?: string
+  message?: RemoteMessage
 }
 
-const token$ = new ReplaySubject<string>(1)
-const message$ = new ReplaySubject<RemoteMessage>(1)
-const messagingContext = React.createContext<MessagingContext>({
-  token$,
-  message$,
-})
+const messagingContext = React.createContext<MessagingContext>({})
 
 type Props = {
   children: React.ReactNode
@@ -23,6 +21,7 @@ type Props = {
 export type RequestPermission = () => Promise<AuthorizationStatus>
 export type ObserveTokens = () => Observable<string>
 export type ObserveMessages = () => Observable<RemoteMessage>
+
 export type Deps = {
   requestPermission: RequestPermission
   observeTokens: ObserveTokens
@@ -35,42 +34,19 @@ export const createMessagingProvider: CreateMessagingProvider = ({
   observeMessages,
 }) => ({ children }: Props) => {
   const { user } = useAuth()
-  const [authorizationStatus, setAuthorizationStatus] = React.useState<
-    AuthorizationStatus
-  >()
+  const { authorizationStatus } = usePermission(requestPermission)
+  const { token } = useToken(authorizationStatus, observeTokens)
+  const { message } = useMessage(authorizationStatus, observeMessages)
 
   React.useEffect(() => {
-    requestPermission().then((authStatus) => {
-      setAuthorizationStatus(authStatus)
-    })
-  }, [])
-
-  React.useEffect(() => {
-    if (authorizationStatus) {
-      const observeTokensSubscription = observeTokens().subscribe(token$)
-      const observeMessagesSubscription = observeMessages().subscribe(message$)
-      return () => {
-        observeTokensSubscription.unsubscribe()
-        observeMessagesSubscription.unsubscribe()
-      }
+    if (user && token) {
+      saveToken(user.id, token)
     }
     return
-  }, [authorizationStatus])
-
-  React.useEffect(() => {
-    if (user) {
-      const subscription = token$.subscribe((token) => {
-        saveToken(user.id, token)
-      })
-      return () => subscription.unsubscribe()
-    }
-    return
-  }, [user])
+  }, [user, token])
 
   return (
-    <messagingContext.Provider
-      value={{ authorizationStatus, token$, message$ }}
-    >
+    <messagingContext.Provider value={{ authorizationStatus, token, message }}>
       {children}
     </messagingContext.Provider>
   )
