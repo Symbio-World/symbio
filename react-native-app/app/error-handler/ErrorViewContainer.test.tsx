@@ -2,7 +2,14 @@ import * as React from 'react'
 import { render } from 'react-native-testing-library'
 import { ErrorViewContainer } from './ErrorViewContainer'
 
+jest.mock('../error-handler/saveError')
+
+import { saveError } from '../error-handler/saveError'
+
 describe('ErrorViewContainer', () => {
+  beforeEach(() => {
+    ;(saveError as jest.Mock).mockImplementation(() => Promise.resolve())
+  })
   it('renders correctly', () => {
     const { toJSON } = render(<ErrorViewContainer />)
     expect(toJSON()).toMatchSnapshot()
@@ -10,7 +17,7 @@ describe('ErrorViewContainer', () => {
 
   it('test with error', () => {
     const error = new Error('Some error')
-    const { toJSON } = render(<ErrorViewContainer error={error} />)
-    expect(toJSON()).toMatchSnapshot()
+    render(<ErrorViewContainer error={error} />)
+    expect(saveError).toHaveBeenCalled()
   })
 })
