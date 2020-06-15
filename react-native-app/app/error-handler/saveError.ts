@@ -7,10 +7,10 @@ type SaveError = (message: string) => Promise<void>
 
 const getGeneralInfo = async () => {
   const [brand, bundleId, deviceType, deviceName] = await Promise.all([
-    Promise.resolve(DeviceInfo.getBrand()), //general
-    Promise.resolve(DeviceInfo.getBundleId()), //general
-    Promise.resolve(DeviceInfo.getDeviceType()), //general
-    DeviceInfo.getDeviceName(), //general
+    Promise.resolve(DeviceInfo.getBrand()),
+    Promise.resolve(DeviceInfo.getBundleId()),
+    Promise.resolve(DeviceInfo.getDeviceType()),
+    DeviceInfo.getDeviceName(),
   ])
   return { brand, bundleId, deviceType, deviceName }
 }
