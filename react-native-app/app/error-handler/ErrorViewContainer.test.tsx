@@ -2,9 +2,9 @@ import * as React from 'react'
 import { render } from 'react-native-testing-library'
 import { ErrorViewContainer } from './ErrorViewContainer'
 
-jest.mock('../error-handler/saveError')
+jest.mock('./saveError')
 
-import { saveError } from '../error-handler/saveError'
+import { saveError } from './saveError'
 
 describe('ErrorViewContainer', () => {
   beforeEach(() => {
