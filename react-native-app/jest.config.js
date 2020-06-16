@@ -9,9 +9,13 @@ module.exports = {
     },
   },
   moduleNameMapper: {
-    "\\.svg": "<rootDir>/__mocks__/svgMock.js"
+    '\\.svg': '<rootDir>/__mocks__/svgMock.js',
   },
-  setupFilesAfterEnv: ['<rootDir>/setupTests.js', './node_modules/react-native-gesture-handler/jestSetup'],
+  setupFilesAfterEnv: [
+    '<rootDir>/setupTests.js',
+    './node_modules/react-native-gesture-handler/jestSetup',
+  ],
+  testEnvironment: 'jsdom',
   transformIgnorePatterns: [
     'node_modules/(?!(react-native' +
       '|scandit-react-native' +

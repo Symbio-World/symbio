@@ -4,6 +4,7 @@ import { StatusBar } from 'react-native'
 import RNBootSplash from 'react-native-bootsplash'
 import { AuthProvider } from './auth'
 import { Navigation } from './navigation'
+import { MessagingProvider } from './messaging'
 
 export const App: React.FC = () => {
   React.useEffect(() => {
@@ -12,8 +13,10 @@ export const App: React.FC = () => {
 
   return (
     <AuthProvider>
-      <StatusBar hidden />
-      <Navigation />
+      <MessagingProvider>
+        <StatusBar hidden />
+        <Navigation />
+      </MessagingProvider>
     </AuthProvider>
   )
 }

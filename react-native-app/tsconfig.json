@@ -3,7 +3,7 @@
   "compilerOptions": {
     "jsx": "react",
     "typeRoots": ["./types", "./node_modules/@types"],
-    "skipLibCheck": true,
+    "skipLibCheck": true
   },
   "exclude": ["babel.config.js", "metro.config.js"]
 }

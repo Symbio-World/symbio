@@ -54,7 +54,7 @@ export const createProcessBarcode: CreateProcessBarcode = ({
   const dataFromProductPages = productPages.map(scrapeProductPage)
   console.log(`data scraped: ${JSON.stringify(dataFromProductPages, null, 4)}`)
   const combinedProductPageData = dataFromProductPages.reduce(
-    (acc, pageData) => R.mergeDeepLeft(acc, pageData),
+    (acc, pageData) => R.mergeDeepLeft(acc, pageData) as Model.ProductPageData,
     {},
   )
   const productData = {
