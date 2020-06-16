@@ -24,17 +24,17 @@ export type DeviceInfo = {
 }
 
 export type FRONTEND_ERROR_OCCURED = {
-  message: ErrorMessage
+  error: ErrorMessage
   deviceData: DeviceInfo
   type: EventType.FRONTEND_ERROR_OCCURED
 }
 
 export const frontendErrorOccured = (
-  message: ErrorMessage,
+  error: ErrorMessage,
   deviceData: DeviceInfo,
 ): FRONTEND_ERROR_OCCURED => ({
   type: EventType.FRONTEND_ERROR_OCCURED,
-  message,
+  error,
   deviceData,
 })
 
