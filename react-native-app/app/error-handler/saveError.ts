@@ -1,5 +1,5 @@
 import {
-  frontendError,
+  frontendErrorOccured,
   DeviceInfo as DeviceInfoType,
 } from '@symbio/event-store-core'
 import DeviceInfo from 'react-native-device-info'
@@ -64,7 +64,7 @@ export const saveError: SaveError = (error: Error) =>
   getDeviceInfo()
     .then((info: DeviceInfoType) => {
       const errorSerilazed = serializeError(error)
-      storeEvent(frontendError(errorSerilazed, info))
+      storeEvent(frontendErrorOccured(errorSerilazed, info))
     })
     .catch((e: Error) =>
       console.warn('Error during saving error =) ', e.message),

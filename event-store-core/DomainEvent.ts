@@ -29,7 +29,7 @@ export type FRONTEND_ERROR_OCCURED = {
   type: EventType.FRONTEND_ERROR_OCCURED
 }
 
-export const frontendError = (
+export const frontendErrorOccured = (
   message: ErrorMessage,
   deviceData: DeviceInfo,
 ): FRONTEND_ERROR_OCCURED => ({
