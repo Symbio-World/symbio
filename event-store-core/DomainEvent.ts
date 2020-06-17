@@ -8,7 +8,39 @@ export enum EventType {
   BARCODE_PROCESSED = 'BARCODE_PROCESSED',
   BARCODE_PROCESSED_EVENT_ARCHIVED = 'BARCODE_PROCESSED_EVENT_ARCHIVED',
   NOTIFICATION_TOKEN_GENERATED = 'NOTIFICATION_TOKEN_GENERATED',
+  FRONTEND_ERROR_OCCURED = 'FRONTEND_ERROR_OCCURED',
 }
+export type SerializedError = {
+  name?: string
+  message?: string
+  stack?: string
+}
+export type DeviceInfo = {
+  brand?: string
+  bundleId?: string
+  deviceType?: string
+  deviceName?: string
+  apiLevel?: string
+  baseOs?: string
+  device?: string
+  firstTimeInstallTime?: string
+  lastUpdateTime?: string
+}
+
+export type FRONTEND_ERROR_OCCURED = {
+  error: SerializedError
+  deviceData: DeviceInfo
+  type: EventType.FRONTEND_ERROR_OCCURED
+}
+
+export const frontendErrorOccured = (
+  error: SerializedError,
+  deviceData: DeviceInfo,
+): FRONTEND_ERROR_OCCURED => ({
+  type: EventType.FRONTEND_ERROR_OCCURED,
+  error,
+  deviceData,
+})
 
 export type UserScannedBarcode = {
   type: EventType.USER_SCANNED_BARCODE
@@ -107,3 +139,4 @@ export type DomainEvent =
   | BarcodeProcessed
   | BarcodeProcessedEventArchived
   | NotificationTokenGenerated
+  | FRONTEND_ERROR_OCCURED

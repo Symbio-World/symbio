@@ -3,7 +3,7 @@ import { of, throwError } from 'rxjs'
 import { Text } from 'react-native'
 import { render } from 'react-native-testing-library'
 import { ObservableView } from './ObservableView'
-import { ErrorView } from '../ui-kit/ErrorView'
+import { ErrorViewContainer } from '../error-handler/ErrorViewContainer'
 import { TimeoutView } from '../ui-kit/TimeoutView'
 
 jest.useFakeTimers()
@@ -28,7 +28,7 @@ describe('ObservableView', () => {
         renderSuccess={(data) => <Text>{data}</Text>}
       />,
     )
-    const errorView = getByType(ErrorView)
+    const errorView = getByType(ErrorViewContainer)
     expect(errorView).toBeDefined()
     expect(errorView.props.error).toEqual(testError)
   })

@@ -10,7 +10,7 @@ import {
 import { ProductViewContainer } from './ProductViewContainer'
 import { ProductNotFound } from './ProductNotFound'
 import { ProductView } from './ProductView'
-import { ErrorView } from '../ui-kit/ErrorView'
+import { ErrorViewContainer } from '../error-handler/ErrorViewContainer'
 import { TimeoutView } from '../ui-kit/TimeoutView'
 import { observeProductData } from './observeProductData'
 
@@ -66,7 +66,7 @@ describe('ProductViewContainer', () => {
       throwError('error'),
     )
     const { getByType } = render(<ProductViewContainer barcode={barcode} />)
-    expect(getByType(ErrorView)).toBeDefined()
+    expect(getByType(ErrorViewContainer)).toBeDefined()
   })
 
   it('renders product not found on noSearchResultsFound', () => {

@@ -5,6 +5,7 @@ import RNBootSplash from 'react-native-bootsplash'
 import { AuthProvider } from './auth'
 import { Navigation } from './navigation'
 import { MessagingProvider } from './messaging'
+import './error-handler'
 
 export const App: React.FC = () => {
   React.useEffect(() => {

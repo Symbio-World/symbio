@@ -38,11 +38,14 @@
     "react": "16.13.0",
     "react-native": "0.61.5",
     "react-native-bootsplash": "2.0.5",
+    "react-native-device-info": "^5.6.1",
+    "react-native-exception-handler": "^2.10.8",
     "react-native-gesture-handler": "1.6.1",
     "react-native-keyboard-aware-scroll-view": "^0.9.1",
     "react-native-reanimated": "1.8.0",
     "react-native-redash": "^12.1.6",
     "react-native-responsive-fontsize": "^0.4.3",
+    "react-native-restart": "^0.0.17",
     "react-native-safe-area-context": "0.7.3",
     "react-native-screens": "2.4.0",
     "react-native-simple-toast": "1.0.0",
@@ -50,7 +53,9 @@
     "react-native-tailwindcss": "1.1.9",
     "react-native-vector-icons": "6.6.0",
     "scandit-react-native": "5.14.2",
-    "swr": "0.1.18"
+    "serialize-error": "^7.0.1",
+    "swr": "0.1.18",
+    "yarn": "1.22.4"
   },
   "devDependencies": {
     "@babel/core": "7.8.7",

@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { Observable } from 'rxjs'
-import { ErrorView } from '../ui-kit/ErrorView'
+import { ErrorViewContainer } from '../error-handler/ErrorViewContainer'
 import { TimeoutView } from '../ui-kit/TimeoutView'
 import { Loading } from '../ui-kit/Loading'
 import { Timeout } from './Timeout'
@@ -18,7 +18,7 @@ export const ObservableView: React.FC<Props> = ({
   renderSuccess,
   timeoutDuration = 5000,
   renderTimeout = ({ onRetry }) => <TimeoutView onRetry={onRetry} />,
-  renderError = (error) => <ErrorView error={error} />,
+  renderError = (error) => <ErrorViewContainer error={error} />,
 }) => {
   const { data, error } = useObservable(observable)
   const [hasTimedOut, setHasTimedOut] = React.useState(false)
