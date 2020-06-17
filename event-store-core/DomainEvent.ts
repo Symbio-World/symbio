@@ -10,7 +10,7 @@ export enum EventType {
   NOTIFICATION_TOKEN_GENERATED = 'NOTIFICATION_TOKEN_GENERATED',
   FRONTEND_ERROR_OCCURED = 'FRONTEND_ERROR_OCCURED',
 }
-export type SerilizedError = {
+export type SerializedError = {
   name?: string
   message?: string
   stack?: string
@@ -28,13 +28,13 @@ export type DeviceInfo = {
 }
 
 export type FRONTEND_ERROR_OCCURED = {
-  error: SerilizedError
+  error: SerializedError
   deviceData: DeviceInfo
   type: EventType.FRONTEND_ERROR_OCCURED
 }
 
 export const frontendErrorOccured = (
-  error: SerilizedError,
+  error: SerializedError,
   deviceData: DeviceInfo,
 ): FRONTEND_ERROR_OCCURED => ({
   type: EventType.FRONTEND_ERROR_OCCURED,
