@@ -3,7 +3,7 @@ import { render, fireEvent } from 'react-native-testing-library'
 import { useAuth } from '../auth'
 import { FeedbackViewContainer } from './FeedbackViewContainer'
 import { FeedbackView } from './FeedbackView'
-import { saveFeedback } from './saveFeedback'
+import { saveEmail } from './saveEmail'
 
 jest.mock('../auth')
 jest.mock('./saveFeedback')
@@ -13,7 +13,7 @@ describe('FeedbackViewContainer', () => {
 
   beforeEach(() => {
     ;(useAuth as jest.Mock).mockImplementation(() => ({ user }))
-    ;(saveFeedback as jest.Mock).mockImplementation(() => Promise.resolve())
+    ;(saveEmail as jest.Mock).mockImplementation(() => Promise.resolve())
   })
 
   it('renders correctly', () => {
@@ -25,7 +25,7 @@ describe('FeedbackViewContainer', () => {
     const feedback = 'feedback'
     const { getByType } = render(<FeedbackViewContainer />)
     fireEvent(getByType(FeedbackView), 'onSubmit', feedback)
-    expect(saveFeedback).toHaveBeenCalledWith(user.id, feedback)
+    expect(saveEmail).toHaveBeenCalledWith(user.id, feedback)
   })
 
   it('triggers onSave callback', () => {

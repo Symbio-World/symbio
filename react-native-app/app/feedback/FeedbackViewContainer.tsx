@@ -1,25 +1,23 @@
 import * as React from 'react'
 import { FeedbackView } from './FeedbackView'
 import { useAuth } from '../auth'
-import { saveFeedback } from './saveFeedback'
+import { saveEmail } from './saveEmail'
 
 type Props = {
-  title?: string
   onSave?: () => void
 }
 export const FeedbackViewContainer: React.FC<Props> = ({
-  title = '',
   onSave = () => {},
 }) => {
   const { user } = useAuth()
 
-  const handleSubmit = (feedback: string) => {
+  const handleSubmit = (email: string) => {
     if (!user) {
       throw new Error('This should never happen, as user is in the context')
     }
-    saveFeedback(user.id, feedback)
+    saveEmail(user.id, email)
     onSave()
   }
 
-  return <FeedbackView title={title} onSubmit={handleSubmit} />
+  return <FeedbackView onSubmit={handleSubmit} />
 }

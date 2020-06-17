@@ -31,7 +31,7 @@ export type MainStackParamList = {
 
 export type ModalStackParamList = {
   ProductScreen: { barcode: string }
-  FeedbackScreen: { title: string }
+  FeedbackScreen: {}
   SetupPrinciplesScreen: {}
   Main: SubNavigator<MainStackParamList>
 }

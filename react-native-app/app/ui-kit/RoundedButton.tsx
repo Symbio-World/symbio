@@ -37,32 +37,33 @@ export const RoundedButton: React.FC<Props> = ({
 
   return (
     <TouchableOpacity onPress={onPress}>
-      <View
-        style={[
-          ...buttonStyle,
-          t.itemsCenter,
-          t.justifyCenter,
-          t.w16,
-          t.h16,
-          t.roundedFull,
-          t.p1,
-        ]}
-      >
-        {innerTitle ? (
-          <Text style={[t.textCenter, t.textXl, ...innerStyle]}>
-            {innerTitle}
-          </Text>
-        ) : null}
-        <View style={[t.w5, t.h5]}>
-          {icon ? <Icon width={'100%'} height={'100%'} icon={icon} /> : null}
+      <View style={[t.p2, t.bgWhite]}>
+        <View
+          style={[
+            ...buttonStyle,
+            t.itemsCenter,
+            t.justifyCenter,
+            t.w12,
+            t.h12,
+            t.roundedFull,
+          ]}
+        >
+          {innerTitle ? (
+            <Text style={[t.textCenter, t.textXl, ...innerStyle]}>
+              {innerTitle}
+            </Text>
+          ) : null}
+          <View style={[t.w5, t.h5]}>
+            {icon ? <Icon width={'100%'} height={'100%'} icon={icon} /> : null}
+          </View>
         </View>
-      </View>
-      <View>
-        {outerTitle ? (
-          <Text style={[t.textCenter, t.textXl, t.textPrimary]}>
-            {outerTitle}
-          </Text>
-        ) : null}
+        <View>
+          {outerTitle ? (
+            <Text style={[t.textCenter, t.textBase, t.textPrimary, t.fontBold]}>
+              {outerTitle}
+            </Text>
+          ) : null}
+        </View>
       </View>
     </TouchableOpacity>
   )

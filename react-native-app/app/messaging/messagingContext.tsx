@@ -50,7 +50,6 @@ export const createMessagingProvider: CreateMessagingProvider = ({
     if (message?.data?.action === Action.TRIGGER_FEEDBACK) {
       navigate('Modals', {
         screen: 'FeedbackScreen',
-        params: { title: 'Hello' },
       })
     }
     return

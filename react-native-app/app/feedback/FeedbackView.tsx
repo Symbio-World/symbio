@@ -3,42 +3,62 @@ import { View, Text, TextInput, Keyboard } from 'react-native'
 import { t } from 'react-native-tailwindcss'
 import Toast from 'react-native-simple-toast'
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
-import { Button } from '../ui-kit/Button'
+import { CloseButton } from '../ui-kit/CloseButton'
+import { RoundedButton } from '../ui-kit/RoundedButton'
+import { Icons } from '../ui-kit/Icon'
 
 type Props = {
-  title?: string
-  onSubmit?: (feedback: string) => void
+  onSubmit?: (email: string) => void
 }
 
-export const FeedbackView: React.FC<Props> = ({
-  title = '',
-  onSubmit = () => {},
-}) => {
+export const FeedbackView: React.FC<Props> = ({ onSubmit = () => {} }) => {
   const [text, setText] = React.useState<string>('')
-  const handlePress = () => {
+  const handleSubmit = () => {
     onSubmit(text)
     Keyboard.dismiss()
-    Toast.show('Feedback successfully sent')
+    Toast.show('Your email was saved successfully')
   }
   return (
     <KeyboardAwareScrollView
-      contentContainerStyle={[t.flex1, t.mY16, t.mX5]}
+      contentContainerStyle={[t.flex1, t.mT6, t.mB3,t.mX5]}
       enableOnAndroid
       enableAutomaticScroll
     >
-      <Text style={[t.text2xl, t.fontBold, t.mY4]}>💬{title}</Text>
+      <Text style={[t.text2xl, t.mB6, t.textCenter]}>Help us improve!</Text>
+      <Text style={[t.textBase, t.mB4]}>
+        Hi there, thanks for using Symbio! We want to make it better, so we’re
+        seeking your help to find out what you need. Will you be willing to take
+        part in a short customer interview? Let us know by entering your email
+        below so we can contact you. 🙂
+      </Text>
+      <Text style={[t.textBase, t.mB3]}>Your email</Text>
       <View style={[t.flex1]}>
         <TextInput
-          multiline={true}
-          numberOfLines={4}
           onChangeText={setText}
-          onSubmitEditing={handlePress}
+          onSubmitEditing={handleSubmit}
           value={text}
           returnKeyType="send"
           autoFocus
+          style={[
+            t.border,
+            t.borderGray500,
+            t.h12,
+            t.roundedLg,
+            t.p3,
+            t.textBlack,
+          ]}
         />
       </View>
-      <Button title="Submit feedback" onPress={handlePress} />
+      <>
+        <View style={[t.flexRow, t.justifyEvenly, t.absolute, t.bottom0, t.wFull, t.itemsCenter]}>
+          <CloseButton onClose={() => {}} />
+          <RoundedButton
+            onPress={handleSubmit}
+            outerTitle="send"
+            icon={Icons.SEND}
+          />
+        </View>
+      </>
     </KeyboardAwareScrollView>
   )
 }
