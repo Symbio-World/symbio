@@ -9,12 +9,14 @@ import {
   ObserveTokens,
   ObserveMessages,
 } from './messagingContext'
-import { AuthorizationStatus } from './types'
+import { AuthorizationStatus, Action } from './types'
 import { useAuth } from '../auth'
 import { saveToken } from './saveToken'
+import { navigate } from '../navigation'
 
 jest.mock('../auth')
 jest.mock('./saveToken')
+jest.mock('../navigation')
 
 describe('messagingContext', () => {
   let requestPermission: RequestPermission
@@ -32,6 +34,7 @@ describe('messagingContext', () => {
     observeMessages = jest.fn(() => of(message))
     ;(useAuth as jest.Mock).mockImplementation(() => ({ user }))
     ;(saveToken as jest.Mock).mockImplementation(() => Promise.resolve())
+    ;(navigate as jest.Mock).mockImplementation(jest.fn)
   })
 
   afterEach(() => {
@@ -182,5 +185,30 @@ describe('messagingContext', () => {
 
     await waitForElement(() => getByText('Test'))
     expect(saveToken).toHaveBeenCalledTimes(0)
+  })
+
+  it('navigates to feedback screen on message with action TRIGGER_FEEDBACK', async () => {
+    observeMessages = jest.fn(() =>
+      of({
+        ...message,
+        data: { action: Action.TRIGGER_FEEDBACK },
+      }),
+    )
+    const MessagingProvider = createMessagingProvider({
+      requestPermission,
+      observeTokens,
+      observeMessages,
+    })
+    const { getByText } = render(
+      <MessagingProvider>
+        <Text>Test</Text>
+      </MessagingProvider>,
+    )
+
+    await waitForElement(() => getByText('Test'))
+    expect(navigate).toHaveBeenCalledWith('Modals', {
+      screen: 'FeedbackScreen',
+      params: { title: 'Hello' },
+    })
   })
 })
