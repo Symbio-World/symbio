@@ -9,8 +9,10 @@ type Props = {
   route: RouteProp<ModalStackParamList, 'GetUserEmailScreen'>
 }
 export const GetUserEmailScreen: React.FC<Props> = ({ navigation }) => {
-  const handleSave = () => {
+  const navigateOut = () => {
     navigation.pop()
   }
-  return <GetUserEmailViewContainer onSave={handleSave} />
+  return (
+    <GetUserEmailViewContainer onSave={navigateOut} onClose={navigateOut} />
+  )
 }

@@ -16,12 +16,21 @@ describe('GetUserEmailScreen', () => {
     expect(toJSON()).toMatchSnapshot()
   })
 
-  it('pops the route on save', () => {
+  it('navigates out on save', () => {
     navigation = { pop: jest.fn() }
     const { getByType } = render(
       <GetUserEmailScreen route={route} navigation={navigation} />,
     )
     fireEvent(getByType(GetUserEmailViewContainer), 'onSave')
+    expect(navigation.pop).toHaveBeenCalledTimes(1)
+  })
+
+  it('navigates out on close', () => {
+    navigation = { pop: jest.fn() }
+    const { getByType } = render(
+      <GetUserEmailScreen route={route} navigation={navigation} />,
+    )
+    fireEvent(getByType(GetUserEmailViewContainer), 'onClose')
     expect(navigation.pop).toHaveBeenCalledTimes(1)
   })
 })

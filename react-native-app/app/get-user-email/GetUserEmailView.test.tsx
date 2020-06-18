@@ -32,4 +32,11 @@ describe('GetUserEmailView', () => {
     fireEvent.press(getByText('send'))
     expect(Keyboard.dismiss).toHaveBeenCalled()
   })
+
+  it('triggers onClose', () => {
+    const handleClose = jest.fn()
+    const { getByText } = render(<GetUserEmailView onClose={handleClose} />)
+    fireEvent.press(getByText('close'))
+    expect(handleClose).toHaveBeenCalledTimes(1)
+  })
 })

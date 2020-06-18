@@ -5,9 +5,11 @@ import { saveEmail } from './saveEmail'
 
 type Props = {
   onSave?: () => void
+  onClose?: () => void
 }
 export const GetUserEmailViewContainer: React.FC<Props> = ({
   onSave = () => {},
+  onClose = () => {}
 }) => {
   const { user } = useAuth()
 
@@ -19,5 +21,5 @@ export const GetUserEmailViewContainer: React.FC<Props> = ({
     onSave()
   }
 
-  return <GetUserEmailView onSubmit={handleSubmit} />
+  return <GetUserEmailView onSubmit={handleSubmit} onClose={onClose} />
 }

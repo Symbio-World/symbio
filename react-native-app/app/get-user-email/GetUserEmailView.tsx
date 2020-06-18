@@ -11,9 +11,13 @@ import { Icons } from '../ui-kit/Icon'
 
 type Props = {
   onSubmit?: (email: string) => void
+  onClose?: () => void
 }
 
-export const GetUserEmailView: React.FC<Props> = ({ onSubmit = () => {} }) => {
+export const GetUserEmailView: React.FC<Props> = ({
+  onSubmit = () => {},
+  onClose = () => {},
+}) => {
   const [text, setText] = React.useState<string>('')
   const handleSubmit = () => {
     onSubmit(text)
@@ -43,7 +47,7 @@ export const GetUserEmailView: React.FC<Props> = ({ onSubmit = () => {} }) => {
         autoFocus
       />
       <ModalActionsView>
-        <CloseButton onClose={() => {}} />
+        <CloseButton onClose={onClose} />
         <RoundedButton
           onPress={handleSubmit}
           outerTitle="send"
