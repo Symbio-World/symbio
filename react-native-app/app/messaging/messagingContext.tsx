@@ -49,7 +49,8 @@ export const createMessagingProvider: CreateMessagingProvider = ({
   React.useEffect(() => {
     if (
       message?.data?.action === Action.TRIGGER_GET_USER_EMAIL_SCREEN &&
-      !user?.email
+      user &&
+      !user.email
     ) {
       navigate('Modals', {
         screen: 'GetUserEmailScreen',

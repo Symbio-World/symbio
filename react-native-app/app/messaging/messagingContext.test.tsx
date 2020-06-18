@@ -235,4 +235,29 @@ describe('messagingContext', () => {
     await waitForElement(() => getByText('Test'))
     expect(navigate).toHaveBeenCalledTimes(0)
   })
+
+  it('does not navigate to GetUserEmailScreen if no user', async () => {
+    ;(useAuth as jest.Mock).mockImplementation(() => ({
+      user: undefined,
+    }))
+    observeMessages = jest.fn(() =>
+      of({
+        ...message,
+        data: { action: Action.TRIGGER_GET_USER_EMAIL_SCREEN },
+      }),
+    )
+    const MessagingProvider = createMessagingProvider({
+      requestPermission,
+      observeTokens,
+      observeMessages,
+    })
+    const { getByText } = render(
+      <MessagingProvider>
+        <Text>Test</Text>
+      </MessagingProvider>,
+    )
+
+    await waitForElement(() => getByText('Test'))
+    expect(navigate).toHaveBeenCalledTimes(0)
+  })
 })
