@@ -1,0 +1,133 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ModalActionsView renders correctly 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "flexDirection": "row",
+      },
+      Object {
+        "justifyContent": "space-evenly",
+      },
+      Object {
+        "position": "absolute",
+      },
+      Object {
+        "bottom": 0,
+      },
+      Object {
+        "width": "100%",
+      },
+      Object {
+        "alignItems": "center",
+      },
+    ]
+  }
+>
+  <View
+    accessible={true}
+    focusable={true}
+    isTVSelectable={true}
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Object {
+        "opacity": 1,
+      }
+    }
+  >
+    <View
+      style={
+        Array [
+          Object {
+            "padding": 8,
+          },
+          Object {
+            "backgroundColor": "#fff",
+          },
+          Object {
+            "borderRadius": 8,
+          },
+        ]
+      }
+    >
+      <View
+        style={
+          Array [
+            Object {
+              "backgroundColor": "#fff",
+            },
+            Object {
+              "borderWidth": 2,
+            },
+            Object {
+              "borderColor": "#B35340",
+            },
+            Object {
+              "alignItems": "center",
+            },
+            Object {
+              "justifyContent": "center",
+            },
+            Object {
+              "width": 48,
+            },
+            Object {
+              "height": 48,
+            },
+            Object {
+              "borderRadius": 9999,
+            },
+          ]
+        }
+      >
+        <View
+          style={
+            Array [
+              Object {
+                "width": 20,
+              },
+              Object {
+                "height": 20,
+              },
+            ]
+          }
+        >
+          <SvgMock
+            height="100%"
+            width="100%"
+          />
+        </View>
+      </View>
+      <View>
+        <Text
+          style={
+            Array [
+              Object {
+                "textAlign": "center",
+              },
+              Object {
+                "fontSize": 16,
+              },
+              Object {
+                "color": "#B35340",
+              },
+              Object {
+                "fontWeight": "bold",
+              },
+            ]
+          }
+        >
+          close
+        </Text>
+      </View>
+    </View>
+  </View>
+</View>
+`;
