@@ -1,8 +1,8 @@
 import * as React from 'react'
 import { render } from 'react-native-testing-library'
-import { FeedbackScreen } from './FeedbackScreen'
+import { GetUserEmailScreen } from './GetUserEmailScreen'
 
-describe('FeedbackScreen', () => {
+describe('GetUserEmailScreen', () => {
   const navigation: any = {}
   const route: any = {
     params: {},
@@ -10,7 +10,7 @@ describe('FeedbackScreen', () => {
 
   it('renders correctly', () => {
     const { toJSON } = render(
-      <FeedbackScreen route={route} navigation={navigation} />,
+      <GetUserEmailScreen route={route} navigation={navigation} />,
     )
     expect(toJSON()).toMatchSnapshot()
   })

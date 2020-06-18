@@ -49,7 +49,7 @@ export const createMessagingProvider: CreateMessagingProvider = ({
   React.useEffect(() => {
     if (message?.data?.action === Action.TRIGGER_FEEDBACK) {
       navigate('Modals', {
-        screen: 'FeedbackScreen',
+        screen: 'GetUserEmailScreen',
       })
     }
     return

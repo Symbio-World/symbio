@@ -12,7 +12,7 @@ type Props = {
   onSubmit?: (email: string) => void
 }
 
-export const FeedbackView: React.FC<Props> = ({ onSubmit = () => {} }) => {
+export const GetUserEmailView: React.FC<Props> = ({ onSubmit = () => {} }) => {
   const [text, setText] = React.useState<string>('')
   const handleSubmit = () => {
     onSubmit(text)
@@ -39,6 +39,7 @@ export const FeedbackView: React.FC<Props> = ({ onSubmit = () => {} }) => {
           onSubmitEditing={handleSubmit}
           value={text}
           returnKeyType="send"
+          keyboardType="email-address"
           autoFocus
           style={[
             t.border,

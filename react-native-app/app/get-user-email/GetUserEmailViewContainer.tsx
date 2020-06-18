@@ -1,12 +1,12 @@
 import * as React from 'react'
-import { FeedbackView } from './FeedbackView'
+import { GetUserEmailView } from './GetUserEmailView'
 import { useAuth } from '../auth'
 import { saveEmail } from './saveEmail'
 
 type Props = {
   onSave?: () => void
 }
-export const FeedbackViewContainer: React.FC<Props> = ({
+export const GetUserEmailViewContainer: React.FC<Props> = ({
   onSave = () => {},
 }) => {
   const { user } = useAuth()
@@ -19,5 +19,5 @@ export const FeedbackViewContainer: React.FC<Props> = ({
     onSave()
   }
 
-  return <FeedbackView onSubmit={handleSubmit} />
+  return <GetUserEmailView onSubmit={handleSubmit} />
 }

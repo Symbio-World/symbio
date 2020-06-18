@@ -7,7 +7,7 @@ import {
 import { createStackNavigator } from '@react-navigation/stack'
 import { ScanBarcodeScreen } from '../barcode'
 import { ProductScreen } from '../product'
-import { FeedbackScreen } from '../feedback'
+import { GetUserEmailScreen } from '../get-user-email'
 import { SetupPrinciplesScreen } from '../principle'
 import {
   cardStackScreenOptions,
@@ -31,7 +31,7 @@ export type MainStackParamList = {
 
 export type ModalStackParamList = {
   ProductScreen: { barcode: string }
-  FeedbackScreen: {}
+  GetUserEmailScreen: {}
   SetupPrinciplesScreen: {}
   Main: SubNavigator<MainStackParamList>
 }
@@ -57,8 +57,8 @@ const ModalStackComponent = () => {
         }}
       />
       <ModalStack.Screen
-        name="FeedbackScreen"
-        component={createSwipableModal(FeedbackScreen)}
+        name="GetUserEmailScreen"
+        component={createSwipableModal(GetUserEmailScreen)}
         options={{
           gestureEnabled: false,
           headerShown: false,
