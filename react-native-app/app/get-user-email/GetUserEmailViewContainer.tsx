@@ -9,7 +9,7 @@ type Props = {
 }
 export const GetUserEmailViewContainer: React.FC<Props> = ({
   onSave = () => {},
-  onClose = () => {}
+  onClose = () => {},
 }) => {
   const { user } = useAuth()
 

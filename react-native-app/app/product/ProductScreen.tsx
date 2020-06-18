@@ -11,10 +11,5 @@ type Props = {
 export const ProductScreen: React.FC<Props> = ({ route, navigation }) => {
   const { barcode } = route.params
 
-  return (
-    <ProductViewContainer
-      barcode={barcode}
-      onClose={navigation.goBack}
-    />
-  )
+  return <ProductViewContainer barcode={barcode} onClose={navigation.goBack} />
 }

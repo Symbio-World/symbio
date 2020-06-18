@@ -53,7 +53,7 @@ export const createMessagingProvider: CreateMessagingProvider = ({
       })
     }
     return
-  }, [message, navigate])
+  }, [message])
 
   return (
     <messagingContext.Provider value={{ authorizationStatus, token, message }}>

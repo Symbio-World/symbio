@@ -30,14 +30,18 @@ describe('GetUserEmailViewContainer', () => {
 
   it('triggers onSave callback', () => {
     const handleSave = jest.fn()
-    const { getByType } = render(<GetUserEmailViewContainer onSave={handleSave} />)
+    const { getByType } = render(
+      <GetUserEmailViewContainer onSave={handleSave} />,
+    )
     fireEvent(getByType(GetUserEmailView), 'onSubmit', 'test@example.com')
     expect(handleSave).toHaveBeenCalledTimes(1)
   })
 
   it('triggers onClose callback', () => {
     const handleClose = jest.fn()
-    const { getByType } = render(<GetUserEmailViewContainer onClose={handleClose} />)
+    const { getByType } = render(
+      <GetUserEmailViewContainer onClose={handleClose} />,
+    )
     fireEvent(getByType(GetUserEmailView), 'onClose')
     expect(handleClose).toHaveBeenCalledTimes(1)
   })

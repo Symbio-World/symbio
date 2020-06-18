@@ -1,8 +1,5 @@
 import * as React from 'react'
-import {
-  render,
-  fireEvent,
-} from 'react-native-testing-library'
+import { render, fireEvent } from 'react-native-testing-library'
 import { ProductView } from './ProductView'
 import { CloseButton } from '../ui-kit/CloseButton'
 

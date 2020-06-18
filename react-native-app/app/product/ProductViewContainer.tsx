@@ -18,18 +18,12 @@ type Props = {
   barcode: string
   onClose?: () => void
 }
-export const ProductViewContainer: React.FC<Props> = ({
-  barcode,
-  onClose,
-}) => {
+export const ProductViewContainer: React.FC<Props> = ({ barcode, onClose }) => {
   return (
     <ObservableView
       observable={observeProductData(barcode)}
       renderSuccess={(productData) => (
-        <ProductView
-          {...productData}
-          onClose={onClose}
-        />
+        <ProductView {...productData} onClose={onClose} />
       )}
       renderError={(error) =>
         isProductNotFound(error) ? (

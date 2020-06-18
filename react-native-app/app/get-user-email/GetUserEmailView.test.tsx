@@ -18,7 +18,9 @@ describe('GetUserEmailView', () => {
   it('triggers onSubmit', () => {
     const email = 'test@example.com'
     const handleSubmit = jest.fn()
-    const { getByType, getByText } = render(<GetUserEmailView onSubmit={handleSubmit} />)
+    const { getByType, getByText } = render(
+      <GetUserEmailView onSubmit={handleSubmit} />,
+    )
     fireEvent.changeText(getByType(TextInput), email)
     fireEvent.press(getByText('send'))
     expect(handleSubmit).toHaveBeenCalledWith(email)
@@ -27,7 +29,9 @@ describe('GetUserEmailView', () => {
   it('triggers keyboard dissmiss', () => {
     const email = 'test@example.com'
     const handleSubmit = jest.fn()
-    const { getByType, getByText } = render(<GetUserEmailView onSubmit={handleSubmit} />)
+    const { getByType, getByText } = render(
+      <GetUserEmailView onSubmit={handleSubmit} />,
+    )
     fireEvent.changeText(getByType(TextInput), email)
     fireEvent.press(getByText('send'))
     expect(Keyboard.dismiss).toHaveBeenCalled()
