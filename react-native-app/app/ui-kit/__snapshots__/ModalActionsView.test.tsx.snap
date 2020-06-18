@@ -1,52 +1,60 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`CloseButtonView renders correctly 1`] = `
-Array [
+exports[`ModalActionsView renders correctly 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "flexDirection": "row",
+      },
+      Object {
+        "justifyContent": "space-evenly",
+      },
+      Object {
+        "position": "absolute",
+      },
+      Object {
+        "bottom": 0,
+      },
+      Object {
+        "width": "100%",
+      },
+      Object {
+        "alignItems": "center",
+      },
+    ]
+  }
+>
   <View
+    accessible={true}
+    focusable={true}
+    isTVSelectable={true}
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
     style={
-      Array [
-        Object {
-          "height": 160,
-        },
-      ]
-    }
-  />,
-  <View
-    style={
-      Array [
-        Object {
-          "position": "absolute",
-        },
-        Object {
-          "bottom": 0,
-        },
-        Object {
-          "width": "100%",
-        },
-        Object {
-          "alignItems": "center",
-        },
-        Object {
-          "paddingBottom": 20,
-        },
-      ]
+      Object {
+        "opacity": 1,
+      }
     }
   >
     <View
-      accessible={true}
-      focusable={true}
-      isTVSelectable={true}
-      onClick={[Function]}
-      onResponderGrant={[Function]}
-      onResponderMove={[Function]}
-      onResponderRelease={[Function]}
-      onResponderTerminate={[Function]}
-      onResponderTerminationRequest={[Function]}
-      onStartShouldSetResponder={[Function]}
       style={
-        Object {
-          "opacity": 1,
-        }
+        Array [
+          Object {
+            "padding": 8,
+          },
+          Object {
+            "backgroundColor": "#fff",
+          },
+          Object {
+            "borderRadius": 8,
+          },
+        ]
       }
     >
       <View
@@ -68,16 +76,13 @@ Array [
               "justifyContent": "center",
             },
             Object {
-              "width": 64,
+              "width": 48,
             },
             Object {
-              "height": 64,
+              "height": 48,
             },
             Object {
               "borderRadius": 9999,
-            },
-            Object {
-              "padding": 4,
             },
           ]
         }
@@ -108,10 +113,13 @@ Array [
                 "textAlign": "center",
               },
               Object {
-                "fontSize": 20,
+                "fontSize": 16,
               },
               Object {
                 "color": "#B35340",
+              },
+              Object {
+                "fontWeight": "bold",
               },
             ]
           }
@@ -120,6 +128,6 @@ Array [
         </Text>
       </View>
     </View>
-  </View>,
-]
+  </View>
+</View>
 `;

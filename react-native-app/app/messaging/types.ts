@@ -8,3 +8,7 @@ export enum AuthorizationStatus {
   PROVISIONAL = 2,
 }
 export type RemoteMessage = FirebaseMessagingTypes.RemoteMessage
+
+export enum Action {
+  TRIGGER_GET_USER_EMAIL_SCREEN = 'TRIGGER_GET_USER_EMAIL_SCREEN',
+}

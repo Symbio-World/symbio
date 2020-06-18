@@ -9,12 +9,14 @@ import {
   ObserveTokens,
   ObserveMessages,
 } from './messagingContext'
-import { AuthorizationStatus } from './types'
+import { AuthorizationStatus, Action } from './types'
 import { useAuth } from '../auth'
 import { saveToken } from './saveToken'
+import { navigate } from '../navigation'
 
 jest.mock('../auth')
 jest.mock('./saveToken')
+jest.mock('../navigation')
 
 describe('messagingContext', () => {
   let requestPermission: RequestPermission
@@ -32,6 +34,7 @@ describe('messagingContext', () => {
     observeMessages = jest.fn(() => of(message))
     ;(useAuth as jest.Mock).mockImplementation(() => ({ user }))
     ;(saveToken as jest.Mock).mockImplementation(() => Promise.resolve())
+    ;(navigate as jest.Mock).mockImplementation(jest.fn)
   })
 
   afterEach(() => {
@@ -182,5 +185,79 @@ describe('messagingContext', () => {
 
     await waitForElement(() => getByText('Test'))
     expect(saveToken).toHaveBeenCalledTimes(0)
+  })
+
+  it('navigates to GetUserEmailScreen on message with correct action', async () => {
+    observeMessages = jest.fn(() =>
+      of({
+        ...message,
+        data: { action: Action.TRIGGER_GET_USER_EMAIL_SCREEN },
+      }),
+    )
+    const MessagingProvider = createMessagingProvider({
+      requestPermission,
+      observeTokens,
+      observeMessages,
+    })
+    const { getByText } = render(
+      <MessagingProvider>
+        <Text>Test</Text>
+      </MessagingProvider>,
+    )
+
+    await waitForElement(() => getByText('Test'))
+    expect(navigate).toHaveBeenCalledWith('Modals', {
+      screen: 'GetUserEmailScreen',
+    })
+  })
+
+  it('does not navigate to GetUserEmailScreen if email already known', async () => {
+    ;(useAuth as jest.Mock).mockImplementation(() => ({
+      user: { ...user, email: 'test@example.com' },
+    }))
+    observeMessages = jest.fn(() =>
+      of({
+        ...message,
+        data: { action: Action.TRIGGER_GET_USER_EMAIL_SCREEN },
+      }),
+    )
+    const MessagingProvider = createMessagingProvider({
+      requestPermission,
+      observeTokens,
+      observeMessages,
+    })
+    const { getByText } = render(
+      <MessagingProvider>
+        <Text>Test</Text>
+      </MessagingProvider>,
+    )
+
+    await waitForElement(() => getByText('Test'))
+    expect(navigate).toHaveBeenCalledTimes(0)
+  })
+
+  it('does not navigate to GetUserEmailScreen if no user', async () => {
+    ;(useAuth as jest.Mock).mockImplementation(() => ({
+      user: undefined,
+    }))
+    observeMessages = jest.fn(() =>
+      of({
+        ...message,
+        data: { action: Action.TRIGGER_GET_USER_EMAIL_SCREEN },
+      }),
+    )
+    const MessagingProvider = createMessagingProvider({
+      requestPermission,
+      observeTokens,
+      observeMessages,
+    })
+    const { getByText } = render(
+      <MessagingProvider>
+        <Text>Test</Text>
+      </MessagingProvider>,
+    )
+
+    await waitForElement(() => getByText('Test'))
+    expect(navigate).toHaveBeenCalledTimes(0)
   })
 })

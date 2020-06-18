@@ -29,7 +29,7 @@ exports[`ModalCard renders correctly 1`] = `
           "width": "91.666667%",
         },
         Object {
-          "height": "90%",
+          "height": "95%",
         },
         Object {
           "backgroundColor": "#fff",

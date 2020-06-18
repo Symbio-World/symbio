@@ -1,11 +1,12 @@
 import * as React from 'react'
 import { Observable } from 'rxjs'
-import { RemoteMessage, AuthorizationStatus } from './types'
+import { RemoteMessage, AuthorizationStatus, Action } from './types'
 import { useAuth } from '../auth'
 import { saveToken } from './saveToken'
 import { usePermission } from './usePermission'
 import { useToken } from './useToken'
 import { useMessage } from './useMessage'
+import { navigate } from '../navigation'
 
 type MessagingContext = {
   authorizationStatus?: AuthorizationStatus
@@ -44,6 +45,19 @@ export const createMessagingProvider: CreateMessagingProvider = ({
     }
     return
   }, [user, token])
+
+  React.useEffect(() => {
+    if (
+      message?.data?.action === Action.TRIGGER_GET_USER_EMAIL_SCREEN &&
+      user &&
+      !user.email
+    ) {
+      navigate('Modals', {
+        screen: 'GetUserEmailScreen',
+      })
+    }
+    return
+  }, [user, message])
 
   return (
     <messagingContext.Provider value={{ authorizationStatus, token, message }}>

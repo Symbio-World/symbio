@@ -2,11 +2,11 @@ import * as React from 'react'
 import { View, Image, Text, ScrollView } from 'react-native'
 import { t } from 'react-native-tailwindcss'
 import { ProductData } from '@symbio/barcode-processor-core'
-import { CloseButtonView } from '../ui-kit/CloseButtonView'
+import { ModalActionsView } from '../ui-kit/ModalActionsView'
+import { CloseButton } from '../ui-kit/CloseButton'
 
 type Props = Omit<ProductData, 'links'> & {
-  onFeedbackPress?: (title: string) => void
-  onCloseButtonPress?: () => void
+  onClose?: () => void
 }
 
 export const ProductView: React.FC<Props> = ({
@@ -16,11 +16,10 @@ export const ProductView: React.FC<Props> = ({
   ingredients = '',
   allergens = [],
   origin = '',
-  onCloseButtonPress,
-  // onFeedbackPress = () => {},
+  onClose,
 }) => {
   return (
-    <View style={[t.flex1]}>
+    <View style={[t.flex1, t.mB3]}>
       <ScrollView style={[t.bgWhite, t.flex1]}>
         <Image
           style={[t.h56, t.bgGray200]}
@@ -38,15 +37,11 @@ export const ProductView: React.FC<Props> = ({
           ))}
           <Text style={[t.fontBold, t.mT8]}>Origin</Text>
           <Text>{origin}</Text>
-          {/* <View style={[t.mT5]}>
-          <Button
-            title="Tell us what's missing"
-            onPress={() => onFeedbackPress("Tell us what's missing")}
-          />
-        </View> */}
         </View>
       </ScrollView>
-      <CloseButtonView onClose={onCloseButtonPress} />
+      <ModalActionsView>
+        <CloseButton onClose={onClose} />
+      </ModalActionsView>
     </View>
   )
 }

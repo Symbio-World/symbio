@@ -18,7 +18,7 @@ export const ModalCard: React.FC<ModalCardProps> = ({ children }) => {
       <View
         style={[
           t.w11_12,
-          { height: '90%' },
+          { height: '95%' },
           t.bgWhite,
           t.roundedLg,
           t.shadowXl,

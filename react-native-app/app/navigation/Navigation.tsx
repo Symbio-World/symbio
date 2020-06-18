@@ -1,9 +1,13 @@
 import * as React from 'react'
-import { NavigationContainer, ParamListBase } from '@react-navigation/native'
+import {
+  NavigationContainer,
+  ParamListBase,
+  NavigationContainerRef,
+} from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
 import { ScanBarcodeScreen } from '../barcode'
 import { ProductScreen } from '../product'
-import { FeedbackScreen } from '../feedback'
+import { GetUserEmailScreen } from '../email'
 import { SetupPrinciplesScreen } from '../principle'
 import {
   cardStackScreenOptions,
@@ -27,7 +31,7 @@ export type MainStackParamList = {
 
 export type ModalStackParamList = {
   ProductScreen: { barcode: string }
-  FeedbackScreen: { title: string }
+  GetUserEmailScreen: {}
   SetupPrinciplesScreen: {}
   Main: SubNavigator<MainStackParamList>
 }
@@ -53,8 +57,8 @@ const ModalStackComponent = () => {
         }}
       />
       <ModalStack.Screen
-        name="FeedbackScreen"
-        component={createSwipableModal(FeedbackScreen)}
+        name="GetUserEmailScreen"
+        component={createSwipableModal(GetUserEmailScreen)}
         options={{
           gestureEnabled: false,
           headerShown: false,
@@ -85,9 +89,18 @@ const MainStackComponent = () => {
   )
 }
 
+const navigationRef = React.createRef<NavigationContainerRef>()
+
+export const navigate = <RouteName extends keyof RootStackParamList>(
+  name: RouteName,
+  args: RootStackParamList[RouteName],
+) => {
+  navigationRef.current?.navigate(name, args)
+}
+
 export const Navigation = () => {
   return (
-    <NavigationContainer>
+    <NavigationContainer ref={navigationRef}>
       <RootStack.Navigator
         headerMode="none"
         mode="modal"

@@ -4,7 +4,7 @@ import { Failure } from '@symbio/ts-lib'
 export enum EventType {
   USER_SCANNED_BARCODE = 'USER_SCANNED_BARCODE',
   USER_SELECTED_PRINCIPLES = 'USER_SELECTED_PRINCIPLES',
-  USER_LEFT_FEEDBACK = 'USER_LEFT_FEEDBACK',
+  USER_SUBMITTED_EMAIL = 'USER_SUBMITTED_EMAIL',
   BARCODE_PROCESSED = 'BARCODE_PROCESSED',
   BARCODE_PROCESSED_EVENT_ARCHIVED = 'BARCODE_PROCESSED_EVENT_ARCHIVED',
   NOTIFICATION_TOKEN_GENERATED = 'NOTIFICATION_TOKEN_GENERATED',
@@ -70,18 +70,18 @@ export const userSelectedPrinciples = (
   principles,
 })
 
-export type UserLeftFeedback = {
-  type: EventType.USER_LEFT_FEEDBACK
+export type UserSubmittedEmail = {
+  type: EventType.USER_SUBMITTED_EMAIL
   userId: string
-  feedback: string
+  email: string
 }
-export const userLeftFeedback = (
+export const userSubmittedEmail = (
   userId: string,
-  feedback: string,
-): UserLeftFeedback => ({
-  type: EventType.USER_LEFT_FEEDBACK,
+  email: string,
+): UserSubmittedEmail => ({
+  type: EventType.USER_SUBMITTED_EMAIL,
   userId,
-  feedback,
+  email,
 })
 
 export type BarcodeProcessed = {
@@ -135,7 +135,7 @@ export const notificationTokenGenerated = ({
 export type DomainEvent =
   | UserScannedBarcode
   | UserSelectedPrinciples
-  | UserLeftFeedback
+  | UserSubmittedEmail
   | BarcodeProcessed
   | BarcodeProcessedEventArchived
   | NotificationTokenGenerated
