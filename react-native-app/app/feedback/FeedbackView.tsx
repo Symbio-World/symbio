@@ -3,6 +3,7 @@ import { View, Text, TextInput, Keyboard } from 'react-native'
 import { t } from 'react-native-tailwindcss'
 import Toast from 'react-native-simple-toast'
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
+import { ModalActionsView } from '../ui-kit/ModalActionsView'
 import { CloseButton } from '../ui-kit/CloseButton'
 import { RoundedButton } from '../ui-kit/RoundedButton'
 import { Icons } from '../ui-kit/Icon'
@@ -20,7 +21,7 @@ export const FeedbackView: React.FC<Props> = ({ onSubmit = () => {} }) => {
   }
   return (
     <KeyboardAwareScrollView
-      contentContainerStyle={[t.flex1, t.mT6, t.mB3,t.mX5]}
+      contentContainerStyle={[t.flex1, t.mT6, t.mB3, t.mX5]}
       enableOnAndroid
       enableAutomaticScroll
     >
@@ -49,16 +50,14 @@ export const FeedbackView: React.FC<Props> = ({ onSubmit = () => {} }) => {
           ]}
         />
       </View>
-      <>
-        <View style={[t.flexRow, t.justifyEvenly, t.absolute, t.bottom0, t.wFull, t.itemsCenter]}>
-          <CloseButton onClose={() => {}} />
-          <RoundedButton
-            onPress={handleSubmit}
-            outerTitle="send"
-            icon={Icons.SEND}
-          />
-        </View>
-      </>
+      <ModalActionsView>
+        <CloseButton onClose={() => {}} />
+        <RoundedButton
+          onPress={handleSubmit}
+          outerTitle="send"
+          icon={Icons.SEND}
+        />
+      </ModalActionsView>
     </KeyboardAwareScrollView>
   )
 }

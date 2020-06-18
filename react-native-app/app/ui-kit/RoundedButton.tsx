@@ -37,7 +37,7 @@ export const RoundedButton: React.FC<Props> = ({
 
   return (
     <TouchableOpacity onPress={onPress}>
-      <View style={[t.p2, t.bgWhite]}>
+      <View style={[t.p2, t.bgWhite, t.roundedLg]}>
         <View
           style={[
             ...buttonStyle,

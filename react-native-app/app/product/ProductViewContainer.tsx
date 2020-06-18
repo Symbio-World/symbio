@@ -17,12 +17,12 @@ const isProductNotFound = (error: unknown) =>
 type Props = {
   barcode: string
   onFeedbackPress?: (title: string) => void
-  onCloseButtonPress?: () => void
+  onClose?: () => void
 }
 export const ProductViewContainer: React.FC<Props> = ({
   barcode,
   onFeedbackPress = () => {},
-  onCloseButtonPress,
+  onClose,
 }) => {
   return (
     <ObservableView
@@ -30,7 +30,7 @@ export const ProductViewContainer: React.FC<Props> = ({
       renderSuccess={(productData) => (
         <ProductView
           {...productData}
-          onCloseButtonPress={onCloseButtonPress}
+          onClose={onClose}
           onFeedbackPress={onFeedbackPress}
         />
       )}
@@ -38,7 +38,7 @@ export const ProductViewContainer: React.FC<Props> = ({
         isProductNotFound(error) ? (
           <ProductNotFound barcode={barcode} />
         ) : (
-          <ErrorViewContainer error={error} onClose={onCloseButtonPress} />
+          <ErrorViewContainer error={error} onClose={onClose} />
         )
       }
     />

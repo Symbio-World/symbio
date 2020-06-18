@@ -16,7 +16,7 @@ describe('ProductView', () => {
   it('calls onPress', () => {
     const handleCloseButtonPress = jest.fn()
     const { getByType } = render(
-      <ProductView onCloseButtonPress={handleCloseButtonPress} />,
+      <ProductView onClose={handleCloseButtonPress} />,
     )
     fireEvent(getByType(CloseButton), 'onClose')
     expect(handleCloseButtonPress).toHaveBeenCalled()

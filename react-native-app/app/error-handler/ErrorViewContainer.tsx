@@ -4,7 +4,8 @@ import { t } from 'react-native-tailwindcss'
 import { RFPercentage } from 'react-native-responsive-fontsize'
 
 import { Icon, Icons } from '../ui-kit/Icon'
-import { CloseButtonView } from '../ui-kit/CloseButtonView'
+import { ModalActionsView } from '../ui-kit/ModalActionsView'
+import { CloseButton } from '../ui-kit/CloseButton'
 import { saveError } from '../error-handler/saveError'
 
 type Props = {
@@ -44,7 +45,9 @@ export const ErrorViewContainer: React.FC<Props> = ({
       >
         Something went wrong... You can tell us what happened or try again later
       </Text>
-      <CloseButtonView onClose={onClose} />
+      <ModalActionsView>
+        <CloseButton onClose={onClose} />
+      </ModalActionsView>
     </View>
   )
 }
