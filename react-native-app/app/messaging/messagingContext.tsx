@@ -46,6 +46,7 @@ export const createMessagingProvider: CreateMessagingProvider = ({
     return
   }, [user, token])
 
+  console.log('USER', user)
   React.useEffect(() => {
     if (
       message?.data?.action === Action.TRIGGER_GET_USER_EMAIL_SCREEN &&
@@ -56,7 +57,7 @@ export const createMessagingProvider: CreateMessagingProvider = ({
       })
     }
     return
-  }, [message])
+  }, [user, message])
 
   return (
     <messagingContext.Provider value={{ authorizationStatus, token, message }}>

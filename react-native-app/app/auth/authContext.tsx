@@ -31,16 +31,16 @@ export const createAuthProvider: CreateAuthProvider = ({
   const [user, setUser] = React.useState<User>()
 
   React.useEffect(() => {
-    signInAnonymously().then((user) => {
-      fetchEmail(user.id).then((email) => {
+    signInAnonymously().then((u) => {
+      fetchEmail(u.id).then((email) => {
         if (email) {
-          setUser({ ...user, email })
+          setUser({ ...u, email })
         } else {
-          setUser(user)
+          setUser(u)
         }
       })
     })
-  }, [signInAnonymously, fetchEmail])
+  }, [])
 
   const setEmail = (email: string) => {
     if (user) {

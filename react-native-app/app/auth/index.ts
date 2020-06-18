@@ -6,5 +6,5 @@ export { useAuth, User } from './authContext'
 
 export const AuthProvider = createAuthProvider({
   signInAnonymously,
-  fetchEmail
+  fetchEmail,
 })
