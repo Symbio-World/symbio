@@ -7,7 +7,7 @@ import {
 import { createStackNavigator } from '@react-navigation/stack'
 import { ScanBarcodeScreen } from '../barcode'
 import { ProductScreen } from '../product'
-import { GetUserEmailScreen } from '../get-user-email'
+import { GetUserEmailScreen } from '../email'
 import { SetupPrinciplesScreen } from '../principle'
 import {
   cardStackScreenOptions,
