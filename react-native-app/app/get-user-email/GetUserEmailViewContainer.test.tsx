@@ -10,9 +10,11 @@ jest.mock('./saveEmail')
 
 describe('GetUserEmailViewContainer', () => {
   const user = { id: 'id' }
+  let setEmail: (email: string) => void
 
   beforeEach(() => {
-    ;(useAuth as jest.Mock).mockImplementation(() => ({ user }))
+    setEmail = jest.fn()
+    ;(useAuth as jest.Mock).mockImplementation(() => ({ user, setEmail }))
     ;(saveEmail as jest.Mock).mockImplementation(() => Promise.resolve())
   })
 
@@ -26,6 +28,13 @@ describe('GetUserEmailViewContainer', () => {
     const { getByType } = render(<GetUserEmailViewContainer />)
     fireEvent(getByType(GetUserEmailView), 'onSubmit', email)
     expect(saveEmail).toHaveBeenCalledWith(user.id, email)
+  })
+
+  it('sets email', () => {
+    const email = 'test@example.com'
+    const { getByType } = render(<GetUserEmailViewContainer />)
+    fireEvent(getByType(GetUserEmailView), 'onSubmit', email)
+    expect(setEmail).toHaveBeenCalledWith(email)
   })
 
   it('triggers onSave callback', () => {

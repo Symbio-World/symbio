@@ -11,14 +11,14 @@ export const GetUserEmailViewContainer: React.FC<Props> = ({
   onSave = () => {},
   onClose = () => {},
 }) => {
-  const { user } = useAuth()
+  const { user, setEmail } = useAuth()
 
   const handleSubmit = (email: string) => {
-    if (!user) {
-      throw new Error('This should never happen, as user is in the context')
+    if (user) {
+      saveEmail(user.id, email)
+      setEmail(email)
+      onSave()
     }
-    saveEmail(user.id, email)
-    onSave()
   }
 
   return <GetUserEmailView onSubmit={handleSubmit} onClose={onClose} />

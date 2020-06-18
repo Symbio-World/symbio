@@ -210,4 +210,29 @@ describe('messagingContext', () => {
       screen: 'GetUserEmailScreen',
     })
   })
+
+  it('does not navigate to GetUserEmailScreen if email already known', async () => {
+    ;(useAuth as jest.Mock).mockImplementation(() => ({
+      user: { ...user, email: 'test@example.com' },
+    }))
+    observeMessages = jest.fn(() =>
+      of({
+        ...message,
+        data: { action: Action.TRIGGER_GET_USER_EMAIL_SCREEN },
+      }),
+    )
+    const MessagingProvider = createMessagingProvider({
+      requestPermission,
+      observeTokens,
+      observeMessages,
+    })
+    const { getByText } = render(
+      <MessagingProvider>
+        <Text>Test</Text>
+      </MessagingProvider>,
+    )
+
+    await waitForElement(() => getByText('Test'))
+    expect(navigate).toHaveBeenCalledTimes(0)
+  })
 })

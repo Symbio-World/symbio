@@ -1,11 +1,10 @@
-import auth from '@react-native-firebase/auth'
 import { createAuthProvider } from './authContext'
+import { signInAnonymously } from './signInAnonymously'
+import { fetchEmail } from './fetchEmail'
 
 export { useAuth, User } from './authContext'
 
 export const AuthProvider = createAuthProvider({
-  signInAnonymously: async () => {
-    const { user } = await auth().signInAnonymously()
-    return { id: user.uid }
-  },
+  signInAnonymously,
+  fetchEmail
 })
