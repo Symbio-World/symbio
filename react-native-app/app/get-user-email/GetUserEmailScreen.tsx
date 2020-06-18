@@ -8,6 +8,9 @@ type Props = {
   navigation: StackNavigationProp<ModalStackParamList, 'GetUserEmailScreen'>
   route: RouteProp<ModalStackParamList, 'GetUserEmailScreen'>
 }
-export const GetUserEmailScreen: React.FC<Props> = () => {
-  return <GetUserEmailViewContainer />
+export const GetUserEmailScreen: React.FC<Props> = ({ navigation }) => {
+  const handleSave = () => {
+    navigation.pop()
+  }
+  return <GetUserEmailViewContainer onSave={handleSave} />
 }

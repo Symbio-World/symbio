@@ -1,11 +1,12 @@
 import * as React from 'react'
-import { View, Text, TextInput, Keyboard } from 'react-native'
+import { Text, Keyboard } from 'react-native'
 import { t } from 'react-native-tailwindcss'
 import Toast from 'react-native-simple-toast'
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 import { ModalActionsView } from '../ui-kit/ModalActionsView'
 import { CloseButton } from '../ui-kit/CloseButton'
 import { RoundedButton } from '../ui-kit/RoundedButton'
+import { Input } from '../ui-kit/Input'
 import { Icons } from '../ui-kit/Icon'
 
 type Props = {
@@ -33,24 +34,14 @@ export const GetUserEmailView: React.FC<Props> = ({ onSubmit = () => {} }) => {
         below so we can contact you. 🙂
       </Text>
       <Text style={[t.textBase, t.mB3]}>Your email</Text>
-      <View style={[t.flex1]}>
-        <TextInput
-          onChangeText={setText}
-          onSubmitEditing={handleSubmit}
-          value={text}
-          returnKeyType="send"
-          keyboardType="email-address"
-          autoFocus
-          style={[
-            t.border,
-            t.borderGray500,
-            t.h12,
-            t.roundedLg,
-            t.p3,
-            t.textBlack,
-          ]}
-        />
-      </View>
+      <Input
+        onChange={setText}
+        onSubmit={handleSubmit}
+        value={text}
+        returnKeyType="send"
+        keyboardType="email-address"
+        autoFocus
+      />
       <ModalActionsView>
         <CloseButton onClose={() => {}} />
         <RoundedButton
