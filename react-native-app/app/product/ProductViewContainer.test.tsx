@@ -47,20 +47,6 @@ describe('ProductViewContainer', () => {
     expect(getByType(ProductView)).toBeDefined()
   })
 
-  it('triggers onFeedbackPress', () => {
-    const handleFeedbackPress = jest.fn()
-    const productData = { name: 'Margarin', links: [] }
-    ;(observeProductData as jest.Mock).mockImplementation(() => of(productData))
-    const { getByType } = render(
-      <ProductViewContainer
-        barcode={barcode}
-        onFeedbackPress={handleFeedbackPress}
-      />,
-    )
-    fireEvent(getByType(ProductView), 'onFeedbackPress', 'title')
-    expect(handleFeedbackPress).toHaveBeenCalledWith('title')
-  })
-
   it('renders error', () => {
     ;(observeProductData as jest.Mock).mockImplementation(() =>
       throwError('error'),

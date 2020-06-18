@@ -187,11 +187,11 @@ describe('messagingContext', () => {
     expect(saveToken).toHaveBeenCalledTimes(0)
   })
 
-  it('navigates to feedback screen on message with action TRIGGER_FEEDBACK', async () => {
+  it('navigates to GetUserEmailScreen on message with correct action', async () => {
     observeMessages = jest.fn(() =>
       of({
         ...message,
-        data: { action: Action.TRIGGER_FEEDBACK },
+        data: { action: Action.TRIGGER_GET_USER_EMAIL_SCREEN },
       }),
     )
     const MessagingProvider = createMessagingProvider({

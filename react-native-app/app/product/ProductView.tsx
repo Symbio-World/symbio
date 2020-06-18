@@ -6,7 +6,6 @@ import { ModalActionsView } from '../ui-kit/ModalActionsView'
 import { CloseButton } from '../ui-kit/CloseButton'
 
 type Props = Omit<ProductData, 'links'> & {
-  onFeedbackPress?: (title: string) => void
   onClose?: () => void
 }
 
