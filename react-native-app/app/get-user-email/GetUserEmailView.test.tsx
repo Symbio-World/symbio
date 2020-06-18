@@ -1,6 +1,5 @@
 import * as React from 'react'
 import { TextInput, Keyboard } from 'react-native'
-import { Button } from '../ui-kit/Button'
 import { render, fireEvent } from 'react-native-testing-library'
 
 import { GetUserEmailView } from './GetUserEmailView'
@@ -10,27 +9,27 @@ jest.mock('react-native/Libraries/Components/Keyboard/Keyboard', () => ({
   dismiss: jest.fn(),
 }))
 
-describe('FeedbackView', () => {
+describe('GetUserEmailView', () => {
   it('renders correctly', () => {
     const { toJSON } = render(<GetUserEmailView />)
     expect(toJSON()).toMatchSnapshot()
   })
 
   it('triggers onSubmit', () => {
-    const feedback = 'feedback'
+    const email = 'test@example.com'
     const handleSubmit = jest.fn()
-    const { getByType } = render(<GetUserEmailView onSubmit={handleSubmit} />)
-    fireEvent.changeText(getByType(TextInput), feedback)
-    fireEvent.press(getByType(Button))
-    expect(handleSubmit).toHaveBeenCalledWith(feedback)
+    const { getByType, getByText } = render(<GetUserEmailView onSubmit={handleSubmit} />)
+    fireEvent.changeText(getByType(TextInput), email)
+    fireEvent.press(getByText('send'))
+    expect(handleSubmit).toHaveBeenCalledWith(email)
   })
 
   it('triggers keyboard dissmiss', () => {
-    const feedback = 'feedback'
+    const email = 'test@example.com'
     const handleSubmit = jest.fn()
-    const { getByType } = render(<GetUserEmailView onSubmit={handleSubmit} />)
-    fireEvent.changeText(getByType(TextInput), feedback)
-    fireEvent.press(getByType(Button))
+    const { getByType, getByText } = render(<GetUserEmailView onSubmit={handleSubmit} />)
+    fireEvent.changeText(getByType(TextInput), email)
+    fireEvent.press(getByText('send'))
     expect(Keyboard.dismiss).toHaveBeenCalled()
   })
 })

@@ -19,7 +19,7 @@ describe('Input', () => {
     const handleChange = jest.fn()
     const text = 'text'
     const { getByType } = render(<Input onChange={handleChange} />)
-    fireEvent(getByType(TextInput), 'onChangeText', text)
+    fireEvent.changeText(getByType(TextInput), text)
     expect(handleChange).toHaveBeenCalledWith(text)
   })
 

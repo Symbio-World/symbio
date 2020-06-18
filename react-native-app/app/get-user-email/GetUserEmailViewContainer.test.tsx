@@ -31,7 +31,7 @@ describe('GetUserEmailViewContainer', () => {
   it('triggers onSave callback', () => {
     const handleSave = jest.fn()
     const { getByType } = render(<GetUserEmailViewContainer onSave={handleSave} />)
-    fireEvent(getByType(GetUserEmailView), 'onSubmit', 'feedback')
-    expect(handleSave).toHaveBeenCalled()
+    fireEvent(getByType(GetUserEmailView), 'onSubmit', 'test@example.com')
+    expect(handleSave).toHaveBeenCalledTimes(1)
   })
 })

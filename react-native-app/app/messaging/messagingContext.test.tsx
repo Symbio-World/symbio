@@ -207,7 +207,7 @@ describe('messagingContext', () => {
 
     await waitForElement(() => getByText('Test'))
     expect(navigate).toHaveBeenCalledWith('Modals', {
-      screen: 'FeedbackScreen',
+      screen: 'GetUserEmailScreen',
     })
   })
 })
