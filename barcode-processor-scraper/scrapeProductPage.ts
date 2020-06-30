@@ -26,13 +26,20 @@ const scrapePrismaAllergens = ($: CheerioStatic) => {
   )
 }
 
+const scrapePrismaTags = ($: CheerioStatic) => {
+  return $('.preferences')
+    .find('div')
+    .toArray()
+    .map((t) => t.attribs.title)
+}
+
 export const scrapePrisma = (html: string) => {
   const $ = cheerio.load(html)
-
   return {
     ingredients: $("[id$='ingredients']").text().trim(),
     allergens: scrapePrismaAllergens($),
     origin: scrapePrismaOrigin($),
+    tags: scrapePrismaTags($),
   }
 }
 
