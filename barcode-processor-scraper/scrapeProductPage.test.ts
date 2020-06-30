@@ -41,9 +41,11 @@ describe('scrapeProductPage', () => {
 
   it('scrapes barbora', () => {
     expect(scrapeBarbora(barbora.html)).toEqual({
-      ingredients: 'Täistera KAERAhelbed',
-      allergens: ['Sisaldab: gluteeni sisaldavad teraviljad'],
-      origin: 'Soome',
+      ingredients:
+        'Meresool, glükoos-maisisiirup *, maisitärklis *, sheavõi *, kanapulbri puljong * (6,8%), kanarasv * (3,4%), pärmiekstrakt, küpsetatud sibul *, karamelliseeritud suhkur * , kurkum *, SELLER *, küüslauk *, petersell *, koriandri seemned *, rosmariin *, tüümian * (* loodusliku sertifikaadiga)',
+      allergens: ['Sisaldab: seller ja selleritooted'],
+      origin: 'Saksamaa',
+      tags: ['Ökoloogiline toode'],
     })
   })
 })

@@ -1,5 +1,6 @@
 /* eslint-disable no-useless-escape */
-export const link = 'https://www.barbora.ee/toode/kiirkaerahelbed-nordic-500-g'
+export const link =
+  'https://www.barbora.ee/toode/mahe-kanapuljong-natur-compagnie-88-g'
 export const html = `
 <!DOCTYPE html>
 <html>
@@ -7,15 +8,15 @@ export const html = `
     <meta charset="utf-8" />
 
     <meta name="apple-itunes-app" content="app-id=1339130115">
-    <meta name="description" content="Kiirkaerahelbed" />
-    <meta name="og:description" content="Kiirkaerahelbed" />
+    <meta name="description" content="" />
+    <meta name="og:description" content="" />
     <meta name="og:type" content="website" />
-    <meta name="og:title" content="Kiirkaerahelbed NORDIC 500g" />
+    <meta name="og:title" content="Mahe kanapuljong NATUR COMPAGNIE 88g" />
     <meta name="og:sitename" content="Barbora" />
 
 
     <link rel="image_src" href="/Assets/Images/logo-square.png" />
-    <meta name="og:image" content="/Assets/Images/logo-square-min-EE.png" />
+        <meta name="og:image" content="/api/Images/GetInventoryImage?id=5575d523-c7f2-4476-b6a6-980bad71f000" />
 
     <link rel="shortcut icon" href="/Assets/Images/favicon.ico" />
 
@@ -24,15 +25,18 @@ export const html = `
 
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600&subset=latin,latin-ext" rel="stylesheet" type="text/css">
 
+    
 
+    <link rel="stylesheet" type="text/css" href="/Assets/Styles/main.css?v=126.21" />
 
-    <link rel="stylesheet" type="text/css" href="/Assets/Styles/main.css?v=202003141221" />
-
-    <title>Kiirkaerahelbed NORDIC 500g</title>
+    <title>Mahe kanapuljong NATUR COMPAGNIE 88g</title>
 
     <script type="text/javascript">
         window.currentPage = "allPages";
     </script>
+
+    <!-- <script type="text/javascript" defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAJm3HGh3BkbCbMBBzE5KGtpN_V9pDfOk4&amp;language=lt&amp;region=LT"></script> -->
+
 
     <script type="text/javascript">
         function showNetworkErrorAlert() {
@@ -70,9 +74,11 @@ export const html = `
             recipes: "receptai",
             recipesStandalone: "receptai-programelems",
             driveInPlaces: "/info/driveinplaces",
+            expressShopPlaces: "/info/expressshopplaces",
         };
 
         window.b_data = {
+            companyName: "Barbora",
             enviromentLocation: "EE",
             loyaltyCardInfoLink: "http://www.maxima.ee",
             customerSupportEmail: "info@barbora.ee",
@@ -92,12 +98,15 @@ export const html = `
             enviromentLocations: {"Lithuania":"LT","Latvia":"LV","Estonia":"EE"},
             recipesRecommendationsCategoryId: "9daad16a-8e7f-4b24-9e79-faf8af9055c9",
             recipesSlugToIgnore: "kategorija",
-            shouldShowRecipesForLT: "False",
+            shouldShowRecipes: "False",
             shouldShowExpressDeliveryZones: "False",
-            confettiPopUpCampaignId: ""
+            shouldShowRecommendationsPage: "False",
+            isCentralEshopClientUrl: "True",
+            currentRegion: {"Id":1,"Name":"Barbora","Url":"https://barbora.ee","GAKey":"UA-45214439-9","IsCurrentEShopRegion":true,"IsEnabled":true,"Type":"Main","CustomerSupportPhoneNo":"555 66 369"},
+            sysParams: {"Id":1,"ItemsPerPage":52,"ItemsPerPageAdmin":100,"MaxAmount":100,"MaxWeight":10.000,"WeightThreshold":0.100,"ReservationDays":7,"DeliveryCost":3.9900,"DeliveryCostThreshold":500,"InactiveUserPeriod":30,"SessionTimeOut":180,"DeliveryMATNR":"000000000000007741","PackagingMATNR":"000000000000009170","CutOffTime":"05:00:00","SapImportHoldTime":"2020-06-15T18:00:00","SapImportReleaseTime":"2020-06-15T20:00:00","EmailChangeDays":3,"CheckoutPromoInventoriesLimit":16,"ListingPriorityRange":30,"InventoryShowZLItems":true,"InventoryShowZBItems":true,"InactiveUserReservationTime":15,"WeightedProductsDefaultValue":0.500,"SubstitutePriceTopLimit":100.0,"SubstitutePriceBottomLimit":100.0,"Country":"et-EE","InventoryDisableTitleFormating":true,"Currency":"€","MaximaID":"EE07","OrderNumberForFreeDelivery":0,"EnablePromotionWhenEqualPrices":false,"PromotionLogoPointsMultiplier":1,"ShowComparativeRateAppliedDiscount":true,"EnableSubstitutePickingWithDifferentTaxCode":false,"PickingQuantityMaxLimit":100.0,"DeliveryInvoicePrintCount":1,"InnerInvoicePrefix":"E","PickingTaskOrderCount":4,"EnableSubstituteForPromo":true,"NewInAssortimentInDays":30,"CategoriesCountInSearch":3,"InventoriesCountInSearch":10,"ShowOffersCount":28,"RememberMeCookieValidDays":21,"BeneficiaryAccountNo":"PK82UNLA0050022693204","BeneficiaryNameAndSurname":"SUPERSA OÜ","BeneficiaryPersonalIdentityNumber":"","BeneficiaryCreditInstitution":"","PayerAccountNo":"PK82UNLA0050022693204","DefaultDeliveryZoneId":"1 piirkonn","DefaultDeliveryCategoryId":"A","PriceForMaximaStickers":10.0000,"DefaultShopCode":"T032","BarboraStartDate":"2018-10-16T00:00:00","DontSellAlcoholFrom":25,"DontSellAlcoholTo":-1,"AlcLicenseNumber":"1","ShowAlcConstraintsInWeb":true,"NotPickedReportRecipients":"giedrius.rogacius@barbora.lt;dovile.eidukaityte@barbora.lt;priisle@barbora.ee;terje.keskula@maxima.ee;deniss.osman@barbora.ee;T0265.juhataja@maxima.ee;T0265.tk@maxima.ee;T0265.asetaitja@maxima.ee;Marina.Shapovalova@maxima.ee;haabersti@barbora.ee;leiki.lehemets@barbora.ee;t0265.manager2@maxima.ee;t0265.manager2@maxima.ee;Aleksandr.Jegorov@maxima.ee;Agnes.Svintsov@maxima.ee;t0520.manager2@maxima.ee;t0520.manager1@maxima.ee;Ilona.Sieger@maxima.ee;t0520.reception@maxima.ee;SupersaT520@maxima.ee;dovile.eidukaityte@barbora.lt;priisle@barbora.ee;terje.keskula@maxima.ee;deniss.osman@barbora.ee;T0265.juhataja@maxima.ee;T0265.tk@maxima.ee;T0265.asetaitja@maxima.ee;Marina.Shapovalova@maxima.ee;haabersti@barbora.ee;leiki.lehemets@barbora.ee;t0265.manager2@maxima.ee;Aleksandr.Jegorov@maxima.ee;Agnes.Svintsov@maxima.ee;t0520.manager2@maxima.ee;t0520.manager1@maxima.ee;t0520.reception@maxima.ee;SupersaT520@maxima.ee;Jelena.Barbakar@maxima.ee;elen.tok@barbora.ee;supersa@maxima.ee;iksenia.Potapova@maxima.ee;eva.rimkute@barbora.lt;Ksenia.Potapova@maxima.ee","NotPickedOwnInventoryReportRecipients":"","IsExpressDeliveryActive":false,"IsUnattendedDeliveryActive":false,"MultishopCustomers":"","MailerConfigApiKey":"u2c6s2r7d3b4o1r6p9r7y9y3e7h5p5q5","MailerConfigApiLogin":"BARBORA","MailerConfigApiPassword":"barbora54321","MailerConfigApiSubscribeCategoryId":"2012255","MailerConfigApiNewRegistrationSubscribeListId":null,"MailerConfigApiNewRegistrationThatMadeOrderSubscribeListId":null,"AutoPickConfWeightableAmountLess":0.500,"AutoPickConfWeightableAmountGreat":0.200,"AutoPickConfCountableAmount":1,"MinReservationTimeInMinutes":15,"MaxReservationTimeInMinutes":40,"OrdersToCompleteInOrderToGetFreeDeliveryCoupon":4,"FreeDeliveryCouponValidForDays":14,"TransferBankAccountNumber":"","TransferBankAccountCode":"","MinutesBeforeToSendEmailOfNotTakenLockerOrder":0,"NotTakenLockerOrderMailTextForCustomerService":"","MinutesAfterLastDoorOpenToSendSmsReminder":null,"DelayToSendSmsForAdditionAvailability":0,"DeliveryHourFromForFreshnessGuarantee":null,"VirtualMOQpaymentAccountNumber":"PK227044060008287382","LastChangedBySystemUserId":"f613a9e9-06a6-4f1f-9806-ecf4ed3a100a","LastChangeDateTime":"2020-06-15T08:34:39.483","PriceForMaximaCoupon":null,"OOSQuantity":0,"EShopRegionId":1},
         };
 
-        window.b_js_routes = [{"RouteName":"customerDataPagesList","Url":"/","ControllerName":null,"ActionName":null,"SequenceInRouting":39,"Active":true,"IsReactRoute":false},{"RouteName":"customerDataAddressList","Url":"/kohaletoimetamise-aadress","ControllerName":null,"ActionName":null,"SequenceInRouting":40,"Active":true,"IsReactRoute":false},{"RouteName":"customerDataAddressEdit","Url":"/kohaletoimetamise-aadress/:id","ControllerName":null,"ActionName":null,"SequenceInRouting":41,"Active":true,"IsReactRoute":false},{"RouteName":"customerDataAddressAdd","Url":"/kohaletoimetamise-aadress/lisa-aadress","ControllerName":null,"ActionName":null,"SequenceInRouting":42,"Active":true,"IsReactRoute":false},{"RouteName":"customerDataOrderHistory","Url":"/tellimuste-ajalugu","ControllerName":null,"ActionName":null,"SequenceInRouting":43,"Active":true,"IsReactRoute":false},{"RouteName":"customerDataAciuCard","Url":"/minu-aitah-kaart","ControllerName":null,"ActionName":null,"SequenceInRouting":44,"Active":true,"IsReactRoute":false},{"RouteName":"customerDataUserSettings","Url":"/kasutaja-seaded","ControllerName":null,"ActionName":null,"SequenceInRouting":45,"Active":true,"IsReactRoute":false},{"RouteName":"customerDataChangeEmail","Url":"/kasutaja-seaded/muuda-epost","ControllerName":null,"ActionName":null,"SequenceInRouting":46,"Active":true,"IsReactRoute":false},{"RouteName":"customerDataChangePassword","Url":"/kasutaja-seaded/muuda-parool","ControllerName":null,"ActionName":null,"SequenceInRouting":47,"Active":true,"IsReactRoute":false},{"RouteName":"customerDataOrderHistoryDetails","Url":"/ostude-ajalugu/:id","ControllerName":null,"ActionName":null,"SequenceInRouting":48,"Active":true,"IsReactRoute":false},{"RouteName":"customerDataSavedBaskets","Url":"/salvestatud-ostukorv","ControllerName":null,"ActionName":null,"SequenceInRouting":49,"Active":true,"IsReactRoute":false},{"RouteName":"customerDataPaymentCards","Url":"/maksekaardid","ControllerName":null,"ActionName":null,"SequenceInRouting":50,"Active":true,"IsReactRoute":false},{"RouteName":"customerDataSavedBasketsItem","Url":"/salvestatud-ostukorv/:id","ControllerName":null,"ActionName":null,"SequenceInRouting":51,"Active":true,"IsReactRoute":false}];
+        window.b_js_routes = [{"RouteName":"customerDataChangePhone","Url":"NO_TRANSLATION_FOUND_c31d2379-124a-4b2b-8b35-6abb9a27a4ce","ControllerName":null,"ActionName":null,"SequenceInRouting":0,"Active":true,"IsReactRoute":false},{"RouteName":"customerDataPagesList","Url":"/","ControllerName":null,"ActionName":null,"SequenceInRouting":39,"Active":true,"IsReactRoute":false},{"RouteName":"customerDataAddressList","Url":"/kohaletoimetamise-aadress","ControllerName":null,"ActionName":null,"SequenceInRouting":40,"Active":true,"IsReactRoute":false},{"RouteName":"customerDataAddressEdit","Url":"/kohaletoimetamise-aadress/:id","ControllerName":null,"ActionName":null,"SequenceInRouting":41,"Active":true,"IsReactRoute":false},{"RouteName":"customerDataAddressAdd","Url":"/kohaletoimetamise-aadress/lisa-aadress","ControllerName":null,"ActionName":null,"SequenceInRouting":42,"Active":true,"IsReactRoute":false},{"RouteName":"customerDataOrderHistory","Url":"/tellimuste-ajalugu","ControllerName":null,"ActionName":null,"SequenceInRouting":43,"Active":true,"IsReactRoute":false},{"RouteName":"customerDataAciuCard","Url":"/minu-aitah-kaart","ControllerName":null,"ActionName":null,"SequenceInRouting":44,"Active":true,"IsReactRoute":false},{"RouteName":"customerDataUserSettings","Url":"/kasutaja-seaded","ControllerName":null,"ActionName":null,"SequenceInRouting":45,"Active":true,"IsReactRoute":false},{"RouteName":"customerDataChangeEmail","Url":"/kasutaja-seaded/muuda-epost","ControllerName":null,"ActionName":null,"SequenceInRouting":46,"Active":true,"IsReactRoute":false},{"RouteName":"customerDataChangePassword","Url":"/kasutaja-seaded/muuda-parool","ControllerName":null,"ActionName":null,"SequenceInRouting":47,"Active":true,"IsReactRoute":false},{"RouteName":"customerDataOrderHistoryDetails","Url":"/ostude-ajalugu/:id","ControllerName":null,"ActionName":null,"SequenceInRouting":48,"Active":true,"IsReactRoute":false},{"RouteName":"customerDataSavedBaskets","Url":"/salvestatud-ostukorv","ControllerName":null,"ActionName":null,"SequenceInRouting":49,"Active":true,"IsReactRoute":false},{"RouteName":"customerDataPaymentCards","Url":"/maksekaardid","ControllerName":null,"ActionName":null,"SequenceInRouting":50,"Active":true,"IsReactRoute":false},{"RouteName":"customerDataSavedBasketsItem","Url":"/salvestatud-ostukorv/:id","ControllerName":null,"ActionName":null,"SequenceInRouting":51,"Active":true,"IsReactRoute":false}];
 
         window.b_js_urls = {};
         window.b_js_routes.forEach(function(route) {
@@ -117,12 +126,12 @@ export const html = `
         ga("create", "UA-45214439-9", "auto");
         ga("require", "ec");
 
-
-            ga('set', 'dimension1', '000000000000140325'); // dynx_itemid == Data Feed ID
+            
+            ga('set', 'dimension1', '000000000000706075'); // dynx_itemid == Data Feed ID
             ga('set', 'dimension2', ''); // dynx_itemid2 == Data Feed ID2
             ga('set', 'dimension3', 'offerdetail'); // dynx_pagetype
-            ga('set', 'dimension4', '0,8000'); // dynx_totalvalue == Data Feed Sale Price / Price (jeigu yra - akcijos kaina, jeigu ne, įprasta kaina)
-
+            ga('set', 'dimension4', '2,7900'); // dynx_totalvalue == Data Feed Sale Price / Price (jeigu yra - akcijos kaina, jeigu ne, įprasta kaina)
+            
 
         ga('send', 'pageview');
 
@@ -207,7 +216,7 @@ export const html = `
                 isImpression = false;
             }
 
-
+            
 
             var productData = {};
 
@@ -603,7 +612,7 @@ export const html = `
         }
     </script>
 
-
+    
 
     <script>
         var reportToAdWords = function (action, conversionData) {
@@ -620,7 +629,7 @@ export const html = `
                     j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;
                     f.parentNode.insertBefore(j,f);
                 })(window,document,'script','dataLayer','GTM-M7W8FBT');
-        </script>
+    </script>
     <!-- End Google Tag Manager -->
 
 
@@ -644,7 +653,7 @@ export const html = `
     <script type="text/javascript">
         // load svg icons, cached by browser
         var ajax = new XMLHttpRequest();
-        ajax.open("GET", "/Assets/Images/svg-compiled/symbol/svg/sprite.symbol.svg" + "?v=202003141221", true);
+        ajax.open("GET", "/Assets/Images/svg-compiled/symbol/svg/sprite.symbol.svg" + "?v=126.21", true);
         ajax.send();
         ajax.onload = function () {
             var div = document.createElement("div");
@@ -655,10 +664,7 @@ export const html = `
     </script>
 
     <!-- Google Tag Manager (noscript) -->
-    <noscript>
-        <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M7W8FBT"
-                height="0" width="0" style="display:none;visibility:hidden"></iframe>
-    </noscript>
+    
     <!-- End Google Tag Manager (noscript) -->
 
     <div class="b-app">
@@ -668,27 +674,28 @@ export const html = `
                 <li class="b-top-menu-item"><button class="b-top-menu-item-link b-trgigger-mobile-menu"></button></li>
                 <li class="b-top-menu-item"><a href="/" class="b-logo--single-letter-wrap"><svg
     class="b-icon b-logo--single-letter"
-
-    style=""
+    
+    style="" 
 >
     <use xlink:href="#logo-small"></use>
 </svg></a></li>
                 <li class="b-top-menu-item"><button class="b-top-menu-item-link b-search--open b-search--toggle b-top-menu-item-link--colored-bg"><svg
     class="b-icon"
-
-    style=""
+    
+    style="" 
 >
     <use xlink:href="#search"></use>
 </svg></button></li>
 
 
-                <li class="b-top-menu-item b-mobile-app-download-link" style="display:none;"><a href="" class="b-top-menu-item-link b-top-menu-item-link--colored-bg"><svg
+                    <li class="b-top-menu-item b-mobile-app-download-link" style="display:none;"><a href="" class="b-top-menu-item-link b-top-menu-item-link--colored-bg"><svg
     class="b-icon"
-
-    style=""
+    
+    style="" 
 >
     <use xlink:href="#person"></use>
 </svg></a></li>
+
                 <li class="b-top-menu-item pull-right b-cart--mobile-cart-btn-placeholder"></li>
                 <li class="b-search b-search-mobile"></li>
             </ul>
@@ -713,34 +720,39 @@ export const html = `
 
                     <header class="b-header">
 
-
+                        
 
 
 
 <div class="clearfix">
 
     <div class="b-login-register b-header--links pull-right">
-
-        <div class="b-header--links--item">
-            <div class="app-promo-icons">
-                <span class="app-promo-icons--label">Laadige alla</span>
-                <ul>
-                    <li>
-                        <a href="https://itunes.apple.com/us/app/appname/id1339130115?ls=1&amp;mt=8" target="_blank"><img src="/Assets/Images/icons/apple-icon.png" alt="Laadige alla iPhone’i versioon" /></a>
-                    </li>
-                    <li>
-                        <a href="https://play.google.com/store/apps/details?id=ee.barbora" target="_blank"><img src="/Assets/Images/icons/android-icon.png" alt="Laadige alla Androidi versioon" /></a>
-                    </li>
-                </ul>
-            </div>
+        <div class="b-change-county--wrap-header">
+            <button class="c-btn c-btn--center c-btn--block b-change-county-btn">
+                Muuda maakonda
+            </button>
         </div>
+        
+            <div class="b-header--links--item">
+                <div class="app-promo-icons">
+                    <span class="app-promo-icons--label">Laadige alla</span>
+                    <ul>
+                        <li>
+                            <a href="https://itunes.apple.com/us/app/appname/id1339130115?ls=1&amp;mt=8" target="_blank"><img src="/Assets/Images/icons/apple-icon.png" alt="Laadige alla iPhone’i versioon" /></a>
+                        </li>
+                        <li>
+                            <a href="https://play.google.com/store/apps/details?id=ee.barbora" target="_blank"><img src="/Assets/Images/icons/android-icon.png" alt="Laadige alla Androidi versioon" /></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
 
         <div class="b-header--links--item b-header--home">
             <a class="link-gray-lighter" href="/" aria-label="Avaleht">
                 <svg
     class="b-icon"
-
-    style=""
+    
+    style="" 
 >
     <use xlink:href="#home"></use>
 </svg>
@@ -751,8 +763,8 @@ export const html = `
         <div class="b-header--links--item b-select-lang">
             <svg
     class="b-icon b-select-lang--icon"
-
-    style=""
+    
+    style="" 
 >
     <use xlink:href="#globe"></use>
 </svg>
@@ -772,8 +784,8 @@ export const html = `
                 <button type="button" class="btn btn-sm btn-link link-red-no-underline b-login-register--button b-login-register--key b-login-register--login">
                     <svg
     class="b-icon"
-
-    style=""
+    
+    style="" 
 >
     <use xlink:href="#key"></use>
 </svg>
@@ -800,59 +812,59 @@ export const html = `
                                     <p class="help-block">Tere tulemast tagasi Barborasse. Rõõmsaid oste!</p>
                                     <p class="b-caps-lock-on">Suurt&auml;helukk on peal<p>
 
-                                    <form class="form-horizontal b-login-form">
-                                        <div class="form-group">
-                                            <label for="b-login-email" class="col-sm-4 control-label">E-post</label>
-                                            <div class="col-sm-8">
-                                                <input type="email" required class="form-control" id="b-login-email" name="email" placeholder="nimi@mail.ee">
+                                        <form class="form-horizontal b-login-form">
+                                            <div class="form-group">
+                                                <label for="b-login-email" class="col-sm-4 control-label">E-post</label>
+                                                <div class="col-sm-8">
+                                                    <input type="email" required class="form-control" id="b-login-email" name="email" placeholder="nimi@mail.ee">
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="b-login-password" class="col-sm-4 control-label">Parool</label>
-                                            <div class="col-sm-8">
-                                                <div class="input-group">
-                                                    <input type="password" required class="form-control" id="b-login-password" name="password" placeholder="********">
-                                                    <span class="input-group-btn">
-                                                        <button id="b-login-password--toggle-visibility-button" class="btn btn-default" type="button">
-                                                            <svg
+                                            <div class="form-group">
+                                                <label for="b-login-password" class="col-sm-4 control-label">Parool</label>
+                                                <div class="col-sm-8">
+                                                    <div class="input-group">
+                                                        <input type="password" required class="form-control" id="b-login-password" name="password" placeholder="********">
+                                                        <span class="input-group-btn">
+                                                            <button id="b-login-password--toggle-visibility-button" class="btn btn-default" type="button">
+                                                                <svg
     class="b-icon b-icon--eye"
-
-    style="width: 1em; height: 1em;"
+    
+    style="width: 1em; height: 1em;" 
 >
     <use xlink:href="#eye"></use>
 </svg>
-                                                            <svg
+                                                                <svg
     class="b-icon b-icon--eye-crossed"
     style='display: none'
-    style="width: 1em; height: 1em;"
+    style="width: 1em; height: 1em;" 
 >
     <use xlink:href="#eye-crossed"></use>
 </svg>
-                                                        </button>
-                                                    </span>
+                                                            </button>
+                                                        </span>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <div class="col-sm-8 col-sm-push-4">
-                                                <div class="checkbox">
-                                                    <label>
-                                                        <input type="checkbox" id="b-login-remember-me" checked="checked"> Jäta mind meelde
-                                                    </label>
+                                            <div class="form-group">
+                                                <div class="col-sm-8 col-sm-push-4">
+                                                    <div class="checkbox">
+                                                        <label>
+                                                            <input type="checkbox" id="b-login-remember-me" checked="checked"> Jäta mind meelde
+                                                        </label>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <div class="col-sm-offset-4 col-sm-8">
-                                                <button type="submit" class="btn btn-default b-login-form--login-button">Login sisse</button>
+                                            <div class="form-group">
+                                                <div class="col-sm-offset-4 col-sm-8">
+                                                    <button type="submit" class="btn btn-default b-login-form--login-button">Login sisse</button>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <div class="col-sm-offset-4 col-sm-8">
-                                                <a href="/parooli-meeldetuletus">Parooli meeldetuletus</a>
+                                            <div class="form-group">
+                                                <div class="col-sm-offset-4 col-sm-8">
+                                                    <a href="/parooli-meeldetuletus">Parooli meeldetuletus</a>
+                                                </div>
                                             </div>
-                                        </div>
-                                    </form>
+                                        </form>
                                 </div>
                                 <div role="tabpanel" class="tab-pane ui-front" id="b-user-register">
                                     <form class="form-horizontal b-register-form">
@@ -871,15 +883,15 @@ export const html = `
                                                         <button id="b-register-password--toggle-visibility-button" class="btn btn-default" type="button">
                                                             <svg
     class="b-icon b-icon--eye"
-
-    style="width: 1em; height: 1em;"
+    
+    style="width: 1em; height: 1em;" 
 >
     <use xlink:href="#eye"></use>
 </svg>
                                                             <svg
     class="b-icon b-icon--eye-crossed"
     style='display: none'
-    style="width: 1em; height: 1em;"
+    style="width: 1em; height: 1em;" 
 >
     <use xlink:href="#eye-crossed"></use>
 </svg>
@@ -888,51 +900,51 @@ export const html = `
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="form-group">
-                                            <label class="col-sm-5 control-label">Linn/Asula</label>
-                                            <div class="col-sm-7">
-                                                <select class="form-control b-register--city" name="city">
-                                                        <option value=1>Tallinn</option>
-                                                        <option value=2>Viimsi vald</option>
-                                                        <option value=3>Maardu</option>
-                                                        <option value=4>Harku vald</option>
-                                                        <option value=5>Saku vald</option>
-                                                        <option value=6>L&#228;&#228;ne-Harju vald</option>
-                                                        <option value=7>Keila linn</option>
-                                                        <option value=8>Raasiku vald</option>
-                                                        <option value=9>Rae vald</option>
-                                                        <option value=10>Saue vald</option>
-                                                        <option value=11>Kiili vald</option>
-                                                        <option value=12>J&#245;el&#228;htme vald</option>
-                                                        <option value=13>Saue linn</option>
-                                                </select>
-                                            </div>
-                                        </div>
                                             <div class="form-group">
-                                                <div class="col-sm-5"></div>
+                                                <label class="col-sm-5 control-label">Linn/Asula</label>
                                                 <div class="col-sm-7">
-                                                    <a href="/info/teeninduspiirkonnad"
-                                                       target="_blank"
-                                                       style="font-size: 12px;">
-                                                        Meie teeninduspiirkonnad
-                                                    </a>
+                                                    <select class="form-control b-register--city" name="city">
+                                                            <option value=1>Tallinn</option>
+                                                            <option value=2>Viimsi vald</option>
+                                                            <option value=3>Maardu</option>
+                                                            <option value=4>Harku vald</option>
+                                                            <option value=5>Saku vald</option>
+                                                            <option value=6>L&#228;&#228;ne-Harju vald</option>
+                                                            <option value=7>Keila linn</option>
+                                                            <option value=8>Raasiku vald</option>
+                                                            <option value=9>Rae vald</option>
+                                                            <option value=10>Saue vald</option>
+                                                            <option value=11>Kiili vald</option>
+                                                            <option value=12>J&#245;el&#228;htme vald</option>
+                                                            <option value=13>Saue linn</option>
+                                                    </select>
                                                 </div>
                                             </div>
-                                        <div class="form-group">
-                                            <label class="col-sm-5 control-label">Tänav ja maja number</label>
-                                            <div class="col-sm-7">
-                                                <div class="b-register--street-wrap">
-                                                    <div class="b-loader"></div>
-                                                    <input type="text" required class="form-control b-register--street" name="street" placeholder="Asuge sisestama ja valige nimekirjast" />
+                                                <div class="form-group">
+                                                    <div class="col-sm-5"></div>
+                                                    <div class="col-sm-7">
+                                                        <a href="/info/teeninduspiirkonnad"
+                                                           target="_blank"
+                                                           style="font-size: 12px;">
+                                                            Meie teeninduspiirkonnad
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-5 control-label">Tänav ja maja number</label>
+                                                <div class="col-sm-7">
+                                                    <div class="b-register--street-wrap">
+                                                        <div class="b-loader"></div>
+                                                        <input type="text" required class="form-control b-register--street" name="street" placeholder="Asuge sisestama ja valige nimekirjast" />
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="col-sm-5 control-label">Korteri number</label>
-                                            <div class="col-sm-7">
-                                                <input type="text" maxlength="20" class="form-control" name="flat" placeholder="00">
+                                            <div class="form-group">
+                                                <label class="col-sm-5 control-label">Korteri number</label>
+                                                <div class="col-sm-7">
+                                                    <input type="text" maxlength="20" class="form-control" name="flat" placeholder="00">
+                                                </div>
                                             </div>
-                                        </div>
                                         <div class="form-group">
                                             <label class="col-sm-5 control-label">Nimi</label>
                                             <div class="col-sm-7">
@@ -951,7 +963,7 @@ export const html = `
                                                 <input type="text" required class="form-control" name="phone" placeholder="+37250000000">
                                             </div>
                                         </div>
-                                         <div class="form-group">
+                                        <div class="form-group">
                                             <div class="col-sm-offset-5 col-sm-7">
                                                 <div class="checkbox">
                                                     <label>
@@ -965,7 +977,7 @@ export const html = `
                                             <div class="col-sm-offset-5 col-sm-7">
                                                 <div class="checkbox">
                                                     <label>
-                                                        <input id="b-agree-profiling--input-checkbox" type="checkbox" name="profiling"/> Nõustun saama personaalseid, minu ostuajalugu arvestavaid pakkumisi
+                                                        <input id="b-agree-profiling--input-checkbox" type="checkbox" name="profiling" /> Nõustun saama personaalseid, minu ostuajalugu arvestavaid pakkumisi
                                                     </label>
                                                 </div>
                                             </div>
@@ -980,15 +992,15 @@ export const html = `
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="form-group">
-                                                <div class="col-sm-offset-5 col-sm-7">
-                                                    <div class="checkbox">
-                                                        <label>
-                                                            <input type="checkbox" name="pushNotifications" /> Nõustun saama pakkumisi mobiilirakenduses
-                                                        </label>
+                                                <div class="form-group">
+                                                    <div class="col-sm-offset-5 col-sm-7">
+                                                        <div class="checkbox">
+                                                            <label>
+                                                                <input type="checkbox" name="pushNotifications" /> Nõustun saama pakkumisi mobiilirakenduses
+                                                            </label>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
                                             <div class="form-group">
                                                 <div class="col-sm-offset-5 col-sm-7">
                                                     <div class="checkbox">
@@ -1011,7 +1023,7 @@ export const html = `
                     </div>
                 </div>
             </div>
-
+        
         <div class="b-header--links--item b-header--links--tel">
             <a href="tel:555 66 369">
                 <svg class="b-icon" style="top:2px;"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#phone"></use></svg> 555 66 369
@@ -1019,45 +1031,37 @@ export const html = `
         </div>
 
     </div>
-
+    
 </div>
 
                         <a href="/" class="b-logo--main">
 <svg
     class="b-icon"
     style='width: 100%; height: 100%'
-    style=""
+    style="" 
 >
     <use xlink:href="#barbora-logo-red-EE"></use>
-</svg>
+</svg>                            
                         </a>
 
                             <div class="b-search--placeholder"></div>
 
-                        <ul class="b-top-menu b-top-menu-desktop">
-                            <li class="b-top-menu-item">            <a href="/" class="b-top-menu-item-link b-top-menu-item-link-active">Kaubavalik</a>
+                            <ul class="b-top-menu b-top-menu-desktop">
+                                <li class="b-top-menu-item">        <a href="/" class="b-top-menu-item-link b-top-menu-item-link-active">Kaubavalik</a>
 </li>
-                            <li class="b-top-menu-item">            <a href="/minu-andmed/favourites" class="b-top-menu-item-link">Minu ostud</a>
+                                <li class="b-top-menu-item">        <a href="/minu-andmed/favourites" class="b-top-menu-item-link">Minu ostud</a>
 </li>
-                            <li class="b-top-menu-item">            <a href="/pakkumised" class="b-top-menu-item-link">Kampaaniad</a>
+                                <li class="b-top-menu-item">        <a href="/pakkumised" class="b-top-menu-item-link">Kampaaniad</a>
 </li>
-                                <li class="b-top-menu-item">            <a href="/oko" class="b-top-menu-item-link">Öko</a>
-</li>
-                            <li class="b-top-menu-item">            <a href="/uudistooted" class="b-top-menu-item-link">Uudistooted</a>
-</li>
-                            <li class="b-top-menu-item">
-                                            <a href="/puhkus-vaba-aeg/lego-ehituskomplektid" class="b-top-menu-item-link b-top-menu-item-link--lego">
-                <svg
-    class="b-icon"
 
-    style="width: 2.5em; height: 2.5em;"
->
-    <use xlink:href="#lego-logo"></use>
-</svg>
-            </a>
+                                    <li class="b-top-menu-item">        <a href="/oko" class="b-top-menu-item-link">Öko</a>
+</li>
 
-                            </li>
-                        </ul>
+                                    <li class="b-top-menu-item">        <a href="/uudistooted" class="b-top-menu-item-link">Uudistooted</a>
+</li>
+
+                            </ul>
+
 
 
 
@@ -1066,11 +1070,14 @@ export const html = `
 
     <div class="b-categories">
         <ul class="b-categories-list">
-                <li class="b-categories-root-category" data-b-cat-id="2456a910-eacb-4537-b214-17ed21682888" data-b-category-api-action-name="categories" data-b-controller="products">
+                <li class="b-categories-root-category " data-b-cat-id="2456a910-eacb-4537-b214-17ed21682888" 
+                    data-b-category-api-action-name="categories" data-b-controller="products">
 
                     <button class="b-category-state"></button>
 
-                        <a href="/koogiviljad-puuviljad">K&#246;&#246;giviljad, puuviljad</a>
+                            <a href="/koogiviljad-puuviljad">
+                                K&#246;&#246;giviljad, puuviljad
+                            </a>
 
                             <ul class="b-categories-child b-categories-child--loading">
                                 <li>
@@ -1079,11 +1086,14 @@ export const html = `
                             </ul>
 
                 </li>
-                <li class="b-categories-root-category" data-b-cat-id="4285f7d7-5d92-4eb2-a85c-4772fed50091" data-b-category-api-action-name="categories" data-b-controller="products">
+                <li class="b-categories-root-category " data-b-cat-id="4285f7d7-5d92-4eb2-a85c-4772fed50091" 
+                    data-b-category-api-action-name="categories" data-b-controller="products">
 
                     <button class="b-category-state"></button>
 
-                        <a href="/piimatooted-rasv-munad">Piimatooted, rasv, munad</a>
+                            <a href="/piimatooted-rasv-munad">
+                                Piimatooted, rasv, munad
+                            </a>
 
                             <ul class="b-categories-child b-categories-child--loading">
                                 <li>
@@ -1092,11 +1102,14 @@ export const html = `
                             </ul>
 
                 </li>
-                <li class="b-categories-root-category" data-b-cat-id="770818ff-4c23-42f6-a00a-e7f58add4a10" data-b-category-api-action-name="categories" data-b-controller="products">
+                <li class="b-categories-root-category " data-b-cat-id="770818ff-4c23-42f6-a00a-e7f58add4a10" 
+                    data-b-category-api-action-name="categories" data-b-controller="products">
 
                     <button class="b-category-state"></button>
 
-                        <a href="/leivad-saiad-kondiitritooted">Leivad, saiad, kondiitritooted</a>
+                            <a href="/leivad-saiad-kondiitritooted">
+                                Leivad, saiad, kondiitritooted
+                            </a>
 
                             <ul class="b-categories-child b-categories-child--loading">
                                 <li>
@@ -1105,11 +1118,14 @@ export const html = `
                             </ul>
 
                 </li>
-                <li class="b-categories-root-category" data-b-cat-id="1271e464-f471-4dc6-b286-7ea771a218a8" data-b-category-api-action-name="categories" data-b-controller="products">
+                <li class="b-categories-root-category " data-b-cat-id="1271e464-f471-4dc6-b286-7ea771a218a8" 
+                    data-b-category-api-action-name="categories" data-b-controller="products">
 
                     <button class="b-category-state"></button>
 
-                        <a href="/liha-kala-valmistoit">Liha, kala, valmistoit</a>
+                            <a href="/liha-kala-valmistoit">
+                                Liha, kala, valmistoit
+                            </a>
 
                             <ul class="b-categories-child b-categories-child--loading">
                                 <li>
@@ -1118,11 +1134,14 @@ export const html = `
                             </ul>
 
                 </li>
-                <li class="b-categories-root-category" data-b-cat-id="acb55842-a24c-44d1-b948-082e2cdb596b" data-b-category-api-action-name="categories" data-b-controller="products">
+                <li class="b-categories-root-category " data-b-cat-id="acb55842-a24c-44d1-b948-082e2cdb596b" 
+                    data-b-category-api-action-name="categories" data-b-controller="products">
 
                     <button class="b-category-state"></button>
 
-                        <a href="/kauasailivad-toidukaubad">Kauas&#228;ilivad toidukaubad</a>
+                            <a href="/kauasailivad-toidukaubad">
+                                Kauas&#228;ilivad toidukaubad
+                            </a>
 
                             <ul class="b-categories-child b-categories-child--loading">
                                 <li>
@@ -1131,11 +1150,14 @@ export const html = `
                             </ul>
 
                 </li>
-                <li class="b-categories-root-category" data-b-cat-id="189d9e1a-a880-4f6f-8c51-b12852ba50d4" data-b-category-api-action-name="categories" data-b-controller="products">
+                <li class="b-categories-root-category " data-b-cat-id="189d9e1a-a880-4f6f-8c51-b12852ba50d4" 
+                    data-b-category-api-action-name="categories" data-b-controller="products">
 
                     <button class="b-category-state"></button>
 
-                        <a href="/kulmutatud-tooted">K&#252;lmutatud tooted</a>
+                            <a href="/kulmutatud-tooted">
+                                K&#252;lmutatud tooted
+                            </a>
 
                             <ul class="b-categories-child b-categories-child--loading">
                                 <li>
@@ -1144,11 +1166,14 @@ export const html = `
                             </ul>
 
                 </li>
-                <li class="b-categories-root-category" data-b-cat-id="4a1f4362-1822-49c3-bdda-b8fd2d3171dc" data-b-category-api-action-name="categories" data-b-controller="products">
+                <li class="b-categories-root-category " data-b-cat-id="4a1f4362-1822-49c3-bdda-b8fd2d3171dc" 
+                    data-b-category-api-action-name="categories" data-b-controller="products">
 
                     <button class="b-category-state"></button>
 
-                        <a href="/joogid">Joogid</a>
+                            <a href="/joogid">
+                                Joogid
+                            </a>
 
                             <ul class="b-categories-child b-categories-child--loading">
                                 <li>
@@ -1157,11 +1182,14 @@ export const html = `
                             </ul>
 
                 </li>
-                <li class="b-categories-root-category" data-b-cat-id="5ebed6d5-9f7d-4ddf-a5bf-ab5692ae5d54" data-b-category-api-action-name="categories" data-b-controller="products">
+                <li class="b-categories-root-category " data-b-cat-id="5ebed6d5-9f7d-4ddf-a5bf-ab5692ae5d54" 
+                    data-b-category-api-action-name="categories" data-b-controller="products">
 
                     <button class="b-category-state"></button>
 
-                        <a href="/enesehooldustooted">Enesehooldustooted</a>
+                            <a href="/enesehooldustooted">
+                                Enesehooldustooted
+                            </a>
 
                             <ul class="b-categories-child b-categories-child--loading">
                                 <li>
@@ -1170,11 +1198,14 @@ export const html = `
                             </ul>
 
                 </li>
-                <li class="b-categories-root-category" data-b-cat-id="a70ae192-1bd4-435f-a809-b54f530b4415" data-b-category-api-action-name="categories" data-b-controller="products">
+                <li class="b-categories-root-category " data-b-cat-id="a70ae192-1bd4-435f-a809-b54f530b4415" 
+                    data-b-category-api-action-name="categories" data-b-controller="products">
 
                     <button class="b-category-state"></button>
 
-                        <a href="/kodukaubad-lemmikloomatooted">Kodukaubad, lemmikloomatooted</a>
+                            <a href="/kodukaubad-lemmikloomatooted">
+                                Kodukaubad, lemmikloomatooted
+                            </a>
 
                             <ul class="b-categories-child b-categories-child--loading">
                                 <li>
@@ -1183,11 +1214,14 @@ export const html = `
                             </ul>
 
                 </li>
-                <li class="b-categories-root-category" data-b-cat-id="850717a1-fa2c-4b5f-a8f7-bae8bf068f7e" data-b-category-api-action-name="categories" data-b-controller="products">
+                <li class="b-categories-root-category " data-b-cat-id="850717a1-fa2c-4b5f-a8f7-bae8bf068f7e" 
+                    data-b-category-api-action-name="categories" data-b-controller="products">
 
                     <button class="b-category-state"></button>
 
-                        <a href="/lastekaubad">Lastekaubad</a>
+                            <a href="/lastekaubad">
+                                Lastekaubad
+                            </a>
 
                             <ul class="b-categories-child b-categories-child--loading">
                                 <li>
@@ -1196,11 +1230,14 @@ export const html = `
                             </ul>
 
                 </li>
-                <li class="b-categories-root-category" data-b-cat-id="b9e60e2e-6007-4317-862b-faffae53b082" data-b-category-api-action-name="categories" data-b-controller="products">
+                <li class="b-categories-root-category " data-b-cat-id="b9e60e2e-6007-4317-862b-faffae53b082" 
+                    data-b-category-api-action-name="categories" data-b-controller="products">
 
                     <button class="b-category-state"></button>
 
-                        <a href="/puhkus-vaba-aeg">Puhkus, vaba aeg</a>
+                            <a href="/puhkus-vaba-aeg">
+                                Puhkus, vaba aeg
+                            </a>
 
                             <ul class="b-categories-child b-categories-child--loading">
                                 <li>
@@ -1212,74 +1249,74 @@ export const html = `
         </ul>
     </div>
 
-
+                        
     <ol class="breadcrumb" itemscope itemtype="http://schema.org/BreadcrumbList">
             <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-
+                
 
 
 <a itemprop="item" href="https://www.barbora.ee/" title="Pealeht">
     <span itemprop="name">
         Pealeht
     </span>
-</a>
+</a> 
             </li>
             <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-
+                
 
 
 <a itemprop="item" href="https://www.barbora.ee/kauasailivad-toidukaubad" title="Kauas&#228;ilivad toidukaubad">
     <span itemprop="name">
         Kauasäilivad toidukaubad
     </span>
-</a>
+</a> 
             </li>
             <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+                
 
 
-
-<a itemprop="item" href="https://www.barbora.ee/kauasailivad-toidukaubad/hommikusoogid-ja-batoonid" title="Hommikus&#246;&#246;gid ja batoonid">
+<a itemprop="item" href="https://www.barbora.ee/kauasailivad-toidukaubad/maitseained" title="Maitseained ">
     <span itemprop="name">
-        Hommikusöögid ja batoonid
+        Maitseained 
     </span>
-</a>
+</a> 
             </li>
             <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+                
 
 
-
-<a itemprop="item" href="https://www.barbora.ee/kauasailivad-toidukaubad/hommikusoogid-ja-batoonid/pudruhelbed" title="Pudruhelbed">
+<a itemprop="item" href="https://www.barbora.ee/kauasailivad-toidukaubad/maitseained/puljongid" title="Puljongid">
     <span itemprop="name">
-        Pudruhelbed
+        Puljongid
     </span>
-</a>
+</a> 
             </li>
             <li class="active" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+                
 
 
-
-<a itemprop="item" href="https://www.barbora.ee/toode/kiirkaerahelbed-nordic-500-g" title="Kiirkaerahelbed NORDIC 500g">
+<a itemprop="item" href="https://www.barbora.ee/toode/mahe-kanapuljong-natur-compagnie-88-g" title="Mahe kanapuljong NATUR COMPAGNIE 88g">
     <span itemprop="name">
-        Kiirkaerahelbed NORDIC 500g
+        Mahe kanapuljong NATUR COMPAGNIE 88g
     </span>
-</a>
+</a> 
             </li>
     </ol>
 
                     </header>
 
-
+                    
 
     <div class="b-sidebar">
 
-        <div class="b-customer-service">
-	<a href="tel:555 66 369" class="b-customer-service--phone">555 66 369</a>
+        
+<div class="b-customer-service">
+    <a href="tel:555 66 369" class="b-customer-service--phone">555 66 369</a>
     <div class="b-customer-service--text1">
-        E-P  9:00-21:00
+        E-P  8:00-21:00
     </div>
     <div class="b-customer-service--text2">
         E-post: <a href="mailto:info@barbora.ee" class="b-customer-service--email">info@barbora.ee</a>
-
     </div>
 </div>
 
@@ -1290,7 +1327,7 @@ export const html = `
 
 
                     <div class="b-page-specific-content">
-
+                        
 
 
 
@@ -1304,9 +1341,9 @@ export const html = `
 
         <div class="b-product-info b-product--js-hook"
              data-b-root-cat-id="acb55842-a24c-44d1-b948-082e2cdb596b"
-             data-b-item-id="000000000000140325"
-             data-b-units='{"units": [{"id":0,"price":0.8000,"retail_price":1.1500,"unit":"tk","min":2.0,"max":3.0,"step":2.0,"defaultValue":2.0}]}'
-             data-b-for-cart='{&quot;id&quot;:&quot;000000000000140325&quot;,&quot;product_position_in_list&quot;:null,&quot;title&quot;:&quot;Kiirkaerahelbed NORDIC 500g&quot;,&quot;category_id&quot;:&quot;44eb3adb-f7c8-4244-bca8-b4db47c235d7&quot;,&quot;category_name_full_path&quot;:&quot;Kauas&#228;ilivad toidukaubad/Hommikus&#246;&#246;gid ja batoonid/Pudruhelbed&quot;,&quot;root_category_id&quot;:&quot;acb55842-a24c-44d1-b948-082e2cdb596b&quot;,&quot;brand_name&quot;:&quot;Nordic&quot;,&quot;price&quot;:0.8000,&quot;image&quot;:&quot;/api/Images/GetInventoryImage?id=06ca74d8-d0b8-4b35-9b81-953a326a7d76&quot;,&quot;comparative_unit&quot;:&quot;kg&quot;,&quot;comparative_unit_price&quot;:1.60,&quot;status&quot;:&quot;suspended&quot;,&quot;popUpText&quot;:null,&quot;age_limitation&quot;:null,&quot;picking_actions&quot;:[],&quot;list&quot;:&quot;Prekės kortelė&quot;,&quot;quantity&quot;:2.0}'
+             data-b-item-id="000000000000706075"
+             data-b-units='{"units": [{"id":0,"price":2.7900,"unit":"tk","min":1.0,"max":10.0,"step":1.0,"defaultValue":1.0}]}'
+             data-b-for-cart='{&quot;id&quot;:&quot;000000000000706075&quot;,&quot;product_position_in_list&quot;:null,&quot;title&quot;:&quot;Mahe kanapuljong NATUR COMPAGNIE 88g&quot;,&quot;category_id&quot;:&quot;8ce5be8e-9e37-46e1-aa5b-bb09a56cc48d&quot;,&quot;category_name_full_path&quot;:&quot;Kauas&#228;ilivad toidukaubad/Maitseained /Puljongid&quot;,&quot;root_category_id&quot;:&quot;acb55842-a24c-44d1-b948-082e2cdb596b&quot;,&quot;brand_name&quot;:&quot;Natur Compagnie&quot;,&quot;price&quot;:2.7900,&quot;image&quot;:&quot;/api/Images/GetInventoryImage?id=2093a9c3-f630-423b-a967-6a0273887ef5&quot;,&quot;comparative_unit&quot;:&quot;kg&quot;,&quot;comparative_unit_price&quot;:31.70,&quot;status&quot;:&quot;active&quot;,&quot;popUpText&quot;:null,&quot;age_limitation&quot;:null,&quot;picking_actions&quot;:[],&quot;list&quot;:&quot;Prekės kortelė&quot;,&quot;quantity&quot;:1.0}'
              itemscope itemtype="http://schema.org/Product">
             <div class="b-products-allow-desktop-view b-products-allow-mobile-view">
 
@@ -1314,22 +1351,8 @@ export const html = `
 
 
 
-        <div class="b-product-promo-label-primary" data-toggle='tooltip' title='Kampaania kehtib kuni 2020-03-23 või kuni kaupa jätkub.'>
 
-<svg
-    class="b-icon"
-
-    style=""
->
-    <use xlink:href="#label-offer"></use>
-</svg>                    <span class="b-product-promo-label-primary--percent b-product-promo-label--buy-one-get-x">
-                        Osta 2 <span style="display: block; font-weight: bold;">€1.60</span> eest
-
-                    </span>
-
-        </div>
-
-
+    
 
 
 
@@ -1342,12 +1365,10 @@ export const html = `
 
                         </div>
 
-
-    <div class="b-product-out-of-stock-backdrop"></div>
-        <a class="b-product-out-of-stock" tabindex="-1">Hetkel toodet kahjuks ei ole.</a>
+                        
 
 
-
+                        
 
                         <div class="b-product-info--pictures-wrap">
 
@@ -1359,25 +1380,20 @@ export const html = `
 
                                 <div class="b-carousel--inner">
 <div class="b-carousel--slide">
-                                         <img itemprop="image" src="/api/Images/GetInventoryImage?id=ae02e676-930d-4d9b-9205-9eb066aa9ca4"/>
+                                         <img itemprop="image" src="/api/Images/GetInventoryImage?id=5575d523-c7f2-4476-b6a6-980bad71f000"/>
                                      </div>                                </div>
                             </div>
 
                         </div>
                     </div>
                     <div class="col-md-6" style="position:static">
-                        <h1 class="b-product-info--title" itemprop="name">Kiirkaerahelbed NORDIC 500g</h1>
+                        <h1 class="b-product-info--title" itemprop="name">Mahe kanapuljong NATUR COMPAGNIE 88g</h1>
 
                         <hr class="b-hr-solid" />
 
+                        
 
 
-
-    <div class="b-product-promo-labels--mobile">
-
-
-
-    </div>
 
     <div class="b-product-goalgroups clearfix">
 
@@ -1386,7 +1402,13 @@ export const html = `
 
 
 
-
+<svg
+    class="b-icon"
+    data-toggle='tooltip' title='Ökoloogiline toode'
+    style="" 
+>
+    <use xlink:href="#eko"></use>
+</svg>
 
 
 
@@ -1394,7 +1416,7 @@ export const html = `
         <svg
     class="b-icon b-icon-favourite"
     data-toggle='tooltip' title='Salvestatud ostukorvid'
-    style=""
+    style="" 
 >
     <use xlink:href="#heart"></use>
 </svg>
@@ -1407,53 +1429,53 @@ export const html = `
 
 
                         <div class="b-product-info--price-and-quantity">
-
+                            
 <div class="b-product-prices-block" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+    
 
-
-        <del class="b-product-crossed-out-price">€1.15</del>
     <div class="b-product-price-current" itemprop="priceCurrency" content="EUR">
 
         <span
               class="b-product-price-current-number"
               itemprop="price"
-              content="0.8">
-            €0.80
+              content="2.79">
+            €2.79
         </span>
 
-        <link rel="external" itemprop="availability" href="https://schema.org/OutOfStock"/>
+        <link rel="external" itemprop="availability" href="http://schema.org/InStock"/>
     </div>
 
     <div class="b-product-price--extra">
 
 
-        <div>€1.60/kg</div>
+        <div>€31.70/kg</div>
     </div>
 
 </div>
 
 
-                                <div class="b-product-info--offer-valid-to">Kampaania kehtib kuni 2020-03-23 v&#245;i kuni kaupa j&#228;tkub.</div>
 
-                                <div class="b-product-unavailable--product-page--wrap clearfix">
-                                        <a href="/kauasailivad-toidukaubad/hommikusoogid-ja-batoonid/pudruhelbed" class="c-btn c-btn--center c-btn--round-corners">Sarnased tooted</a>
-                                </div>
+<div class="b-product-price-cart-link clearfix">
+    <div class="b-product-cart-link clearfix">
+        <div class="b-quantity-select--placeholder clearfix"></div>
+    </div>
+</div>
                         </div>
 
                         <dl class="b-dl-align-left b-product-info--info1">
                                 <dt>P&#228;ritoluriik:</dt>
-                                <dd>Soome</dd>
+                                <dd>Saksamaa</dd>
                                 <dt>Netokogus (g/ml):</dt>
-                                <dd>500</dd>
+                                <dd>88</dd>
                                 <dt>Kaubam&#228;rk:</dt>
-                                <dd>Nordic</dd>
+                                <dd>Natur Compagnie</dd>
 
                                 <dt>Tarnija:</dt>
                                 <dd><img src="/Assets/Images/maxima-logo.gif" alt="maxima" /></dd>
 
                         </dl>
 
-
+                        
 
                     </div>
                 </div>
@@ -1467,23 +1489,22 @@ export const html = `
 
         <hr class="b-zigzag-gray hr-double-vertical-spacing" />
         <dl class="b-product-info--info-2">
-            <dt class="b-product-info--info-3-title">Kirjeldus</dt>
-            <dd itemprop="description">Kiirkaerahelbed</dd>
 
 
             <dt class="b-product-info--info-3-title">Koostisosad</dt>
-            <dd>T&#228;istera KAERAhelbed</dd>
+            <dd>Meresool, gl&#252;koos-maisisiirup *, maisit&#228;rklis *, sheav&#245;i *, kanapulbri puljong * (6,8%), kanarasv * (3,4%), p&#228;rmiekstrakt, k&#252;psetatud sibul *, karamelliseeritud suhkur * , kurkum *, SELLER *, k&#252;&#252;slauk *, petersell *, koriandri seemned *, rosmariin *, t&#252;&#252;mian * (* loodusliku sertifikaadiga)</dd>
 
 
             <dt class="b-product-info--info-3-title">ALLERGEENID</dt>
-            <dd>Sisaldab: gluteeni sisaldavad teraviljad</dd>
+            <dd>Sisaldab: seller ja selleritooted</dd>
 
 
 
             <dt class="b-product-info--info-3-title" style="text-transform:uppercase;">Tootja kontaktid</dt>
-            <dd>RAISIO</dd>
+            <dd>Heirler Cenovis GmbH
+</dd>
             <dt class="b-product-info--info-3-title" style="text-transform:uppercase;">S&#228;ilitamistingimused</dt>
-            <dd>Hoida kuivas ja jahedas, tugevate l&#245;hnade eest kaitstult.
+            <dd>5-25&#176;. S&#228;ilitada kuivas, jahedas, p&#228;ikese eest kaitstuna.
 S&#228;ilitamistemperatuur: alates 5&#176;C kuni 25&#176;C.</dd>
         </dl>
 
@@ -1494,31 +1515,31 @@ S&#228;ilitamistemperatuur: alates 5&#176;C kuni 25&#176;C.</dd>
                     <tbody>
                         <tr>
                             <td>Energiat</td>
-                            <td class="b-text-right">1548,10 kJ / 370,00 Kcal</td>
+                            <td class="b-text-right">28,00 kJ / 7,00 Kcal</td>
                         </tr>
                         <tr>
                             <td>Rasvad</td>
-                            <td class="b-text-right">8,00 g</td>
+                            <td class="b-text-right">0,30 g</td>
                         </tr>
                         <tr>
                             <td>K&#252;llastunud rasvhappeid</td>
-                            <td class="b-text-right">1,60 g</td>
+                            <td class="b-text-right">0,10 g</td>
                         </tr>
                         <tr>
                             <td>S&#252;sivesikud</td>
-                            <td class="b-text-right">55,00 g</td>
+                            <td class="b-text-right">0,80 g</td>
                         </tr>
                         <tr>
                             <td>Suhkrud</td>
-                            <td class="b-text-right">1,20 g</td>
+                            <td class="b-text-right">0,10 g</td>
                         </tr>
                         <tr>
                             <td>Valgud</td>
-                            <td class="b-text-right">14,00 g</td>
+                            <td class="b-text-right">0,10 g</td>
                         </tr>
                         <tr>
                             <td>Sool</td>
-                            <td class="b-text-right">0,00 g</td>
+                            <td class="b-text-right">0,80 g</td>
                         </tr>
                     </tbody>
                 </table>
@@ -1535,11 +1556,11 @@ S&#228;ilitamistemperatuur: alates 5&#176;C kuni 25&#176;C.</dd>
                         <span class="b-nutrients--name">Energiat</span>
                         <span class="b-nutrients--amount-wrap">
                             <span class="b-nutrients--amount b-nutrients--amount-small">
-370 Kcal                                <br />
-1548,1 kJ                                <br />
+7 Kcal                                <br />
+28 kJ                                <br />
                             </span>
                         </span>
-                        <span class="b-nutrients--gda">18,5%</span>
+                        <span class="b-nutrients--gda">0,4%</span>
                     </span>
                 </li>
                 <li class="col-xs-6" data-toggle='tooltip' title='Vastavalt keskmise täiskasvanud inimese soovituslikule ööpäevasele toiteainete vajadusele (8400 kj/2000 kcal)'>
@@ -1547,10 +1568,10 @@ S&#228;ilitamistemperatuur: alates 5&#176;C kuni 25&#176;C.</dd>
                         <span class="b-nutrients--name">Rasvad</span>
                         <span class="b-nutrients--amount-wrap">
                             <span class="b-nutrients--amount">
-8 g                                <br />
+0,3 g                                <br />
                             </span>
                         </span>
-                        <span class="b-nutrients--gda">11,4%</span>
+                        <span class="b-nutrients--gda">0,4%</span>
                     </span>
                 </li>
                 <li class="col-xs-6" data-toggle='tooltip' title='Vastavalt keskmise täiskasvanud inimese soovituslikule ööpäevasele toiteainete vajadusele (8400 kj/2000 kcal)'>
@@ -1558,10 +1579,10 @@ S&#228;ilitamistemperatuur: alates 5&#176;C kuni 25&#176;C.</dd>
                         <span class="b-nutrients--name">K&#252;llastunud rasvhappeid</span>
                         <span class="b-nutrients--amount-wrap">
                             <span class="b-nutrients--amount">
-1,6 g                                <br />
+0,1 g                                <br />
                             </span>
                         </span>
-                        <span class="b-nutrients--gda">8%</span>
+                        <span class="b-nutrients--gda">0,5%</span>
                     </span>
                 </li>
                 <li class="col-xs-6" data-toggle='tooltip' title='Vastavalt keskmise täiskasvanud inimese soovituslikule ööpäevasele toiteainete vajadusele (8400 kj/2000 kcal)'>
@@ -1569,10 +1590,10 @@ S&#228;ilitamistemperatuur: alates 5&#176;C kuni 25&#176;C.</dd>
                         <span class="b-nutrients--name">S&#252;sivesikud</span>
                         <span class="b-nutrients--amount-wrap">
                             <span class="b-nutrients--amount">
-55 g                                <br />
+0,8 g                                <br />
                             </span>
                         </span>
-                        <span class="b-nutrients--gda">21,2%</span>
+                        <span class="b-nutrients--gda">0,3%</span>
                     </span>
                 </li>
                 <li class="col-xs-6" data-toggle='tooltip' title='Vastavalt keskmise täiskasvanud inimese soovituslikule ööpäevasele toiteainete vajadusele (8400 kj/2000 kcal)'>
@@ -1580,10 +1601,10 @@ S&#228;ilitamistemperatuur: alates 5&#176;C kuni 25&#176;C.</dd>
                         <span class="b-nutrients--name">Suhkrud</span>
                         <span class="b-nutrients--amount-wrap">
                             <span class="b-nutrients--amount">
-1,2 g                                <br />
+0,1 g                                <br />
                             </span>
                         </span>
-                        <span class="b-nutrients--gda">1,3%</span>
+                        <span class="b-nutrients--gda">0,1%</span>
                     </span>
                 </li>
                 <li class="col-xs-6" data-toggle='tooltip' title='Vastavalt keskmise täiskasvanud inimese soovituslikule ööpäevasele toiteainete vajadusele (8400 kj/2000 kcal)'>
@@ -1591,10 +1612,10 @@ S&#228;ilitamistemperatuur: alates 5&#176;C kuni 25&#176;C.</dd>
                         <span class="b-nutrients--name">Valgud</span>
                         <span class="b-nutrients--amount-wrap">
                             <span class="b-nutrients--amount">
-14 g                                <br />
+0,1 g                                <br />
                             </span>
                         </span>
-                        <span class="b-nutrients--gda">28%</span>
+                        <span class="b-nutrients--gda">0,2%</span>
                     </span>
                 </li>
                 <li class="col-xs-6" data-toggle='tooltip' title='Vastavalt keskmise täiskasvanud inimese soovituslikule ööpäevasele toiteainete vajadusele (8400 kj/2000 kcal)'>
@@ -1602,10 +1623,10 @@ S&#228;ilitamistemperatuur: alates 5&#176;C kuni 25&#176;C.</dd>
                         <span class="b-nutrients--name">Sool</span>
                         <span class="b-nutrients--amount-wrap">
                             <span class="b-nutrients--amount">
-0 g                                <br />
+0,8 g                                <br />
                             </span>
                         </span>
-                        <span class="b-nutrients--gda">0%</span>
+                        <span class="b-nutrients--gda">33,3%</span>
                     </span>
                 </li>
 
@@ -1622,14 +1643,14 @@ S&#228;ilitamistemperatuur: alates 5&#176;C kuni 25&#176;C.</dd>
     </div>
 
 
-    <script>/* <![CDATA[ /;var gtagData={"send_to":"AW-798931061","dynx_itemid":"000000000000140325","dynx_pagetype":"product"};/ ]]> */</script>
+    <script>/* <![CDATA[ /;var gtagData={"send_to":"AW-798931061","dynx_itemid":"000000000000706075","dynx_pagetype":"product"};/ ]]> */</script>
 
-
+    
 
                     </div>
                 </div>
 
-
+                
 
 
 <div class="b-footer">
@@ -1639,190 +1660,214 @@ S&#228;ilitamistemperatuur: alates 5&#176;C kuni 25&#176;C.</dd>
     <div class="row">
         <div class="col-xs-12 col-lg-7">
             <div class="row b-footer--info-links-row">
-                <div class="col-xs-6 col-md-3">
-                    <ul class="b-footer--info-links">
-                        <li>
-                            <a href="/info/kkk">
-                                <svg
+                    <div class="col-xs-6 col-md-3">
+                        <ul class="b-footer--info-links">
+                                <li>
+                                    <a href="/info/kkk">
+                                        <svg
     class="b-icon"
-
-    style=""
+    
+    style="" 
 >
     <use xlink:href="#chevron-right"></use>
 </svg>
-                                KKK
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/info/ostu-muugitingimused">
-                                <svg
+                                        KKK
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/info/ostu-muugitingimused">
+                                        <svg
     class="b-icon"
-
-    style=""
+    
+    style="" 
 >
     <use xlink:href="#chevron-right"></use>
 </svg>
-                                Ostu-m&#252;&#252;gitingimused
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/info/privaatsuspoliitika">
-                                <svg
+                                        Ostu-m&#252;&#252;gitingimused
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/info/privaatsuspoliitika">
+                                        <svg
     class="b-icon"
-
-    style=""
+    
+    style="" 
 >
     <use xlink:href="#chevron-right"></use>
 </svg>
-                                Privaatsuspoliitika
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="col-xs-6 col-md-3">
-                    <ul class="b-footer--info-links">
-                        <li>
-                            <a href="/info/kaupade-kohaletoimetamine">
-                                <svg
+                                        Privaatsuspoliitika
+                                    </a>
+                                </li>
+                        </ul>
+                    </div>
+                    <div class="col-xs-6 col-md-3">
+                        <ul class="b-footer--info-links">
+                                <li>
+                                    <a href="/info/kaupade-kohaletoimetamine">
+                                        <svg
     class="b-icon"
-
-    style=""
+    
+    style="" 
 >
     <use xlink:href="#chevron-right"></use>
 </svg>
-                                Kaupade kohaletoimetamine
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/info/kauba-tagastamine">
-                                <svg
+                                        Kaupade kohaletoimetamine
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/info/kauba-tagastamine">
+                                        <svg
     class="b-icon"
-
-    style=""
+    
+    style="" 
 >
     <use xlink:href="#chevron-right"></use>
 </svg>
-                                Kauba tagastamine
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/info/tasumine">
-                                <svg
+                                        Kauba tagastamine
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/info/tasumine">
+                                        <svg
     class="b-icon"
-
-    style=""
+    
+    style="" 
 >
     <use xlink:href="#chevron-right"></use>
 </svg>
-                                Tasumine
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/info/uudised">
-                                <svg
+                                        Tasumine
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/info/uudised">
+                                        <svg
     class="b-icon"
-
-    style=""
+    
+    style="" 
 >
     <use xlink:href="#chevron-right"></use>
 </svg>
-                                Uudised
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="col-xs-6 col-md-3">
-                    <ul class="b-footer--info-links">
-                        <li>
-                            <a href="/info/aitah-konto-tingimused">
-                                <svg
+                                        Uudised
+                                    </a>
+                                </li>
+                        </ul>
+                    </div>
+                    <div class="col-xs-6 col-md-3">
+                        <ul class="b-footer--info-links">
+                                <li>
+                                    <a href="/info/aitah-konto-tingimused">
+                                        <svg
     class="b-icon"
-
-    style=""
+    
+    style="" 
 >
     <use xlink:href="#chevron-right"></use>
 </svg>
-                                AIT&#196;H konto tingimused
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/info/minu-ostud">
-                                <svg
+                                        AIT&#196;H konto tingimused
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/info/minu-ostud">
+                                        <svg
     class="b-icon"
-
-    style=""
+    
+    style="" 
 >
     <use xlink:href="#chevron-right"></use>
 </svg>
-                                Minu ostud
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/info/teeninduspiirkonnad">
-                                <svg
+                                        Minu ostud
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/info/teeninduspiirkonnad">
+                                        <svg
     class="b-icon"
-
-    style=""
+    
+    style="" 
 >
     <use xlink:href="#chevron-right"></use>
 </svg>
-                                Teeninduspiirkonnad
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/info/kampaania-tingimused">
-                                <svg
+                                        Teeninduspiirkonnad
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/info/kampaania-tingimused">
+                                        <svg
     class="b-icon"
-
-    style=""
+    
+    style="" 
 >
     <use xlink:href="#chevron-right"></use>
 </svg>
-                                Kampaania tingimused
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="col-xs-6 col-md-3">
-                    <ul class="b-footer--info-links">
-                        <li>
-                            <a href="/info/sarnased-tooted">
-                                <svg
+                                        Kampaania tingimused
+                                    </a>
+                                </li>
+                        </ul>
+                    </div>
+                    <div class="col-xs-6 col-md-3">
+                        <ul class="b-footer--info-links">
+                                <li>
+                                    <a href="/info/sarnased-tooted">
+                                        <svg
     class="b-icon"
-
-    style=""
+    
+    style="" 
 >
     <use xlink:href="#chevron-right"></use>
 </svg>
-                                Sarnased tooted
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/info/karjaar">
-                                <svg
+                                        Sarnased tooted
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/info/karjaar">
+                                        <svg
     class="b-icon"
-
-    style=""
+    
+    style="" 
 >
     <use xlink:href="#chevron-right"></use>
 </svg>
-                                Karj&#228;&#228;r
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/info/mobiilirakendus">
-                                <svg
+                                        Karj&#228;&#228;r
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/info/mobiilirakendus">
+                                        <svg
     class="b-icon"
-
-    style=""
+    
+    style="" 
 >
     <use xlink:href="#chevron-right"></use>
 </svg>
-                                Mobiilirakendus
-                            </a>
-                        </li>
-                    </ul>
-                </div>
+                                        Mobiilirakendus
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/info/drive-in-punktid">
+                                        <svg
+    class="b-icon"
+    
+    style="" 
+>
+    <use xlink:href="#chevron-right"></use>
+</svg>
+                                        Drive-in punktid
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/info/barbora-express-valjastuspunktid">
+                                        <svg
+    class="b-icon"
+    
+    style="" 
+>
+    <use xlink:href="#chevron-right"></use>
+</svg>
+                                        BARBORA EXPRESS v&#228;ljastuspunktid
+                                    </a>
+                                </li>
+                        </ul>
+                    </div>
             </div>
         </div>
         <div class="col-xs-12 col-lg-5 b-footer--social">
@@ -1831,8 +1876,8 @@ S&#228;ilitamistemperatuur: alates 5&#176;C kuni 25&#176;C.</dd>
                     <h4 class="b-footer-heading">Jälgige meid</h4>
                     <a href="https://www.facebook.com/BarboraEesti"><svg
     class="b-icon"
-
-    style=""
+    
+    style="" 
 >
     <use xlink:href="#fb-square"></use>
 </svg></a>
@@ -1846,7 +1891,7 @@ S&#228;ilitamistemperatuur: alates 5&#176;C kuni 25&#176;C.</dd>
     <div id="footer-payment-sources-placeholder"></div>
 
     <div class="b-copyright">
-        © 2020 Supersa OÜ. Kõik õigused on kaitstud.
+        © 2020 Supersa OÜ. Kõik õigused on kaitstud. 24 v126.21
     </div>
 </div>
 
@@ -1857,35 +1902,29 @@ S&#228;ilitamistemperatuur: alates 5&#176;C kuni 25&#176;C.</dd>
     <div class="b-mobile-menu">
         <div class="b-minimenu--wrap">
             <div class="b-minimenu">
-                            <a href="/" class="b-minimenu--link b-minimenu--link-active">Kaubavalik</a>
+                <div id="b-current-county--placeholder" class="b-current-county--mobile-menu-wrapper"></div>
+
+                        <a href="/" class="b-minimenu--link b-minimenu--link-active">Kaubavalik</a>
 
 
-                            <a href="/minu-andmed/favourites" class="b-minimenu--link">Minu ostud</a>
+                        <a href="/minu-andmed/favourites" class="b-minimenu--link">Minu ostud</a>
 
 
-                            <a href="/pakkumised" class="b-minimenu--link">Kampaaniad</a>
+                        <a href="/pakkumised" class="b-minimenu--link">Kampaaniad</a>
 
 
-            <a href="/oko" class="b-minimenu--link">Öko</a>
+        <a href="/oko" class="b-minimenu--link">Öko</a>
 
-                            <a href="/uudistooted" class="b-minimenu--link">Uudistooted</a>
+        <a href="/uudistooted" class="b-minimenu--link">Uudistooted</a>
 
-
-                            <a href="/puhkus-vaba-aeg/lego-ehituskomplektid" class="b-minimenu--link b-top-menu-item-link--lego">
-                <svg
-    class="b-icon"
-    style='width: 1.87em; height: 1.87em; top: 0em'
-    style=""
->
-    <use xlink:href="#lego-logo"></use>
-</svg>
-            </a>
 
             </div>
         </div>
     </div>
 
     <div id="modal-placeholder"></div>
+
+   
 
 
 
@@ -1895,13 +1934,13 @@ S&#228;ilitamistemperatuur: alates 5&#176;C kuni 25&#176;C.</dd>
 
 
     <script src="https://browser.sentry-cdn.com/5.1.1/bundle.min.js" crossorigin="anonymous" onerror="shownetworkerroralert()"></script>
-
+    
     <script type="text/javascript" onerror="showNetworkErrorAlert()">
         var isDebug = "True".toLowerCase() === "true";
 
         Sentry.init({
             dsn: "http://7fca11b6f99643d6b782452509a955d9@172.31.252.8:9000/9",
-            release: "202003141221",
+            release: "126.21",
 	        environment: "PRD",
 	        logger: "EShop.Client-JavaScript",
             ignoreUrls: [],
@@ -1922,15 +1961,15 @@ S&#228;ilitamistemperatuur: alates 5&#176;C kuni 25&#176;C.</dd>
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/core-js/2.6.11/core.js"></script>
         <script type="text/javascript" src="/Assets/Libraries/jquery-2.2.0.js"></script>
 
-
+    
 
 
 
 <script type="text/javascript">
-    window.b_categories = {"categories":[{"id":"2456a910-eacb-4537-b214-17ed21682888","title":"Köögiviljad, puuviljad","product_count":138,"children_count":5,"BannerModel":null,"category_code":"2456a910-eacb-4537-b214-17ed21682888","rootCategory":"2456a910-eacb-4537-b214-17ed21682888","products":[],"url":"koogiviljad-puuviljad","url_parent":"","url_root":"","icon_name":"tomato","RootCategoryProducts":null},{"id":"4285f7d7-5d92-4eb2-a85c-4772fed50091","title":"Piimatooted, rasv, munad","product_count":898,"children_count":8,"banner":"/api/Images/GetBannerImage?id=2ffe4d11-619e-4f1c-a5e7-7119c540479d","externalResourceUrl":"","BannerModel":{"id":"00000000-0000-0000-0000-000000000000","imgId":"00000000-0000-0000-0000-000000000000","banner_category_id":"00000000-0000-0000-0000-000000000000","no_action":false,"name":null,"img":"/api/Images/GetBannerImage?id=2ffe4d11-619e-4f1c-a5e7-7119c540479d","category_id":"40956cf9-dd22-4337-9b46-2137da7290d2","externalResourceUrl":"","UseForSubCategory":true,"urlType":0,"sequenceNo":0},"category_code":"4285f7d7-5d92-4eb2-a85c-4772fed50091","rootCategory":"4285f7d7-5d92-4eb2-a85c-4772fed50091","products":[],"url":"piimatooted-rasv-munad","url_parent":"","url_root":"","icon_name":"cheese2","RootCategoryProducts":null},{"id":"770818ff-4c23-42f6-a00a-e7f58add4a10","title":"Leivad, saiad, kondiitritooted","product_count":293,"children_count":4,"banner":"/api/Images/GetBannerImage?id=85199509-97cf-4d28-834b-cf9113bb657a","externalResourceUrl":"","BannerModel":{"id":"00000000-0000-0000-0000-000000000000","imgId":"00000000-0000-0000-0000-000000000000","banner_category_id":"00000000-0000-0000-0000-000000000000","no_action":false,"name":null,"img":"/api/Images/GetBannerImage?id=85199509-97cf-4d28-834b-cf9113bb657a","category_id":"6ade9a6e-f862-45f7-805a-e8127b1dd83f","externalResourceUrl":"","UseForSubCategory":true,"urlType":0,"sequenceNo":0},"category_code":"770818ff-4c23-42f6-a00a-e7f58add4a10","rootCategory":"770818ff-4c23-42f6-a00a-e7f58add4a10","products":[],"url":"leivad-saiad-kondiitritooted","url_parent":"","url_root":"","icon_name":"bread2","RootCategoryProducts":null},{"id":"1271e464-f471-4dc6-b286-7ea771a218a8","title":"Liha, kala, valmistoit","product_count":971,"children_count":6,"BannerModel":null,"category_code":"1271e464-f471-4dc6-b286-7ea771a218a8","rootCategory":"1271e464-f471-4dc6-b286-7ea771a218a8","products":[],"url":"liha-kala-valmistoit","url_parent":"","url_root":"","icon_name":"steakMeat2","RootCategoryProducts":null},{"id":"acb55842-a24c-44d1-b948-082e2cdb596b","title":"Kauasäilivad toidukaubad","product_count":3052,"children_count":17,"BannerModel":null,"category_code":"acb55842-a24c-44d1-b948-082e2cdb596b","rootCategory":"acb55842-a24c-44d1-b948-082e2cdb596b","products":[],"url":"kauasailivad-toidukaubad","url_parent":"","url_root":"","icon_name":"bowlAndChopstick","RootCategoryProducts":null},{"id":"189d9e1a-a880-4f6f-8c51-b12852ba50d4","title":"Külmutatud tooted","product_count":459,"children_count":6,"banner":"/api/Images/GetBannerImage?id=1a7c61e9-e235-4b52-8800-0f7e27d050ef","externalResourceUrl":"","BannerModel":{"id":"00000000-0000-0000-0000-000000000000","imgId":"00000000-0000-0000-0000-000000000000","banner_category_id":"00000000-0000-0000-0000-000000000000","no_action":true,"name":null,"img":"/api/Images/GetBannerImage?id=1a7c61e9-e235-4b52-8800-0f7e27d050ef","externalResourceUrl":"","UseForSubCategory":false,"urlType":0,"sequenceNo":0},"category_code":"189d9e1a-a880-4f6f-8c51-b12852ba50d4","rootCategory":"189d9e1a-a880-4f6f-8c51-b12852ba50d4","products":[],"url":"kulmutatud-tooted","url_parent":"","url_root":"","icon_name":"plasticBottle","RootCategoryProducts":null},{"id":"4a1f4362-1822-49c3-bdda-b8fd2d3171dc","title":"Joogid","product_count":2464,"children_count":8,"BannerModel":null,"category_code":"4a1f4362-1822-49c3-bdda-b8fd2d3171dc","rootCategory":"4a1f4362-1822-49c3-bdda-b8fd2d3171dc","products":[],"url":"joogid","url_parent":"","url_root":"","icon_name":null,"RootCategoryProducts":null},{"id":"5ebed6d5-9f7d-4ddf-a5bf-ab5692ae5d54","title":"Enesehooldustooted","product_count":2246,"children_count":9,"banner":"/api/Images/GetBannerImage?id=b0cdb1e3-691d-448d-8121-995ebb13eeda","externalResourceUrl":"","BannerModel":{"id":"00000000-0000-0000-0000-000000000000","imgId":"00000000-0000-0000-0000-000000000000","banner_category_id":"00000000-0000-0000-0000-000000000000","no_action":true,"name":null,"img":"/api/Images/GetBannerImage?id=b0cdb1e3-691d-448d-8121-995ebb13eeda","externalResourceUrl":"","UseForSubCategory":false,"urlType":0,"sequenceNo":0},"category_code":"5ebed6d5-9f7d-4ddf-a5bf-ab5692ae5d54","rootCategory":"5ebed6d5-9f7d-4ddf-a5bf-ab5692ae5d54","products":[],"url":"enesehooldustooted","url_parent":"","url_root":"","icon_name":"toiletPaper","RootCategoryProducts":null},{"id":"a70ae192-1bd4-435f-a809-b54f530b4415","title":"Kodukaubad, lemmikloomatooted","product_count":2141,"children_count":10,"BannerModel":null,"category_code":"a70ae192-1bd4-435f-a809-b54f530b4415","rootCategory":"a70ae192-1bd4-435f-a809-b54f530b4415","products":[],"url":"kodukaubad-lemmikloomatooted","url_parent":"","url_root":"","icon_name":"sprayBottle","RootCategoryProducts":null},{"id":"850717a1-fa2c-4b5f-a8f7-bae8bf068f7e","title":"Lastekaubad","product_count":499,"children_count":3,"BannerModel":null,"category_code":"850717a1-fa2c-4b5f-a8f7-bae8bf068f7e","rootCategory":"850717a1-fa2c-4b5f-a8f7-bae8bf068f7e","products":[],"url":"lastekaubad","url_parent":"","url_root":"","icon_name":"babyHead","RootCategoryProducts":null},{"id":"b9e60e2e-6007-4317-862b-faffae53b082","title":"Puhkus, vaba aeg","product_count":483,"children_count":5,"BannerModel":null,"category_code":"b9e60e2e-6007-4317-862b-faffae53b082","rootCategory":"b9e60e2e-6007-4317-862b-faffae53b082","products":[],"url":"puhkus-vaba-aeg","url_parent":"","url_root":"","icon_name":"bottleAndGlass","RootCategoryProducts":null}]};
+    window.b_categories = {"categories":[{"id":"2456a910-eacb-4537-b214-17ed21682888","title":"Köögiviljad, puuviljad","product_count":152,"children_count":5,"BannerModel":null,"category_code":"2456a910-eacb-4537-b214-17ed21682888","rootCategory":"2456a910-eacb-4537-b214-17ed21682888","products":[],"url":"koogiviljad-puuviljad","url_parent":"","url_root":"","icon_name":"tomato","RootCategoryProducts":null},{"id":"4285f7d7-5d92-4eb2-a85c-4772fed50091","title":"Piimatooted, rasv, munad","product_count":927,"children_count":8,"banner":"/api/Images/GetBannerImage?id=2ffe4d11-619e-4f1c-a5e7-7119c540479d","externalResourceUrl":"","BannerModel":{"id":"00000000-0000-0000-0000-000000000000","imgId":"00000000-0000-0000-0000-000000000000","banner_category_id":"00000000-0000-0000-0000-000000000000","no_action":false,"name":null,"img":"/api/Images/GetBannerImage?id=2ffe4d11-619e-4f1c-a5e7-7119c540479d","category_id":"40956cf9-dd22-4337-9b46-2137da7290d2","externalResourceUrl":"","UseForSubCategory":true,"urlType":0,"sequenceNo":0},"category_code":"4285f7d7-5d92-4eb2-a85c-4772fed50091","rootCategory":"4285f7d7-5d92-4eb2-a85c-4772fed50091","products":[],"url":"piimatooted-rasv-munad","url_parent":"","url_root":"","icon_name":"cheese2","RootCategoryProducts":null},{"id":"770818ff-4c23-42f6-a00a-e7f58add4a10","title":"Leivad, saiad, kondiitritooted","product_count":310,"children_count":4,"banner":"/api/Images/GetBannerImage?id=85199509-97cf-4d28-834b-cf9113bb657a","externalResourceUrl":"","BannerModel":{"id":"00000000-0000-0000-0000-000000000000","imgId":"00000000-0000-0000-0000-000000000000","banner_category_id":"00000000-0000-0000-0000-000000000000","no_action":false,"name":null,"img":"/api/Images/GetBannerImage?id=85199509-97cf-4d28-834b-cf9113bb657a","category_id":"6ade9a6e-f862-45f7-805a-e8127b1dd83f","externalResourceUrl":"","UseForSubCategory":true,"urlType":0,"sequenceNo":0},"category_code":"770818ff-4c23-42f6-a00a-e7f58add4a10","rootCategory":"770818ff-4c23-42f6-a00a-e7f58add4a10","products":[],"url":"leivad-saiad-kondiitritooted","url_parent":"","url_root":"","icon_name":"bread2","RootCategoryProducts":null},{"id":"1271e464-f471-4dc6-b286-7ea771a218a8","title":"Liha, kala, valmistoit","product_count":1016,"children_count":6,"BannerModel":null,"category_code":"1271e464-f471-4dc6-b286-7ea771a218a8","rootCategory":"1271e464-f471-4dc6-b286-7ea771a218a8","products":[],"url":"liha-kala-valmistoit","url_parent":"","url_root":"","icon_name":"steakMeat2","RootCategoryProducts":null},{"id":"acb55842-a24c-44d1-b948-082e2cdb596b","title":"Kauasäilivad toidukaubad","product_count":3151,"children_count":18,"BannerModel":null,"category_code":"acb55842-a24c-44d1-b948-082e2cdb596b","rootCategory":"acb55842-a24c-44d1-b948-082e2cdb596b","products":[],"url":"kauasailivad-toidukaubad","url_parent":"","url_root":"","icon_name":"bowlAndChopstick","RootCategoryProducts":null},{"id":"189d9e1a-a880-4f6f-8c51-b12852ba50d4","title":"Külmutatud tooted","product_count":497,"children_count":6,"banner":"/api/Images/GetBannerImage?id=1a7c61e9-e235-4b52-8800-0f7e27d050ef","externalResourceUrl":"","BannerModel":{"id":"00000000-0000-0000-0000-000000000000","imgId":"00000000-0000-0000-0000-000000000000","banner_category_id":"00000000-0000-0000-0000-000000000000","no_action":true,"name":null,"img":"/api/Images/GetBannerImage?id=1a7c61e9-e235-4b52-8800-0f7e27d050ef","externalResourceUrl":"","UseForSubCategory":false,"urlType":0,"sequenceNo":0},"category_code":"189d9e1a-a880-4f6f-8c51-b12852ba50d4","rootCategory":"189d9e1a-a880-4f6f-8c51-b12852ba50d4","products":[],"url":"kulmutatud-tooted","url_parent":"","url_root":"","icon_name":"plasticBottle","RootCategoryProducts":null},{"id":"4a1f4362-1822-49c3-bdda-b8fd2d3171dc","title":"Joogid","product_count":2664,"children_count":8,"BannerModel":null,"category_code":"4a1f4362-1822-49c3-bdda-b8fd2d3171dc","rootCategory":"4a1f4362-1822-49c3-bdda-b8fd2d3171dc","products":[],"url":"joogid","url_parent":"","url_root":"","icon_name":null,"RootCategoryProducts":null},{"id":"5ebed6d5-9f7d-4ddf-a5bf-ab5692ae5d54","title":"Enesehooldustooted","product_count":2458,"children_count":9,"BannerModel":null,"category_code":"5ebed6d5-9f7d-4ddf-a5bf-ab5692ae5d54","rootCategory":"5ebed6d5-9f7d-4ddf-a5bf-ab5692ae5d54","products":[],"url":"enesehooldustooted","url_parent":"","url_root":"","icon_name":"toiletPaper","RootCategoryProducts":null},{"id":"a70ae192-1bd4-435f-a809-b54f530b4415","title":"Kodukaubad, lemmikloomatooted","product_count":2446,"children_count":10,"BannerModel":null,"category_code":"a70ae192-1bd4-435f-a809-b54f530b4415","rootCategory":"a70ae192-1bd4-435f-a809-b54f530b4415","products":[],"url":"kodukaubad-lemmikloomatooted","url_parent":"","url_root":"","icon_name":"sprayBottle","RootCategoryProducts":null},{"id":"850717a1-fa2c-4b5f-a8f7-bae8bf068f7e","title":"Lastekaubad","product_count":558,"children_count":3,"BannerModel":null,"category_code":"850717a1-fa2c-4b5f-a8f7-bae8bf068f7e","rootCategory":"850717a1-fa2c-4b5f-a8f7-bae8bf068f7e","products":[],"url":"lastekaubad","url_parent":"","url_root":"","icon_name":"babyHead","RootCategoryProducts":null},{"id":"b9e60e2e-6007-4317-862b-faffae53b082","title":"Puhkus, vaba aeg","product_count":972,"children_count":5,"BannerModel":null,"category_code":"b9e60e2e-6007-4317-862b-faffae53b082","rootCategory":"b9e60e2e-6007-4317-862b-faffae53b082","products":[],"url":"puhkus-vaba-aeg","url_parent":"","url_root":"","icon_name":"bottleAndGlass","RootCategoryProducts":null}]};
     window.b_cart = null;
 </script>
-
+    
 
 
 
@@ -1939,24 +1978,14 @@ S&#228;ilitamistemperatuur: alates 5&#176;C kuni 25&#176;C.</dd>
 </script>
 
 
+    
+    
 
 
-
-
-        <script type="text/javascript" src="/Assets/Scripts/main.concat.js?v=202003141221" onerror="showNetworkErrorAlert()"></script>
-
-
-
-
+        <script type="text/javascript" src="/Assets/Scripts/main.concat.js?v=126.21" onerror="showNetworkErrorAlert()"></script>
     <script type="text/javascript">
-        window.reportUserActionToThirdParty("detail", {"id":"000000000000140325","product_position_in_list":null,"title":"Kiirkaerahelbed NORDIC 500g","category_id":"44eb3adb-f7c8-4244-bca8-b4db47c235d7","category_name_full_path":"Kauasäilivad toidukaubad/Hommikusöögid ja batoonid/Pudruhelbed","root_category_id":"acb55842-a24c-44d1-b948-082e2cdb596b","brand_name":"Nordic","price":0.8000,"image":"/api/Images/GetInventoryImage?id=06ca74d8-d0b8-4b35-9b81-953a326a7d76","comparative_unit":"kg","comparative_unit_price":1.60,"status":"suspended","popUpText":null,"age_limitation":null,"picking_actions":[],"list":"Prekės kortelė","quantity":2.0});
+        window.reportUserActionToThirdParty("detail", {"id":"000000000000706075","product_position_in_list":null,"title":"Mahe kanapuljong NATUR COMPAGNIE 88g","category_id":"8ce5be8e-9e37-46e1-aa5b-bb09a56cc48d","category_name_full_path":"Kauasäilivad toidukaubad/Maitseained /Puljongid","root_category_id":"acb55842-a24c-44d1-b948-082e2cdb596b","brand_name":"Natur Compagnie","price":2.7900,"image":"/api/Images/GetInventoryImage?id=2093a9c3-f630-423b-a967-6a0273887ef5","comparative_unit":"kg","comparative_unit_price":31.70,"status":"active","popUpText":null,"age_limitation":null,"picking_actions":[],"list":"Prekės kortelė","quantity":1.0});
     </script>
-
-
-
-
-
-
 </body>
 </html>
 `
