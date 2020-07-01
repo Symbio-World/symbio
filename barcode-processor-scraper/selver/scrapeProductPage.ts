@@ -39,7 +39,7 @@ export const scrapeSelver = (html: string) => {
     allergens: [
       $('h5:contains("Allergeenid")').next().text().trim(),
       $('h5:contains("Hoiatused")').next().text().trim(),
-    ],
+    ].filter((f) => f),
     origin: $('th:contains("Päritolumaa")').next().text().trim(),
     tags: scrapeSelverTags($),
   }

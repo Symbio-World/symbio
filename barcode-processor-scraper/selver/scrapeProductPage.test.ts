@@ -20,7 +20,7 @@ describe('scrapeSelverProductPage', () => {
     expect(scrapeSelver(selverWithTags.html)).toEqual({
       ingredients:
         'Vesi, porgand, kartul, suhkrumais, kanafilee 9%, sibul, rapsiõli, till. Aedviljade osakaal 61%.',
-      allergens: ['', ''],
+      allergens: [],
       origin: 'Eesti',
       tags: ['Gluten free', 'Lactose free'],
     })
