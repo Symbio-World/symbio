@@ -2,20 +2,11 @@ import cheerio from 'cheerio'
 
 const SELVER_TAGS_HREF = {
   /* eslint-disable  @typescript-eslint/naming-convention */
-
-  // TODO: discuss which badges we need
-  // 'parim_lihatoode_2019.jpg': 'The best meat product',
   'laktoosivaba_40x40.jpg': 'Lactose free',
   'gluteenivaba_40x40.jpg': 'Gluten free',
   'suhkruvaba_40x40.jp': 'Sugar free',
   'mahetoode_40x40.jpg': 'Organic product',
-  // 'okotoode_40x40.jpg': '', // TODO: Ask Almas meaning
   'vegan_40x40.jpg': 'Vegan',
-  // 'tunnustatud_eesti_maitse.jpg': 'Recognized Estonian taste',
-  // 't_istera-m_rgis.jpg': '', // TODO: Ask Almas meaning
-  // 'e-poe_margid_saaremaa.jpg': '', // TODO: Ask Almas meaning
-  // 'eesti_parim_toiduaine_40x40.jpg': 'The best food in estonia',
-
   /* eslint-enable  @typescript-eslint/naming-convention */
 }
 
