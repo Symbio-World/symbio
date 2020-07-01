@@ -17,7 +17,7 @@ export type ProductPageData = {
   ingredients?: string
   allergens?: string[]
   origin?: string
-  tags?: string
+  tags?: string[]
 }
 
 export type ProductData = ProductSearchData & ProductPageData
