@@ -101,7 +101,7 @@ exports[`ScanBarcodeViewContainer renders correctly 1`] = `
           "position": "absolute",
         },
         Object {
-          "bottom": 0,
+          "top": 0,
         },
         Object {
           "width": "100%",
@@ -113,10 +113,7 @@ exports[`ScanBarcodeViewContainer renders correctly 1`] = `
           "justifyContent": "center",
         },
         Object {
-          "backgroundColor": "#000",
-        },
-        Object {
-          "opacity": 0.5,
+          "backgroundColor": "#B35340",
         },
       ]
     }
@@ -141,6 +138,213 @@ exports[`ScanBarcodeViewContainer renders correctly 1`] = `
     >
       Scan barcode
     </Text>
+  </View>
+  <View
+    style={
+      Array [
+        Object {
+          "position": "absolute",
+        },
+        Object {
+          "bottom": 0,
+        },
+        Object {
+          "width": "100%",
+        },
+        Object {
+          "flexDirection": "row",
+        },
+        Object {
+          "justifyContent": "space-evenly",
+        },
+        Object {
+          "marginBottom": 24,
+        },
+      ]
+    }
+  >
+    <View
+      accessible={true}
+      focusable={true}
+      isTVSelectable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Object {
+          "opacity": 1,
+        }
+      }
+    >
+      <View
+        style={
+          Array [
+            Object {
+              "backgroundColor": "#fff",
+            },
+            Object {
+              "borderWidth": 2,
+            },
+            Object {
+              "borderColor": "#B35340",
+            },
+            Object {
+              "width": 96,
+            },
+            Object {
+              "height": 96,
+            },
+            Object {
+              "borderRadius": 9999,
+            },
+            Object {
+              "flexDirection": "column",
+            },
+            Object {
+              "alignItems": "center",
+            },
+            Object {
+              "justifyContent": "center",
+            },
+          ]
+        }
+      >
+        <View
+          style={
+            Array [
+              Object {
+                "width": 24,
+              },
+              Object {
+                "height": 24,
+              },
+              Object {
+                "marginBottom": 8,
+              },
+            ]
+          }
+        >
+          <SvgMock
+            height="100%"
+            width="100%"
+          />
+        </View>
+        <View>
+          <Text
+            style={
+              Array [
+                Object {
+                  "textAlign": "center",
+                },
+                Object {
+                  "fontSize": 16,
+                },
+                Object {
+                  "fontWeight": "bold",
+                },
+                Object {
+                  "color": "#B35340",
+                },
+              ]
+            }
+          >
+            flashlight
+          </Text>
+        </View>
+      </View>
+    </View>
+    <View
+      accessible={true}
+      focusable={true}
+      isTVSelectable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Object {
+          "opacity": 1,
+        }
+      }
+    >
+      <View
+        style={
+          Array [
+            Object {
+              "backgroundColor": "#B35340",
+            },
+            Object {
+              "width": 96,
+            },
+            Object {
+              "height": 96,
+            },
+            Object {
+              "borderRadius": 9999,
+            },
+            Object {
+              "flexDirection": "column",
+            },
+            Object {
+              "alignItems": "center",
+            },
+            Object {
+              "justifyContent": "center",
+            },
+          ]
+        }
+      >
+        <View
+          style={
+            Array [
+              Object {
+                "width": 24,
+              },
+              Object {
+                "height": 24,
+              },
+              Object {
+                "marginBottom": 8,
+              },
+            ]
+          }
+        >
+          <SvgMock
+            height="100%"
+            width="100%"
+          />
+        </View>
+        <View>
+          <Text
+            style={
+              Array [
+                Object {
+                  "textAlign": "center",
+                },
+                Object {
+                  "fontSize": 16,
+                },
+                Object {
+                  "fontWeight": "bold",
+                },
+                Object {
+                  "color": "#fff",
+                },
+              ]
+            }
+          >
+            history
+          </Text>
+        </View>
+      </View>
+    </View>
   </View>
 </View>
 `;

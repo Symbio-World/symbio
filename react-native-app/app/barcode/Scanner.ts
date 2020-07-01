@@ -3,6 +3,7 @@ export type Scanner = {
   stopScanning: () => void
   resumeScanning: () => void
   pauseScanning: () => void
+  setTorchEnabled: (enabled: boolean) => void
 }
 
 export type Session = {

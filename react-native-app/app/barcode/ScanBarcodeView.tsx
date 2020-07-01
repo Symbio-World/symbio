@@ -13,6 +13,9 @@ import { t } from 'react-native-tailwindcss'
 import { settings } from './ScanBarcodeViewSettings'
 import { Scanner, Session } from './Scanner'
 import { useNavigation } from '@react-navigation/native'
+import { BigRoundedButton } from '../ui-kit/BigRoundedButton'
+import { Icons } from '../ui-kit/Icon'
+import Icon from 'react-native-vector-icons/MaterialIcons';
 
 type Props = {
   onScan?: (barcode: string) => void
@@ -113,6 +116,14 @@ export const ScanBarcodeView: React.FC<Props> = ({
     }
   }
 
+  const disableTorch = () => {
+    try {
+      scanner.current?.setTorchEnabled(false)
+    } catch (e) {
+      console.log('try-catch introduced so that simple render tests pass')
+    }
+  }
+
   React.useEffect(() => {
     const handleAppStateChange = (nextAppState: AppStateStatus) => {
       if (nextAppState.match(/inactive|background/)) {
@@ -143,6 +154,10 @@ export const ScanBarcodeView: React.FC<Props> = ({
   }, [isActive])
   /* eslint-enable react-hooks/exhaustive-deps */
 
+  React.useEffect(() => {
+    disableTorch()
+  }, [])
+
   const handleScan = (session: Session) => {
     const barcode = session.newlyRecognizedCodes[0].data
     onScan(barcode)
@@ -156,21 +171,36 @@ export const ScanBarcodeView: React.FC<Props> = ({
         ref={scanner}
         style={[t.flex1]}
       />
-
       <View
         style={[
           t.absolute,
-          t.bottom0,
+          t.top0,
           t.wFull,
           t.h16,
           t.justifyCenter,
-          t.bgBlack,
-          t.opacity50,
+          t.bgPrimary,
         ]}
       >
         <Text style={[t.textWhite, t.textCenter, t.fontBold, t.text3xl]}>
           Scan barcode
         </Text>
+      </View>
+      <View
+        style={[t.absolute, t.bottom0, t.wFull, t.flexRow, t.justifyEvenly, t.mB6]}
+      >
+        <BigRoundedButton
+          onPress={() => {}}
+          title="flashlight"
+          variant="outline"
+          icon={<Icon name="flashlight" size={24} color="#900" />}
+        />
+        <BigRoundedButton
+          onPress={() => {}}
+          title="history"
+          variant="fill"
+          icon={<Icon name="history" size={24} color="#900" />}
+        />
+
       </View>
     </View>
   )

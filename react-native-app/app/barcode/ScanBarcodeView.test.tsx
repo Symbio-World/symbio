@@ -82,4 +82,12 @@ describe('ScanBarcodeView', () => {
     expect(pauseScanning).toHaveBeenCalledTimes(1)
     expect(resumeScanning).toHaveBeenCalledTimes(1)
   })
+
+  it('disables torch on mount', async () => {
+    const setTorchEnabled = jest.fn()
+    const useRef = mockUseRef({ setTorchEnabled })
+    render(<ScanBarcodeView useRef={useRef} />)
+    await flushMicrotasksQueue()
+    expect(setTorchEnabled).toHaveBeenCalledWith(false)
+  })
 })
