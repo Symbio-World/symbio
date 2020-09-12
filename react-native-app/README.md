@@ -24,6 +24,10 @@ yarn setup-scandit
 yarn install-pods
 ```
 
+# Build
+
+In the workspace root run `yarn watch`
+
 # Run
 
 Instructions are similar for android, just use `android` instead of `ios`
@@ -33,9 +37,19 @@ Instructions are similar for android, just use `android` instead of `ios`
 yarn ios
 ```
 
+## Run on Android emulator 
+```
+yarn android
+```
+
 ## Run on iOS device
 ```
 yarn ios --device
+```
+
+## Run on Android device
+```
+yarn android --device
 ```
 
 ## Run on iOS device in production mode
@@ -45,7 +59,7 @@ yarn ios-prod --device
 
 ## Run on Android device in production mode
 ```
-yarn android-prod
+yarn android-prod --device
 ```
 
 # Test
