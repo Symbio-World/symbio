@@ -1,13 +1,12 @@
 /* eslint-disable no-useless-escape */
-export const link = 'https://www.selver.ee/kakaopuding-kirsikastmega-selveri-kook-160-g'
+export const link =
+  'https://www.selver.ee/kakaopuding-kirsikastmega-selveri-kook-160-g'
 export const html = `
 <!doctype html>
 <html>
 <head>
 <meta charset="utf-8" /><script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={licenseKey:"ee3f37d5a3",applicationID:"50841773"};window.NREUM||(NREUM={}),__nr_require=function(e,n,t){function r(t){if(!n[t]){var i=n[t]={exports:{}};e[t][0].call(i.exports,function(n){var i=e[t][1][n];return r(i||n)},i,i.exports)}return n[t].exports}if("function"==typeof __nr_require)return __nr_require;for(var i=0;i<t.length;i++)r(t[i]);return r}({1:[function(e,n,t){function r(){}function i(e,n,t){return function(){return o(e,[u.now()].concat(f(arguments)),n?null:this,t),n?void 0:this}}var o=e("handle"),a=e(4),f=e(5),c=e("ee").get("tracer"),u=e("loader"),s=NREUM;"undefined"==typeof window.newrelic&&(newrelic=s);var p=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],l="api-",d=l+"ixn-";a(p,function(e,n){s[n]=i(l+n,!0,"api")}),s.addPageAction=i(l+"addPageAction",!0),s.setCurrentRouteName=i(l+"routeName",!0),n.exports=newrelic,s.interaction=function(){return(new r).get()};var m=r.prototype={createTracer:function(e,n){var t={},r=this,i="function"==typeof n;return o(d+"tracer",[u.now(),e,t],r),function(){if(c.emit((i?"":"no-")+"fn-start",[u.now(),r,i],t),i)try{return n.apply(this,arguments)}catch(e){throw c.emit("fn-err",[arguments,this,e],t),e}finally{c.emit("fn-end",[u.now()],t)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(e,n){m[n]=i(d+n)}),newrelic.noticeError=function(e,n){"string"==typeof e&&(e=new Error(e)),o("err",[e,u.now(),!1,n])}},{}],2:[function(e,n,t){function r(e,n){var t=e.getEntries();t.forEach(function(e){"first-paint"===e.name?c("timing",["fp",Math.floor(e.startTime)]):"first-contentful-paint"===e.name&&c("timing",["fcp",Math.floor(e.startTime)])})}function i(e,n){var t=e.getEntries();t.length>0&&c("lcp",[t[t.length-1]])}function o(e){if(e instanceof s&&!l){var n,t=Math.round(e.timeStamp);n=t>1e12?Date.now()-t:u.now()-t,l=!0,c("timing",["fi",t,{type:e.type,fid:n}])}}if(!("init"in NREUM&&"page_view_timing"in NREUM.init&&"enabled"in NREUM.init.page_view_timing&&NREUM.init.page_view_timing.enabled===!1)){var a,f,c=e("handle"),u=e("loader"),s=NREUM.o.EV;if("PerformanceObserver"in window&&"function"==typeof window.PerformanceObserver){a=new PerformanceObserver(r),f=new PerformanceObserver(i);try{a.observe({entryTypes:["paint"]}),f.observe({entryTypes:["largest-contentful-paint"]})}catch(p){}}if("addEventListener"in document){var l=!1,d=["click","keydown","mousedown","pointerdown","touchstart"];d.forEach(function(e){document.addEventListener(e,o,!1)})}}},{}],3:[function(e,n,t){function r(e,n){if(!i)return!1;if(e!==i)return!1;if(!n)return!0;if(!o)return!1;for(var t=o.split("."),r=n.split("."),a=0;a<r.length;a++)if(r[a]!==t[a])return!1;return!0}var i=null,o=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var f=navigator.userAgent,c=f.match(a);c&&f.indexOf("Chrome")===-1&&f.indexOf("Chromium")===-1&&(i="Safari",o=c[1])}n.exports={agent:i,version:o,match:r}},{}],4:[function(e,n,t){function r(e,n){var t=[],r="",o=0;for(r in e)i.call(e,r)&&(t[o]=n(r,e[r]),o+=1);return t}var i=Object.prototype.hasOwnProperty;n.exports=r},{}],5:[function(e,n,t){function r(e,n,t){n||(n=0),"undefined"==typeof t&&(t=e?e.length:0);for(var r=-1,i=t-n||0,o=Array(i<0?0:i);++r<i;)o[r]=e[n+r];return o}n.exports=r},{}],6:[function(e,n,t){n.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(e,n,t){function r(){}function i(e){function n(e){return e&&e instanceof r?e:e?c(e,f,o):o()}function t(t,r,i,o){if(!l.aborted||o){e&&e(t,r,i);for(var a=n(i),f=v(t),c=f.length,u=0;u<c;u++)f[u].apply(a,r);var p=s[y[t]];return p&&p.push([b,t,r,a]),a}}function d(e,n){h[e]=v(e).concat(n)}function m(e,n){var t=h[e];if(t)for(var r=0;r<t.length;r++)t[r]===n&&t.splice(r,1)}function v(e){return h[e]||[]}function g(e){return p[e]=p[e]||i(t)}function w(e,n){u(e,function(e,t){n=n||"feature",y[t]=n,n in s||(s[n]=[])})}var h={},y={},b={on:d,addEventListener:d,removeEventListener:m,emit:t,get:g,listeners:v,context:n,buffer:w,abort:a,aborted:!1};return b}function o(){return new r}function a(){(s.api||s.feature)&&(l.aborted=!0,s=l.backlog={})}var f="nr@context",c=e("gos"),u=e(4),s={},p={},l=n.exports=i();l.backlog=s},{}],gos:[function(e,n,t){function r(e,n,t){if(i.call(e,n))return e[n];var r=t();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(e,n,{value:r,writable:!0,enumerable:!1}),r}catch(o){}return e[n]=r,r}var i=Object.prototype.hasOwnProperty;n.exports=r},{}],handle:[function(e,n,t){function r(e,n,t,r){i.buffer([e],r),i.emit(e,n,t)}var i=e("ee").get("handle");n.exports=r,r.ee=i},{}],id:[function(e,n,t){function r(e){var n=typeof e;return!e||"object"!==n&&"function"!==n?-1:e===window?0:a(e,o,function(){return i++})}var i=1,o="nr@id",a=e("gos");n.exports=r},{}],loader:[function(e,n,t){function r(){if(!x++){var e=E.info=NREUM.info,n=d.getElementsByTagName("script")[0];if(setTimeout(s.abort,3e4),!(e&&e.licenseKey&&e.applicationID&&n))return s.abort();u(y,function(n,t){e[n]||(e[n]=t)}),c("mark",["onload",a()+E.offset],null,"api");var t=d.createElement("script");t.src="https://"+e.agent,n.parentNode.insertBefore(t,n)}}function i(){"complete"===d.readyState&&o()}function o(){c("mark",["domContent",a()+E.offset],null,"api")}function a(){return O.exists&&performance.now?Math.round(performance.now()):(f=Math.max((new Date).getTime(),f))-E.offset}var f=(new Date).getTime(),c=e("handle"),u=e(4),s=e("ee"),p=e(3),l=window,d=l.document,m="addEventListener",v="attachEvent",g=l.XMLHttpRequest,w=g&&g.prototype;NREUM.o={ST:setTimeout,SI:l.setImmediate,CT:clearTimeout,XHR:g,REQ:l.Request,EV:l.Event,PR:l.Promise,MO:l.MutationObserver};var h=""+location,y={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1167.min.js"},b=g&&w&&w[m]&&!/CriOS/.test(navigator.userAgent),E=n.exports={offset:f,now:a,origin:h,features:{},xhrWrappable:b,userAgent:p};e(1),e(2),d[m]?(d[m]("DOMContentLoaded",o,!1),l[m]("load",r,!1)):(d[v]("onreadystatechange",i),l[v]("onload",r)),c("mark",["firstbyte",f],null,"api");var x=0,O=e(6)},{}],"wrap-function":[function(e,n,t){function r(e){return!(e&&e instanceof Function&&e.apply&&!e[a])}var i=e("ee"),o=e(5),a="nr@original",f=Object.prototype.hasOwnProperty,c=!1;n.exports=function(e,n){function t(e,n,t,i){function nrWrapper(){var r,a,f,c;try{a=this,r=o(arguments),f="function"==typeof t?t(r,a):t||{}}catch(u){l([u,"",[r,a,i],f])}s(n+"start",[r,a,i],f);try{return c=e.apply(a,r)}catch(p){throw s(n+"err",[r,a,p],f),p}finally{s(n+"end",[r,a,c],f)}}return r(e)?e:(n||(n=""),nrWrapper[a]=e,p(e,nrWrapper),nrWrapper)}function u(e,n,i,o){i||(i="");var a,f,c,u="-"===i.charAt(0);for(c=0;c<n.length;c++)f=n[c],a=e[f],r(a)||(e[f]=t(a,u?f+i:i,o,f))}function s(t,r,i){if(!c||n){var o=c;c=!0;try{e.emit(t,r,i,n)}catch(a){l([a,t,r,i])}c=o}}function p(e,n){if(Object.defineProperty&&Object.keys)try{var t=Object.keys(e);return t.forEach(function(t){Object.defineProperty(n,t,{get:function(){return e[t]},set:function(n){return e[t]=n,n}})}),n}catch(r){l([r])}for(var i in e)f.call(e,i)&&(n[i]=e[i]);return n}function l(n){try{e.emit("internal-error",n)}catch(t){}}return e||(e=i),t.inPlace=u,t.flag=a,t}},{}]},{},["loader"]);</script>
 <link rel="dns-prefetch" href="//m1.selver.ee" />
-
-
 <title>Kakaopuding kirsikastmega, SELVERI KÖÖK, 160 g - Magustoidud - Valmistoidud</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta name="description" content="Klassikaline kakaomaitseline puding, peal kirsikaste." />
@@ -59,7 +58,6 @@ export const html = `
 <!--[if lt IE 9]>
 <script type="text/javascript" src="//m1.selver.ee/media/js/e1f9f9ecffaabbb9e176eb362f293e87.js"></script>
 <![endif]-->
-
 <script type="text/javascript">
 //<![CDATA[
 Mage.Cookies.path     = '/';
@@ -71,7 +69,6 @@ Mage.Cookies.domain   = '.selver.ee';
 <script>
  console.log('No facebook pixel is configured, please log in as a admin and then visit Facebook Ads Extension -> Get Started');
 </script>
-
 <script type="text/javascript">
 //<![CDATA[
 optionalZipCountries = ["HK","IE","MO","PA"];
@@ -83,7 +80,6 @@ optionalZipCountries = ["HK","IE","MO","PA"];
         //]]></script><script>
 var klevu_priceInterval=5;
 var klevu_imageNotFoundPlaceHolderUrl='//m1.selver.ee/media/catalog/product/placeholder/default/placeholder-big_1.jpg';
-
 function klevu_uc_productCustomizations(product) {
   if (product.product_disable_discount_show && product.product_disable_discount_show.toLowerCase() === 'yes') {
     product.price = product.salePrice;
@@ -95,7 +91,6 @@ function klevu_uc_productCustomizations(product) {
     <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
 <![endif]--></head>
 <body class=" catalog-product-view catalog-product-view product-kakaopuding-kirsikastmega-selveri-kook-160-g categorypath-magustoidud category-magustoidud" ontouchstart>
-
     <!-- Google Tag Manager -->
     <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-KHXZQQ"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -114,16 +109,12 @@ function klevu_uc_productCustomizations(product) {
             </div>
         </div>
     </noscript>
-
-
-
 <header class="header" id="header" data-home-url="https://www.selver.ee/">
     <div class="top header__pc-login">
         <div class="container">
             <div class="clearfix">
                 <div class="welcome-msg hidden-xs hidden-sm"><p>Osta Selveri e-poest - telli koju v&otilde;i tule ise j&auml;rele!</p></div>
                 <div id="js-header-topLinks"></div>
-
 <div class="switch switcher-language">
     <div class="switch-wrapper" id="languageSelect">
         <span class="switcher-holder">
@@ -147,7 +138,6 @@ function klevu_uc_productCustomizations(product) {
                     </ul>
     </div>
 </div>
-
             </div>
         </div>
     </div>
@@ -191,7 +181,6 @@ function klevu_uc_productCustomizations(product) {
     </div>
 </form>	    </div>
             <div class="top-tools">
-
     <nav>
         <ul class="topnav clearfix">
             <li  class="level0 top-item nav-1 expand-submenu first active"><a data-back-txt="Tagasi" href="https://www.selver.ee/" class="top-link level0 ">e-Selver</a><div id="top-navigation-clone"></div></li><li  class="level0 top-item nav-2"><a data-back-txt="Tagasi" href="https://tellimine.selver.ee/" class="top-link level0 ">Selveri Köök</a></li><li  class="level0 top-item nav-3"><a data-back-txt="Tagasi" href="https://veeb.selver.ee/retseptid" class="top-link level0 ">Retseptid</a></li><li  class="level0 top-item nav-4"><a data-back-txt="Tagasi" href="https://veeb.selver.ee/kampaaniad" class="top-link level0 ">Kampaaniad</a></li><li  class="level0 top-item nav-5"><a data-back-txt="Tagasi" href="https://www.selver.ee/kauplused/" class="top-link level0 ">Kauplused</a></li><li  class="level0 top-item nav-6"><a data-back-txt="Tagasi" href="/selveekspress" class="top-link level0 ">SelveEkspress</a></li><li  class="level0 top-item nav-7"><a data-back-txt="Tagasi" href="/vabad-ametikohad" class="top-link level0 ">Tule tööle</a></li><li  class="level0 top-item nav-8 last"><a data-back-txt="Tagasi" href="/uudised" class="top-link level0 ">Uudised</a></li>        </ul>
@@ -203,14 +192,12 @@ function klevu_uc_productCustomizations(product) {
 </header>
 <!-- ESI START DUMMY COMMENT [] -->
 <!-- ESI URL DUMMY COMMENT -->
-
  <script>
 //<![CDATA[
     (function($) {
         if (typeof selverAddToCart != 'undefined') {
             selverAddToCart.setAddToCartUrl('https://www.selver.ee/selver/cart/addToCart/', {"form_key":"gIcdEkPMOQuKbkqq"});
         }
-
         var items = {"topLinks":"<p class=\"partnercard-notice hidden hidden-md hidden-lg\">Logi sisse, et kasutada soovikorvi<\/p>\n<div class=\"partnercard-header-login\">\n    <form action=\"https:\/\/www.selver.ee\/customer\/account\/loginPost\/\" method=\"post\">\n        <input name=\"form_key\" type=\"hidden\" value=\"gIcdEkPMOQuKbkqq\" \/>\n        <button type=\"submit\" class=\"partnercard-btn\"><i data-icon=\"partnercard-star\"><\/i>Logi sisse e-Selverisse<\/button>\n        <a class=\"partnercard-info fancybox\" href=\"#partnercard-login-info\"><i data-icon=\"question\"><\/i><\/a>\n    <\/form>\n    <div id=\"partnercard-login-info\" class=\"partnercard-login-info std\" style=\"display: none\">\n                    <h3><strong>e-Selverisse sisse logimiseks peate omama kehtivat Partnerkaarti<\/strong><\/h3>\r\n<p>Partnerkaardi kliendina sisse logimisel on mitu eelist:<\/p>\r\n<ul>\r\n<li>Kogute igalt kulutatult eurolt ostuboonust<\/li>\r\n<li>Saate s&uuml;nnip&auml;eval ning sellele eelneval ja j&auml;rgneval viiel p&auml;eval 10% soodustust k&otilde;ikidelt Selveri K&ouml;&ouml;gi toodetelt, Selveri Pagarite toodetelt, tortidelt, kookidelt, kringlitelt, stritslitelt ja jookidelt (v.a Selveri K&ouml;&ouml;gi internetilehe tellimused)<\/li>\r\n<li>N&auml;ete oma tellimuste staatust ja ajalugu<\/li>\r\n<li>Saate vormistada tellimused kiirelt ja mugavalt, kuna Teie andmed on Partnerkaardi s&uuml;steemis juba salvestatud<\/li>\r\n<li>Saate m&auml;rgistada lemmiktooteid soovikorvi<\/li>\r\n<li>Teie ostukorvi sisu s&auml;ilib s&otilde;ltumata sellest, kas sooritate ostu v&otilde;i mitte. J&auml;rgmisel sisselogimisel on k&otilde;ik varasemalt lisatud tooted ostukorvis olemas<\/li>\r\n<\/ul>\r\n<p>Partnerkaardi saad endale tellida <a href=\"https:\/\/www.partnerkaart.ee\/join\">siit<\/a>.<\/p>            <\/div>\n<\/div>","headerCart":"    \n <div class=\"headercart\" id=\"headercart-disabled\">\n    <div class=\"top\">\n        <a class=\"headercart-info\" href=\"https:\/\/www.selver.ee\/checkout\/cart\/\" title=\"Ostukorv\">\n\n            <div class=\"headercart-price\">\n\t            <span class=\"headercart__price-no-shipping\">0,00\u00a0\u20ac<\/span>\n                            <\/div>\n            <button class=\"button btn-smaller headercart__button\">\n\t            <span class=\"headercart__button-text\">Ostukorv<\/span>\n\t            <span class=\"headercart-items\">\n                <i data-icon=\"cart\"><\/i>\n                <b class=\"qty\">0<\/b>\n                <\/span>\n            <\/button>\n        <\/a>\n    <\/div>\n<\/div>\n\n","topToolsTouch":"\n<ul class=\"top-tools-touch\">\n    <li class=\"top-tools-touch__language-switcher\">\n        \n        <a class=\"langselect\" href=\"#\">\n            <i data-icon=\"flag-et\"><\/i>\n        <\/a>\n        <div class=\"langdropdown\">\n                                            <a href=\"https:\/\/www.selver.ee\/?___store=et&amp;___from_store=et\"\n                class=\"active-language \">\n                    <i data-icon=\"flag-et\"><\/i>\n                    <span class=\"txt\">est<\/span>\n                <\/a>\n                                            <a href=\"https:\/\/www.selver.ee\/ru\/?___from_store=et\"\n                class=\"\">\n                    <i data-icon=\"flag-ru\"><\/i>\n                    <span class=\"txt\">rus<\/span>\n                <\/a>\n                    <\/div>\n\n    <\/li>\n\t<li class=\"top-tools-touch__info\">\n\t\t<a class=\"partnercard-info fancybox\" href=\"#partnercard-login-info\">\n\t\t\t<i data-icon=\"question\"><\/i>\n\t\t\t<span class=\"txt\">Info<\/span>\n\t\t<\/a>\n\t<\/li>\n                        <li class=\"partnercard-login top-tools-touch__login-log-out\">\n                <form action=\"https:\/\/www.selver.ee\/customer\/account\/loginPost\/\" method=\"post\" name=\"login_form_touch\">\n                    <input name=\"form_key\" type=\"hidden\" value=\"gIcdEkPMOQuKbkqq\" \/>\n                    <button type=\"submit\" class=\"partnercard-btn\"><i data-icon=\"partnercard-star\"><\/i>Logi sisse e-Selverisse<\/button>\n                <\/form>\n            <\/li>\n            <\/ul>","headerWishlist":"\n<a class=\"wishlist \" href=\"https:\/\/www.selver.ee\/wishlist\/\" title=\"Soovikorv\">\n    <i data-icon=\"heart\"><\/i>\n<\/a>"}, prefix = '#js-header-';
         $.each(items, function(id, html) {
             $(prefix + id).html(html);
@@ -244,14 +231,12 @@ if (typeof tkmAddToWishlist!='undefined') {
         //tkmAddToWishlist.setMultipleWishlistItems();
         tkmAddToWishlist.setTemplate("<div class=\"multiple-wishlist-container\"><p class=\"title\">Vali soovikorv<\/p><ul><% _.each(lists,function(item){ %><% var wishlistItem = item.name; %><li data-wishlist-id=\"<%= item.id %>\" class=\"multiple-wishlist-item <%= item.class %>\"><%= item.name %><\/li><% }); %><\/ul><a href=\"https:\/\/www.selver.ee\/wishlist\/\"><p class=\"note\">Loo uus soovikorv<\/p><\/a><\/div>");
     }
-
 })();
 </script>
 <!-- ESI END DUMMY COMMENT [] -->
 <div id="merged-cart-product-note" class="merged-cart-product-note" style="display: none">
     <p class="merged-cart-product-note__text">Sinu personaalses ostukorvis olid juba mõned tooted, liitsime need Sinu praeguse ostukorviga.</p>
 </div>
-
 <script>
 //<![CDATA[
 //]]>
@@ -295,12 +280,7 @@ var priceFormatSeparator = {"pattern":"%s\u00a0\u20ac","precision":2,"requiredPr
     </nav>
                 <!-- ESI START DUMMY COMMENT [] -->
 <!-- ESI URL DUMMY COMMENT -->
-
-
 <!-- ESI END DUMMY COMMENT [] -->
-
-
-
 <script type="text/javascript">
     var optionsPrice = new Product.OptionsPrice([]);
 </script>
@@ -333,20 +313,14 @@ var priceFormatSeparator = {"pattern":"%s\u00a0\u20ac","precision":2,"requiredPr
                         </div>
                                                 <div class="row">
                             <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-
-
     <div itemprop="offers" itemscope itemtype="http://schema.org/Offer">
     <div class="price-box">
                                                     <span class="regular-price left price" id="product-price-28469">
             <span itemprop="priceCurrency" content="EUR"></span>            <span itemprop="price" content="0.69">                    <span class="price">0,69 €</span>                </span>
             <span class="unit-price">4,31 €/kg</span>
         </span>
-
                     </div>
-
     </div>
-
-
 <ul class="add-to-wishlist">
             <li class="js-wishlist-container" data-product-id="28469">
             <div class="wishlist-popup hidden"></div>
@@ -375,9 +349,6 @@ var priceFormatSeparator = {"pattern":"%s\u00a0\u20ac","precision":2,"requiredPr
                         </div>
                     </form>
                             </div>
-
-
-
                     <div class="product-attributes-box">
         <table class="product-attributes" id="product-attribute-specs-table">
                             <tr>
@@ -488,7 +459,6 @@ var priceFormatSeparator = {"pattern":"%s\u00a0\u20ac","precision":2,"requiredPr
                                 </div>
     </div>
 </div>
-
 <div class="product-collateral">
     <h4>Sarnased tooted:</h4>
     <ol class="row products-grid" id="block-related">
@@ -501,8 +471,6 @@ var priceFormatSeparator = {"pattern":"%s\u00a0\u20ac","precision":2,"requiredPr
                                                                     <li class="col-lg-3 col-md-3 col-sm-4 col-xs-6 item " data-product-id="27333">
                  <div class="wishlist-popup hidden"></div> <a href="https://www.selver.ee/bruleekreem-banaani-mangokastmega-selveri-kook-130-g" title="Brüleekreem banaani-mangokastmega, SELVERI KÖÖK, 130 g" class="product-image"> <span class="product-image__badge product-image__badge--6" style="width:100%; height:100%;width:120px;height:44px;margin-left:-5%;margin-bottom:5%;"> <span class="product-image__badge--label" style="font-weight:bold;font-size:20px;text-align:left;margin-left:15px;margin-top:12px;color:white;">0,95 €</span> <img alt="0,95 €" src="//www.selver.ee/media/amlabel/partnerkaart_145x60.gif"/> </span> <img src="//m1.selver.ee/media/catalog/product/cache/1/small_image/228x/9df78eab33525d08d6e5fb8d27136e95/4/7/4740581108035.jpg" alt="Brüleekreem banaani-mangokastmega, SELVERI KÖÖK, 130 g" /> </a> <div class="price-box"> <span class="regular-price left price" id="product-price-27333-related"> <span> <span class="price">1,19 €</span> </span> <span class="unit-price">9,15 €/kg</span> </span> </div> <h5 class="product-name"> <a href="//www.selver.ee/bruleekreem-banaani-mangokastmega-selveri-kook-130-g">Brüleekreem banaani-mangokastmega, SELVERI KÖÖK, 130 g</a> </h5> <div class="actions clearfix"> <div class="product-add-qty-container"> <div class="product-add-qty"> <span class="remove-item pointer"></span> <input type="text" class="item-total-qty item-qty" name="item-27333" data-qty-step="1" data-qty-min="1" value="1" /> <span class="qty-info" data-unit-text="tk"> 1 </span> <span class="add-item pointer"></span> </div> </div> <div class="add-to-wishlist js-wishlist-container col-xs-2 col-md-3 col-lg-2" data-product-id="27333"> <span class="wishlist-button__link" data-bind-id="27333"> <i data-icon="heart"></i> </span> </div> <button type="button" title="Osta" class="button btn-cart simple-product col-xs-9 col-md-9 col-lg-10"> <i data-icon="cart"></i>Osta </button> </div>            </li>
                         </ol>
-
-
     </div>
 </div>
 <script type="text/javascript">
@@ -512,7 +480,6 @@ var priceFormatSeparator = {"pattern":"%s\u00a0\u20ac","precision":2,"requiredPr
         if (this.validator.validate()) {
             var form = this.form;
             var oldUrl = form.action;
-
             if (button && button != 'undefined') {
                 selverAddToCart.onProductViewClick(button, form);
                 return;
@@ -529,13 +496,11 @@ var priceFormatSeparator = {"pattern":"%s\u00a0\u20ac","precision":2,"requiredPr
             if (e) {
                 throw e;
             }
-
             if (button && button != 'undefined') {
                 button.disabled = true;
             }
         }
     }.bind(productAddToCartForm);
-
     productAddToCartForm.submitLight = function(button, url){
         if(this.validator) {
             var nv = Validation.methods;
@@ -548,7 +513,6 @@ var priceFormatSeparator = {"pattern":"%s\u00a0\u20ac","precision":2,"requiredPr
                     delete Validation.methods[methodName];
                 }
             }
-
             if (this.validator.validate()) {
                 if (url) {
                     this.form.action = url;
@@ -647,7 +611,6 @@ var priceFormatSeparator = {"pattern":"%s\u00a0\u20ac","precision":2,"requiredPr
     </div>
 </div><!-- ESI START DUMMY COMMENT [] -->
 <!-- ESI URL DUMMY COMMENT -->
-
  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script type="text/javascript">
     //<![CDATA[
     Enterprise.Wishlist.list = [];
@@ -656,13 +619,11 @@ var priceFormatSeparator = {"pattern":"%s\u00a0\u20ac","precision":2,"requiredPr
     }
     Enterprise.Wishlist.url.create = 'https://www.selver.ee/wishlist/index/createwishlist/';
     Enterprise.Wishlist.canCreate = false;
-
     if (typeof tkmAddToWishlist!='undefined') {
         tkmAddToWishlist.setMultipleWishlistItems(Enterprise.Wishlist.list);
     }
     //]]>
 </script>
-
 <!-- ESI END DUMMY COMMENT [] -->
 <script type="text/javascript">
         var allInputs = document.getElementsByTagName( 'input' );
@@ -696,7 +657,6 @@ var priceFormatSeparator = {"pattern":"%s\u00a0\u20ac","precision":2,"requiredPr
 <script type="text/javascript">
 // Enable cms for klevu template
         var klevu_cmsSearchEnabled = false;
-
 </script>            <div class="share-cart-container">
         <div id="share-cart-popup"  class="share-cart-popup-overlay">
             <div class="share-cart-popup share-cart-email-popup" style="width: 30%">
@@ -761,33 +721,22 @@ var priceFormatSeparator = {"pattern":"%s\u00a0\u20ac","precision":2,"requiredPr
         //<![CDATA[
         // Get the modal
         var shareCartPop = document.getElementById('share-cart-popup');
-
-
         // Get the <span> element that closes the modal
         var shareCartPopClose = document.getElementById("share-cart-popup-close");
-
-
         // When the user clicks on <span> (x), close the modal
         shareCartPopClose.onclick = function() {
             shareCartPop.style.display = "none";
             resetBodyScroll();
         };
-
         // When the user clicks anywhere outside of the modal, close it
         window.onclick = function(event) {
             if (event.target == shareCartPop) {
                 shareCartPop.style.display = "none";
                 resetBodyScroll();
-
             }
         };
-
         var shareCartEmailForm = new VarienForm('share-cart-email-form');
-
                 var shareCartLinkForm = new VarienForm('share-cart-link-form');
-
-
-
         $("share-cart-email-btn").observe('click',function (event) {
             activate(this);
             if(typeof shareCartSmsForm !== 'undefined')
@@ -796,9 +745,7 @@ var priceFormatSeparator = {"pattern":"%s\u00a0\u20ac","precision":2,"requiredPr
                 Effect.SlideUp('share-cart-link-form', { duration: 0.3 });
             Effect.SlideDown('share-cart-email-form', { duration: 0.3 });
         });
-
         $("share-cart-email-btn").click();
-
         $("share-cart-link-btn").observe('click',function (event) {
             activate(this);
             if(typeof shareCartSmsForm !== 'undefined')
@@ -807,7 +754,6 @@ var priceFormatSeparator = {"pattern":"%s\u00a0\u20ac","precision":2,"requiredPr
             if(typeof shareCartLinkForm !== 'undefined')
                 Effect.SlideDown('share-cart-link-form', { duration: 0.3 });
         });
-
         function activate(elem) {
             $$('.share-cart-popup .top-actions button').each(function(button, index) {
                 button.removeClassName('active');
@@ -840,7 +786,6 @@ var priceFormatSeparator = {"pattern":"%s\u00a0\u20ac","precision":2,"requiredPr
             <button type="button" class="button clearfix continue" onclick="location.href='https://www.selver.ee/checkout/cart/';">Osta kohe</button>
         </div>
     </div>
-
     <div class="timeslot_warning_box removed">
         <i data-icon="clock"></i>
         <div class="warning_box_top">
@@ -852,7 +797,6 @@ var priceFormatSeparator = {"pattern":"%s\u00a0\u20ac","precision":2,"requiredPr
             <button type="button" class="button clearfix login" onclick="location.href='https://www.selver.ee/timeslot/shipping/select/';">Reserveeri uus kohaletoimetamise aeg</button>
         </div>
     </div>
-
     <div class="timeslot_warning_box_container_bg"></div>
 </div><div class="session_warning_box_container">
 <div class="session_warning_box notification_logout">
@@ -866,7 +810,6 @@ var priceFormatSeparator = {"pattern":"%s\u00a0\u20ac","precision":2,"requiredPr
         <button type="button" class="button clearfix login" onclick="location.href='https://www.selver.ee/customer/account/login/';">Sisene uuesti</button>
     </div>
 </div>
-
 <div class="session_warning_box_container_bg"></div>
 </div><script type="text/javascript">
     (function() {
@@ -876,12 +819,10 @@ var priceFormatSeparator = {"pattern":"%s\u00a0\u20ac","precision":2,"requiredPr
         if (referrer.indexOf('catalogsearch/result') > -1 && search_term) {
             klevu_search_product_tracking = {"klevu_apiKey":"klevu-14410928010151845","klevu_term":"","klevu_type":"clicked","klevu_productId":"28469","klevu_productName":"Kakaopuding kirsikastmega, SELVERI K\u00d6\u00d6K, 160 g","klevu_productUrl":"https:\/\/www.selver.ee\/kakaopuding-kirsikastmega-selveri-kook-160-g","klevu_sessionId":"ach3f66q3rd39j6q090ud0g0o6","Klevu_typeOfRecord":"KLEVU_PRODUCT"};
             klevu_search_product_tracking.klevu_term = search_term;
-
             // Send the ajax request
             new Ajax.Request('//stats.klevu.com/analytics/productTracking', {
                 method: "GET",
                 parameters: klevu_search_product_tracking,
-
                 // We need to remove the AJAX headers so the request does not get preflighted and break cross-origin request policy
                 onCreate: function(response) {
                     var t = response.transport;

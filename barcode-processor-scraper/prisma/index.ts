@@ -1,0 +1,1 @@
+export { scrapePrisma } from './scrapeProductPage'

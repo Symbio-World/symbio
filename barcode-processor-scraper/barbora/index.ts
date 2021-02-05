@@ -1,0 +1,1 @@
+export { scrapeBarbora } from './scrapeProductPage'

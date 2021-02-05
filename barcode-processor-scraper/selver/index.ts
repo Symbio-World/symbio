@@ -1,0 +1,1 @@
+export { scrapeSelver } from './scrapeProductPage'
